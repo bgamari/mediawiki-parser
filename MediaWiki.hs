@@ -2,7 +2,8 @@
 
 module MediaWiki where
 
-import Control.Monad (replicateM_)
+import Debug.Trace
+import Control.Monad (replicateM_, void)
 import Data.Monoid
 import Control.Applicative
 
@@ -24,7 +25,10 @@ data Doc = Text !ByteString
          | Header !Int !ByteString
          | InternalLink !(Maybe Namespace) !PageName ![Doc]
          | ExternalLink !Url
-         | Template !ByteString [(ByteString, Maybe ByteString)]
+         | Template !ByteString [(Maybe ByteString, ByteString)]
+         | XmlOpenClose String
+         | XmlOpen String
+         | XmlClose String
          | Bold !ByteString
          | Italic !ByteString
          | BoldItalic !ByteString
@@ -36,35 +40,90 @@ named = flip (<?>)
 
 doc :: Parser Doc
 doc = named "document element"
-    $ header 6 <|> header 5 <|> header 4 <|> header 3 <|> header 2 <|> header 1
-   <|> internalLink <|> template <|> boldItalic <|> bold <|> italic <|> text_
+    $ header <|> codeLine <|> try noWiki <|> try comment <|> try xmlish
+   <|> internalLink <|> template <|> boldItalic <|> bold <|> italic
+   <|> text_
   where
-    boldItalic = fmap BoldItalic $ try $ between' (text "'''''") (try $ text "'''''")
-    bold       = fmap Bold       $ try $ between' (text "'''") (try $ text "'''")
-    italic     = fmap Italic     $ try $ between' (text "''") (try $ text "''")
+    boldItalic = let sym = text "'''''"
+                 in fmap BoldItalic $ try $ between' sym sym
+    bold       = let sym = try $ notFollowedBy (text "''''") >> text "'''"
+                 in fmap Bold $ try $ between' sym sym
+    italic     = let sym = try $ notFollowedBy (text "'''") >> text "''"
+                 in fmap Italic $ try $ between' sym sym
+    codeLine   = fmap CodeLine   $ try $ newline >> space >> restOfLine <* newline
+    noWiki     = fmap NoWiki     $ try $ between' (text "<nowiki>") (text "</nowiki>")
+    comment    = do
+      between' (text "<!--") (text "-->")
+      return $ Text mempty
     text_      = Text <$> sliced (anyChar >> many (noneOf "[]{}*&|\\<\"':\n"))
-    header n   = named "header" $ try $ fmap (Header n) $ do
+      
+    header     = named "header" $ try $ do
       newline
-      replicateM_ n (char '=')
+      n <- length <$> some (char '=')
       spaces
       title <- sliced $ some $ noneOf "="
       replicateM_ n (char '=')
-      return title
+      spaces
+      newline
+      return $ Header n title
+
+xmlish :: Parser Doc
+xmlish = do
+    char '<'
+    closeTag <|> openTag
+  where
+    closeTag = do
+        char '/' >> spaces
+        tag <- some letter
+        return $ XmlClose tag
+    
+    openTag = do
+        spaces
+        tag <- some letter
+        spaces
+        many attribute
+        selfClosing tag <|> withContent tag
+      where
+        attribute = do
+            some letter
+            spaces
+            char '='
+            (spaces >> between' (char '"') (char '"')) <|> sliced (some $ noneOf "/> \t\n")
+            spaces
+
+        withContent tag = do
+            char '>'
+            return $ XmlOpen tag
+
+        selfClosing tag = do
+            text "/>" 
+            return $ XmlOpenClose tag
 
 template :: Parser Doc
 template = named "template" $ do
     text "{{"
     title <- balancedText
-    pairs <- many $ char '|' >> pair
+    pairs <- many $ char '|' >> (try keyValuePair <|> onlyValue <|> emptyPair)
     text "}}"
     return $ Template title pairs
   where
-    -- FIXME
-    balancedText = sliced $ many $ noneOf "{}|"
-    pair = do
-      key <- sliced $ many $ noneOf "{}|="
-      value <- optional $ char '=' >> balancedText
-      return (key, value)
+    balancedText = named "balanced text" $ sliced content
+      where 
+        content = some $  void template
+                      <|> void (some $ noneOf "}|")
+                      <|> void (notFollowedBy (text "}}") >> char '}')
+
+    emptyPair = return (Nothing, mempty)
+
+    onlyValue = do
+      val <- balancedText
+      return (Nothing, val)
+      
+    keyValuePair = do
+      key <- sliced $ some $ noneOf "}|="
+      char '='
+      value <- balancedText
+      return (Just key, value)
 
 internalLink :: Parser Doc
 internalLink = named "internal link" $ do
@@ -72,19 +131,20 @@ internalLink = named "internal link" $ do
     (namespace, page) <- try targetWithNamespace <|> target
     body <- option [] $ do
         char '|'
-        some $ notFollowedBy (char ']') >> doc
+        some $ notFollowedBy (text "]]") >> doc
     text "]]"
     return $ InternalLink namespace page body
   where
+    singleClose = notFollowedBy (text "]]") >> char ']'
     targetWithNamespace = do
-      namespace <- Namespace <$> sliced (some $ noneOf ":|]")
+      namespace <- Namespace <$> sliced (some $ noneOf ":|]" <|> singleClose)
       char ':'
-      pageName <- PageName <$> sliced (some $ noneOf ":|]")
+      pageName <- PageName <$> sliced (some $ noneOf "|]" <|> singleClose)
       return (Just namespace, pageName)
 
     target = do
       optional $ char ':'
-      pageName <- PageName <$> sliced (some $ noneOf ":|]")
+      pageName <- PageName <$> sliced (some $ noneOf "|]" <|> singleClose)
       return (Nothing, pageName)
        
 between' :: Parser bra -> Parser ket -> Parser ByteString
@@ -110,3 +170,4 @@ asciiLetters = CS.range 'a' 'z' <> CS.range 'A' 'Z'
 
 urlChars :: CS.CharSet
 urlChars = asciiLetters <> CS.range '0' '9' <> CS.fromList "-_.~!*'();:@&=+$,/?%#[]"
+
