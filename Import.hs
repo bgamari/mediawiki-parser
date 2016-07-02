@@ -3,7 +3,9 @@
 
 import Data.Default
 import Data.Maybe
+import Data.Foldable
 import Data.Monoid
+import Control.Parallel.Strategies
 import qualified Data.HashMap.Strict as HM
 import qualified Data.ByteString.Lazy as BSL
 import qualified Data.Text as T
@@ -17,12 +19,15 @@ import Text.Pandoc.Readers.MediaWiki
 main :: IO ()
 main = do
     docs <- parseWikiDocs <$> BSL.getContents
-    let forms = HM.fromListWith (HM.unionWith mappend)
-          [ (T.toCaseFold linkAnchor, HM.singleton (T.toCaseFold linkTarget) (Sum 1))
+    let forms = foldl' (HM.unionWith mappend) mempty
+          $ withStrategy (parBuffer 80 rseq)
+          [ HM.fromListWith (HM.unionWith mappend)
+            [ (T.toCaseFold linkAnchor, HM.singleton (T.toCaseFold linkTarget) (Sum 1))
+            | Link{..} <- docLinks doc
+            , not ("http://" `T.isPrefixOf` linkTarget)
+            , not ("https://" `T.isPrefixOf` linkTarget)
+            ]
           | doc <- docs
-          , Link{..} <- docLinks doc
-          , not ("http://" `T.isPrefixOf` linkTarget)
-          , not ("https://" `T.isPrefixOf` linkTarget)
           ]
     print forms
 
