@@ -2,12 +2,14 @@
 
 module MediaWiki where
 
+import Control.Monad (replicateM_)
+import Data.Monoid
+import Control.Applicative
+
 import Text.Trifecta hiding (doc)
 import Text.Trifecta.Util.It
 import qualified Data.CharSet as CS
 import Data.Text (Text)
-import Data.Monoid
-import Control.Applicative
 import Data.ByteString (ByteString)
 import qualified Data.ByteString.Char8 as BS
 
@@ -19,8 +21,10 @@ newtype Url = Url ByteString
             deriving (Show)
 
 data Doc = Text !ByteString
+         | Header !Int !ByteString
          | InternalLink !(Maybe Namespace) !PageName ![Doc]
          | ExternalLink !Url
+         | Template !ByteString [(ByteString, Maybe ByteString)]
          | Bold !ByteString
          | Italic !ByteString
          | BoldItalic !ByteString
@@ -28,16 +32,42 @@ data Doc = Text !ByteString
          | NoWiki !ByteString
          deriving (Show)
 
+named = flip (<?>)
+
 doc :: Parser Doc
-doc = internalLink <|> boldItalic <|> bold <|> italic <|> text_
+doc = named "document element"
+    $ header 6 <|> header 5 <|> header 4 <|> header 3 <|> header 2 <|> header 1
+   <|> internalLink <|> template <|> boldItalic <|> bold <|> italic <|> text_
   where
     boldItalic = fmap BoldItalic $ try $ between' (text "'''''") (try $ text "'''''")
     bold       = fmap Bold       $ try $ between' (text "'''") (try $ text "'''")
     italic     = fmap Italic     $ try $ between' (text "''") (try $ text "''")
-    text_      = Text <$> sliced (anyChar >> many (noneOf "[]{}*&|\\<\"':"))
+    text_      = Text <$> sliced (anyChar >> many (noneOf "[]{}*&|\\<\"':\n"))
+    header n   = named "header" $ try $ fmap (Header n) $ do
+      newline
+      replicateM_ n (char '=')
+      spaces
+      title <- sliced $ some $ noneOf "="
+      replicateM_ n (char '=')
+      return title
+
+template :: Parser Doc
+template = named "template" $ do
+    text "{{"
+    title <- balancedText
+    pairs <- many $ char '|' >> pair
+    text "}}"
+    return $ Template title pairs
+  where
+    -- FIXME
+    balancedText = sliced $ many $ noneOf "{}|"
+    pair = do
+      key <- sliced $ many $ noneOf "{}|="
+      value <- optional $ char '=' >> balancedText
+      return (key, value)
 
 internalLink :: Parser Doc
-internalLink = do
+internalLink = named "internal link" $ do
     text "[["
     (namespace, page) <- try targetWithNamespace <|> target
     body <- option [] $ do
