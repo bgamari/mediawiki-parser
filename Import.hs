@@ -1,6 +1,8 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE RecordWildCards #-}
 
+import Debug.Trace
+import Data.Binary
 import Data.Default
 import Data.Maybe
 import Data.Foldable
@@ -25,7 +27,8 @@ import ParseDump
 main :: IO ()
 main = do
     docs <- parseWikiDocs <$> BSL.getContents
-    let forms = foldl' (HM.unionWith mappend) mempty
+    let forms :: HM.HashMap Text (HM.HashMap Text (Sum Int))
+        forms = foldl' (HM.unionWith mappend) mempty
           $ withStrategy (parBuffer 80 rseq)
           [ HM.fromListWith (HM.unionWith mappend)
             [ (T.toCaseFold linkAnchor, HM.singleton (T.toCaseFold linkTarget) (Sum 1))
@@ -78,8 +81,8 @@ docLinks' doc =
 
     getText :: Doc -> T.Text
     getText (Text s)        = TE.decodeUtf8 s
-    getText (Bold s)        = TE.decodeUtf8 s
-    getText (Italic s)      = TE.decodeUtf8 s
-    getText (BoldItalic s)  = TE.decodeUtf8 s
+    --getText (Bold s)        = TE.decodeUtf8 s
+    --getText (Italic s)      = TE.decodeUtf8 s
+    --getText (BoldItalic s)  = TE.decodeUtf8 s
     getText _               = mempty
 

@@ -1,7 +1,11 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE TemplateHaskell #-}
 
 module MediaWiki where
 
+import qualified Control.Lens as L
+import           Control.Lens ((&), (.~), (^.))
+import           Data.Bits.Lens (bitAt)
 import Debug.Trace
 import Control.Monad (replicateM_, void)
 import Data.Monoid
@@ -13,6 +17,7 @@ import qualified Data.CharSet as CS
 import Data.Text (Text)
 import Data.ByteString (ByteString)
 import qualified Data.ByteString.Char8 as BS
+import qualified Data.ByteString.Lazy as BSL
 
 newtype Namespace = Namespace ByteString
                   deriving (Show)
@@ -29,27 +34,51 @@ data Doc = Text !ByteString
          | XmlOpenClose String
          | XmlOpen String
          | XmlClose String
-         | Bold !ByteString
-         | Italic !ByteString
-         | BoldItalic !ByteString
+         | BoldItalic [Doc]
+         | Bold [Doc]
+         | Italic [Doc]
          | CodeLine !ByteString
          | NoWiki !ByteString
          deriving (Show)
 
 named = flip (<?>)
 
+data Context = Context { _ctxFlags :: !Int }
+
+L.makeLenses ''Context
+
+insideBold, insideItalic, insideBoldItalic :: L.Lens' Context Bool
+insideBold = ctxFlags . bitAt 0
+insideItalic = ctxFlags . bitAt 1
+insideBoldItalic = ctxFlags . bitAt 2
+
 doc :: Parser Doc
-doc = named "document element"
+doc = doc' (Context 0)
+
+doc' :: Context -> Parser Doc
+doc' ctx = named "document element"
     $ header <|> codeLine <|> try noWiki <|> try comment <|> try xmlish
-   <|> internalLink <|> template <|> boldItalic <|> bold <|> italic
+   <|> internalLink <|> template -- <|> boldItalic <|> bold <|> italic
    <|> text_
   where
-    boldItalic = let sym = text "'''''"
-                 in fmap BoldItalic $ try $ between' sym sym
-    bold       = let sym = try $ notFollowedBy (text "''''") >> text "'''"
-                 in fmap Bold $ try $ between' sym sym
-    italic     = let sym = try $ notFollowedBy (text "'''") >> text "''"
-                 in fmap Italic $ try $ between' sym sym
+    boldItalic
+      | ctx ^. insideBoldItalic = empty
+      | otherwise  = named "bold italic"
+                   $ do let sym = text "'''''"
+                        fmap BoldItalic $ between sym sym $ some $ doc' (ctx & insideBoldItalic .~ True)
+
+    bold    
+      | ctx ^. insideBold = empty
+      | otherwise  = named "bold"
+                   $ do let sym = notFollowedBy (text "''''") >> text "'''"
+                        fmap Bold $ between sym sym $ some $ doc' (ctx & insideBold .~ True)
+
+    italic    
+      | ctx ^. insideItalic = empty
+      | otherwise  = named "italic"
+                   $ do let sym = notFollowedBy (text "'''") >> text "''"
+                        fmap Italic $ between sym sym $ some $ doc' (ctx & insideItalic .~ True)
+
     codeLine   = fmap CodeLine   $ try $ newline >> space >> restOfLine <* newline
     noWiki     = fmap NoWiki     $ try $ between' (text "<nowiki>") (text "</nowiki>")
     comment    = do
