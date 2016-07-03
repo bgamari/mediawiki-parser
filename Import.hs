@@ -4,7 +4,8 @@
 {-# LANGUAGE StandaloneDeriving #-}
 
 import Debug.Trace
-import Data.List (intersperse)
+import Data.Char
+import Data.List (intersperse, isPrefixOf)
 import Data.Binary
 import Data.Default
 import Data.Maybe
@@ -39,7 +40,7 @@ main = do
     let links = 
             concat
           $ withStrategy (parBuffer 80 rseq)
-          [ [ (ParseDump.docTitle doc, linkAnchor, linkTarget)
+          [ [ (ParseDump.docTitle doc, linkTarget, linkNamespace, linkAnchor)
             | Link{..} <- docLinks' doc
             , not ("http://" `BS.isPrefixOf` linkTarget)
             , not ("https://" `BS.isPrefixOf` linkTarget)
@@ -47,7 +48,7 @@ main = do
           | doc <- docs
           ]
  
-    let showLink (a,b,c) = mconcat $ intersperse (BB.char8 '\t') [BB.byteString a, BB.byteString b, BB.byteString c]
+    let showLink (a,b,c,d) = mconcat $ intersperse (BB.char8 '\t') [escape a, escape b, maybe "" escape c, escape d]
     BSL.writeFile "links.out" $ BB.toLazyByteString $ mconcat $ intersperse (BB.char8 '\n') $ map showLink links
 
     --let ci = defaultConnectInfo { connectHost = "localhost"
@@ -56,15 +57,37 @@ main = do
     --                            , connectDatabase = "wikipedia"
     --                            }
     --conn <- connect ci
-    --execute_ conn [sql| CREATE TABLE IF NOT EXISTS links ( sourceTitle text, destTitle text, anchor text) |]
+    --execute_ conn [sql| CREATE TABLE IF NOT EXISTS links
+    --                       ( source_title text NOT NULL
+    --                       , dest_title text NOT NULL
+    --                       , dest_namespace text
+    --                       , anchor text) |]
     --flip traverse_ links $ \x ->
-    --    execute conn [sql| INSERT INTO links VALUES (?,?,?) |] x
+    --    execute conn [sql| INSERT INTO links VALUES (?,?,?,?) |] x
     return ()
 
 data Link = Link { linkTarget :: !ByteString
+                 , linkNamespace :: !(Maybe ByteString)
                  , linkAnchor :: !ByteString
                  }
           deriving (Show)
+
+escape :: ByteString -> BB.Builder
+escape = go
+  where
+    go bs
+      | BS.null bs = mempty
+      | '\\' <- BS.head bs = "\\\\" <> go (BS.tail bs)
+      | '\t' <- BS.head bs = "\\t" <> go (BS.tail bs)
+      | '\n' <- BS.head bs = " " <> go (BS.tail bs)
+      | otherwise =
+        let (taken, rest) = BS.span (not . badChar) bs
+        in BB.byteString taken <> go rest
+      where
+        badChar '\t' = True
+        badChar '\n' = True
+        badChar '\\' = True
+        badChar _    = False
 
 docLinks' :: WikiDoc -> [Link]
 docLinks' doc = 
@@ -72,10 +95,11 @@ docLinks' doc =
       Success doc' -> foldMap findLinks doc'
       Failure err  -> trace ("dropped "++show (ParseDump.docTitle doc)++"\n"++show err) []  -- error $ show err
   where
-    findLinks (InternalLink ns (PageName name) body) =
-      [Link { linkAnchor = foldMap getText body
-            , linkTarget = name
-            }]
+    findLinks (InternalLink namespace (PageName name) body) =
+        [Link { linkAnchor = foldMap getText body
+              , linkNamespace = fmap (\(Namespace ns) -> ns) namespace
+              , linkTarget = name
+              }]
     findLinks _ = []
 
     getText :: Doc -> ByteString
