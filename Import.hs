@@ -12,7 +12,11 @@ import Data.Foldable
 import Data.Monoid
 import Control.Parallel.Strategies
 import qualified Data.HashMap.Strict as HM
+import           Data.ByteString.Char8 (ByteString)
+import qualified Data.ByteString.Char8 as BS
+import qualified Data.ByteString.Builder as BB
 import qualified Data.ByteString.Lazy as BSL
+
 import qualified Data.Text as T
 import qualified Data.Text.Encoding as TE
 import qualified Data.Text.Lazy.Builder as TB
@@ -35,16 +39,16 @@ main = do
     let links = 
             concat
           $ withStrategy (parBuffer 80 rseq)
-          [ [ (ParseDump.docTitle doc, T.toCaseFold linkAnchor, linkTarget)
+          [ [ (ParseDump.docTitle doc, linkAnchor, linkTarget)
             | Link{..} <- docLinks' doc
-            , not ("http://" `T.isPrefixOf` linkTarget)
-            , not ("https://" `T.isPrefixOf` linkTarget)
+            , not ("http://" `BS.isPrefixOf` linkTarget)
+            , not ("https://" `BS.isPrefixOf` linkTarget)
             ]
           | doc <- docs
           ]
  
-    let showLink (a,b,c) = mconcat $ intersperse (TB.singleton '\t') [TB.fromText a, TB.fromText b, TB.fromText c]
-    TL.writeFile "links.out" $ TB.toLazyText $ mconcat $ intersperse (TB.singleton '\n') $ map showLink links
+    let showLink (a,b,c) = mconcat $ intersperse (BB.char8 '\t') [BB.byteString a, BB.byteString b, BB.byteString c]
+    BSL.writeFile "links.out" $ BB.toLazyByteString $ mconcat $ intersperse (BB.char8 '\n') $ map showLink links
 
     --let ci = defaultConnectInfo { connectHost = "localhost"
     --                            , connectUser = "ldietz"
@@ -57,27 +61,27 @@ main = do
     --    execute conn [sql| INSERT INTO links VALUES (?,?,?) |] x
     return ()
 
-data Link = Link { linkTarget :: !Text 
-                 , linkAnchor :: !Text
+data Link = Link { linkTarget :: !ByteString
+                 , linkAnchor :: !ByteString
                  }
           deriving (Show)
 
 docLinks' :: WikiDoc -> [Link]
 docLinks' doc = 
-    case parseByteString (many MediaWiki.doc) mempty $ TE.encodeUtf8 $ docText doc of
+    case parseByteString (many MediaWiki.doc) mempty $ docText doc of
       Success doc' -> foldMap findLinks doc'
       Failure err  -> trace ("dropped "++show (ParseDump.docTitle doc)++"\n"++show err) []  -- error $ show err
   where
     findLinks (InternalLink ns (PageName name) body) =
       [Link { linkAnchor = foldMap getText body
-            , linkTarget = TE.decodeUtf8 name
+            , linkTarget = name
             }]
     findLinks _ = []
 
-    getText :: Doc -> T.Text
-    getText (Text s)        = TE.decodeUtf8 s
-    --getText (Bold s)        = TE.decodeUtf8 s
-    --getText (Italic s)      = TE.decodeUtf8 s
-    --getText (BoldItalic s)  = TE.decodeUtf8 s
+    getText :: Doc -> ByteString
+    getText (Text s)        = s
+    --getText (Bold s)        = s
+    --getText (Italic s)      = s
+    --getText (BoldItalic s)  = s
     getText _               = mempty
 

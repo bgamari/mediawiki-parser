@@ -86,8 +86,8 @@ doc' ctx = named "document element"
     comment    = Comment <$> between' (text "<!--") (text "-->")
     text_      = fmap Text $ do
       sliced (some (noneOf "[]{}&|\\<\"'\n"))
-      <|> sliced (if ctx ^. insideInternalLink then empty else oneOf "|]}")
-      <|> sliced (oneOf "'\"[]{&\\\n")
+      <|> sliced (if ctx ^. insideInternalLink then empty else oneOf "|]")
+      <|> sliced (oneOf "[]{}&\\<\"'\n")
       
     header     = named "header" $ try $ do
       newline

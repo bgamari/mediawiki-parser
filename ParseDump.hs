@@ -12,6 +12,8 @@ module ParseDump
 
 import Data.Maybe
 import Text.XML.Expat.SAX
+import           Data.ByteString.Char8 (ByteString)
+import qualified Data.ByteString.Char8 as BS
 import qualified Data.ByteString.Lazy as BSL
 import qualified Data.HashMap.Strict as HM
 import qualified Data.Text as T
@@ -25,19 +27,19 @@ newtype PageId = PageId Int
                deriving (Eq, Ord, Enum, Show)
 
 data Format = XWiki
-            | OtherFormat Text
+            | OtherFormat ByteString
             deriving (Show)
 
-data WikiDoc = WikiDoc { docTitle     :: Text
+data WikiDoc = WikiDoc { docTitle     :: ByteString
                        , docNamespace :: NamespaceId
                        , docPageId    :: PageId
-                       , docRedirects :: [Text]
+                       , docRedirects :: [ByteString]
                        , docFormat    :: Format
-                       , docText      :: Text
+                       , docText      :: ByteString
                        }
              deriving (Show)
 
-entities :: HM.HashMap Text Text
+entities :: HM.HashMap ByteString ByteString
 entities = HM.fromList
     [ ("gt", ">")
     , ("lt", "<")
@@ -50,7 +52,7 @@ parseWikiDocs = parseWikiDocs' . parse parseOpts
   where
     parseOpts = defaultParseOptions { entityDecoder = Just (`HM.lookup` entities) }
 
-parseWikiDocs' :: [SAXEvent Text Text] -> [WikiDoc]
+parseWikiDocs' :: [SAXEvent ByteString ByteString] -> [WikiDoc]
 parseWikiDocs' = go . dropWhile (not . isEndTag "siteinfo")
   where
     go [] = []
@@ -66,7 +68,7 @@ parseWikiDocs' = go . dropWhile (not . isEndTag "siteinfo")
                        , docText = ""
                        }
 
-    parsePage :: WikiDoc -> [SAXEvent Text Text] -> WikiDoc
+    parsePage :: WikiDoc -> [SAXEvent ByteString ByteString] -> WikiDoc
     parsePage doc [] = doc
     parsePage doc (x:xs)
       | isStartTag "title" x =
@@ -75,11 +77,11 @@ parseWikiDocs' = go . dropWhile (not . isEndTag "siteinfo")
           in parsePage doc' xs'
       | isStartTag "ns" x =
           let (content, xs') = break (isEndTag "ns") xs
-              doc' = doc {docNamespace = toEnum $ read $ T.unpack $ getContent content}
+              doc' = doc {docNamespace = toEnum $ read $ BS.unpack $ getContent content}
           in parsePage doc' xs'
       | isStartTag "id" x =
           let (content, xs') = break (isEndTag "id") xs
-              doc' = doc {docPageId = toEnum $ read $ T.unpack $ getContent content}
+              doc' = doc {docPageId = toEnum $ read $ BS.unpack $ getContent content}
           in parsePage doc' xs'
       | isStartTag "redirect" x =
           let StartElement _ attrs = x
@@ -100,12 +102,12 @@ parseWikiDocs' = go . dropWhile (not . isEndTag "siteinfo")
         parseFormat "text/x-wiki" = XWiki
         parseFormat other         = OtherFormat other
 
-        getContent :: [SAXEvent Text Text] -> Text
+        getContent :: [SAXEvent ByteString ByteString] -> ByteString
         getContent =
-            TL.toStrict . foldMap getCharData
+            BSL.toStrict . foldMap getCharData
           where
-            getCharData (CharacterData text) = TL.fromStrict text
-            getCharData _                    = TL.empty
+            getCharData (CharacterData text) = BSL.fromStrict text
+            getCharData _                    = BSL.empty
 
 isStartTag :: Eq tag => tag -> SAXEvent tag text -> Bool
 isStartTag tag (StartElement tag' _) = tag == tag'
