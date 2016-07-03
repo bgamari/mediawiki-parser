@@ -6,6 +6,7 @@
 import Debug.Trace
 import Data.Char
 import Data.List (intersperse, isPrefixOf)
+import Data.List.Split (chunksOf)
 import Data.Binary
 import Data.Default
 import Data.Maybe
@@ -24,6 +25,10 @@ import qualified Data.Text.Lazy.Builder as TB
 import           Data.Text (Text)
 import qualified Data.Text.Lazy as TL
 import qualified Data.Text.Lazy.IO as TL
+
+import Control.Concurrent.Async
+import Pipes
+import Pipes.Concurrent as PC
 
 import Database.PostgreSQL.Simple
 import Database.PostgreSQL.Simple.ToField
@@ -49,21 +54,27 @@ main = do
           ]
  
     let showLink (a,b,c,d) = mconcat $ intersperse (BB.char8 '\t') [escape a, escape b, maybe "" escape c, escape d]
-    BSL.writeFile "links.out" $ BB.toLazyByteString $ mconcat $ intersperse (BB.char8 '\n') $ map showLink links
+    --BSL.writeFile "links.out" $ BB.toLazyByteString $ mconcat $ intersperse (BB.char8 '\n') $ map showLink links
 
-    --let ci = defaultConnectInfo { connectHost = "localhost"
-    --                            , connectUser = "ldietz"
-    --                            , connectPassword = "mudpie"
-    --                            , connectDatabase = "wikipedia"
-    --                            }
-    --conn <- connect ci
-    --execute_ conn [sql| CREATE TABLE IF NOT EXISTS links
-    --                       ( source_title text NOT NULL
-    --                       , dest_title text NOT NULL
-    --                       , dest_namespace text
-    --                       , anchor text) |]
-    --flip traverse_ links $ \x ->
-    --    execute conn [sql| INSERT INTO links VALUES (?,?,?,?) |] x
+    let ci = defaultConnectInfo { connectHost = "localhost"
+                                , connectUser = "ldietz"
+                                , connectPassword = "mudpie"
+                                , connectDatabase = "wikipedia"
+                                }
+    conn <- connect ci
+    execute_ conn [sql| CREATE TABLE IF NOT EXISTS links
+                           ( source_title text NOT NULL
+                           , dest_title text NOT NULL
+                           , dest_namespace text
+                           , anchor text) |]
+    (sq, rq, seal) <- PC.spawn' PC.unbounded
+    writer <- async $ runEffect $ for (PC.fromInput rq) $ \xs ->
+        void $ liftIO $ executeMany conn [sql| INSERT INTO links (source_title, dest_title, dest_namespace, anchor)
+                                               VALUES (?,?,?,?) |] xs
+    link writer
+    mapM_ (atomically . PC.send sq) (chunksOf 10000 links)
+    atomically seal
+    wait writer
     return ()
 
 data Link = Link { linkTarget :: !ByteString
