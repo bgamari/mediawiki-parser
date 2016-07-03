@@ -19,8 +19,6 @@ import Data.ByteString (ByteString)
 import qualified Data.ByteString.Char8 as BS
 import qualified Data.ByteString.Lazy as BSL
 
-newtype Namespace = Namespace ByteString
-                  deriving (Show)
 newtype PageName = PageName ByteString
                  deriving (Show)
 newtype Url = Url ByteString
@@ -29,7 +27,7 @@ newtype Url = Url ByteString
 data Doc = Text !ByteString
          | Comment !ByteString
          | Header !Int !ByteString
-         | InternalLink !(Maybe Namespace) !PageName ![Doc]
+         | InternalLink !PageName ![Doc]
          | ExternalLink !Url
          | Template !ByteString [(Maybe ByteString, ByteString)]
          | XmlOpenClose String
@@ -160,26 +158,16 @@ template = named "template" $ do
 internalLink :: Context -> Parser Doc
 internalLink ctx = named "internal link" $ do
     text "[["
-    (namespace, page) <- try targetWithNamespace <|> target
+    page <- PageName <$> sliced (some $ noneOf "|]" <|> singleClose)
     attrs <- many $ do
         char '|'
         many $ notFollowedBy (text "]]") >> doc' (ctx & insideInternalLink .~ True)
     let body = case attrs of [] -> []
                              xs -> last xs
     text "]]"
-    return $ InternalLink namespace page body
+    return $ InternalLink page body
   where
     singleClose = notFollowedBy (text "]]") >> char ']'
-    targetWithNamespace = do
-      namespace <- Namespace <$> sliced (some $ noneOf ":|]" <|> singleClose)
-      char ':'
-      pageName <- PageName <$> sliced (some $ noneOf "|]" <|> singleClose)
-      return (Just namespace, pageName)
-
-    target = do
-      optional $ char ':'
-      pageName <- PageName <$> sliced (some $ noneOf "|]" <|> singleClose)
-      return (Nothing, pageName)
        
 between' :: Parser bra -> Parser ket -> Parser ByteString
 between' bra ket = do

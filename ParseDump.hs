@@ -7,6 +7,7 @@ module ParseDump
     , WikiDoc(..)
     , Format(..)
     , PageId(..)
+    , Namespace(..)
     , NamespaceId(..)
     ) where
 
@@ -19,6 +20,9 @@ import qualified Data.HashMap.Strict as HM
 import qualified Data.Text as T
 import           Data.Text (Text)
 import qualified Data.Text.Lazy as TL
+
+newtype Namespace = Namespace ByteString
+                  deriving (Eq, Ord, Show)
 
 newtype NamespaceId = NamespaceId Int
                     deriving (Eq, Ord, Enum, Show)
@@ -47,18 +51,33 @@ entities = HM.fromList
     , ("quot", "\"")
     ]
 
-parseWikiDocs :: BSL.ByteString -> [WikiDoc]
+parseWikiDocs :: BSL.ByteString -> ([(NamespaceId, Namespace)], [WikiDoc])
 parseWikiDocs = parseWikiDocs' . parse parseOpts
   where
     parseOpts = defaultParseOptions { entityDecoder = Just (`HM.lookup` entities) }
 
-parseWikiDocs' :: [SAXEvent ByteString ByteString] -> [WikiDoc]
-parseWikiDocs' = go . dropWhile (not . isEndTag "siteinfo")
+parseWikiDocs' :: [SAXEvent ByteString ByteString] -> ([(NamespaceId, Namespace)], [WikiDoc])
+parseWikiDocs' xs0 = 
+    let (prelude, docsElems) = span (not . isEndTag "namespaces") xs0
+        namespaces = parseNamespaces prelude
+    in (namespaces, parsePages docsElems)
   where
-    go [] = []
-    go xs = 
+    parseNamespaces :: [SAXEvent ByteString ByteString] -> [(NamespaceId, Namespace)]
+    parseNamespaces [] = []
+    parseNamespaces xs =
+      let (ns, rest) = break (isEndTag "namespace") $ dropWhile (not . isStartTag "namespace") xs
+      in case ns of
+           (StartElement _ attrs) : _
+             | Just key <- NamespaceId . read . BS.unpack <$> lookup "key" attrs ->
+               let name = Namespace $ getContent ns 
+               in (key, name) : parseNamespaces rest
+           _ -> parseNamespaces rest
+
+    parsePages :: [SAXEvent ByteString ByteString] -> [WikiDoc]
+    parsePages [] = []
+    parsePages xs = 
       let (page, rest) = break (isEndTag "page") $ dropWhile (not . isStartTag "page") xs
-      in parsePage emptyDoc page : go rest
+      in parsePage emptyDoc page : parsePages rest
 
     emptyDoc = WikiDoc { docTitle = ""
                        , docNamespace = NamespaceId 0
@@ -102,12 +121,12 @@ parseWikiDocs' = go . dropWhile (not . isEndTag "siteinfo")
         parseFormat "text/x-wiki" = XWiki
         parseFormat other         = OtherFormat other
 
-        getContent :: [SAXEvent ByteString ByteString] -> ByteString
-        getContent =
-            BSL.toStrict . foldMap getCharData
-          where
-            getCharData (CharacterData text) = BSL.fromStrict text
-            getCharData _                    = BSL.empty
+getContent :: [SAXEvent ByteString ByteString] -> ByteString
+getContent =
+    BSL.toStrict . foldMap getCharData
+  where
+    getCharData (CharacterData text) = BSL.fromStrict text
+    getCharData _                    = BSL.empty
 
 isStartTag :: Eq tag => tag -> SAXEvent tag text -> Bool
 isStartTag tag (StartElement tag' _) = tag == tag'

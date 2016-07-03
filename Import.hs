@@ -41,18 +41,19 @@ import ParseDump
 
 main :: IO ()
 main = do
-    docs <- parseWikiDocs <$> BSL.getContents
+    (namespaces, docs) <- parseWikiDocs <$> BSL.getContents
     let links = 
             concat
           $ withStrategy (parBuffer 80 rseq)
           [ [ (ParseDump.docTitle doc, linkTarget, linkNamespace, linkAnchor)
-            | Link{..} <- docLinks' doc
+            | Link{..} <- docLinks (map snd namespaces) doc
             , not ("http://" `BS.isPrefixOf` linkTarget)
             , not ("https://" `BS.isPrefixOf` linkTarget)
             ]
           | doc <- docs
           ]
  
+    print namespaces
     let showLink (a,b,c,d) = mconcat $ intersperse (BB.char8 '\t') [escape a, escape b, maybe "" escape c, escape d]
     --BSL.writeFile "links.out" $ BB.toLazyByteString $ mconcat $ intersperse (BB.char8 '\n') $ map showLink links
 
@@ -100,17 +101,31 @@ escape = go
         badChar '\\' = True
         badChar _    = False
 
-docLinks' :: WikiDoc -> [Link]
-docLinks' doc = 
+stripWhitespace :: BS.ByteString -> BS.ByteString
+stripWhitespace = fst . BS.spanEnd isSpace . BS.dropWhile isSpace
+
+docLinks :: [Namespace] -> WikiDoc -> [Link]
+docLinks namespaces doc = 
     case parseByteString (many MediaWiki.doc) mempty $ docText doc of
       Success doc' -> foldMap findLinks doc'
       Failure err  -> trace ("dropped "++show (ParseDump.docTitle doc)++"\n"++show err) []  -- error $ show err
   where
-    findLinks (InternalLink namespace (PageName name) body) =
-        [Link { linkAnchor = foldMap getText body
-              , linkNamespace = fmap (\(Namespace ns) -> ns) namespace
-              , linkTarget = name
-              }]
+    namespaceNames = [ map toLower $ BS.unpack name | Namespace name <- namespaces ]
+    findLinks (InternalLink (PageName name) body) =
+      let (page, namespace)
+            | Just page <- ":" `BS.stripPrefix` name = (page, Nothing)
+
+            | (ns, page) <- BS.span (/= ':') name
+            , map toLower (BS.unpack ns) `elem` namespaceNames
+            , not (BS.null page)
+            = (stripWhitespace $ BS.tail page, Just $ stripWhitespace ns)
+
+            | otherwise 
+            = (name, Nothing)
+      in [Link { linkAnchor = foldMap getText body
+               , linkNamespace = namespace
+               , linkTarget = page
+               }]
     findLinks _ = []
 
     getText :: Doc -> ByteString
