@@ -1,7 +1,10 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE QuasiQuotes #-}
+{-# LANGUAGE StandaloneDeriving #-}
 
 import Debug.Trace
+import Data.List (intersperse)
 import Data.Binary
 import Data.Default
 import Data.Maybe
@@ -12,12 +15,14 @@ import qualified Data.HashMap.Strict as HM
 import qualified Data.ByteString.Lazy as BSL
 import qualified Data.Text as T
 import qualified Data.Text.Encoding as TE
+import qualified Data.Text.Lazy.Builder as TB
 import           Data.Text (Text)
 import qualified Data.Text.Lazy as TL
+import qualified Data.Text.Lazy.IO as TL
 
-import qualified Text.Pandoc as P
-import Text.Pandoc.Walk
-import Text.Pandoc.Readers.MediaWiki
+import Database.PostgreSQL.Simple
+import Database.PostgreSQL.Simple.ToField
+import Database.PostgreSQL.Simple.SqlQQ
 
 import Text.Trifecta
 import MediaWiki
@@ -27,45 +32,35 @@ import ParseDump
 main :: IO ()
 main = do
     docs <- parseWikiDocs <$> BSL.getContents
-    let forms :: HM.HashMap Text (HM.HashMap Text (Sum Int))
-        forms = foldl' (HM.unionWith mappend) mempty
+    let links = 
+            concat
           $ withStrategy (parBuffer 80 rseq)
-          [ HM.fromListWith (HM.unionWith mappend)
-            [ (T.toCaseFold linkAnchor, HM.singleton (T.toCaseFold linkTarget) (Sum 1))
+          [ [ (ParseDump.docTitle doc, T.toCaseFold linkAnchor, linkTarget)
             | Link{..} <- docLinks' doc
             , not ("http://" `T.isPrefixOf` linkTarget)
             , not ("https://" `T.isPrefixOf` linkTarget)
             ]
           | doc <- docs
           ]
-    print forms
+ 
+    let showLink (a,b,c) = mconcat $ intersperse (TB.singleton '\t') [TB.fromText a, TB.fromText b, TB.fromText c]
+    TL.writeFile "links.out" $ TB.toLazyText $ mconcat $ intersperse (TB.singleton '\n') $ map showLink links
 
-readerOpts = def
+    --let ci = defaultConnectInfo { connectHost = "localhost"
+    --                            , connectUser = "ldietz"
+    --                            , connectPassword = "mudpie"
+    --                            , connectDatabase = "wikipedia"
+    --                            }
+    --conn <- connect ci
+    --execute_ conn [sql| CREATE TABLE IF NOT EXISTS links ( sourceTitle text, destTitle text, anchor text) |]
+    --flip traverse_ links $ \x ->
+    --    execute conn [sql| INSERT INTO links VALUES (?,?,?) |] x
+    return ()
 
 data Link = Link { linkTarget :: !Text 
                  , linkAnchor :: !Text
                  }
           deriving (Show)
-
-docLinks :: WikiDoc -> [Link]
-docLinks doc =
-    let doc' = readMediaWiki readerOpts $ T.unpack $ docText doc
-    in query f doc'
-  where
-    f (P.Link _ anchor (url, title)) =
-      [Link { linkAnchor = getInlineText anchor
-            , linkTarget = T.pack url
-            }]
-    f _ = []
-
-    getInlineText :: [P.Inline] -> T.Text
-    getInlineText = TL.toStrict . foldMap go
-      where
-        go (P.Str s)    = TL.pack s
-        go (P.Emph x)   = foldMap go x
-        go (P.Strong x) = foldMap go x
-        go P.Space      = " "
-        go _            = mempty
 
 docLinks' :: WikiDoc -> [Link]
 docLinks' doc = 

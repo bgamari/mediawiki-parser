@@ -27,6 +27,7 @@ newtype Url = Url ByteString
             deriving (Show)
 
 data Doc = Text !ByteString
+         | Comment !ByteString
          | Header !Int !ByteString
          | InternalLink !(Maybe Namespace) !PageName ![Doc]
          | ExternalLink !Url
@@ -47,10 +48,11 @@ data Context = Context { _ctxFlags :: !Int }
 
 L.makeLenses ''Context
 
-insideBold, insideItalic, insideBoldItalic :: L.Lens' Context Bool
+insideBold, insideItalic, insideBoldItalic, insideInternalLink :: L.Lens' Context Bool
 insideBold = ctxFlags . bitAt 0
 insideItalic = ctxFlags . bitAt 1
 insideBoldItalic = ctxFlags . bitAt 2
+insideInternalLink = ctxFlags . bitAt 3
 
 doc :: Parser Doc
 doc = doc' (Context 0)
@@ -58,7 +60,7 @@ doc = doc' (Context 0)
 doc' :: Context -> Parser Doc
 doc' ctx = named "document element"
     $ header <|> codeLine <|> try noWiki <|> try comment <|> try xmlish
-   <|> internalLink <|> template -- <|> boldItalic <|> bold <|> italic
+   <|> internalLink ctx <|> template -- <|> boldItalic <|> bold <|> italic
    <|> text_
   where
     boldItalic
@@ -81,10 +83,11 @@ doc' ctx = named "document element"
 
     codeLine   = fmap CodeLine   $ try $ newline >> space >> restOfLine <* newline
     noWiki     = fmap NoWiki     $ try $ between' (text "<nowiki>") (text "</nowiki>")
-    comment    = do
-      between' (text "<!--") (text "-->")
-      return $ Text mempty
-    text_      = Text <$> sliced (anyChar >> many (noneOf "[]{}*&|\\<\"':\n"))
+    comment    = Comment <$> between' (text "<!--") (text "-->")
+    text_      = fmap Text $ do
+      sliced (some (noneOf "[]{}&|\\<\"'\n"))
+      <|> sliced (if ctx ^. insideInternalLink then empty else oneOf "|]}")
+      <|> sliced (oneOf "'\"[]{&\\\n")
       
     header     = named "header" $ try $ do
       newline
@@ -154,13 +157,15 @@ template = named "template" $ do
       value <- balancedText
       return (Just key, value)
 
-internalLink :: Parser Doc
-internalLink = named "internal link" $ do
+internalLink :: Context -> Parser Doc
+internalLink ctx = named "internal link" $ do
     text "[["
     (namespace, page) <- try targetWithNamespace <|> target
-    body <- option [] $ do
+    attrs <- many $ do
         char '|'
-        some $ notFollowedBy (text "]]") >> doc
+        many $ notFollowedBy (text "]]") >> doc' (ctx & insideInternalLink .~ True)
+    let body = case attrs of [] -> []
+                             xs -> last xs
     text "]]"
     return $ InternalLink namespace page body
   where
