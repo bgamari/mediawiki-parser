@@ -2,7 +2,7 @@
 {-# LANGUAGE RecordWildCards #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 
-module ParseDump 
+module ParseDump
     ( parseWikiDocs
     , WikiDoc(..)
     , Format(..)
@@ -11,15 +11,11 @@ module ParseDump
     , NamespaceId(..)
     ) where
 
-import Data.Maybe
 import Text.XML.Expat.SAX
 import           Data.ByteString.Char8 (ByteString)
 import qualified Data.ByteString.Char8 as BS
 import qualified Data.ByteString.Lazy as BSL
 import qualified Data.HashMap.Strict as HM
-import qualified Data.Text as T
-import           Data.Text (Text)
-import qualified Data.Text.Lazy as TL
 
 newtype Namespace = Namespace ByteString
                   deriving (Eq, Ord, Show)
@@ -57,7 +53,7 @@ parseWikiDocs = parseWikiDocs' . parse parseOpts
     parseOpts = defaultParseOptions { entityDecoder = Just (`HM.lookup` entities) }
 
 parseWikiDocs' :: [SAXEvent ByteString ByteString] -> ([(NamespaceId, Namespace)], [WikiDoc])
-parseWikiDocs' xs0 = 
+parseWikiDocs' xs0 =
     let (prelude, docsElems) = span (not . isEndTag "namespaces") xs0
         namespaces = parseNamespaces prelude
     in (namespaces, parsePages docsElems)
@@ -69,13 +65,13 @@ parseWikiDocs' xs0 =
       in case ns of
            (StartElement _ attrs) : _
              | Just key <- NamespaceId . read . BS.unpack <$> lookup "key" attrs ->
-               let name = Namespace $ getContent ns 
+               let name = Namespace $ getContent ns
                in (key, name) : parseNamespaces rest
            _ -> parseNamespaces rest
 
     parsePages :: [SAXEvent ByteString ByteString] -> [WikiDoc]
     parsePages [] = []
-    parsePages xs = 
+    parsePages xs =
       let (page, rest) = break (isEndTag "page") $ dropWhile (not . isStartTag "page") xs
       in parsePage emptyDoc page : parsePages rest
 
@@ -135,4 +131,3 @@ isStartTag _   _ = False
 isEndTag :: Eq tag => tag -> SAXEvent tag text -> Bool
 isEndTag tag (EndElement tag') = tag == tag'
 isEndTag _   _ = False
-

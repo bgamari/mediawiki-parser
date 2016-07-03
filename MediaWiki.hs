@@ -6,18 +6,13 @@ module MediaWiki where
 import qualified Control.Lens as L
 import           Control.Lens ((&), (.~), (^.))
 import           Data.Bits.Lens (bitAt)
-import Debug.Trace
 import Control.Monad (replicateM_, void)
 import Data.Monoid
 import Control.Applicative
 
 import Text.Trifecta hiding (doc)
-import Text.Trifecta.Util.It
 import qualified Data.CharSet as CS
-import Data.Text (Text)
 import Data.ByteString (ByteString)
-import qualified Data.ByteString.Char8 as BS
-import qualified Data.ByteString.Lazy as BSL
 
 newtype PageName = PageName ByteString
                  deriving (Show)
@@ -40,6 +35,7 @@ data Doc = Text !ByteString
          | NoWiki !ByteString
          deriving (Show)
 
+named :: String -> Parser a -> Parser a
 named = flip (<?>)
 
 data Context = Context { _ctxFlags :: !Int }
@@ -67,13 +63,13 @@ doc' ctx = named "document element"
                    $ do let sym = text "'''''"
                         fmap BoldItalic $ between sym sym $ some $ doc' (ctx & insideBoldItalic .~ True)
 
-    bold    
+    bold
       | ctx ^. insideBold = empty
       | otherwise  = named "bold"
                    $ do let sym = notFollowedBy (text "''''") >> text "'''"
                         fmap Bold $ between sym sym $ some $ doc' (ctx & insideBold .~ True)
 
-    italic    
+    italic
       | ctx ^. insideItalic = empty
       | otherwise  = named "italic"
                    $ do let sym = notFollowedBy (text "'''") >> text "''"
@@ -86,7 +82,7 @@ doc' ctx = named "document element"
       sliced (some (noneOf "[]{}&|\\<\"'\n"))
       <|> sliced (if ctx ^. insideInternalLink then empty else oneOf "|]")
       <|> sliced (oneOf "[]{}&\\<\"'\n")
-      
+
     header     = named "header" $ try $ do
       newline
       n <- length <$> some (char '=')
@@ -106,7 +102,7 @@ xmlish = do
         char '/' >> spaces
         tag <- some letter
         return $ XmlClose tag
-    
+
     openTag = do
         spaces
         tag <- some letter
@@ -126,7 +122,7 @@ xmlish = do
             return $ XmlOpen tag
 
         selfClosing tag = do
-            text "/>" 
+            text "/>"
             return $ XmlOpenClose tag
 
 template :: Parser Doc
@@ -138,7 +134,7 @@ template = named "template" $ do
     return $ Template title pairs
   where
     balancedText = named "balanced text" $ sliced content
-      where 
+      where
         content = some $  void template
                       <|> void (some $ noneOf "}|")
                       <|> void (notFollowedBy (text "}}") >> char '}')
@@ -148,7 +144,7 @@ template = named "template" $ do
     onlyValue = do
       val <- balancedText
       return (Nothing, val)
-      
+
     keyValuePair = do
       key <- sliced $ some $ noneOf "}|="
       char '='
@@ -168,7 +164,7 @@ internalLink ctx = named "internal link" $ do
     return $ InternalLink page body
   where
     singleClose = notFollowedBy (text "]]") >> char ']'
-       
+
 between' :: Parser bra -> Parser ket -> Parser ByteString
 between' bra ket = do
     bra
@@ -192,4 +188,3 @@ asciiLetters = CS.range 'a' 'z' <> CS.range 'A' 'Z'
 
 urlChars :: CS.CharSet
 urlChars = asciiLetters <> CS.range '0' '9' <> CS.fromList "-_.~!*'();:@&=+$,/?%#[]"
-

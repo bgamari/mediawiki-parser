@@ -4,19 +4,12 @@
 {-# LANGUAGE StandaloneDeriving #-}
 
 import Debug.Trace
-import Data.Char
-import Data.List (intersperse, isPrefixOf)
+import Data.List (intersperse)
 import Data.List.Split (chunksOf)
-import Data.Binary
-import Data.Default
-import Data.Maybe
-import Data.Foldable
 import Data.Monoid
 import Control.Parallel.Strategies
 import qualified Data.HashMap.Strict as HM
 import qualified Data.HashSet as HS
-import           Data.ByteString.Char8 (ByteString)
-import qualified Data.ByteString.Char8 as BS
 import qualified Data.ByteString.Builder as BB
 import qualified Data.ByteString.Lazy as BSL
 
@@ -33,7 +26,6 @@ import Pipes
 import Pipes.Concurrent as PC
 
 import Database.PostgreSQL.Simple
-import Database.PostgreSQL.Simple.ToField
 import Database.PostgreSQL.Simple.SqlQQ
 
 import Text.Trifecta
@@ -44,7 +36,7 @@ import ParseDump
 main :: IO ()
 main = do
     (namespaces, docs) <- parseWikiDocs <$> BSL.getContents
-    let links = 
+    let links =
             concat
           $ withStrategy (parBuffer 80 rseq)
           [ [ (ParseDump.docTitle doc, linkTarget, linkNamespace, linkAnchor)
@@ -54,7 +46,7 @@ main = do
             ]
           | doc <- docs
           ]
- 
+
     print namespaces
     let showLink (src, dest, ns, anchor) = mconcat $ intersperse (BB.char8 '\t')
             $ map TLE.encodeUtf8Builder
@@ -109,7 +101,7 @@ escape = TB.toLazyText . go
         badChar _    = False
 
 docLinks :: [Namespace] -> WikiDoc -> [Link]
-docLinks namespaces doc = 
+docLinks namespaces doc =
     case parseByteString (many MediaWiki.doc) mempty $ docText doc of
       Success doc' -> foldMap findLinks doc'
       Failure err  -> trace ("dropped "++show (ParseDump.docTitle doc)++"\n"++show err) []  -- error $ show err
@@ -126,7 +118,7 @@ docLinks namespaces doc =
             , not (T.null page)
             = (T.strip $ T.tail page, Just $ T.strip ns)
 
-            | otherwise 
+            | otherwise
             = (name, Nothing)
       in [Link { linkAnchor = TLE.decodeUtf8 $ BB.toLazyByteString $ foldMap getText body
                , linkNamespace = namespace
@@ -140,4 +132,3 @@ docLinks namespaces doc =
     --getText (Italic s)      = s
     --getText (BoldItalic s)  = s
     getText _               = mempty
-
