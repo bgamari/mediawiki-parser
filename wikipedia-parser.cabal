@@ -1,4 +1,4 @@
-name:                wikipedia-parser
+name:                mediawiki-parser
 version:             0.1.0.0
 synopsis:            A Haskell parser for MediaWiki markup
 -- description:         
@@ -13,7 +13,7 @@ build-type:          Simple
 extra-source-files:  ChangeLog.md
 cabal-version:       >=1.10
 
-executable wikipedia-parser
+executable mediawiki-links
   main-is:             Import.hs
   other-modules:       MediaWiki, ParseDump
   other-extensions:    OverloadedStrings, TemplateHaskell, RecordWildCards, GeneralizedNewtypeDeriving, QuasiQuotes, StandaloneDeriving, BangPatterns
