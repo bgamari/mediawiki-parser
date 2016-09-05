@@ -1,0 +1,22 @@
+# mediawiki-parser
+
+This is a parser and some utilities for the MediaWiki markup language.
+
+At the moment the primary interface is the `mediawiki-links` utility which
+accepts a MediaWiki XML dump file on `stdin` and writes a set of link graph
+edges to `stdout`. The output format is a tab-separated text file with the
+following columns,
+
+ * source node name
+ * link target node name
+ * link target namespace
+ * link anchor text
+
+## Installation
+
+1. Download and install [Haskell Platform](https://www.haskell.org/platform/)
+2. Run `cabal update`
+3. Clone this repository, `git clone git://github.com/bgamari/mediawiki-parser`
+4. Run `cabal install` from within the repository
+5. The `mediawiki-import` executable can be found in `~/.cabal/bin`
+
