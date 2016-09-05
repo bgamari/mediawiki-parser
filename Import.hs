@@ -51,8 +51,8 @@ main = do
 
     print namespaces
 
-    toPostgres ci links
-    --toFile links
+    --toPostgres ci links
+    toFile links
 
 toFile :: [(BS.ByteString, Link)] -> IO ()
 toFile links = do
