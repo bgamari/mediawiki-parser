@@ -107,6 +107,7 @@ xmlish = do
     closeTag = do
         char '/' >> spaces
         tag <- some letter
+        char '>'
         return $ XmlClose tag
 
     openTag = do
