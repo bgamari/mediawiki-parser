@@ -17,9 +17,7 @@ library
   exposed-modules:     Data.MediaWiki.XmlDump
                        Data.MediaWiki.Markup
   build-depends:       base >=4.9 && <4.10,
-                       lens >=4.14 && <4.15,
-                       trifecta >=1.5 && <1.7,
-                       charset >=0.3 && <0.4,
+                       frisby >= 0.2 && <0.3,
                        bytestring >=0.10 && <0.11,
                        unordered-containers >=0.2 && <0.3,
                        hexpat >=0.20 &&<0.21
@@ -30,7 +28,7 @@ executable mediawiki-links
   main-is:             Import.hs
   other-extensions:    OverloadedStrings, TemplateHaskell, RecordWildCards, GeneralizedNewtypeDeriving, QuasiQuotes, StandaloneDeriving, BangPatterns
   build-depends:       base >=4.9 && <4.10,
-                       trifecta >=1.5 && <1.7,
+                       frisby >= 0.2 && <0.3,
                        bytestring >=0.10 && <0.11,
                        unordered-containers >=0.2 && <0.3,
                        deepseq >=1.4 && <1.5,
@@ -39,7 +37,7 @@ executable mediawiki-links
                        text >=1.2 && <1.3,
                        hexpat >=0.20 &&<0.21,
                        async >=2.1 && <2.2,
-                       pipes >=4.1 && <4.3,
+                       pipes >=4.2 && <4.3,
                        pipes-concurrency >=2.0 && <2.1,
                        postgresql-simple >=0.5 && <0.6,
                        mediawiki-parser

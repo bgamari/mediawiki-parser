@@ -1,0 +1,70 @@
+== Hello World ==
+This is a simple example ''Document''.
+
+* hello '''''world'' turtle''''s
+** oops
+
+ int main() {
+   printf();
+ }
+
+
+Here is a paragraph, all on its own
+
+<!-- How about a comment -->
+
+Here is a paragraph <!-- and a comment --> in the middle.
+
+= A template =
+
+{{Main article|hel}}
+
+<ref name="stein">{{cite book|last=Stein}}
+</ref>
+
+<ref name="laidentidadandaluza">{{cite book
+| last = Domínguez Ortiz
+| first = Antonio
+| title = La identidad andaluza
+| year = 1976
+| language = Spanish
+| publisher = Universidad de Granada
+| location= Granada Puzada
+}}</ref>
+
+And Another <ref name=tertiarization /><ref>{{cite book
+| last = Delgado Cabeza
+| first = Manuel
+| title = Dependencia y marginación de la economía andaluza
+| year = 1981
+| publisher = Publicaciones del Monte de Piedad, Caja de Ahorros
+| location = Córdoba
+| isbn = 84-7231-613-0
+| language = Spanish}}</ref>
+
+
+
+== And some links ==
+
+Here is [[a link]]. And a [[link|with|some attributes]].
+
+How about an [http://www.kernel.org/hi] external link.
+
+{{about|the [[autonomous communities of Spain|autonomous region]] of modern Spain|the medieval [[Islamic state (government)|Islamic state]] which covered most of Iberia|Al-Andalus|other uses}}
+{{Use dmy dates|date=October 2012}}
+
+{{Infobox settlement
+| website = {{URL|http://www.juntadeandalucia.es}}
+| footnotes =
+}}
+
+Málaga and Seville."<ref>{{Cite book
+ | first = George C.
+ | last = Kohn
+ | title = Encyclopedia of plague and pestilence: from ancient times to the present
+ | url = https://books.google.com/books?id=tzRwRmb09rgC&pg=PA373&dq#v=onepage&q=&f=false
+ | publisher = Infobase Publishing
+ | year = 2008
+ | pages = 373–374
+ | isbn = 0-8160-6935-2}}
+</ref>
