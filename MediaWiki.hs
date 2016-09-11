@@ -22,8 +22,8 @@ newtype Url = Url ByteString
 data Doc = Text !ByteString
          | Comment !ByteString
          | Header !Int !ByteString
-         | InternalLink !PageName ![Doc]
-         | ExternalLink !Url
+         | InternalLink !PageName [Doc]
+         | ExternalLink !Url [Doc]
          | Template !ByteString [(Maybe ByteString, ByteString)]
          | XmlOpenClose String
          | XmlOpen String
@@ -55,7 +55,8 @@ doc' :: Context -> Parser Doc
 doc' ctx = named "document element"
     $ endSingleQuote
     $ header <|> codeLine <|> try noWiki <|> try comment <|> try xmlish
-   <|> internalLink ctx <|> template <|> boldItalic <|> bold <|> italic
+   <|> internalLink ctx <|> externalLink ctx <|> template
+   <|> boldItalic <|> bold <|> italic
    <|> text_
   where
     endSingleQuote x
@@ -171,6 +172,18 @@ internalLink ctx = named "internal link" $ do
     return $ InternalLink page body
   where
     singleClose = notFollowedBy (text "]]") >> char ']'
+
+-- | This can backtrack since sometimes you find things like @hello [world]@ in
+-- markup, which Wikipedia simply renders as plain text.
+externalLink :: Context -> Parser Doc
+externalLink ctx = try $ named "external link" $ do
+    notFollowedBy $ text "[["
+    char '['
+    u <- url
+    spaces
+    body <- many $ notFollowedBy (notFollowedBy (text "]]") >> char ']') >> doc' ctx
+    char ']'
+    return $ ExternalLink u body
 
 between' :: Parser bra -> Parser ket -> Parser ByteString
 between' bra ket = do
