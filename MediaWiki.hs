@@ -209,4 +209,4 @@ asciiLetters :: CS.CharSet
 asciiLetters = CS.range 'a' 'z' <> CS.range 'A' 'Z'
 
 urlChars :: CS.CharSet
-urlChars = asciiLetters <> CS.range '0' '9' <> CS.fromList "-_.~!*'();:@&=+$,/?%#[]"
+urlChars = asciiLetters <> CS.range '0' '9' <> CS.fromList "-_.~!*'();:@&=+$,/?%#"
