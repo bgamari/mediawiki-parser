@@ -53,10 +53,16 @@ doc = doc' (Context 0)
 
 doc' :: Context -> Parser Doc
 doc' ctx = named "document element"
+    $ endSingleQuote
     $ header <|> codeLine <|> try noWiki <|> try comment <|> try xmlish
-   <|> internalLink ctx <|> template -- <|> boldItalic <|> bold <|> italic
+   <|> internalLink ctx <|> template <|> boldItalic <|> bold <|> italic
    <|> text_
   where
+    endSingleQuote x
+      | ctx ^. insideBoldItalic = notFollowedBy (text "'''''") >> x
+      | ctx ^. insideBold = notFollowedBy (text "'''") >> x
+      | ctx ^. insideItalic = notFollowedBy (text "''") >> x
+      | otherwise = x
     boldItalic
       | ctx ^. insideBoldItalic = empty
       | otherwise  = named "bold italic"
