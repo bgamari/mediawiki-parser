@@ -1,11 +1,13 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE DeriveGeneric #-}
 
 module MediaWiki where
 
 import qualified Control.Lens as L
 import           Control.Lens ((&), (.~), (^.))
 import           Data.Bits.Lens (bitAt)
+import GHC.Generics
 import Control.Monad (replicateM_, void)
 import Data.Monoid
 import Control.Applicative
@@ -15,9 +17,9 @@ import qualified Data.CharSet as CS
 import Data.ByteString (ByteString)
 
 newtype PageName = PageName ByteString
-                 deriving (Show)
+                 deriving (Show, Generic)
 newtype Url = Url ByteString
-            deriving (Show)
+            deriving (Show, Generic)
 
 data Doc = Text !ByteString
          | Comment !ByteString
