@@ -1,99 +1,104 @@
 {-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE RankNTypes #-}
+{-# LANGUAGE RecursiveDo #-}
 
-module MediaWiki where
+module MediaWiki (Doc(..), parse) where
 
+import Debug.Trace
 import qualified Control.Lens as L
 import           Control.Lens ((&), (.~), (^.))
 import           Data.Bits.Lens (bitAt)
 import Control.Monad (replicateM_, void)
 import Data.Monoid
-import Control.Applicative
+import Control.Applicative hiding (many)
 
-import Text.Trifecta hiding (doc)
-import qualified Data.CharSet as CS
-import Data.ByteString (ByteString)
+import Text.Parsers.Frisby
+import Text.Parsers.Frisby.Char
 
-newtype PageName = PageName ByteString
+newtype PageName = PageName String
                  deriving (Show)
-newtype Url = Url ByteString
+newtype Url = Url String
             deriving (Show)
 
-data Doc = Text !ByteString
-         | Comment !ByteString
-         | Header !Int !ByteString
+data Doc = Text !Char
+         | Comment !String
+         | Header !Int !String
          | InternalLink !PageName ![Doc]
          | ExternalLink !Url
-         | Template !ByteString [(Maybe ByteString, ByteString)]
+         | Template !String [(Maybe String, String)]
          | XmlOpenClose String
          | XmlOpen String
          | XmlClose String
          | BoldItalic [Doc]
          | Bold [Doc]
          | Italic [Doc]
-         | CodeLine !ByteString
-         | NoWiki !ByteString
+         | CodeLine !String
+         | NoWiki !String
          deriving (Show)
 
-named :: String -> Parser a -> Parser a
-named = flip (<?>)
+parse :: String -> [Doc]
+parse s = concatMap (runPeg doc) (lines s)
 
-data Context = Context { _ctxFlags :: !Int }
+doc :: PM s (P s [Doc])
+doc = mdo
+    newRule $ many doc'
 
-L.makeLenses ''Context
+doc' :: P s (P s Doc)
+doc' = mdo
+    h1 <- header 1
+    h2 <- header 2
+    h3 <- header 3
+    h4 <- header 4
+    h5 <- header 5
+    h6 <- header 6
+    // noWiki // codeLine // comment
+    // boldItalic // bold // italic // plainText
 
-insideBold, insideItalic, insideBoldItalic, insideInternalLink :: L.Lens' Context Bool
-insideBold = ctxFlags . bitAt 0
-insideItalic = ctxFlags . bitAt 1
-insideBoldItalic = ctxFlags . bitAt 2
-insideInternalLink = ctxFlags . bitAt 3
+bold :: PM s (P s Doc)
+bold = do
+    text "'''"
+    Bold <$> manyUntil (text "'''") doc
 
-doc :: Parser Doc
-doc = doc' (Context 0)
+italic :: PM s (P s Doc)
+italic = do
+    text "''"
+    Italic <$> manyUntil (text "''") doc
 
-doc' :: Context -> Parser Doc
-doc' ctx = named "document element"
-    $ header <|> codeLine <|> try noWiki <|> try comment <|> try xmlish
-   <|> internalLink ctx <|> template -- <|> boldItalic <|> bold <|> italic
-   <|> text_
-  where
-    boldItalic
-      | ctx ^. insideBoldItalic = empty
-      | otherwise  = named "bold italic"
-                   $ do let sym = text "'''''"
-                        fmap BoldItalic $ between sym sym $ some $ doc' (ctx & insideBoldItalic .~ True)
+boldItalic :: PM s (P s Doc)
+boldItalic = do
+    text "'''''"
+    BoldItalic <$> manyUntil (text "'''''") doc
 
-    bold
-      | ctx ^. insideBold = empty
-      | otherwise  = named "bold"
-                   $ do let sym = notFollowedBy (text "''''") >> text "'''"
-                        fmap Bold $ between sym sym $ some $ doc' (ctx & insideBold .~ True)
+plainText :: P s Doc
+plainText = Text <$> anyChar
 
-    italic
-      | ctx ^. insideItalic = empty
-      | otherwise  = named "italic"
-                   $ do let sym = notFollowedBy (text "'''") >> text "''"
-                        fmap Italic $ between sym sym $ some $ doc' (ctx & insideItalic .~ True)
+header :: Int -> P s Doc
+header n = do
+    replicateM_ n (char '=')
+    manyUntil (replicateM_ n (char '=')) anyChar
+    return $ Header n title
 
-    codeLine   = fmap CodeLine   $ try $ newline >> space >> restOfLine <* newline
-    noWiki     = fmap NoWiki     $ try $ between' (text "<nowiki>") (text "</nowiki>")
-    comment    = Comment <$> between' (text "<!--") (text "-->")
-    text_      = fmap Text $ do
-      sliced (some (noneOf "[]{}&|\\<\"'\n"))
-      <|> sliced (if ctx ^. insideInternalLink then empty else oneOf "|]")
-      <|> sliced (oneOf "[]{}&\\<\"'\n")
+codeLine :: P s Doc
+codeLine = do
+    bof
+    char ' '
+    CodeLine <$> rest
 
-    header     = named "header" $ try $ do
-      newline
-      n <- length <$> some (char '=')
-      spaces
-      title <- sliced $ some $ noneOf "="
-      replicateM_ n (char '=')
-      spaces
-      newline
-      return $ Header n title
+noWiki :: P s Doc
+noWiki = do
+    text "<nowiki>"
+    NoWiki <$> manyUntil (text "</nowiki>") anyChar
 
-xmlish :: Parser Doc
+comment :: P s Doc
+comment = do
+    text "<!--"
+    Comment <$> comment (text "-->") anyChar
+
+spaces :: P s ()
+spaces = void $ many space
+
+{-}
+xmlish :: P s Doc
 xmlish = do
     char '<'
     closeTag <|> openTag
@@ -114,7 +119,7 @@ xmlish = do
             some letter
             spaces
             char '='
-            (spaces >> between' (char '"') (char '"')) <|> sliced (some $ noneOf "/> \t\n")
+            (spaces >> between' (char '"') (char '"')) <|> some $ noneOf "/> \t\n"
             spaces
 
         withContent tag = do
@@ -125,8 +130,8 @@ xmlish = do
             text "/>"
             return $ XmlOpenClose tag
 
-template :: Parser Doc
-template = named "template" $ do
+template :: P s Doc
+template = do
     text "{{"
     title <- balancedText
     pairs <- many $ char '|' >> (try keyValuePair <|> onlyValue <|> emptyPair)
@@ -151,10 +156,10 @@ template = named "template" $ do
       value <- balancedText
       return (Just key, value)
 
-internalLink :: Context -> Parser Doc
-internalLink ctx = named "internal link" $ do
+internalLink :: P s Doc
+internalLink ctx = do
     text "[["
-    page <- PageName <$> sliced (some $ noneOf "|]" <|> singleClose)
+    page <- PageName <$> some (noneOf "|]" <|> singleClose)
     attrs <- many $ do
         char '|'
         many $ notFollowedBy (text "]]") >> doc' (ctx & insideInternalLink .~ True)
@@ -165,26 +170,13 @@ internalLink ctx = named "internal link" $ do
   where
     singleClose = notFollowedBy (text "]]") >> char ']'
 
-between' :: Parser bra -> Parser ket -> Parser ByteString
-between' bra ket = do
-    bra
-    start <- mark
-    let go = end <|> (anyChar >> go)
-        end = do d <- mark
-                 ket
-                 release d
-    ret <- sliced go
-    ket
-    return ret
-
 url :: DeltaParsing m => m Url
-url = fmap Url $ sliced $ do
-    some $ oneOfSet asciiLetters
+url = fmap Url $ do
+    method <- some $ asciiUpper <|> asciiLower
     text "://"
-    some $ oneOfSet urlChars
+    rest <- some urlChars
+    return $ concat [method, "://", rest]
+-}
 
-asciiLetters :: CS.CharSet
-asciiLetters = CS.range 'a' 'z' <> CS.range 'A' 'Z'
-
-urlChars :: CS.CharSet
-urlChars = asciiLetters <> CS.range '0' '9' <> CS.fromList "-_.~!*'();:@&=+$,/?%#[]"
+urlChar :: P s Char
+urlChar = letter <|> digit <|> oneOf "-_.~!*'();:@&=+$,/?%#[]"
