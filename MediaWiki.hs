@@ -95,7 +95,7 @@ doc' ctx = named "document element"
       spaces
       title <- sliced $ some $ noneOf "="
       replicateM_ n (char '=')
-      spaces
+      skipMany $ char ' '
       newline
       return $ Header n title
 
