@@ -31,9 +31,8 @@ import Database.PostgreSQL.Simple
 import Database.PostgreSQL.Simple.SqlQQ
 
 import Text.Trifecta
-import MediaWiki
-
-import ParseDump
+import Data.MediaWiki.XmlDump as XmlDump
+import Data.MediaWiki.Markup as Markup
 
 main :: IO ()
 main = do
@@ -41,7 +40,7 @@ main = do
     let links =
             concat
           $ withStrategy (parBuffer 80 rdeepseq)
-          [ [ (ParseDump.docTitle doc, link)
+          [ [ (XmlDump.docTitle doc, link)
             | link@Link{..} <- docLinks (map snd namespaces) doc
             , not ("http://" `T.isPrefixOf` linkTarget)
             , not ("https://" `T.isPrefixOf` linkTarget)
@@ -123,9 +122,9 @@ escape = TB.toLazyText . go
 
 docLinks :: [Namespace] -> WikiDoc -> [Link]
 docLinks namespaces doc =
-    case parseByteString (many MediaWiki.doc) mempty $ docText doc of
+    case parseByteString (many Markup.doc) mempty $ docText doc of
       Success doc' -> foldMap findLinks doc'
-      Failure err  -> trace ("dropped "++show (ParseDump.docTitle doc)++"\n"++show err) []  -- error $ show err
+      Failure err  -> trace ("dropped "++show (XmlDump.docTitle doc)++"\n"++show err) []  -- error $ show err
   where
     namespaceNames = HS.fromList [ T.toCaseFold $ TE.decodeUtf8 name
                                  | Namespace name <- namespaces ]

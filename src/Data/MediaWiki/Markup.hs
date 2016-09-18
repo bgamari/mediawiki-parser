@@ -2,7 +2,7 @@
 {-# LANGUAGE TemplateHaskell #-}
 {-# LANGUAGE DeriveGeneric #-}
 
-module MediaWiki where
+module Data.MediaWiki.Markup where
 
 import qualified Control.Lens as L
 import           Control.Lens ((&), (.~), (^.))

@@ -13,14 +13,24 @@ build-type:          Simple
 extra-source-files:  ChangeLog.md
 cabal-version:       >=1.10
 
-executable mediawiki-links
-  main-is:             Import.hs
-  other-modules:       MediaWiki, ParseDump
-  other-extensions:    OverloadedStrings, TemplateHaskell, RecordWildCards, GeneralizedNewtypeDeriving, QuasiQuotes, StandaloneDeriving, BangPatterns
+library
+  exposed-modules:     Data.MediaWiki.XmlDump
+                       Data.MediaWiki.Markup
   build-depends:       base >=4.9 && <4.10,
                        lens >=4.14 && <4.15,
                        trifecta >=1.5 && <1.7,
                        charset >=0.3 && <0.4,
+                       bytestring >=0.10 && <0.11,
+                       unordered-containers >=0.2 && <0.3,
+                       hexpat >=0.20 &&<0.21
+  hs-source-dirs:      src
+  default-language:    Haskell2010
+
+executable mediawiki-links
+  main-is:             Import.hs
+  other-extensions:    OverloadedStrings, TemplateHaskell, RecordWildCards, GeneralizedNewtypeDeriving, QuasiQuotes, StandaloneDeriving, BangPatterns
+  build-depends:       base >=4.9 && <4.10,
+                       trifecta >=1.5 && <1.7,
                        bytestring >=0.10 && <0.11,
                        unordered-containers >=0.2 && <0.3,
                        deepseq >=1.4 && <1.5,
@@ -31,5 +41,6 @@ executable mediawiki-links
                        async >=2.1 && <2.2,
                        pipes >=4.1 && <4.3,
                        pipes-concurrency >=2.0 && <2.1,
-                       postgresql-simple >=0.5 && <0.6
+                       postgresql-simple >=0.5 && <0.6,
+                       mediawiki-parser
   default-language:    Haskell2010

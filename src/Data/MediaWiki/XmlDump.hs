@@ -1,8 +1,8 @@
 {-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE RecordWildCards #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 
-module ParseDump
+-- | Parsing MediaWiki XML dumps.
+module Data.MediaWiki.XmlDump
     ( parseWikiDocs
     , WikiDoc(..)
     , Format(..)
