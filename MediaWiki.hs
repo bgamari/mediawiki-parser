@@ -103,7 +103,7 @@ doc' ctx = named "document element"
       return $ Header n title
 
 xmlish :: Parser Doc
-xmlish = do
+xmlish = named "xmlish" $ do
     char '<'
     closeTag <|> openTag
   where
