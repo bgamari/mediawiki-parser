@@ -101,7 +101,6 @@ doc' ctx = named "document element"
         <|> sliced (oneOf "[]{}&\\<\"'\n")
 
     header     = named "header" $ try $ do
-      newline
       n <- length <$> some (char '=')
       spaces
       title <- sliced $ some $ noneOf "="
