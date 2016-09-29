@@ -36,6 +36,7 @@ data Doc = Text !ByteString
          | BoldItalic [Doc]
          | Bold [Doc]
          | Italic [Doc]
+         | Table !ByteString
          | CodeLine !ByteString
          | NoWiki !ByteString
          deriving (Show)
@@ -60,6 +61,7 @@ doc' :: Context -> Parser Doc
 doc' ctx = named "document element"
     $ endSingleQuote
     $ header <|> codeLine <|> try noWiki <|> try comment <|> try xmlish
+   <|> table
    <|> internalLink ctx <|> externalLink ctx <|> template
    <|> boldItalic <|> bold <|> italic
    <|> try newPara <|> text_
@@ -99,6 +101,8 @@ doc' ctx = named "document element"
       sliced (some (noneOf "[]{}&|\\<\"'\n"))
         <|> sliced (if ctx ^. insideInternalLink then empty else oneOf "|]")
         <|> sliced (oneOf "[]{}&\\<\"'\n")
+
+    table      = Table <$> between' (text "{|") (text "\n|}")
 
     header     = named "header" $ try $ do
       n <- length <$> some (char '=')
