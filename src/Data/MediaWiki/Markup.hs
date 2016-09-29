@@ -8,6 +8,7 @@ import qualified Control.Lens as L
 import           Control.Lens ((&), (.~), (^.))
 import           Data.Bits.Lens (bitAt)
 import GHC.Generics
+import Data.Char
 import Control.Monad (replicateM_, void)
 import Data.Monoid
 import Control.Applicative
@@ -15,6 +16,7 @@ import Control.Applicative
 import Text.Trifecta hiding (doc)
 import qualified Data.CharSet as CS
 import Data.ByteString (ByteString)
+import qualified Data.ByteString.Char8 as BS
 
 newtype PageName = PageName ByteString
                  deriving (Show, Generic)
@@ -22,6 +24,7 @@ newtype Url = Url ByteString
             deriving (Show, Generic)
 
 data Doc = Text !ByteString
+         | NewPara
          | Comment !ByteString
          | Header !Int !ByteString
          | InternalLink !PageName [Doc]
@@ -59,7 +62,7 @@ doc' ctx = named "document element"
     $ header <|> codeLine <|> try noWiki <|> try comment <|> try xmlish
    <|> internalLink ctx <|> externalLink ctx <|> template
    <|> boldItalic <|> bold <|> italic
-   <|> text_
+   <|> try newPara <|> text_
   where
     endSingleQuote x
       | ctx ^. insideBoldItalic = notFollowedBy (text "'''''") >> x
@@ -87,10 +90,15 @@ doc' ctx = named "document element"
     codeLine   = fmap CodeLine   $ try $ newline >> space >> restOfLine <* newline
     noWiki     = fmap NoWiki     $ try $ between' (text "<nowiki>") (text "</nowiki>")
     comment    = Comment <$> between' (text "<!--") (text "-->")
-    text_      = fmap Text $ do
+    newPara    = do
+        newline
+        many $ oneOf " \t"
+        newline
+        return NewPara
+    text_      = Text <$> do
       sliced (some (noneOf "[]{}&|\\<\"'\n"))
-      <|> sliced (if ctx ^. insideInternalLink then empty else oneOf "|]")
-      <|> sliced (oneOf "[]{}&\\<\"'\n")
+        <|> sliced (if ctx ^. insideInternalLink then empty else oneOf "|]")
+        <|> sliced (oneOf "[]{}&\\<\"'\n")
 
     header     = named "header" $ try $ do
       newline
