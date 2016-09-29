@@ -132,7 +132,10 @@ xmlish = named "xmlish" $ do
             some letter
             spaces
             char '='
-            (spaces >> between' (char '"') (char '"')) <|> sliced (some $ noneOf "/> \t\n")
+            spaces
+            (between' (char '"') (char '"'))
+                <|> (between' (char '\'') (char '\''))
+                <|> sliced (some $ noneOf "/> \t\n")
             spaces
 
         withContent tag = do
