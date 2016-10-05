@@ -1,18 +1,17 @@
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE ScopedTypeVariables #-}
+{-# LANGUAGE ApplicativeDo #-}
 {-# LANGUAGE RankNTypes #-}
 {-# LANGUAGE RecursiveDo #-}
 
 module MediaWiki (Doc(..), parse) where
 
 import Debug.Trace
-import qualified Control.Lens as L
-import           Control.Lens ((&), (.~), (^.))
-import           Data.Bits.Lens (bitAt)
 import Control.Monad (replicateM_, void)
 import Data.Monoid
 import Control.Applicative hiding (many)
 
-import Text.Parsers.Frisby
+import Text.Parsers.Frisby hiding ((<>))
 import Text.Parsers.Frisby.Char
 
 newtype PageName = PageName String
@@ -22,7 +21,7 @@ newtype Url = Url String
 
 data Doc = Text !Char
          | Comment !String
-         | Header !Int !String
+         | Heading !Int !String
          | InternalLink !PageName ![Doc]
          | ExternalLink !Url
          | Template !String [(Maybe String, String)]
@@ -32,67 +31,87 @@ data Doc = Text !Char
          | BoldItalic [Doc]
          | Bold [Doc]
          | Italic [Doc]
+         | NumberedList !Int [Doc]
+         | BulletList !Int [Doc]
          | CodeLine !String
          | NoWiki !String
+         | NewPara
          deriving (Show)
 
 parse :: String -> [Doc]
 parse s = concatMap (runPeg doc) (lines s)
 
 doc :: PM s (P s [Doc])
-doc = mdo
-    newRule $ many doc'
+doc = fmap many doc'
 
-doc' :: P s (P s Doc)
+manyBetween' :: P s start -> P s a -> P s end -> PM s (P s [a])
+manyBetween' start thing end = do
+    xs <- manyUntil end thing
+    return $ start *> xs
+
+manyBetween :: P s delim -> P s a -> PM s (P s [a])
+manyBetween delim thing = manyBetween' delim thing delim
+
+eol :: P s ()
+eol = void $ char '\n' <> char '\r'
+
+doc' :: forall s. PM s (P s Doc)
 doc' = mdo
-    h1 <- header 1
-    h2 <- header 2
-    h3 <- header 3
-    h4 <- header 4
-    h5 <- header 5
-    h6 <- header 6
-    // noWiki // codeLine // comment
-    // boldItalic // bold // italic // plainText
+    -- headings
+    headings <- mapM heading [6,5..1]
 
-bold :: PM s (P s Doc)
-bold = do
-    text "'''"
-    Bold <$> manyUntil (text "'''") doc
+    -- formatting
+    boldItalic <- fmap BoldItalic <$> manyBetween (text "'''''") aDoc
+    bold <- fmap Bold <$> manyBetween (text "'''") aDoc
+    italic <- fmap Italic <$> manyBetween (text "''") aDoc
+    formatting <- newRule $ boldItalic // bold // italic
 
-italic :: PM s (P s Doc)
-italic = do
-    text "''"
-    Italic <$> manyUntil (text "''") doc
+    -- other
+    comment <- fmap Comment <$> manyBetween' (text "<!--") anyChar (text "-->")
+    noWiki <-  fmap NoWiki  <$> manyBetween' (text "<nowiki>") anyChar (text "</nowiki>")
 
-boldItalic :: PM s (P s Doc)
-boldItalic = do
-    text "'''''"
-    BoldItalic <$> manyUntil (text "'''''") doc
+    -- lists
+    let listLike :: (Int -> [Doc] -> Doc) -> Char -> PM s (P s Doc)
+        listLike constr bullet = do
+            body <- manyUntil eol aDoc
+            let p = pure constr
+                    <*  eol
+                    <*> fmap length (some $ char bullet)
+                    <*  spaces
+                    <*> body
+            return p
+    numberedList <- listLike NumberedList '#'
+    bulletList   <- listLike BulletList '*'
+    let list = numberedList <> bulletList
+
+    let blankLine = eol
+
+    let template = mempty
+        image = mempty
+        table = mempty
+        anythingElse = mempty
+        link = mempty
+
+    wikiText <- newRule
+        $ noWiki // template // choice headings // list // formatting
+        // image // link // table // anythingElse
+        // codeLine // comment // (eol *> pure NewPara)
+
+    para <- pure $ wikiText <* eol
+
+    let aDoc = wikiText
+    return aDoc
 
 plainText :: P s Doc
 plainText = Text <$> anyChar
 
-header :: Int -> P s Doc
-header n = do
-    replicateM_ n (char '=')
-    manyUntil (replicateM_ n (char '=')) anyChar
-    return $ Header n title
+heading :: Int -> PM s (P s Doc)
+heading n =
+    let marker = replicateM_ n (char '=')
+    in fmap (Heading n) <$> manyBetween' (marker *> spaces) anyChar (spaces *> marker)
 
 codeLine :: P s Doc
-codeLine = do
-    bof
-    char ' '
-    CodeLine <$> rest
-
-noWiki :: P s Doc
-noWiki = do
-    text "<nowiki>"
-    NoWiki <$> manyUntil (text "</nowiki>") anyChar
-
-comment :: P s Doc
-comment = do
-    text "<!--"
-    Comment <$> comment (text "-->") anyChar
+codeLine = bof *> char ' ' *> fmap CodeLine rest
 
 spaces :: P s ()
 spaces = void $ many space

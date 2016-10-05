@@ -19,7 +19,7 @@ executable mediawiki-links
   other-extensions:    OverloadedStrings, TemplateHaskell, RecordWildCards, GeneralizedNewtypeDeriving, QuasiQuotes, StandaloneDeriving, BangPatterns
   build-depends:       base >=4.9 && <4.10,
                        lens >=4.14 && <4.15,
-                       trifecta >=1.5 && <1.7,
+                       frisby >= 0.2 && <0.3,
                        charset >=0.3 && <0.4,
                        bytestring >=0.10 && <0.11,
                        unordered-containers >=0.2 && <0.3,
