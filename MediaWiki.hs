@@ -10,9 +10,9 @@ import Debug.Trace
 import Control.Monad (replicateM_, void)
 import Data.Bifunctor
 import Data.Monoid
-import Control.Applicative hiding (many)
+import Control.Applicative hiding (many, optional)
 
-import Text.Parsers.Frisby hiding ((<>), optional)
+import Text.Parsers.Frisby hiding ((<>))
 import Text.Parsers.Frisby.Char
 
 newtype PageName = PageName String
@@ -120,14 +120,14 @@ doc' = mdo
     template <- do
         let templateEnd = void (text "}}") <> void (char '|')
         templateName <- manyUntil templateEnd anyChar
-        namedPart <- do
+        value <- manyUntil (templateEnd <> eol) aDoc
+        part <- do
             key <- manyUntil (char '=') anyChar
-            value <- manyUntil (templateEnd <> eol) aDoc
             return $ pure (,) <*  char '|' <* spaces
-                              <*> optional (key <* char '=') <* spaces
+                              <*> option Nothing (Just <$> key <* char '=' <* spaces)
                               <*> value <* optional eol
           :: PM s (P s (Maybe String, [Doc]))
-        templateParts <- manyUntil (text "}}") namedPart
+        templateParts <- manyUntil (text "}}") part
         return $ pure Template <* text "{{" <*> templateName <* optional eol <*> templateParts <* text "}}"
 
     -- XMLish
@@ -136,8 +136,8 @@ doc' = mdo
         value <- manyUntil (char '>' <> space) anyChar
         return $ pure (,) <*> key <* spaces <* char '='
                           <*> value <* spaces
-    xmlAttrs <- manyUntil (char '>') xmlAttr
-    tagName <- manyUntil (char '>' <> space) anyChar
+    xmlAttrs <- manyUntil (void (char '>') <> void (text "/>")) xmlAttr
+    tagName <- manyUntil (void (char '>') <> void (text "/>") <> void space) anyChar
     xmlOpen <-
         return $ pure XmlOpen <* char '<'
                               <*> tagName <* spaces
@@ -162,7 +162,7 @@ doc' = mdo
         $ noWiki // template // choice headings // list // formatting
         // codeLine // comment
         // template // xmlish // image // link // table
-        // (eol *> eol *> pure NewPara)
+        // (eol *> pure NewPara)
         // anythingElse
 
     para <- pure $ wikiText <* eol
@@ -176,7 +176,7 @@ plainText = Char <$> anyChar
 heading :: Int -> PM s (P s Doc)
 heading n =
     let marker = replicateM_ n (char '=')
-    in fmap (Heading n) <$> manyBetween' (marker *> spaces) anyChar (spaces *> marker)
+    in fmap (Heading n) . ((eol <> bof) *>) <$> manyBetween' (marker *> spaces) anyChar (spaces *> marker)
 
 spaces :: P s ()
 spaces = void $ many space
@@ -184,17 +184,19 @@ spaces = void $ many space
 compressText :: [Doc] -> [Doc]
 compressText = go []
   where
-    go acc (Text s : xs)          = go (reverse s ++ acc) xs
-    go acc (Char c : xs)          = go (c : acc) xs
-    go []  (BoldItalic ds : xs)   = BoldItalic (go [] ds) : go [] xs
-    go []  (Bold ds : xs)         = Bold (go [] ds) : go [] xs
-    go []  (Italic ds : xs)       = Italic (go [] ds) : go [] xs
-    go []  (BulletList n ds : xs) = BulletList n (compressText ds) : go [] xs
-    go []  (Template n ds : xs)   = Template n (map (second compressText) ds) : go [] xs
+    go acc (Text s : xs)            = go (reverse s ++ acc) xs
+    go acc (Char c : xs)            = go (c : acc) xs
+    go []  (BoldItalic ds : xs)     = BoldItalic (go [] ds) : go [] xs
+    go []  (Bold ds : xs)           = Bold (go [] ds) : go [] xs
+    go []  (Italic ds : xs)         = Italic (go [] ds) : go [] xs
+    go []  (BulletList n ds : xs)   = BulletList n (compressText ds) : go [] xs
+    go []  (NumberedList n ds : xs) = NumberedList n (compressText ds) : go [] xs
+    go []  (Template n ds : xs)     = Template n (map (second compressText) ds) : go [] xs
     go []  (InternalLink n ds : xs) = InternalLink n (map compressText ds) : go [] xs
-    go []  (other : xs)           = other : go [] xs
-    go []  []                     = []
-    go acc xs                     = Text (reverse acc) : go [] xs
+    go []  (NewPara : NewPara : xs) = go [] (NewPara : xs)
+    go []  (other : xs)             = other : go [] xs
+    go []  []                       = []
+    go acc xs                       = Text (reverse acc) : go [] xs
 
 {-}
 url :: DeltaParsing m => m Url

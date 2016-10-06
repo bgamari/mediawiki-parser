@@ -17,6 +17,11 @@ Here is a paragraph <!- and a comment --> in the middle.
 
 = A template =
 
+{{Main article|hel}}
+
+<ref name="stein">{{cite book|last=Stein}}
+</ref>
+
 <ref name="laidentidadandaluza">{{cite book
 | last = Domínguez Ortiz
 | first = Antonio
@@ -27,8 +32,25 @@ Here is a paragraph <!- and a comment --> in the middle.
 | location= Granada Puzada
 }}</ref>
 
+And Another <ref name=tertiarization /><ref>{{cite book
+| last = Delgado Cabeza
+| first = Manuel
+| title = Dependencia y marginación de la economía andaluza
+| year = 1981
+| publisher = Publicaciones del Monte de Piedad, Caja de Ahorros
+| location = Córdoba
+| isbn = 84-7231-613-0
+| language = Spanish}}</ref>
+
+
+
 == And some links ==
 
 Here is [[a link]]. And a [[link|with|some attributes]].
 
 How about an [http://www.kernel.org/hi] external link.
+
+
+percent of passengers<ref name="Datos Aena">{{cite web
+| authors = hello }}
+</ref>
