@@ -30,7 +30,7 @@ data Doc = Text !String
          | Comment !String
          | Heading !Int !String
          | InternalLink !PageName ![[Doc]]
-         | ExternalLink !Url
+         | ExternalLink !Url (Maybe String)
          | Template !String [(Maybe String, [Doc])]
          | XmlOpenClose String [(String, String)]
          | XmlOpen String [(String, String)]
@@ -109,12 +109,15 @@ doc' = mdo
                                    <*> fmap PageName pageName
                                    <*> attributes <* text "]]"
     externalLink <- do
-        let protocol = text "http://" <> text "https://"
-        rest <- manyUntil (char ']') anyChar
-        let f proto r = ExternalLink $ Url $ proto++r
+        let scheme = many1 alpha <* text "://"
+        url <- manyUntil (char ']' <> space) anyChar
+        let f proto r = ExternalLink $ Url $ proto++"://"++r
+        anchor <- manyUntil (char ']') anyChar
         return $ pure f <*  char '['
-                        <*> protocol
-                        <*> rest <* char ']'
+                        <*> scheme
+                        <*> url
+                        <*> option Nothing (Just <$> anchor)
+                        <* char ']'
     let link = internalLink <> externalLink
 
     -- code line
