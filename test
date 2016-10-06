@@ -17,7 +17,7 @@ Here is a paragraph <!- and a comment --> in the middle.
 
 = A template =
 
-Here is the template {{cite book
+<ref name="laidentidadandaluza">{{cite book
 | last = Domínguez Ortiz
 | first = Antonio
 | title = La identidad andaluza

@@ -27,8 +27,8 @@ data Doc = Text !String
          | InternalLink !PageName ![Doc]
          | ExternalLink !Url
          | Template !String [(Maybe String, [Doc])]
-         | XmlOpenClose String
-         | XmlOpen String
+         | XmlOpenClose String [(String, String)]
+         | XmlOpen String [(String, String)]
          | XmlClose String
          | BoldItalic [Doc]
          | Bold [Doc]
@@ -105,6 +105,28 @@ doc' = mdo
         templateParts <- manyUntil (text "}}") namedPart
         return $ pure Template <* text "{{" <*> templateName <* optional eol <*> templateParts <* text "}}"
 
+    -- XMLish
+    xmlAttr <- do
+        key <- manyUntil (char '=' <> space) anyChar
+        value <- manyUntil (char '>' <> space) anyChar
+        return $ pure (,) <*> key <* spaces <* char '='
+                          <*> value <* spaces
+    xmlAttrs <- manyUntil (char '>') xmlAttr
+    tagName <- manyUntil (char '>' <> space) anyChar
+    xmlOpen <-
+        return $ pure XmlOpen <* char '<'
+                              <*> tagName <* spaces
+                              <*> xmlAttrs <* char '>'
+    xmlClose <-
+        return $ pure XmlClose <* text "</"
+                               <*> tagName <* spaces <* char '>'
+    xmlOpenClose <-
+        return $ pure XmlOpenClose <* text "<"
+                                   <*> tagName <* spaces
+                                   <*> xmlAttrs <* text "/>"
+
+    let xmlish = xmlClose <> xmlOpen <> xmlOpenClose
+
     let blankLine = eol
 
     let image = mempty
@@ -115,7 +137,7 @@ doc' = mdo
     wikiText <- newRule
         $ noWiki // template // choice headings // list // formatting
         // codeLine // comment
-        // template // image // link // table
+        // template // xmlish // image // link // table
         // (eol *> eol *> pure NewPara)
         // anythingElse
         
