@@ -120,8 +120,7 @@ doc' = mdo
     template <- do
         let templateEnd = void (text "}}") <> void (char '|')
         templateName <- manyUntil (templateEnd <> eol) anyChar
-        --value <- manyUntil (templateEnd <> eol) (matches (doesNotMatch templateEnd) *> aDoc)
-        value <- pure $ many (doesNotMatch templateEnd *> aDoc)
+        value <- manyUntil (templateEnd <> eol) aDoc
         part <- do
             key <- manyUntil (text "=" <> text "|" <> text "}}") anyChar
             return $ pure (,) <*  spaces <* char '|' <* spaces
@@ -129,7 +128,9 @@ doc' = mdo
                               <*> value <* optional eol
           :: PM s (P s (Maybe String, [Doc]))
         templateParts <- manyUntil (text "}}") part
-        return $ pure Template <* text "{{" <*> templateName <* optional eol <*> templateParts <* text "}}"
+        return $ pure Template <* text "{{"
+                               <*> templateName <* optional eol
+                               <*> templateParts <* text "}}"
 
     -- XMLish
     xmlAttr <- do
