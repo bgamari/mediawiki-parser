@@ -116,7 +116,7 @@ doc' = mdo
         return $ pure f <*  char '['
                         <*> scheme
                         <*> url
-                        <*> option Nothing (Just <$> anchor)
+                        <*> option Nothing (pure Just <* spaces <*> anchor)
                         <* char ']'
     let link = internalLink <> externalLink
 
