@@ -13,7 +13,7 @@ Here is a paragraph, all on its own
 
 <!-- How about a comment -->
 
-Here is a paragraph <!- and a comment --> in the middle.
+Here is a paragraph <!-- and a comment --> in the middle.
 
 = A template =
 
