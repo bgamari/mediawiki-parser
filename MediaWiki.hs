@@ -37,6 +37,7 @@ data Doc = Text !String
          | BulletList !Int [Doc]
          | CodeLine !String
          | NoWiki !String
+         | Table !String
          | NewPara
          deriving (Show, Eq, Ord)
 
@@ -151,18 +152,21 @@ doc' = mdo
         return $ pure XmlOpenClose <* text "<"
                                    <*> tagName <* spaces
                                    <*> xmlAttrs <* text "/>"
-
     let xmlish = xmlClose <> xmlOpen <> xmlOpenClose
+
+    -- table
+    table <- do
+        tableBody <- manyUntil (text "|}") anyChar
+        return $ pure Table <* text "{|" <*> tableBody <* text "|}"
 
     let blankLine = eol
 
     let image = mempty
-        table = mempty
         anythingElse = Char <$> anyChar
 
     -- See https://www.mediawiki.org/wiki/Parser_2011/Stage_1:_Formal_grammar
     wikiText <- newRule
-        $ comment // noWiki
+        $ comment // noWiki // table
         // template // choice headings // list // formatting
         // codeLine // comment
         // template // xmlish // image // link // table
