@@ -30,7 +30,6 @@ import Pipes.Concurrent as PC
 import Database.PostgreSQL.Simple
 import Database.PostgreSQL.Simple.SqlQQ
 
-import Text.Trifecta
 import Data.MediaWiki.XmlDump as XmlDump
 import Data.MediaWiki.Markup as Markup
 
@@ -122,14 +121,14 @@ escape = TB.toLazyText . go
 
 docLinks :: [Namespace] -> WikiDoc -> [Link]
 docLinks namespaces doc =
-    case parseByteString (many Markup.doc) mempty $ docText doc of
-      Success doc' -> foldMap findLinks doc'
-      Failure err  -> trace ("dropped "++show (XmlDump.docTitle doc)++"\n"++show err) []  -- error $ show err
+    case parse $ BS.unpack $ docText doc of
+      Right doc' -> foldMap findLinks doc'
+      Left err  -> trace ("dropped "++show (XmlDump.docTitle doc)++"\n"++show err) []  -- error $ show err
   where
     namespaceNames = HS.fromList [ T.toCaseFold $ TE.decodeUtf8 name
                                  | Namespace name <- namespaces ]
-    findLinks (InternalLink (PageName name') body) =
-      let name = TE.decodeUtf8 name'
+    findLinks (InternalLink (PageName name') parts) =
+      let name = T.pack name'
           (page, namespace)
             | Just page <- ":" `T.stripPrefix` name = (page, Nothing)
 
@@ -140,15 +139,18 @@ docLinks namespaces doc =
 
             | otherwise
             = (name, Nothing)
-      in [Link { linkAnchor = TLE.decodeUtf8 $ BB.toLazyByteString $ foldMap getText body
+      in [Link { linkAnchor = case parts of
+                                [] -> mempty
+                                [anchor] -> TL.pack $ foldMap getText anchor
                , linkNamespace = namespace
                , linkTarget = page
                }]
     findLinks _ = []
 
-    getText :: Doc -> BB.Builder
-    getText (Text s)        = BB.byteString s
-    --getText (Bold s)        = s
-    --getText (Italic s)      = s
-    --getText (BoldItalic s)  = s
+    getText :: Doc -> String
+    getText (Text s)        = s
+    getText (Char c)        = [c]
+    getText (Bold s)        = foldMap getText s
+    getText (Italic s)      = foldMap getText s
+    getText (BoldItalic s)  = foldMap getText s
     getText _               = mempty

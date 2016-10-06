@@ -1,226 +1,208 @@
 {-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE TemplateHaskell #-}
-{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE ScopedTypeVariables #-}
+{-# LANGUAGE ApplicativeDo #-}
+{-# LANGUAGE RankNTypes #-}
+{-# LANGUAGE RecursiveDo #-}
 
-module Data.MediaWiki.Markup where
+module Data.MediaWiki.Markup
+    ( Doc(..), parse
+    , PageName(..), Url(..)
+    ) where
 
-import qualified Control.Lens as L
-import           Control.Lens ((&), (.~), (^.))
-import           Data.Bits.Lens (bitAt)
-import GHC.Generics
-import Data.Char
 import Control.Monad (replicateM_, void)
+import Data.Bifunctor
 import Data.Monoid
-import Control.Applicative
+import Control.Applicative hiding (many, optional)
 
-import Text.Trifecta hiding (doc)
-import qualified Data.CharSet as CS
-import Data.ByteString (ByteString)
-import qualified Data.ByteString.Char8 as BS
+import Text.Parsers.Frisby hiding ((<>))
+import Text.Parsers.Frisby.Char
 
-newtype PageName = PageName ByteString
-                 deriving (Show, Generic)
-newtype Url = Url ByteString
-            deriving (Show, Generic)
+newtype PageName = PageName String
+                 deriving (Show, Eq, Ord)
 
-data Doc = Text !ByteString
-         | NewPara
-         | Comment !ByteString
-         | Header !Int !ByteString
-         | InternalLink !PageName [Doc]
-         | ExternalLink !Url [Doc]
-         | Template !ByteString [(Maybe ByteString, ByteString)]
-         | XmlOpenClose String
-         | XmlOpen String
+newtype Url = Url String
+            deriving (Show, Eq, Ord)
+
+data Doc = Text !String
+         | Char !Char
+         | Comment !String
+         | Heading !Int !String
+         | InternalLink !PageName ![[Doc]]
+         | ExternalLink !Url
+         | Template !String [(Maybe String, [Doc])]
+         | XmlOpenClose String [(String, String)]
+         | XmlOpen String [(String, String)]
          | XmlClose String
          | BoldItalic [Doc]
          | Bold [Doc]
          | Italic [Doc]
-         | Table !ByteString
-         | CodeLine !ByteString
-         | NoWiki !ByteString
-         deriving (Show)
+         | NumberedList !Int [Doc]
+         | BulletList !Int [Doc]
+         | CodeLine !String
+         | NoWiki !String
+         | Table !String
+         | NewPara
+         deriving (Show, Eq, Ord)
 
-named :: String -> Parser a -> Parser a
-named = flip (<?>)
+parse :: String -> Either String [Doc]
+parse = fmap cleanup . runPeg (withError doc)
 
-data Context = Context { _ctxFlags :: !Int }
+doc :: PM s (P s [Doc])
+doc = fmap many doc'
 
-L.makeLenses ''Context
-
-insideBold, insideItalic, insideBoldItalic, insideInternalLink :: L.Lens' Context Bool
-insideBold = ctxFlags . bitAt 0
-insideItalic = ctxFlags . bitAt 1
-insideBoldItalic = ctxFlags . bitAt 2
-insideInternalLink = ctxFlags . bitAt 3
-
-doc :: Parser Doc
-doc = doc' (Context 0)
-
-doc' :: Context -> Parser Doc
-doc' ctx = named "document element"
-    $ endSingleQuote
-    $ header <|> codeLine <|> try noWiki <|> try comment <|> try xmlish
-   <|> table
-   <|> internalLink ctx <|> externalLink ctx <|> template
-   <|> boldItalic <|> bold <|> italic
-   <|> try newPara <|> text_
+withError :: PM s (P s a) -> PM s (P s (Either String a))
+withError = fmap f
   where
-    endSingleQuote x
-      | ctx ^. insideBoldItalic = notFollowedBy (text "'''''") >> x
-      | ctx ^. insideBold = notFollowedBy (text "'''") >> x
-      | ctx ^. insideItalic = notFollowedBy (text "''") >> x
-      | otherwise = x
-    boldItalic
-      | ctx ^. insideBoldItalic = empty
-      | otherwise  = named "bold italic"
-                   $ do let sym = text "'''''"
-                        fmap BoldItalic $ between sym sym $ some $ doc' (ctx & insideBoldItalic .~ True)
+    f parser =
+        fmap Right (parser <* eof) <|> fmap toLeft rest
+    toLeft r = Left $ "Parser error with leftovers: "++r
 
-    bold
-      | ctx ^. insideBold = empty
-      | otherwise  = named "bold"
-                   $ do let sym = notFollowedBy (text "''''") >> text "'''"
-                        fmap Bold $ between sym sym $ some $ doc' (ctx & insideBold .~ True)
+manyBetween' :: P s start -> P s a -> P s end -> PM s (P s [a])
+manyBetween' start thing end = do
+    xs <- manyUntil end thing
+    return $ start *> xs <* end
 
-    italic
-      | ctx ^. insideItalic = empty
-      | otherwise  = named "italic"
-                   $ do let sym = notFollowedBy (text "'''") >> text "''"
-                        fmap Italic $ between sym sym $ some $ doc' (ctx & insideItalic .~ True)
+manyBetween :: P s delim -> P s a -> PM s (P s [a])
+manyBetween delim thing = manyBetween' delim thing delim
 
-    codeLine   = fmap CodeLine   $ try $ newline >> space >> restOfLine <* newline
-    noWiki     = fmap NoWiki     $ try $ between' (text "<nowiki>") (text "</nowiki>")
-    comment    = Comment <$> between' (text "<!--") (text "-->")
-    newPara    = do
-        newline
-        many $ oneOf " \t"
-        newline
-        return NewPara
-    text_      = Text <$> do
-      sliced (some (noneOf "[]{}&|\\<\"'\n"))
-        <|> sliced (if ctx ^. insideInternalLink then empty else oneOf "|]")
-        <|> sliced (oneOf "[]{}&\\<\"'\n")
+eol :: P s ()
+eol = void $ char '\n' <> char '\r'
 
-    table      = Table <$> between' (text "{|") (text "\n|}")
+doc' :: forall s. PM s (P s Doc)
+doc' = mdo
+    -- headings
+    headings <- mapM heading [6,5..1]
 
-    header     = named "header" $ try $ do
-      n <- length <$> some (char '=')
-      spaces
-      title <- sliced $ some $ noneOf "="
-      replicateM_ n (char '=')
-      skipMany $ char ' '
-      newline
-      return $ Header n title
+    -- formatting
+    boldItalic <- fmap BoldItalic <$> manyBetween (text "'''''") aDoc
+    bold <- fmap Bold <$> manyBetween (text "'''") aDoc
+    italic <- fmap Italic <$> manyBetween (text "''") aDoc
+    formatting <- newRule $ boldItalic // bold // italic
 
-xmlish :: Parser Doc
-xmlish = named "xmlish" $ do
-    char '<'
-    closeTag <|> openTag
+    -- other
+    comment <- fmap Comment <$> manyBetween' (text "<!--") anyChar (text "-->")
+    noWiki <-  fmap NoWiki  <$> manyBetween' (text "<nowiki>") anyChar (text "</nowiki>")
+
+    -- lists
+    let listLike :: (Int -> [Doc] -> Doc) -> Char -> PM s (P s Doc)
+        listLike constr bullet = do
+            body <- manyUntil (eol <> eof) aDoc
+            let p = pure constr
+                    <*  eol
+                    <*> fmap length (some $ char bullet)
+                    <*  spaces
+                    <*> body
+            return p
+    numberedList <- listLike NumberedList '#'
+    bulletList   <- listLike BulletList '*'
+    let list = numberedList <> bulletList
+
+    -- links
+    internalLink <- do
+        let linkEnd = void (char '|') <> void (text "]]")
+        pageName <- manyUntil linkEnd anyChar
+        attrValue <- manyUntil linkEnd aDoc
+        attributes <- manyUntil (text "]]") (spaces *> char '|' *> attrValue)
+        return $ pure InternalLink <*  text "[["
+                                   <*> fmap PageName pageName
+                                   <*> attributes <* text "]]"
+    externalLink <- do
+        let protocol = text "http://" <> text "https://"
+        rest <- manyUntil (char ']') anyChar
+        let f proto r = ExternalLink $ Url $ proto++r
+        return $ pure f <*  char '['
+                        <*> protocol
+                        <*> rest <* char ']'
+    let link = internalLink <> externalLink
+
+    -- code line
+    codeLine <- do
+        line <- manyUntil eol anyChar
+        return $ eol *> char ' ' *> fmap CodeLine line
+
+    -- templates
+    template <- do
+        let templateEnd = void (text "}}") <> void (char '|')
+        templateName <- manyUntil (templateEnd <> eol) anyChar
+        value <- manyUntil (templateEnd <> eol) aDoc
+        part <- do
+            key <- manyUntil (text "=" <> text "|" <> text "}}") anyChar
+            return $ pure (,) <*  spaces <* char '|' <* spaces
+                              <*> option Nothing (Just <$> key <* char '=' <* spaces)
+                              <*> value <* optional eol
+          :: PM s (P s (Maybe String, [Doc]))
+        templateParts <- manyUntil (text "}}") part
+        return $ pure Template <* text "{{"
+                               <*> templateName <* optional eol
+                               <*> templateParts <* text "}}"
+
+    -- XMLish
+    xmlAttr <- do
+        key <- manyUntil (char '=' <> space) anyChar
+        value <- manyUntil (char '>' <> space) anyChar
+        return $ pure (,) <*> key <* spaces <* char '='
+                          <*> value <* spaces
+    xmlAttrs <- manyUntil (void (char '>') <> void (text "/>")) xmlAttr
+    tagName <- manyUntil (void (char '>') <> void (text "/>") <> void space) anyChar
+    xmlOpen <-
+        return $ pure XmlOpen <* char '<'
+                              <*> tagName <* spaces
+                              <*> xmlAttrs <* char '>'
+    xmlClose <-
+        return $ pure XmlClose <* text "</"
+                               <*> tagName <* spaces <* char '>'
+    xmlOpenClose <-
+        return $ pure XmlOpenClose <* text "<"
+                                   <*> tagName <* spaces
+                                   <*> xmlAttrs <* text "/>"
+    let xmlish = xmlClose <> xmlOpen <> xmlOpenClose
+
+    -- table
+    table <- do
+        tableBody <- manyUntil (text "|}") anyChar
+        return $ pure Table <* text "{|" <*> tableBody <* text "|}"
+
+    let blankLine = eol
+
+    let image = mempty
+        anythingElse = Char <$> anyChar
+
+    -- See https://www.mediawiki.org/wiki/Parser_2011/Stage_1:_Formal_grammar
+    wikiText <- newRule
+        $ comment // noWiki // table
+        // template // choice headings // list // formatting
+        // codeLine
+        // xmlish // image // link // table
+        // (eol *> matches eol *> pure NewPara)
+        // anythingElse
+
+    para <- pure $ wikiText <* eol
+
+    let aDoc = wikiText
+    return aDoc
+
+heading :: Int -> PM s (P s Doc)
+heading n =
+    let marker = replicateM_ n (char '=')
+    in fmap (Heading n) . ((eol <> bof) *>) <$> manyBetween' (marker *> spaces) anyChar (spaces *> marker)
+
+spaces :: P s ()
+spaces = void $ many space
+
+cleanup :: [Doc] -> [Doc]
+cleanup = go []
   where
-    closeTag = do
-        char '/' >> spaces
-        tag <- some letter
-        char '>'
-        return $ XmlClose tag
-
-    openTag = do
-        spaces
-        tag <- some letter
-        spaces
-        many attribute
-        selfClosing tag <|> withContent tag
-      where
-        attribute = do
-            some letter
-            spaces
-            char '='
-            spaces
-            (between' (char '"') (char '"'))
-                <|> (between' (char '\'') (char '\''))
-                <|> sliced (some $ noneOf "/> \t\n")
-            spaces
-
-        withContent tag = do
-            char '>'
-            return $ XmlOpen tag
-
-        selfClosing tag = do
-            text "/>"
-            return $ XmlOpenClose tag
-
-template :: Parser Doc
-template = named "template" $ do
-    text "{{"
-    title <- balancedText
-    pairs <- many $ char '|' >> (try keyValuePair <|> onlyValue <|> emptyPair)
-    text "}}"
-    return $ Template title pairs
-  where
-    balancedText = named "balanced text" $ sliced content
-      where
-        content = some $  void template
-                      <|> void (some $ noneOf "}|")
-                      <|> void (notFollowedBy (text "}}") >> char '}')
-
-    emptyPair = return (Nothing, mempty)
-
-    onlyValue = do
-      val <- balancedText
-      return (Nothing, val)
-
-    keyValuePair = do
-      key <- sliced $ some $ noneOf "}|="
-      char '='
-      value <- balancedText
-      return (Just key, value)
-
-internalLink :: Context -> Parser Doc
-internalLink ctx = named "internal link" $ do
-    text "[["
-    page <- PageName <$> sliced (some $ noneOf "|]" <|> singleClose)
-    attrs <- many $ do
-        char '|'
-        many $ notFollowedBy (text "]]") >> doc' (ctx & insideInternalLink .~ True)
-    let body = case attrs of [] -> []
-                             xs -> last xs
-    text "]]"
-    return $ InternalLink page body
-  where
-    singleClose = notFollowedBy (text "]]") >> char ']'
-
--- | This can backtrack since sometimes you find things like @hello [world]@ in
--- markup, which Wikipedia simply renders as plain text.
-externalLink :: Context -> Parser Doc
-externalLink ctx = try $ named "external link" $ do
-    notFollowedBy $ text "[["
-    char '['
-    u <- url
-    spaces
-    body <- many $ notFollowedBy (notFollowedBy (text "]]") >> char ']') >> doc' ctx
-    char ']'
-    return $ ExternalLink u body
-
-between' :: Parser bra -> Parser ket -> Parser ByteString
-between' bra ket = do
-    bra
-    start <- mark
-    let go = end <|> (anyChar >> go)
-        end = do d <- mark
-                 ket
-                 release d
-    ret <- sliced go
-    ket
-    return ret
-
-url :: DeltaParsing m => m Url
-url = fmap Url $ sliced $ do
-    some $ oneOfSet asciiLetters
-    text "://"
-    some $ oneOfSet urlChars
-
-asciiLetters :: CS.CharSet
-asciiLetters = CS.range 'a' 'z' <> CS.range 'A' 'Z'
-
-urlChars :: CS.CharSet
-urlChars = asciiLetters <> CS.range '0' '9' <> CS.fromList "-_.~!*'();:@&=+$,/?%#"
+    go acc (Text s : xs)            = go (reverse s ++ acc) xs
+    go acc (Char '\n' : xs)         = go acc xs
+    go acc (Char c : xs)            = go (c : acc) xs
+    go []  (BoldItalic ds : xs)     = BoldItalic (cleanup ds) : go [] xs
+    go []  (Bold ds : xs)           = Bold (cleanup ds) : go [] xs
+    go []  (Italic ds : xs)         = Italic (cleanup ds) : go [] xs
+    go []  (BulletList n ds : xs)   = BulletList n (cleanup ds) : go [] xs
+    go []  (NumberedList n ds : xs) = NumberedList n (cleanup ds) : go [] xs
+    go []  (Template n ds : xs)     = Template n (map (second cleanup) ds) : go [] xs
+    go []  (InternalLink n ds : xs) = InternalLink n (map cleanup ds) : go [] xs
+    go []  (NewPara : NewPara : xs) = go [] (NewPara : xs)
+    go []  (other : xs)             = other : go [] xs
+    go []  []                       = []
+    go acc xs                       = Text (reverse acc) : go [] xs
