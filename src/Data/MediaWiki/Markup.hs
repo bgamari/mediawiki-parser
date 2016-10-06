@@ -19,7 +19,7 @@ import GHC.Generics
 import Text.Parsers.Frisby hiding ((<>))
 import Text.Parsers.Frisby.Char
 
-newtype PageName = PageName String
+newtype PageName = PageName { getPageName :: String }
                  deriving (Show, Eq, Ord, Generic)
 
 newtype Url = Url String
