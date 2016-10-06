@@ -4,9 +4,11 @@
 {-# LANGUAGE RankNTypes #-}
 {-# LANGUAGE RecursiveDo #-}
 
-module MediaWiki (Doc(..), parse) where
+module Data.MediaWiki.Markup
+    ( Doc(..), parse
+    , PageName(..), Url(..)
+    ) where
 
-import Debug.Trace
 import Control.Monad (replicateM_, void)
 import Data.Bifunctor
 import Data.Monoid
@@ -17,6 +19,7 @@ import Text.Parsers.Frisby.Char
 
 newtype PageName = PageName String
                  deriving (Show, Eq, Ord)
+
 newtype Url = Url String
             deriving (Show, Eq, Ord)
 
@@ -41,8 +44,8 @@ data Doc = Text !String
          | NewPara
          deriving (Show, Eq, Ord)
 
-parse :: String -> [Doc]
-parse s = concatMap (runPeg doc) (lines s)
+parse :: String -> Either String [Doc]
+parse = fmap cleanup . runPeg (withError doc)
 
 doc :: PM s (P s [Doc])
 doc = fmap many doc'
@@ -178,9 +181,6 @@ doc' = mdo
     let aDoc = wikiText
     return aDoc
 
-plainText :: P s Doc
-plainText = Char <$> anyChar
-
 heading :: Int -> PM s (P s Doc)
 heading n =
     let marker = replicateM_ n (char '=')
@@ -189,32 +189,20 @@ heading n =
 spaces :: P s ()
 spaces = void $ many space
 
-compressText :: [Doc] -> [Doc]
-compressText = go []
+cleanup :: [Doc] -> [Doc]
+cleanup = go []
   where
     go acc (Text s : xs)            = go (reverse s ++ acc) xs
     go acc (Char '\n' : xs)         = go acc xs
     go acc (Char c : xs)            = go (c : acc) xs
-    go []  (BoldItalic ds : xs)     = BoldItalic (go [] ds) : go [] xs
-    go []  (Bold ds : xs)           = Bold (go [] ds) : go [] xs
-    go []  (Italic ds : xs)         = Italic (go [] ds) : go [] xs
-    go []  (BulletList n ds : xs)   = BulletList n (compressText ds) : go [] xs
-    go []  (NumberedList n ds : xs) = NumberedList n (compressText ds) : go [] xs
-    go []  (Template n ds : xs)     = Template n (map (second compressText) ds) : go [] xs
-    go []  (InternalLink n ds : xs) = InternalLink n (map compressText ds) : go [] xs
+    go []  (BoldItalic ds : xs)     = BoldItalic (cleanup ds) : go [] xs
+    go []  (Bold ds : xs)           = Bold (cleanup ds) : go [] xs
+    go []  (Italic ds : xs)         = Italic (cleanup ds) : go [] xs
+    go []  (BulletList n ds : xs)   = BulletList n (cleanup ds) : go [] xs
+    go []  (NumberedList n ds : xs) = NumberedList n (cleanup ds) : go [] xs
+    go []  (Template n ds : xs)     = Template n (map (second cleanup) ds) : go [] xs
+    go []  (InternalLink n ds : xs) = InternalLink n (map cleanup ds) : go [] xs
     go []  (NewPara : NewPara : xs) = go [] (NewPara : xs)
     go []  (other : xs)             = other : go [] xs
     go []  []                       = []
     go acc xs                       = Text (reverse acc) : go [] xs
-
-{-}
-url :: DeltaParsing m => m Url
-url = fmap Url $ do
-    method <- some $ asciiUpper <|> asciiLower
-    text "://"
-    rest <- some urlChars
-    return $ concat [method, "://", rest]
--}
-
-urlChar :: P s Char
-urlChar = letter <|> digit <|> oneOf "-_.~!*'();:@&=+$,/?%#[]"
