@@ -91,7 +91,7 @@ doc' = mdo
             body <- manyUntil (eol <> eof) aDoc
             let p = pure constr
                     <*  eol
-                    <*> fmap length (some $ char bullet)
+                    <*> fmap length (many1 $ char bullet)
                     <*  spaces
                     <*> body
             return p
