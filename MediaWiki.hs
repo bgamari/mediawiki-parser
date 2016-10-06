@@ -168,8 +168,8 @@ doc' = mdo
     wikiText <- newRule
         $ comment // noWiki // table
         // template // choice headings // list // formatting
-        // codeLine // comment
-        // template // xmlish // image // link // table
+        // codeLine
+        // xmlish // image // link // table
         // (eol *> matches eol *> pure NewPara)
         // anythingElse
 
@@ -193,7 +193,7 @@ compressText :: [Doc] -> [Doc]
 compressText = go []
   where
     go acc (Text s : xs)            = go (reverse s ++ acc) xs
-    go acc (Char '\n' : xs)         = go acc xs  
+    go acc (Char '\n' : xs)         = go acc xs
     go acc (Char c : xs)            = go (c : acc) xs
     go []  (BoldItalic ds : xs)     = BoldItalic (go [] ds) : go [] xs
     go []  (Bold ds : xs)           = Bold (go [] ds) : go [] xs
