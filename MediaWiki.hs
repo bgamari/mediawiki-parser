@@ -95,8 +95,14 @@ doc' = mdo
         return $ pure InternalLink <*  text "[["
                                    <*> fmap PageName pageName
                                    <*> attributes <* text "]]"
+    externalLink <- do
+        let protocol = text "http://" <> text "https://"
+        rest <- manyUntil (char ']') anyChar
+        let f proto r = ExternalLink $ Url $ proto++r
+        return $ pure f <*  char '['
+                        <*> protocol
+                        <*> rest <* char ']'
     let link = internalLink <> externalLink
-        externalLink = mempty
 
     -- code line
     codeLine <- do
