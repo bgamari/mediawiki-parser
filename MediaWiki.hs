@@ -16,9 +16,9 @@ import Text.Parsers.Frisby hiding ((<>))
 import Text.Parsers.Frisby.Char
 
 newtype PageName = PageName String
-                 deriving (Show)
+                 deriving (Show, Eq, Ord)
 newtype Url = Url String
-            deriving (Show)
+            deriving (Show, Eq, Ord)
 
 data Doc = Text !String
          | Char !Char
@@ -38,7 +38,7 @@ data Doc = Text !String
          | CodeLine !String
          | NoWiki !String
          | NewPara
-         deriving (Show)
+         deriving (Show, Eq, Ord)
 
 parse :: String -> [Doc]
 parse s = concatMap (runPeg doc) (lines s)
@@ -119,11 +119,12 @@ doc' = mdo
     -- templates
     template <- do
         let templateEnd = void (text "}}") <> void (char '|')
-        templateName <- manyUntil templateEnd anyChar
-        value <- manyUntil (templateEnd <> eol) aDoc
+        templateName <- manyUntil (templateEnd <> eol) anyChar
+        --value <- manyUntil (templateEnd <> eol) (matches (doesNotMatch templateEnd) *> aDoc)
+        value <- pure $ many (doesNotMatch templateEnd *> aDoc)
         part <- do
-            key <- manyUntil (char '=') anyChar
-            return $ pure (,) <*  char '|' <* spaces
+            key <- manyUntil (text "=" <> text "|" <> text "}}") anyChar
+            return $ pure (,) <*  spaces <* char '|' <* spaces
                               <*> option Nothing (Just <$> key <* char '=' <* spaces)
                               <*> value <* optional eol
           :: PM s (P s (Maybe String, [Doc]))
@@ -158,11 +159,13 @@ doc' = mdo
         table = mempty
         anythingElse = Char <$> anyChar
 
+    -- See https://www.mediawiki.org/wiki/Parser_2011/Stage_1:_Formal_grammar
     wikiText <- newRule
-        $ noWiki // template // choice headings // list // formatting
+        $ comment // noWiki
+        // template // choice headings // list // formatting
         // codeLine // comment
         // template // xmlish // image // link // table
-        // (eol *> pure NewPara)
+        // (eol *> matches eol *> pure NewPara)
         // anythingElse
 
     para <- pure $ wikiText <* eol
@@ -185,6 +188,7 @@ compressText :: [Doc] -> [Doc]
 compressText = go []
   where
     go acc (Text s : xs)            = go (reverse s ++ acc) xs
+    go acc (Char '\n' : xs)         = go acc xs  
     go acc (Char c : xs)            = go (c : acc) xs
     go []  (BoldItalic ds : xs)     = BoldItalic (go [] ds) : go [] xs
     go []  (Bold ds : xs)           = Bold (go [] ds) : go [] xs
