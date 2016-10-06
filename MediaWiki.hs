@@ -19,7 +19,8 @@ newtype PageName = PageName String
 newtype Url = Url String
             deriving (Show)
 
-data Doc = Text !Char
+data Doc = Text !String
+         | Char !Char
          | Comment !String
          | Heading !Int !String
          | InternalLink !PageName ![Doc]
@@ -47,7 +48,7 @@ doc = fmap many doc'
 manyBetween' :: P s start -> P s a -> P s end -> PM s (P s [a])
 manyBetween' start thing end = do
     xs <- manyUntil end thing
-    return $ start *> xs
+    return $ start *> xs <* end
 
 manyBetween :: P s delim -> P s a -> PM s (P s [a])
 manyBetween delim thing = manyBetween' delim thing delim
@@ -73,7 +74,7 @@ doc' = mdo
     -- lists
     let listLike :: (Int -> [Doc] -> Doc) -> Char -> PM s (P s Doc)
         listLike constr bullet = do
-            body <- manyUntil eol aDoc
+            body <- manyUntil (eol <> eof) aDoc
             let p = pure constr
                     <*  eol
                     <*> fmap length (some $ char bullet)
@@ -84,18 +85,25 @@ doc' = mdo
     bulletList   <- listLike BulletList '*'
     let list = numberedList <> bulletList
 
+    -- code line
+    codeLine <- do
+        line <- manyUntil eol anyChar
+        return $ eol *> char ' ' *> fmap CodeLine line
+
     let blankLine = eol
 
     let template = mempty
         image = mempty
         table = mempty
-        anythingElse = mempty
+        anythingElse = Char <$> anyChar
         link = mempty
 
     wikiText <- newRule
         $ noWiki // template // choice headings // list // formatting
-        // image // link // table // anythingElse
-        // codeLine // comment // (eol *> pure NewPara)
+        // codeLine // comment
+        // image // link // table
+        // (eol *> eol *> pure NewPara)
+        // anythingElse
 
     para <- pure $ wikiText <* eol
 
@@ -103,18 +111,28 @@ doc' = mdo
     return aDoc
 
 plainText :: P s Doc
-plainText = Text <$> anyChar
+plainText = Char <$> anyChar
 
 heading :: Int -> PM s (P s Doc)
 heading n =
     let marker = replicateM_ n (char '=')
     in fmap (Heading n) <$> manyBetween' (marker *> spaces) anyChar (spaces *> marker)
 
-codeLine :: P s Doc
-codeLine = bof *> char ' ' *> fmap CodeLine rest
-
 spaces :: P s ()
 spaces = void $ many space
+
+compressText :: [Doc] -> [Doc]
+compressText = go []
+  where
+    go acc (Text s : xs)          = go (reverse s ++ acc) xs
+    go acc (Char c : xs)          = go (c : acc) xs
+    go []  (BoldItalic ds : xs)   = BoldItalic (go [] ds) : go [] xs
+    go []  (Bold ds : xs)         = Bold (go [] ds) : go [] xs
+    go []  (Italic ds : xs)       = Italic (go [] ds) : go [] xs
+    go []  (BulletList n ds : xs) = BulletList n (compressText ds) : go [] xs
+    go []  (other : xs)           = other : go [] xs
+    go []  []                     = []
+    go acc xs                     = Text (reverse acc) : go [] xs
 
 {-}
 xmlish :: P s Doc
