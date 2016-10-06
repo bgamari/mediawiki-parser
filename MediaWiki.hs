@@ -24,7 +24,7 @@ data Doc = Text !String
          | Char !Char
          | Comment !String
          | Heading !Int !String
-         | InternalLink !PageName ![Doc]
+         | InternalLink !PageName ![[Doc]]
          | ExternalLink !Url
          | Template !String [(Maybe String, [Doc])]
          | XmlOpenClose String [(String, String)]
@@ -86,6 +86,18 @@ doc' = mdo
     bulletList   <- listLike BulletList '*'
     let list = numberedList <> bulletList
 
+    -- links
+    internalLink <- do
+        let linkEnd = void (char '|') <> void (text "]]")
+        pageName <- manyUntil linkEnd anyChar
+        attrValue <- manyUntil linkEnd aDoc
+        attributes <- manyUntil (text "]]") (spaces *> char '|' *> attrValue)
+        return $ pure InternalLink <*  text "[["
+                                   <*> fmap PageName pageName
+                                   <*> attributes <* text "]]"
+    let link = internalLink <> externalLink
+        externalLink = mempty
+
     -- code line
     codeLine <- do
         line <- manyUntil eol anyChar
@@ -132,7 +144,6 @@ doc' = mdo
     let image = mempty
         table = mempty
         anythingElse = Char <$> anyChar
-        link = mempty
 
     wikiText <- newRule
         $ noWiki // template // choice headings // list // formatting
@@ -140,7 +151,7 @@ doc' = mdo
         // template // xmlish // image // link // table
         // (eol *> eol *> pure NewPara)
         // anythingElse
-        
+
     para <- pure $ wikiText <* eol
 
     let aDoc = wikiText
@@ -167,83 +178,12 @@ compressText = go []
     go []  (Italic ds : xs)       = Italic (go [] ds) : go [] xs
     go []  (BulletList n ds : xs) = BulletList n (compressText ds) : go [] xs
     go []  (Template n ds : xs)   = Template n (map (second compressText) ds) : go [] xs
+    go []  (InternalLink n ds : xs) = InternalLink n (map compressText ds) : go [] xs
     go []  (other : xs)           = other : go [] xs
     go []  []                     = []
     go acc xs                     = Text (reverse acc) : go [] xs
 
 {-}
-xmlish :: P s Doc
-xmlish = do
-    char '<'
-    closeTag <|> openTag
-  where
-    closeTag = do
-        char '/' >> spaces
-        tag <- some letter
-        return $ XmlClose tag
-
-    openTag = do
-        spaces
-        tag <- some letter
-        spaces
-        many attribute
-        selfClosing tag <|> withContent tag
-      where
-        attribute = do
-            some letter
-            spaces
-            char '='
-            (spaces >> between' (char '"') (char '"')) <|> some $ noneOf "/> \t\n"
-            spaces
-
-        withContent tag = do
-            char '>'
-            return $ XmlOpen tag
-
-        selfClosing tag = do
-            text "/>"
-            return $ XmlOpenClose tag
-
-template :: P s Doc
-template = do
-    text "{{"
-    title <- balancedText
-    pairs <- many $ char '|' >> (try keyValuePair <|> onlyValue <|> emptyPair)
-    text "}}"
-    return $ Template title pairs
-  where
-    balancedText = named "balanced text" $ sliced content
-      where
-        content = some $  void template
-                      <|> void (some $ noneOf "}|")
-                      <|> void (notFollowedBy (text "}}") >> char '}')
-
-    emptyPair = return (Nothing, mempty)
-
-    onlyValue = do
-      val <- balancedText
-      return (Nothing, val)
-
-    keyValuePair = do
-      key <- sliced $ some $ noneOf "}|="
-      char '='
-      value <- balancedText
-      return (Just key, value)
-
-internalLink :: P s Doc
-internalLink ctx = do
-    text "[["
-    page <- PageName <$> some (noneOf "|]" <|> singleClose)
-    attrs <- many $ do
-        char '|'
-        many $ notFollowedBy (text "]]") >> doc' (ctx & insideInternalLink .~ True)
-    let body = case attrs of [] -> []
-                             xs -> last xs
-    text "]]"
-    return $ InternalLink page body
-  where
-    singleClose = notFollowedBy (text "]]") >> char ']'
-
 url :: DeltaParsing m => m Url
 url = fmap Url $ do
     method <- some $ asciiUpper <|> asciiLower

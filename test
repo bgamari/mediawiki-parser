@@ -26,3 +26,7 @@ Here is a paragraph <!- and a comment --> in the middle.
 | publisher = Universidad de Granada
 | location= Granada Puzada
 }}</ref>
+
+== And some links ==
+
+Here is [[a link]]. And a [[link|with|some attributes]].
