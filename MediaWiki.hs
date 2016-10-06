@@ -46,6 +46,13 @@ parse s = concatMap (runPeg doc) (lines s)
 doc :: PM s (P s [Doc])
 doc = fmap many doc'
 
+withError :: PM s (P s a) -> PM s (P s (Either String a))
+withError = fmap f
+  where
+    f parser =
+        fmap Right (parser <* eof) <|> fmap toLeft rest
+    toLeft r = Left $ "Parser error with leftovers: "++r
+
 manyBetween' :: P s start -> P s a -> P s end -> PM s (P s [a])
 manyBetween' start thing end = do
     xs <- manyUntil end thing
