@@ -1,5 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE ScopedTypeVariables #-}
+{-# LANGUAGE DeriveGeneric #-}
 {-# LANGUAGE ApplicativeDo #-}
 {-# LANGUAGE RankNTypes #-}
 {-# LANGUAGE RecursiveDo #-}
@@ -13,15 +14,16 @@ import Control.Monad (replicateM_, void)
 import Data.Bifunctor
 import Data.Monoid
 import Control.Applicative hiding (many, optional)
+import GHC.Generics
 
 import Text.Parsers.Frisby hiding ((<>))
 import Text.Parsers.Frisby.Char
 
 newtype PageName = PageName String
-                 deriving (Show, Eq, Ord)
+                 deriving (Show, Eq, Ord, Generic)
 
 newtype Url = Url String
-            deriving (Show, Eq, Ord)
+            deriving (Show, Eq, Ord, Generic)
 
 data Doc = Text !String
          | Char !Char
@@ -42,7 +44,7 @@ data Doc = Text !String
          | NoWiki !String
          | Table !String
          | NewPara
-         deriving (Show, Eq, Ord)
+         deriving (Show, Eq, Ord, Generic)
 
 parse :: String -> Either String [Doc]
 parse = fmap cleanup . runPeg (withError doc)
