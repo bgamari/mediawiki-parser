@@ -1,0 +1,28 @@
+== Hello World ==
+This is a simple example ''Document''.
+
+* hello '''''world'' turtle''''s
+** oops
+
+ int main() {
+   printf();
+ }
+
+
+Here is a paragraph, all on its own
+
+<!-- How about a comment -->
+
+Here is a paragraph <!- and a comment --> in the middle.
+
+= A template =
+
+Here is the template {{cite book
+| last = Domínguez Ortiz
+| first = Antonio
+| title = La identidad andaluza
+| year = 1976
+| language = Spanish
+| publisher = Universidad de Granada
+| location= Granada Puzada
+}}</ref>

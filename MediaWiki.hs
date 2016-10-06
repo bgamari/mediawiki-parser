@@ -8,10 +8,11 @@ module MediaWiki (Doc(..), parse) where
 
 import Debug.Trace
 import Control.Monad (replicateM_, void)
+import Data.Bifunctor
 import Data.Monoid
 import Control.Applicative hiding (many)
 
-import Text.Parsers.Frisby hiding ((<>))
+import Text.Parsers.Frisby hiding ((<>), optional)
 import Text.Parsers.Frisby.Char
 
 newtype PageName = PageName String
@@ -25,7 +26,7 @@ data Doc = Text !String
          | Heading !Int !String
          | InternalLink !PageName ![Doc]
          | ExternalLink !Url
-         | Template !String [(Maybe String, String)]
+         | Template !String [(Maybe String, [Doc])]
          | XmlOpenClose String
          | XmlOpen String
          | XmlClose String
@@ -90,10 +91,23 @@ doc' = mdo
         line <- manyUntil eol anyChar
         return $ eol *> char ' ' *> fmap CodeLine line
 
+    -- templates
+    template <- do
+        let templateEnd = void (text "}}") <> void (char '|')
+        templateName <- manyUntil templateEnd anyChar
+        namedPart <- do
+            key <- manyUntil (char '=') anyChar
+            value <- manyUntil (templateEnd <> eol) aDoc
+            return $ pure (,) <*  char '|' <* spaces
+                              <*> optional (key <* char '=') <* spaces
+                              <*> value <* optional eol
+          :: PM s (P s (Maybe String, [Doc]))
+        templateParts <- manyUntil (text "}}") namedPart
+        return $ pure Template <* text "{{" <*> templateName <* optional eol <*> templateParts <* text "}}"
+
     let blankLine = eol
 
-    let template = mempty
-        image = mempty
+    let image = mempty
         table = mempty
         anythingElse = Char <$> anyChar
         link = mempty
@@ -101,10 +115,10 @@ doc' = mdo
     wikiText <- newRule
         $ noWiki // template // choice headings // list // formatting
         // codeLine // comment
-        // image // link // table
+        // template // image // link // table
         // (eol *> eol *> pure NewPara)
         // anythingElse
-
+        
     para <- pure $ wikiText <* eol
 
     let aDoc = wikiText
@@ -130,6 +144,7 @@ compressText = go []
     go []  (Bold ds : xs)         = Bold (go [] ds) : go [] xs
     go []  (Italic ds : xs)       = Italic (go [] ds) : go [] xs
     go []  (BulletList n ds : xs) = BulletList n (compressText ds) : go [] xs
+    go []  (Template n ds : xs)   = Template n (map (second compressText) ds) : go [] xs
     go []  (other : xs)           = other : go [] xs
     go []  []                     = []
     go acc xs                     = Text (reverse acc) : go [] xs
