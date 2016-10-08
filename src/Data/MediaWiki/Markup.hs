@@ -13,13 +13,14 @@ module Data.MediaWiki.Markup
 import Control.Monad (replicateM_, void)
 import Data.Bifunctor
 import Data.Monoid
+import qualified Data.Text as T
 import Control.Applicative hiding (many, optional)
 import GHC.Generics
 
 import Text.Parsers.Frisby hiding ((<>))
 import Text.Parsers.Frisby.Char
 
-newtype PageName = PageName { getPageName :: String }
+newtype PageName = PageName { getPageName :: T.Text }
                  deriving (Show, Eq, Ord, Generic)
 
 newtype Url = Url String
@@ -106,7 +107,7 @@ doc' = mdo
         attrValue <- manyUntil linkEnd aDoc
         attributes <- manyUntil (text "]]") (spaces *> char '|' *> attrValue)
         return $ pure InternalLink <*  text "[["
-                                   <*> fmap PageName pageName
+                                   <*> fmap (PageName . T.pack) pageName
                                    <*> attributes <* text "]]"
     externalLink <- do
         let scheme = many1 alpha <* text "://"
