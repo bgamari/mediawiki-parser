@@ -145,7 +145,9 @@ doc' = mdo
     -- XMLish
     xmlAttr <- do
         key <- manyUntil (char '=' <> space) anyChar
-        value <- manyUntil (char '>' <> space) anyChar
+        unquotedValue <- manyUntil (char '>' <> space) anyChar
+        quotedValue <- manyUntil (char '"') anyChar
+        let value = (char '"' *> quotedValue <* char '"') <|> unquotedValue
         return $ pure (,) <*> key <* spaces <* char '='
                           <*> value <* spaces
     xmlAttrs <- manyUntil (void (char '>') <> void (text "/>")) xmlAttr
