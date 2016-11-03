@@ -11,6 +11,7 @@ module Data.MediaWiki.Markup
     ) where
 
 import Control.Monad (replicateM_, void)
+import Data.Maybe (catMaybes)
 import Data.Bifunctor
 import Data.Monoid
 import qualified Data.Text as T
@@ -199,9 +200,12 @@ doc' = mdo
     return aDoc
 
 heading :: Int -> PM s (P s Doc)
-heading n =
+heading n = mdo
     let marker = replicateM_ n (char '=')
-    in fmap (Heading n) . ((eol <> bof) *>) <$> manyBetween' (marker *> spaces) anyChar (spaces *> marker)
+    comment <- manyBetween' (text "<!--") anyChar (text "-->")
+    let headerChar = (comment *> pure Nothing) <|> fmap Just anyChar
+    fmap (Heading n . catMaybes) . ((eol <> bof) *>)
+       <$> manyBetween' (marker *> spaces) headerChar (spaces *> marker)
 
 spaces :: P s ()
 spaces = void $ many space
