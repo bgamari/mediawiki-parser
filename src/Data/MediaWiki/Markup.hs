@@ -11,6 +11,7 @@ module Data.MediaWiki.Markup
     ) where
 
 import Control.Monad (replicateM_, void)
+import Data.Maybe (catMaybes)
 import Data.Bifunctor
 import Data.Monoid
 import qualified Data.Text as T
@@ -71,6 +72,12 @@ manyBetween delim thing = manyBetween' delim thing delim
 eol :: P s ()
 eol = void $ char '\n' <> char '\r'
 
+text_ :: String -> P s ()
+text_ = void . text
+
+char_ :: Char -> P s ()
+char_ = void . char
+
 doc' :: forall s. PM s (P s Doc)
 doc' = mdo
     -- headings
@@ -102,7 +109,7 @@ doc' = mdo
 
     -- links
     internalLink <- do
-        let linkEnd = void (char '|') <> void (text "]]")
+        let linkEnd = char_ '|' <> text_ "]]"
         pageName <- manyUntil linkEnd anyChar
         attrValue <- manyUntil linkEnd aDoc
         attributes <- manyUntil (text "]]") (spaces *> char '|' *> attrValue)
@@ -128,28 +135,33 @@ doc' = mdo
 
     -- templates
     template <- do
-        let templateEnd = void (text "}}") <> void (char '|')
+        let templateEnd = text_ "}}"
+                       <> char_ '|'
+                       <> (eol *> spaces *> (text_ "}}"))
+                       <> (eol *> spaces *> (char_ '|'))
         templateName <- manyUntil (templateEnd <> eol) anyChar
-        value <- manyUntil (templateEnd <> eol) aDoc
+        value <- manyUntil templateEnd aDoc
         part <- do
             key <- manyUntil (text "=" <> text "|" <> text "}}") anyChar
             return $ pure (,) <*  spaces <* char '|' <* spaces
                               <*> option Nothing (Just <$> key <* char '=' <* spaces)
                               <*> value <* optional eol
           :: PM s (P s (Maybe String, [Doc]))
-        templateParts <- manyUntil (text "}}") part
+        templateParts <- manyUntil (spaces *> text "}}") part
         return $ pure Template <* text "{{"
                                <*> templateName <* optional eol
-                               <*> templateParts <* text "}}"
+                               <*> templateParts <* spaces <* text "}}"
 
     -- XMLish
     xmlAttr <- do
         key <- manyUntil (char '=' <> space) anyChar
-        value <- manyUntil (char '>' <> space) anyChar
+        unquotedValue <- manyUntil (char '>' <> space) anyChar
+        quotedValue <- manyUntil (char '"') anyChar
+        let value = (char '"' *> quotedValue <* char '"') <|> unquotedValue
         return $ pure (,) <*> key <* spaces <* char '='
                           <*> value <* spaces
-    xmlAttrs <- manyUntil (void (char '>') <> void (text "/>")) xmlAttr
-    tagName <- manyUntil (void (char '>') <> void (text "/>") <> void space) anyChar
+    xmlAttrs <- manyUntil (char_ '>' <> text_ "/>") xmlAttr
+    tagName <- manyUntil (char_ '>' <> text_ "/>" <> void space) anyChar
     xmlOpen <-
         return $ pure XmlOpen <* char '<'
                               <*> tagName <* spaces
@@ -188,9 +200,12 @@ doc' = mdo
     return aDoc
 
 heading :: Int -> PM s (P s Doc)
-heading n =
+heading n = mdo
     let marker = replicateM_ n (char '=')
-    in fmap (Heading n) . ((eol <> bof) *>) <$> manyBetween' (marker *> spaces) anyChar (spaces *> marker)
+    comment <- manyBetween' (text "<!--") anyChar (text "-->")
+    let headerChar = (comment *> pure Nothing) <|> fmap Just anyChar
+    fmap (Heading n . catMaybes) . ((eol <> bof) *>)
+       <$> manyBetween' (marker *> spaces) headerChar (spaces *> marker)
 
 spaces :: P s ()
 spaces = void $ many space
