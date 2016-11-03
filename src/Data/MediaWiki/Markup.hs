@@ -108,7 +108,7 @@ doc' = mdo
 
     -- links
     internalLink <- do
-        let linkEnd = void (char '|') <> void (text "]]")
+        let linkEnd = char_ '|' <> text_ "]]"
         pageName <- manyUntil linkEnd anyChar
         attrValue <- manyUntil linkEnd aDoc
         attributes <- manyUntil (text "]]") (spaces *> char '|' *> attrValue)
@@ -159,8 +159,8 @@ doc' = mdo
         let value = (char '"' *> quotedValue <* char '"') <|> unquotedValue
         return $ pure (,) <*> key <* spaces <* char '='
                           <*> value <* spaces
-    xmlAttrs <- manyUntil (void (char '>') <> void (text "/>")) xmlAttr
-    tagName <- manyUntil (void (char '>') <> void (text "/>") <> void space) anyChar
+    xmlAttrs <- manyUntil (char_ '>' <> text_ "/>") xmlAttr
+    tagName <- manyUntil (char_ '>' <> text_ "/>" <> void space) anyChar
     xmlOpen <-
         return $ pure XmlOpen <* char '<'
                               <*> tagName <* spaces
