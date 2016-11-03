@@ -71,6 +71,12 @@ manyBetween delim thing = manyBetween' delim thing delim
 eol :: P s ()
 eol = void $ char '\n' <> char '\r'
 
+text_ :: String -> P s ()
+text_ = void . text
+
+char_ :: Char -> P s ()
+char_ = void . char
+
 doc' :: forall s. PM s (P s Doc)
 doc' = mdo
     -- headings
@@ -128,19 +134,22 @@ doc' = mdo
 
     -- templates
     template <- do
-        let templateEnd = void (text "}}") <> void (char '|')
+        let templateEnd = text_ "}}"
+                       <> char_ '|'
+                       <> (eol *> spaces *> (text_ "}}"))
+                       <> (eol *> spaces *> (char_ '|'))
         templateName <- manyUntil (templateEnd <> eol) anyChar
-        value <- manyUntil (templateEnd <> eol) aDoc
+        value <- manyUntil templateEnd aDoc
         part <- do
             key <- manyUntil (text "=" <> text "|" <> text "}}") anyChar
             return $ pure (,) <*  spaces <* char '|' <* spaces
                               <*> option Nothing (Just <$> key <* char '=' <* spaces)
                               <*> value <* optional eol
           :: PM s (P s (Maybe String, [Doc]))
-        templateParts <- manyUntil (text "}}") part
+        templateParts <- manyUntil (spaces *> text "}}") part
         return $ pure Template <* text "{{"
                                <*> templateName <* optional eol
-                               <*> templateParts <* text "}}"
+                               <*> templateParts <* spaces <* text "}}"
 
     -- XMLish
     xmlAttr <- do
