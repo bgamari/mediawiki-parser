@@ -33,7 +33,7 @@ data Doc = Text !String
          | Heading !Int !String
          | InternalLink !PageName ![[Doc]]
          | ExternalLink !Url (Maybe String)
-         | Template !String [(Maybe String, [Doc])]
+         | Template !T.Text [(Maybe T.Text, [Doc])]
          | XmlOpenClose String [(String, String)]
          | XmlOpen String [(String, String)]
          | XmlClose String
@@ -147,14 +147,14 @@ doc' = mdo
                        <> char_ '|'
                        <> (eol *> spaces *> (text_ "}}"))
                        <> (eol *> spaces *> (char_ '|'))
-        templateName <- manyUntil (templateEnd <> eol) anyChar
+        templateName <- T.strip . T.pack <$*> manyUntil (templateEnd <> eol) anyChar
         value <- manyUntil templateEnd aDoc
         part <- do
-            key <- manyUntil (text "=" <> text "|" <> text "}}") anyChar
+            key <- T.strip . T.pack <$*> manyUntil (text "=" <> text "|" <> text "}}") anyChar
             return $ pure (,) <*  spaces <* char '|' <* spaces
                               <*> option Nothing (Just <$> key <* char '=' <* spaces)
                               <*> value <* optional eol
-          :: PM s (P s (Maybe String, [Doc]))
+          :: PM s (P s (Maybe T.Text, [Doc]))
         templateParts <- manyUntil (spaces *> text "}}") part
         -- drop comments after template name
         let comments = void (comment *> eol *> comment) <|> (comment *> spaces)
