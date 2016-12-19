@@ -1,3 +1,4 @@
+{-# LANGUAGE DeriveGeneric #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 
@@ -11,6 +12,7 @@ module Data.MediaWiki.XmlDump
     , NamespaceId(..)
     ) where
 
+import GHC.Generics
 import Text.XML.Expat.SAX
 import           Data.ByteString.Char8 (ByteString)
 import qualified Data.ByteString.Char8 as BS
@@ -18,17 +20,17 @@ import qualified Data.ByteString.Lazy as BSL
 import qualified Data.HashMap.Strict as HM
 
 newtype Namespace = Namespace ByteString
-                  deriving (Eq, Ord, Show)
+                  deriving (Eq, Ord, Show, Generic)
 
 newtype NamespaceId = NamespaceId Int
-                    deriving (Eq, Ord, Enum, Show)
+                    deriving (Eq, Ord, Enum, Show, Generic)
 
 newtype PageId = PageId Int
-               deriving (Eq, Ord, Enum, Show)
+               deriving (Eq, Ord, Enum, Show, Generic)
 
 data Format = XWiki
             | OtherFormat ByteString
-            deriving (Show)
+            deriving (Show, Generic)
 
 data WikiDoc = WikiDoc { docTitle     :: ByteString
                        , docNamespace :: NamespaceId
@@ -37,7 +39,7 @@ data WikiDoc = WikiDoc { docTitle     :: ByteString
                        , docFormat    :: Format
                        , docText      :: ByteString
                        }
-             deriving (Show)
+             deriving (Show, Generic)
 
 entities :: HM.HashMap ByteString ByteString
 entities = HM.fromList
