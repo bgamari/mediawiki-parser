@@ -42,6 +42,7 @@ data Doc = Text !String
          | Italic [Doc]
          | NumberedList !Int [Doc]
          | BulletList !Int [Doc]
+         | UnmarkedList !Int [Doc]
          | CodeLine !String
          | NoWiki !String
          | Table !String
@@ -105,7 +106,8 @@ doc' = mdo
             return p
     numberedList <- listLike NumberedList '#'
     bulletList   <- listLike BulletList '*'
-    let list = numberedList <> bulletList
+    unmarkedList <- listLike UnmarkedList ':'
+    let list = numberedList <> bulletList <> unmarkedList
 
     -- links
     internalLink <- do
