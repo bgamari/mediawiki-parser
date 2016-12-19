@@ -47,6 +47,7 @@ data Doc = Text !String
          | CodeLine !String
          | NoWiki !String
          | Table !String
+         | HRule
          | NewPara
          deriving (Show, Eq, Ord, Generic)
 
@@ -114,6 +115,9 @@ doc' = mdo
     unmarkedList <- listLike UnmarkedList ':'
     definitionList <- listLike DefinitionList ';'
     list <- newRule $ numberedList <> bulletList <> unmarkedList <> definitionList
+
+    -- horizontal rule
+    hrule <- newRule $ eol *> text "----" *> pure HRule
 
     -- links
     internalLink <- do
@@ -198,7 +202,7 @@ doc' = mdo
     -- See https://www.mediawiki.org/wiki/Parser_2011/Stage_1:_Formal_grammar
     wikiText <- newRule
         $ comment // noWiki // table
-        // template // choice headings // list // formatting
+        // template // choice headings // list // hrule // formatting
         // codeLine
         // xmlish // image // link // table
         // (eol *> matches eol *> pure NewPara)
