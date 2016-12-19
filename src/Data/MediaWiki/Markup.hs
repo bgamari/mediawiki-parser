@@ -43,6 +43,7 @@ data Doc = Text !String
          | NumberedList !Int [Doc]
          | BulletList !Int [Doc]
          | UnmarkedList !Int [Doc]
+         | DefinitionList !Int [Doc]
          | CodeLine !String
          | NoWiki !String
          | Table !String
@@ -107,7 +108,8 @@ doc' = mdo
     numberedList <- listLike NumberedList '#'
     bulletList   <- listLike BulletList '*'
     unmarkedList <- listLike UnmarkedList ':'
-    list <- newRule $ numberedList <> bulletList <> unmarkedList
+    definitionList <- listLike DefinitionList ';'
+    list <- newRule $ numberedList <> bulletList <> unmarkedList <> definitionList
 
     -- links
     internalLink <- do
