@@ -156,8 +156,10 @@ doc' = mdo
                               <*> value <* optional eol
           :: PM s (P s (Maybe String, [Doc]))
         templateParts <- manyUntil (spaces *> text "}}") part
-        return $ pure Template <* text "{{"
-                               <*> templateName <* optional eol
+        -- drop comments after template name
+        let comments = void (comment *> eol *> comment) <|> (comment *> spaces)
+        return $ pure Template <*  text "{{"
+                               <*> templateName <* many comments <* optional eol <* many comments
                                <*> templateParts <* spaces <* text "}}"
 
     -- XMLish
