@@ -80,20 +80,24 @@ text_ = void . text
 char_ :: Char -> P s ()
 char_ = void . char
 
+(<$*>) :: (a -> b) -> PM s (P s a) -> PM s (P s b)
+(<$*>) f = fmap (fmap f)
+infixl 4 <$*>
+
 doc' :: forall s. PM s (P s Doc)
 doc' = mdo
     -- headings
     headings <- mapM heading [6,5..1]
 
     -- formatting
-    boldItalic <- fmap BoldItalic <$> manyBetween (text "'''''") aDoc
-    bold <- fmap Bold <$> manyBetween (text "'''") aDoc
-    italic <- fmap Italic <$> manyBetween (text "''") aDoc
+    boldItalic <- BoldItalic <$*> manyBetween (text "'''''") aDoc
+    bold <- Bold <$*> manyBetween (text "'''") aDoc
+    italic <- Italic <$*> manyBetween (text "''") aDoc
     formatting <- newRule $ boldItalic // bold // italic
 
     -- other
-    comment <- fmap Comment <$> manyBetween' (text "<!--") anyChar (text "-->")
-    noWiki <-  fmap NoWiki  <$> manyBetween' (text "<nowiki>") anyChar (text "</nowiki>")
+    comment <- Comment <$*> manyBetween' (text "<!--") anyChar (text "-->")
+    noWiki <-  NoWiki  <$*> manyBetween' (text "<nowiki>") anyChar (text "</nowiki>")
 
     -- lists
     let listLike :: (Int -> [Doc] -> Doc) -> Char -> PM s (P s Doc)
