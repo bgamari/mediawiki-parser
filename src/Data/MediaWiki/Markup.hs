@@ -107,7 +107,7 @@ doc' = mdo
     numberedList <- listLike NumberedList '#'
     bulletList   <- listLike BulletList '*'
     unmarkedList <- listLike UnmarkedList ':'
-    let list = numberedList <> bulletList <> unmarkedList
+    list <- newRule $ numberedList <> bulletList <> unmarkedList
 
     -- links
     internalLink <- do
@@ -128,7 +128,7 @@ doc' = mdo
                         <*> url
                         <*> option Nothing (pure Just <* spaces <*> anchor)
                         <* char ']'
-    let link = internalLink <> externalLink
+    link <- newRule $ internalLink <> externalLink
 
     -- code line
     codeLine <- do
@@ -175,7 +175,7 @@ doc' = mdo
         return $ pure XmlOpenClose <* text "<"
                                    <*> tagName <* spaces
                                    <*> xmlAttrs <* text "/>"
-    let xmlish = xmlClose <> xmlOpen <> xmlOpenClose
+    xmlish <- newRule $ xmlClose <> xmlOpen <> xmlOpenClose
 
     -- table
     table <- do
