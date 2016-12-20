@@ -30,8 +30,8 @@ newtype Url = Url String
 data Doc = Text !String
          | Char !Char
          | Comment !String
-         | Heading !Int !String
-         | InternalLink !PageName ![[Doc]]
+         | Heading !Int [Doc]
+         | InternalLink !PageName [[Doc]]
          | ExternalLink !Url (Maybe String)
          | Template !T.Text [(Maybe T.Text, [Doc])]
          | XmlOpenClose String [(String, String)]
@@ -88,6 +88,12 @@ infixl 4 <$*>
 doc' :: forall s. PM s (P s Doc)
 doc' = mdo
     -- headings
+    let heading :: Int -> PM s (P s Doc)
+        heading n = do
+            let marker = replicateM_ n (char '=')
+            fmap (Heading n) . ((eol <> bof) *>)
+              <$> manyBetween' (marker *> spaces) wikiText (spaces *> marker)
+
     headings <- mapM heading [6,5..1]
 
     -- formatting
@@ -213,14 +219,6 @@ doc' = mdo
     let aDoc = wikiText
     return aDoc
 
-heading :: Int -> PM s (P s Doc)
-heading n = mdo
-    let marker = replicateM_ n (char '=')
-    comment <- manyBetween' (text "<!--") anyChar (text "-->")
-    let headerChar = (comment *> pure Nothing) <|> fmap Just anyChar
-    fmap (Heading n . catMaybes) . ((eol <> bof) *>)
-       <$> manyBetween' (marker *> spaces) headerChar (spaces *> marker)
-
 spaces :: P s ()
 spaces = void $ many space
 
@@ -230,6 +228,7 @@ cleanup = go []
     go acc (Text s : xs)            = go (reverse s ++ acc) xs
     go acc (Char '\n' : xs)         = go acc xs
     go acc (Char c : xs)            = go (c : acc) xs
+    go []  (Heading n ds : xs)      = Heading n (cleanup ds) : go [] xs
     go []  (BoldItalic ds : xs)     = BoldItalic (cleanup ds) : go [] xs
     go []  (Bold ds : xs)           = Bold (cleanup ds) : go [] xs
     go []  (Italic ds : xs)         = Italic (cleanup ds) : go [] xs
