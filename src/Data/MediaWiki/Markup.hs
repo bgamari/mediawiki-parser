@@ -34,6 +34,7 @@ data Doc = Text !String
          | InternalLink !PageName [[Doc]]
          | ExternalLink !Url (Maybe String)
          | Template !T.Text [(Maybe T.Text, [Doc])]
+         | MagicWord !T.Text !T.Text
          | XmlOpenClose String [(String, String)]
          | XmlOpen String [(String, String)]
          | XmlClose String
@@ -151,6 +152,14 @@ doc' = mdo
         line <- manyUntil eol anyChar
         return $ eol *> char ' ' *> fmap CodeLine line
 
+    -- magic words
+    magicWord <- do
+        let theWord = T.pack <$> many alphaNum
+        body <- T.pack <$*> manyUntil (text_ "}}") anyChar
+        return $ pure MagicWord <*  text_ "{{" <* optional (char_ '#')
+                                <*> theWord <* char_ ':'
+                                <*> body <* text "}}"
+
     -- templates
     template <- do
         let templateEnd = text_ "}}"
@@ -208,7 +217,8 @@ doc' = mdo
     -- See https://www.mediawiki.org/wiki/Parser_2011/Stage_1:_Formal_grammar
     wikiText <- newRule
         $ comment // noWiki // table
-        // template // choice headings // list // hrule // formatting
+        // magicWord // template
+        // choice headings // list // hrule // formatting
         // codeLine
         // xmlish // image // link // table
         // (eol *> matches eol *> pure NewPara)
