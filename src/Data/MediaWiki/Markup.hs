@@ -187,7 +187,7 @@ doc' = mdo
         unquotedValue <- manyUntil (char '>' <> space) anyChar
         quotedValue <- manyUntil (char '"') anyChar
         let value = (char '"' *> quotedValue <* char '"') <|> unquotedValue
-        return $ pure (,) <*> key <* spaces <* char '='
+        return $ pure (,) <*> key <* spaces <* char '=' <* spaces
                           <*> value <* spaces
     xmlAttrs <- manyUntil (char_ '>' <> text_ "/>") xmlAttr
     tagName <- manyUntil (char_ '>' <> text_ "/>" <> void space) anyChar
