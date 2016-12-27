@@ -1,0 +1,31 @@
+=== Timeline ===
+<timeline>
+ImageSize   = width:1000 height:300
+PlotArea   = width:600 height:250 left:75 bottom:20
+Alignbars   = justify
+DateFormat   = mm/dd/yyyy
+Period   = from:07/29/2009 till:2017
+TimeAxis   = orientation:horizontal format:yyyy
+
+Colors =
+ id:a value:rgb(1,0,0) legend:FirstGeneration
+ id:b value:rgb(1,0.5,0) legend:SecondGeneration
+ id:c value:rgb(1,1,0) legend:ThirdGeneration
+ id:d value:rgb(0,1,0) legend:FourthGeneration
+ id:e value:rgb(0,0,1) legend:FifthGeneration
+
+Legend = orientation:horizontal position:bottom
+ScaleMajor = unit:year increment:1 start:2010 gridcolor:black
+
+PlotData =
+ color:blue width:7 textcolor:black align:left anchor:from
+ bar:Boram   from:start till:end Color:a
+ bar:Eunjung   from:start till:end Color:a
+ bar:Hyomin   from:start till:end Color:a
+ bar:Jiyeon   from:start till:end Color:a
+ bar:Qri   from:start till:end Color:a
+ bar:Soyeon   from:start till:end Color:a
+ bar:Hwayoung   from:12/03/2010 till:07/30/2012 Color:b
+ bar:Dani   from:05/30/2012 till:07/03/2012 Color:c
+ bar:Areum  from:06/14/2012 till:07/10/2013 Color:c
+</timeline>
