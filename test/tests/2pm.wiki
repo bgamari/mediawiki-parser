@@ -1,0 +1,9 @@
+{| class="wikitable"
+|-
+| Hello
+{{hidden|Location|
+# 20 April <br> <small>(Tokyo Dome)</small> Tokyo
+# 21 April <br> <small>(Tokyo Dome)</small> Tokyo
+|}}
+| World
+|}
