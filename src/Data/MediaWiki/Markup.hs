@@ -191,7 +191,9 @@ doc' = mdo
 
     -- table
     table <- do
-        tableBody <- manyUntil (text "|}") anyChar
+        -- See 2PM testcase
+        let end = text "|}" *> matches (doesNotMatch $ char '}')
+        tableBody <- manyUntil end anyChar
         return $ pure Table <* text "{|" <*> tableBody <* text "|}"
 
     let blankLine = eol
