@@ -13,6 +13,6 @@ main = do
 fileTest :: FilePath -> TestTree
 fileTest path = goldenVsAction testName golden (parseIt <$> readFile path) T.pack
   where
-    testName = dropExtension path
+    testName = takeBaseName path
     golden = replaceExtension path "ast"
     parseIt = either ("fail: "++) (unlines . map show) . parse
