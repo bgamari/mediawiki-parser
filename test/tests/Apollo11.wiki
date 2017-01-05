@@ -1,0 +1,109 @@
+{{About|the 1969 manned lunar mission}}
+{{pp-semi-indef}}
+{{pp-move-indef}}
+{{Use mdy dates|date=June 2013}}
+{{Good article}}
+{{Infobox spaceflight
+| name                  = Apollo 11
+| image                 = Apollo 11 first step.jpg
+| image_caption         = [[Neil Armstrong]] descends a ladder to become the first human to step onto the surface of the Moon
+| insignia              = Apollo_11_insignia.png
+| insignia_alt          = Circular insignia: Eagle with wings outstretched holds olive branch on Moon with Earth in background, in blue and gold border.
+
+| mission_type          = Manned lunar landing
+| operator              = [[NASA]]<ref name="Orloff">{{cite book |last=Orloff |first=Richard W. |title=Apollo by the Numbers: A Statistical Reference |url=http://history.nasa.gov/SP-4029/SP-4029.htm |accessdate=June 12, 2013 |series=NASA History Series |origyear=First published 2000 |date=September 2004 |work=NASA History Division, Office of Policy and Plans |publisher=[[NASA]] |location=Washington, D.C. |isbn=0-16-050631-X |lccn=00061677 |id=NASA SP-2000-4029 |chapter=Table of Contents |chapterurl=http://history.nasa.gov/SP-4029/Apollo_00g_Table_of_Contents.htm}}</ref>
+| COSPAR_ID             = {{Unbulleted list
+  |CSM: 1969-059A
+  |LM: 1969-059C
+}}
+| SATCAT                = {{Unbulleted list
+  |CSM: 4039
+  |LM: 4041
+}}
+| mission_duration      = 8&nbsp;days, 3&nbsp;hours, 18&nbsp;minutes, 35&nbsp;seconds
+
+| spacecraft            = {{Unbulleted list
+  |[[Apollo Command/Service Module|Apollo CSM]]-107
+  |[[Apollo Lunar Module|Apollo LM]]-5
+}}
+| manufacturer          = {{Unbulleted list
+  |CSM: [[Rockwell International|North American Rockwell]]
+  |LM: [[Grumman]]
+}}
+| launch_mass           = {{convert|100756|lb|kg}}
+| landing_mass          = {{convert|10873|lb|kg}}
+
+| launch_date           = {{start-date|July 16, 1969, 13:32:00|timezone=yes}}&nbsp;UTC
+| launch_rocket         = [[Saturn V]] SA-506
+| launch_site           = [[Kennedy Space Center|Kennedy]] [[Kennedy Space Center Launch Complex 39|LC-39A]]
+
+| landing_date          = {{end-date|July 24, 1969, 16:50:35|timezone=yes}}&nbsp;UTC<ref name="Apollo 11 Mission Report" /> 
+| landing_site          = North Pacific Ocean<br/>{{Coord|13|19|N|169|9|W|type:event|name=Apollo 11 splashdown}}<ref name="Apollo 11 Mission Report" />
+| recovery_by           = {{USS|Hornet|CV-12|6}}
+
+| orbit_epoch           = July 19, 1969, 21:44&nbsp;UTC<ref name="orbit">{{cite web|url=http://airandspace.si.edu/explore-and-learn/topics/apollo/as11/a11sum.htm |title=Apollo 11 Mission Summary |publisher=Smithsonian National Air and Space Museum |work=The Apollo Program |accessdate=September 7, 2013 |deadurl=yes |archiveurl=https://web.archive.org/web/20130829082429/http://airandspace.si.edu/explore-and-learn/topics/apollo/as11/a11sum.htm |archivedate=August 29, 2013 |df=mdy }}</ref>
+| orbit_reference       = [[selenocentric orbit|Selenocentric]]
+| orbit_periapsis       = {{convert|54.5|nmi|km|disp=flip|sp=us}}<ref name="orbit"/>
+| orbit_apoapsis        = {{convert|66.1|nmi|km|disp=flip|sp=us}}<ref name="orbit"/>
+| orbit_inclination     = 1.25&nbsp;degrees<ref name="orbit"/>
+| orbit_period          = 2&nbsp;hours<ref name="orbit"/>
+| apsis                 = selene
+
+|interplanetary         = 
+ {{Infobox spaceflight/IP
+   |type                = orbiter
+   |object              = [[Moon|Lunar]]
+   |component           = [[Apollo Command/Service Module|Command/Service Module]]
+   |orbits              = 30
+   |arrival_date        = July 19, 1969, 17:21:50&nbsp;UTC<ref name="A11timeline"/>
+   |departure_date      = July 22, 1969, 04:55:42&nbsp;UTC<ref name="A11timeline"/>
+ }}
+ {{Infobox spaceflight/IP
+   |type                = lander
+   |object              = [[Moon|Lunar]]
+   |component           = [[Apollo Lunar Module|Lunar Module]]
+   |arrival_date        = July 20, 1969, 20:18:04&nbsp;UTC<ref name="ALSJ 1" />
+   |departure_date      = July 21, 1969, 17:54&nbsp;UTC
+   |location            = Mare Tranquillitatis<br/>{{Lunar coords and quad cat|0.67408|N|23.47297|E}}<ref>{{cite web|url=http://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html|title=Apollo Landing Site Coordinates|publisher=US National Space Science Data Center|first=Ed|last=Grayzeck|date=December 11, 2003|accessdate=September 7, 2013}}</ref>
+   |sample_mass         = {{convert|47.51|lb|kg|disp=flip}}
+   |surface_EVAs        = 1
+   |surface_EVA_time    = 2&nbsp;hours, 31&nbsp;minutes 40&nbsp;seconds
+  }}
+
+| docking               = 
+ {{Infobox spaceflight/Dock
+   | docking_target     = LM
+   | docking_type       = dock
+   | docking_date       = July 16, 1969, 16:56:03&nbsp;UTC<ref name="A11timeline"/>
+   | undocking_date     = July 20, 1969, 17:44:00&nbsp;UTC<ref name="A11timeline"/>
+   | time_docked        = 
+ }}
+ {{Infobox spaceflight/Dock
+   | docking_target     = LM ascent stage
+   | docking_type       = dock
+   | docking_date       = July 21, 1969, 21:35:00&nbsp;UTC<ref name="A11timeline"/>
+   | undocking_date     = July 21, 1969, 23:41:31&nbsp;UTC<ref name="A11timeline"/>
+   | time_docked        = 
+ }}
+
+| crew_size             = 3
+| crew_members          = {{Unbulleted list
+  |[[Neil Armstrong|Neil A. Armstrong]]
+  |[[Michael Collins (astronaut)|Michael Collins]]
+  |[[Buzz Aldrin|Edwin E. "Buzz" Aldrin, Jr.]]
+}}
+| crew_callsign         = {{Unbulleted list
+  |CSM: ''Columbia''
+  |LM: ''Eagle''
+  |On surface: ''[[Tranquility Base]]''
+}}
+| crew_photo            = apollo_11.jpg
+| crew_photo_caption    = Left to right: [[Neil Armstrong|Armstrong]], [[Michael Collins (astronaut)|Collins]], [[Buzz Aldrin|Aldrin]]
+| crew_photo_alt        = Three astronauts in spacesuits without helmets sitting in front of a large photo of the Moon.
+
+| previous_mission      = [[Apollo 10]]
+| next_mission          = [[Apollo 12]]
+| programme             = [[Apollo program]]
+}}
+
+'''Apollo 11''' was the first [[spaceflight]] that [[Moon landing|landed]] humans on the [[Moon]]. Mission commander [[Neil Armstrong]] and pilot [[Buzz Aldrin]] landed the [[Apollo Lunar Module|lunar module]] ''Eagle'' on July 20, 1969, at 20:18 [[Coordinated Universal Time|UTC]]. Armstrong became the first to step onto the lunar surface six hours later on July 21 at 02:56:15 UTC; Aldrin joined him about 20 minutes later. They spent about two and a quarter hours together outside the spacecraft, and collected {{convert|47.5|lb|kg}} of lunar material for return to Earth. [[Michael Collins (astronaut)|Michael Collins]] piloted the [[Apollo Command/Service Module|command module]] ''Columbia'' alone in lunar orbit while they were on the Moon's surface. Armstrong and Aldrin spent just under a day on the lunar surface before rendezvousing with ''Columbia'' in lunar orbit.

@@ -167,7 +167,7 @@ doc' = mdo
                        <> (eol *> spaces *> (text_ "}}"))
                        <> (eol *> spaces *> (char_ '|'))
         templateName <- T.strip . T.pack <$*> manyUntil (templateEnd <> eol) anyChar
-        value <- manyUntil templateEnd aDoc
+        value <- manyUntil templateEnd templateBody
         part <- do
             key <- T.strip . T.pack <$*> manyUntil (text "=" <> text "|" <> text "}}") anyChar
             return $ pure (,) <*  spaces <* char '|' <* spaces
@@ -222,6 +222,16 @@ doc' = mdo
         // magicWord // template
         // choice headings // list // hrule // formatting
         // codeLine
+        // xmlish // image // link // table
+        // (eol *> matches eol *> pure NewPara)
+        // anythingElse
+
+    -- Templates can have indented elements
+    templateBody <- newRule
+        $ comment // noWiki // table
+        // magicWord // template
+        // choice headings // list // hrule // formatting
+           -- not codeLine
         // xmlish // image // link // table
         // (eol *> matches eol *> pure NewPara)
         // anythingElse
