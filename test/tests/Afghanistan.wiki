@@ -1,0 +1,6 @@
+{{Infobox country
+|largest_city    = Kabul
+|languages       = {{hlist|style=white-space:nowrap; |[[Pashto]]|[[Dari language|Dari]]}}<ref name=AO />
+|demonym         = [[Demography of Afghanistan|Afghan]]{{#tag:ref|Other terms that have been used as demonyms are '''Afghani'''<ref>Dictionary.com. [[The American Heritage Dictionary of the English Language]], Fourth Edition. Houghton Mifflin Company, 2004. [http://dictionary.reference.com/browse/afghani Reference.com] (Retrieved 13 November 2007).</ref> and '''Afghanistani'''.<ref>Dictionary.com. [[WordNet]] 3.0. [[Princeton University]]. [http://dictionary.reference.com/browse/afghanistani Reference.com] (Retrieved 13 November 2007). {{webarchive}}</ref>|name="Demonym"|group="Note"}}
+|government_type = [[Unitary state|Unitary]] [[Presidential system|presidential]] [[Islamic republic]]
+}}

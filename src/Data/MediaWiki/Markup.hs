@@ -34,7 +34,7 @@ data Doc = Text !String
          | InternalLink !PageName [[Doc]]
          | ExternalLink !Url (Maybe String)
          | Template !T.Text [(Maybe T.Text, [Doc])]
-         | MagicWord !T.Text !T.Text
+         | MagicWord !T.Text ![(Maybe T.Text, [Doc])]
          | XmlOpenClose String [(String, String)]
          | XmlOpen String [(String, String)]
          | XmlClose String
@@ -152,21 +152,12 @@ doc' = mdo
         line <- manyUntil eol anyChar
         return $ eol *> char ' ' *> fmap CodeLine line
 
-    -- magic words
-    magicWord <- do
-        let theWord = T.pack <$> many alphaNum
-        body <- T.pack <$*> manyUntil (text_ "}}") anyChar
-        return $ pure MagicWord <*  text_ "{{" <* optional (char_ '#')
-                                <*> theWord <* char_ ':'
-                                <*> body <* text "}}"
-
-    -- templates
-    template <- do
-        let templateEnd = text_ "}}"
-                       <> char_ '|'
-                       <> (eol *> spaces *> (text_ "}}"))
-                       <> (eol *> spaces *> (char_ '|'))
-        templateName <- T.strip . T.pack <$*> manyUntil (templateEnd <> eol) anyChar
+    -- Common to templates and magic words
+    let templateEnd = text_ "}}"
+                    <> char_ '|'
+                    <> (eol *> spaces *> (text_ "}}"))
+                    <> (eol *> spaces *> (char_ '|'))
+    templateParts <- do
         value <- manyUntil templateEnd templateBody
         part <- do
             key <- T.strip . T.pack <$*> manyUntil (text "=" <> text "|" <> text "}}") anyChar
@@ -174,7 +165,19 @@ doc' = mdo
                               <*> option Nothing (Just <$> key <* char '=' <* spaces)
                               <*> value <* optional eol
           :: PM s (P s (Maybe T.Text, [Doc]))
-        templateParts <- manyUntil (spaces *> text "}}") part
+        manyUntil (spaces *> text "}}") part
+
+    -- magic words
+    magicWord <- do
+        let theWord = T.pack <$> many alphaNum
+        body <- T.pack <$*> manyUntil (text_ "}}") anyChar
+        return $ pure MagicWord <*  text_ "{{" <* optional (char_ '#')
+                                <*> theWord <* char_ ':'
+                                <*> templateParts <* spaces <* text "}}"
+
+    -- templates
+    template <- do
+        templateName <- T.strip . T.pack <$*> manyUntil (templateEnd <> eol) anyChar
         -- drop comments after template name
         let comments = void (comment *> eol *> comment) <|> (comment *> spaces)
         return $ pure Template <*  text "{{"
