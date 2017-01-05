@@ -1,4 +1,4 @@
-Heading 2 "Hello World"
+Heading 2 [Text "Hello World"]
 Text "This is a simple example "
 Italic [Text "Document"]
 Text "."
@@ -18,7 +18,7 @@ Text "Here is a paragraph "
 Comment " and a comment "
 Text " in the middle."
 NewPara
-Heading 1 "A template"
+Heading 1 [Text "A template"]
 NewPara
 Template "Main article" [(Nothing,[Text "hel"])]
 NewPara
@@ -46,7 +46,7 @@ XmlOpen "ref" []
 Template "Cite book" [(Just "first",[Text "George C."]),(Just "last",[Text "Kohn"]),(Just "title",[Text "Encyclopedia of plague and pestilence: from ancient times to the present"]),(Just "url",[Text "https://books.google.com/books?id=tzRwRmb09rgC&pg=PA373&dq#v=onepage&q=&f=false"]),(Just "publisher",[Text "Infobase Publishing"]),(Just "year",[Text "2008"]),(Just "pages",[Text "373\8211\&374"]),(Just "isbn",[Text "0-8160-6935-2"])]
 XmlClose "ref"
 NewPara
-Heading 2 "And some links"
+Heading 2 [Text "And some links"]
 NewPara
 Text "Here is "
 InternalLink (PageName {getPageName = "a link"}) []

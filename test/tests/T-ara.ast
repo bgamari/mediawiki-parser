@@ -1,4 +1,4 @@
-Heading 3 "Timeline"
+Heading 3 [Text "Timeline"]
 XmlOpen "timeline" []
 Text "ImageSize   = width:1000 height:300PlotArea   = width:600 height:250 left:75 bottom:20Alignbars   = justifyDateFormat   = mm/dd/yyyyPeriod   = from:07/29/2009 till:2017TimeAxis   = orientation:horizontal format:yyyy"
 NewPara
