@@ -30,10 +30,11 @@ newtype Url = Url String
 data Doc = Text !String
          | Char !Char
          | Comment !String
-         | Heading !Int !String
-         | InternalLink !PageName ![[Doc]]
+         | Heading !Int [Doc]
+         | InternalLink !PageName [[Doc]]
          | ExternalLink !Url (Maybe String)
          | Template !T.Text [(Maybe T.Text, [Doc])]
+         | MagicWord !T.Text !T.Text
          | XmlOpenClose String [(String, String)]
          | XmlOpen String [(String, String)]
          | XmlClose String
@@ -88,6 +89,12 @@ infixl 4 <$*>
 doc' :: forall s. PM s (P s Doc)
 doc' = mdo
     -- headings
+    let heading :: Int -> PM s (P s Doc)
+        heading n = do
+            let marker = replicateM_ n (char '=')
+            fmap (Heading n) . ((eol <> bof) *>)
+              <$> manyBetween' (marker *> spaces) wikiText (spaces *> marker)
+
     headings <- mapM heading [6,5..1]
 
     -- formatting
@@ -145,6 +152,14 @@ doc' = mdo
         line <- manyUntil eol anyChar
         return $ eol *> char ' ' *> fmap CodeLine line
 
+    -- magic words
+    magicWord <- do
+        let theWord = T.pack <$> many alphaNum
+        body <- T.pack <$*> manyUntil (text_ "}}") anyChar
+        return $ pure MagicWord <*  text_ "{{" <* optional (char_ '#')
+                                <*> theWord <* char_ ':'
+                                <*> body <* text "}}"
+
     -- templates
     template <- do
         let templateEnd = text_ "}}"
@@ -172,7 +187,7 @@ doc' = mdo
         unquotedValue <- manyUntil (char '>' <> space) anyChar
         quotedValue <- manyUntil (char '"') anyChar
         let value = (char '"' *> quotedValue <* char '"') <|> unquotedValue
-        return $ pure (,) <*> key <* spaces <* char '='
+        return $ pure (,) <*> key <* spaces <* char '=' <* spaces
                           <*> value <* spaces
     xmlAttrs <- manyUntil (char_ '>' <> text_ "/>") xmlAttr
     tagName <- manyUntil (char_ '>' <> text_ "/>" <> void space) anyChar
@@ -204,7 +219,8 @@ doc' = mdo
     -- See https://www.mediawiki.org/wiki/Parser_2011/Stage_1:_Formal_grammar
     wikiText <- newRule
         $ comment // noWiki // table
-        // template // choice headings // list // hrule // formatting
+        // magicWord // template
+        // choice headings // list // hrule // formatting
         // codeLine
         // xmlish // image // link // table
         // (eol *> matches eol *> pure NewPara)
@@ -215,14 +231,6 @@ doc' = mdo
     let aDoc = wikiText
     return aDoc
 
-heading :: Int -> PM s (P s Doc)
-heading n = mdo
-    let marker = replicateM_ n (char '=')
-    comment <- manyBetween' (text "<!--") anyChar (text "-->")
-    let headerChar = (comment *> pure Nothing) <|> fmap Just anyChar
-    fmap (Heading n . catMaybes) . ((eol <> bof) *>)
-       <$> manyBetween' (marker *> spaces) headerChar (spaces *> marker)
-
 spaces :: P s ()
 spaces = void $ many space
 
@@ -232,6 +240,7 @@ cleanup = go []
     go acc (Text s : xs)            = go (reverse s ++ acc) xs
     go acc (Char '\n' : xs)         = go acc xs
     go acc (Char c : xs)            = go (c : acc) xs
+    go []  (Heading n ds : xs)      = Heading n (cleanup ds) : go [] xs
     go []  (BoldItalic ds : xs)     = BoldItalic (cleanup ds) : go [] xs
     go []  (Bold ds : xs)           = Bold (cleanup ds) : go [] xs
     go []  (Italic ds : xs)         = Italic (cleanup ds) : go [] xs
