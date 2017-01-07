@@ -35,9 +35,9 @@ data Doc = Text !String
          | ExternalLink !Url (Maybe String)
          | Template !T.Text [(Maybe T.Text, [Doc])]
          | MagicWord !T.Text ![(Maybe T.Text, [Doc])]
-         | XmlOpenClose String [(String, String)]
-         | XmlOpen String [(String, String)]
-         | XmlClose String
+         | XmlOpenClose T.Text [(String, String)]
+         | XmlOpen T.Text [(String, String)]
+         | XmlClose T.Text
          | BoldItalic [Doc]
          | Bold [Doc]
          | Italic [Doc]
@@ -193,7 +193,7 @@ doc' = mdo
         return $ pure (,) <*> key <* spaces <* char '=' <* spaces
                           <*> value <* spaces
     xmlAttrs <- manyUntil (char_ '>' <> text_ "/>") xmlAttr
-    tagName <- manyUntil (char_ '>' <> text_ "/>" <> void space) anyChar
+    tagName <- T.pack <$*> manyUntil (char_ '>' <> text_ "/>" <> void space) anyChar
     xmlOpen <-
         return $ pure XmlOpen <* char '<'
                               <*> tagName <* spaces
