@@ -155,8 +155,8 @@ doc' = mdo
     -- Common to templates and magic words
     let templateEnd = text_ "}}"
                     <> char_ '|'
-                    <> (eol *> spaces *> (text_ "}}"))
-                    <> (eol *> spaces *> (char_ '|'))
+                    <> (eol *> spaces *> text_ "}}")
+                    <> (eol *> spaces *> char_ '|')
     templateParts <- do
         value <- manyUntil templateEnd templateBody
         part <- do
