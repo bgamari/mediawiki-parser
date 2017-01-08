@@ -1,25 +1,29 @@
-Heading 3 [Text "Timeline"]
-XmlOpen "timeline" []
-Text "ImageSize   = width:1000 height:300PlotArea   = width:600 height:250 left:75 bottom:20Alignbars   = justifyDateFormat   = mm/dd/yyyyPeriod   = from:07/29/2009 till:2017TimeAxis   = orientation:horizontal format:yyyy"
-NewPara
-Text "Colors ="
-CodeLine "id:a value:rgb(1,0,0) legend:FirstGeneration"
-CodeLine "id:b value:rgb(1,0.5,0) legend:SecondGeneration"
-CodeLine "id:c value:rgb(1,1,0) legend:ThirdGeneration"
-CodeLine "id:d value:rgb(0,1,0) legend:FourthGeneration"
-CodeLine "id:e value:rgb(0,0,1) legend:FifthGeneration"
-NewPara
-Text "Legend = orientation:horizontal position:bottomScaleMajor = unit:year increment:1 start:2010 gridcolor:black"
-NewPara
-Text "PlotData ="
-CodeLine "color:blue width:7 textcolor:black align:left anchor:from"
-CodeLine "bar:Boram   from:start till:end Color:a"
-CodeLine "bar:Eunjung   from:start till:end Color:a"
-CodeLine "bar:Hyomin   from:start till:end Color:a"
-CodeLine "bar:Jiyeon   from:start till:end Color:a"
-CodeLine "bar:Qri   from:start till:end Color:a"
-CodeLine "bar:Soyeon   from:start till:end Color:a"
-CodeLine "bar:Hwayoung   from:12/03/2010 till:07/30/2012 Color:b"
-CodeLine "bar:Dani   from:05/30/2012 till:07/03/2012 Color:c"
-CodeLine "bar:Areum  from:06/14/2012 till:07/10/2013 Color:c"
-XmlClose "timeline"
+[ Heading 3 [ Text "Timeline" ]
+, XmlOpen "timeline" []
+, Text
+    "ImageSize   = width:1000 height:300PlotArea   = width:600 height:250 left:75 bottom:20Alignbars   = justifyDateFormat   = mm/dd/yyyyPeriod   = from:07/29/2009 till:2017TimeAxis   = orientation:horizontal format:yyyy"
+, NewPara
+, Text "Colors ="
+, CodeLine "id:a value:rgb(1,0,0) legend:FirstGeneration"
+, CodeLine "id:b value:rgb(1,0.5,0) legend:SecondGeneration"
+, CodeLine "id:c value:rgb(1,1,0) legend:ThirdGeneration"
+, CodeLine "id:d value:rgb(0,1,0) legend:FourthGeneration"
+, CodeLine "id:e value:rgb(0,0,1) legend:FifthGeneration"
+, NewPara
+, Text
+    "Legend = orientation:horizontal position:bottomScaleMajor = unit:year increment:1 start:2010 gridcolor:black"
+, NewPara
+, Text "PlotData ="
+, CodeLine
+    "color:blue width:7 textcolor:black align:left anchor:from"
+, CodeLine "bar:Boram   from:start till:end Color:a"
+, CodeLine "bar:Eunjung   from:start till:end Color:a"
+, CodeLine "bar:Hyomin   from:start till:end Color:a"
+, CodeLine "bar:Jiyeon   from:start till:end Color:a"
+, CodeLine "bar:Qri   from:start till:end Color:a"
+, CodeLine "bar:Soyeon   from:start till:end Color:a"
+, CodeLine "bar:Hwayoung   from:12/03/2010 till:07/30/2012 Color:b"
+, CodeLine "bar:Dani   from:05/30/2012 till:07/03/2012 Color:c"
+, CodeLine "bar:Areum  from:06/14/2012 till:07/10/2013 Color:c"
+, XmlClose "timeline"
+]

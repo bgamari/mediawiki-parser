@@ -1,64 +1,144 @@
-Heading 2 [Text "Hello World"]
-Text "This is a simple example "
-Italic [Text "Document"]
-Text "."
-NewPara
-BulletList 1 [Text "hello ",Bold [Italic [Text "world"],Text " turtle"],Text "'s"]
-BulletList 2 [Text "oops"]
-NewPara
-CodeLine "int main() {"
-CodeLine "  printf();"
-CodeLine "}"
-NewPara
-Text "Here is a paragraph, all on its own"
-NewPara
-Comment " How about a comment "
-NewPara
-Text "Here is a paragraph "
-Comment " and a comment "
-Text " in the middle."
-NewPara
-Heading 1 [Text "A template"]
-NewPara
-Template "Main article" [(Nothing,[Text "hel"])]
-NewPara
-XmlOpen "ref" [("name","stein")]
-Template "cite book" [(Just "last",[Text "Stein"])]
-XmlClose "ref"
-NewPara
-XmlOpen "ref" [("name","laidentidadandaluza")]
-Template "cite book" [(Just "last",[Text "Dom\237nguez Ortiz"]),(Just "first",[Text "Antonio"]),(Just "title",[Text "La identidad andaluza"]),(Just "year",[Text "1976"]),(Just "language",[Text "Spanish"]),(Just "publisher",[Text "Universidad de Granada"]),(Just "location",[Text "Granada Puzada"])]
-XmlClose "ref"
-NewPara
-Text "And Another "
-XmlOpenClose "ref" [("name","tertiarization")]
-XmlOpen "ref" []
-Template "cite book" [(Just "last",[Text "Delgado Cabeza"]),(Just "first",[Text "Manuel"]),(Just "title",[Text "Dependencia y marginaci\243n de la econom\237a andaluza"]),(Just "year",[Text "1981"]),(Just "publisher",[Text "Publicaciones del Monte de Piedad, Caja de Ahorros"]),(Just "location",[Text "C\243rdoba"]),(Just "isbn",[Text "84-7231-613-0"]),(Just "language",[Text "Spanish"])]
-XmlClose "ref"
-NewPara
-Template "about" [(Nothing,[Text "the ",InternalLink (PageName {getPageName = "autonomous communities of Spain"}) [[Text "autonomous region"]],Text " of modern Spain"]),(Nothing,[Text "the medieval ",InternalLink (PageName {getPageName = "Islamic state (government)"}) [[Text "Islamic state"]],Text " which covered most of Iberia"]),(Nothing,[Text "Al-Andalus"]),(Nothing,[Text "other uses"])]
-Template "Use dmy dates" [(Just "date",[Text "October 2012"])]
-NewPara
-Template "Infobox settlement" [(Just "website",[Template "URL" [(Nothing,[Text "http://www.juntadeandalucia.es"])]]),(Just "footnotes",[])]
-NewPara
-Text "M\225laga and Seville.\""
-XmlOpen "ref" []
-Template "Cite book" [(Just "first",[Text "George C."]),(Just "last",[Text "Kohn"]),(Just "title",[Text "Encyclopedia of plague and pestilence: from ancient times to the present"]),(Just "url",[Text "https://books.google.com/books?id=tzRwRmb09rgC&pg=PA373&dq#v=onepage&q=&f=false"]),(Just "publisher",[Text "Infobase Publishing"]),(Just "year",[Text "2008"]),(Just "pages",[Text "373\8211\&374"]),(Just "isbn",[Text "0-8160-6935-2"])]
-XmlClose "ref"
-NewPara
-Heading 2 [Text "And some links"]
-NewPara
-Text "Here is "
-InternalLink (PageName {getPageName = "a link"}) []
-Text ". And a "
-InternalLink (PageName {getPageName = "link"}) [[Text "with"],[Text "some attributes"]]
-Text "."
-NewPara
-Text "How about an "
-ExternalLink (Url "http://www.kernel.org/hi") (Just "")
-Text " external link."
-NewPara
-Text "And a "
-ExternalLink (Url "http://www.kernel.org/hello") (Just "named external")
-Text " link."
-NewPara
+[ Heading 2 [ Text "Hello World" ]
+, Text "This is a simple example "
+, Italic [ Text "Document" ]
+, Text "."
+, NewPara
+, BulletList
+    1
+    [ Text "hello "
+    , Bold [ Italic [ Text "world" ] , Text " turtle" ]
+    , Text "'s"
+    ]
+, BulletList 2 [ Text "oops" ]
+, NewPara
+, CodeLine "int main() {"
+, CodeLine "  printf();"
+, CodeLine "}"
+, NewPara
+, Text "Here is a paragraph, all on its own"
+, NewPara
+, Comment " How about a comment "
+, NewPara
+, Text "Here is a paragraph "
+, Comment " and a comment "
+, Text " in the middle."
+, NewPara
+, Heading 1 [ Text "A template" ]
+, NewPara
+, Template "Main article" [ ( Nothing , [ Text "hel" ] ) ]
+, NewPara
+, XmlOpen "ref" [ ( "name" , "stein" ) ]
+, Template "cite book" [ ( Just "last" , [ Text "Stein" ] ) ]
+, XmlClose "ref"
+, NewPara
+, XmlOpen "ref" [ ( "name" , "laidentidadandaluza" ) ]
+, Template
+    "cite book"
+    [ ( Just "last" , [ Text "Dom\237nguez Ortiz" ] )
+    , ( Just "first" , [ Text "Antonio" ] )
+    , ( Just "title" , [ Text "La identidad andaluza" ] )
+    , ( Just "year" , [ Text "1976" ] )
+    , ( Just "language" , [ Text "Spanish" ] )
+    , ( Just "publisher" , [ Text "Universidad de Granada" ] )
+    , ( Just "location" , [ Text "Granada Puzada" ] )
+    ]
+, XmlClose "ref"
+, NewPara
+, Text "And Another "
+, XmlOpenClose "ref" [ ( "name" , "tertiarization" ) ]
+, XmlOpen "ref" []
+, Template
+    "cite book"
+    [ ( Just "last" , [ Text "Delgado Cabeza" ] )
+    , ( Just "first" , [ Text "Manuel" ] )
+    , ( Just "title"
+      , [ Text "Dependencia y marginaci\243n de la econom\237a andaluza"
+        ]
+      )
+    , ( Just "year" , [ Text "1981" ] )
+    , ( Just "publisher"
+      , [ Text "Publicaciones del Monte de Piedad, Caja de Ahorros" ]
+      )
+    , ( Just "location" , [ Text "C\243rdoba" ] )
+    , ( Just "isbn" , [ Text "84-7231-613-0" ] )
+    , ( Just "language" , [ Text "Spanish" ] )
+    ]
+, XmlClose "ref"
+, NewPara
+, Template
+    "about"
+    [ ( Nothing
+      , [ Text "the "
+        , InternalLink
+            PageName { getPageName = "autonomous communities of Spain" }
+            [ [ Text "autonomous region" ] ]
+        , Text " of modern Spain"
+        ]
+      )
+    , ( Nothing
+      , [ Text "the medieval "
+        , InternalLink
+            PageName { getPageName = "Islamic state (government)" }
+            [ [ Text "Islamic state" ] ]
+        , Text " which covered most of Iberia"
+        ]
+      )
+    , ( Nothing , [ Text "Al-Andalus" ] )
+    , ( Nothing , [ Text "other uses" ] )
+    ]
+, Template
+    "Use dmy dates" [ ( Just "date" , [ Text "October 2012" ] ) ]
+, NewPara
+, Template
+    "Infobox settlement"
+    [ ( Just "website"
+      , [ Template
+            "URL" [ ( Nothing , [ Text "http://www.juntadeandalucia.es" ] ) ]
+        ]
+      )
+    , ( Just "footnotes" , [] )
+    ]
+, NewPara
+, Text "M\225laga and Seville.\""
+, XmlOpen "ref" []
+, Template
+    "Cite book"
+    [ ( Just "first" , [ Text "George C." ] )
+    , ( Just "last" , [ Text "Kohn" ] )
+    , ( Just "title"
+      , [ Text
+            "Encyclopedia of plague and pestilence: from ancient times to the present"
+        ]
+      )
+    , ( Just "url"
+      , [ Text
+            "https://books.google.com/books?id=tzRwRmb09rgC&pg=PA373&dq#v=onepage&q=&f=false"
+        ]
+      )
+    , ( Just "publisher" , [ Text "Infobase Publishing" ] )
+    , ( Just "year" , [ Text "2008" ] )
+    , ( Just "pages" , [ Text "373\8211\&374" ] )
+    , ( Just "isbn" , [ Text "0-8160-6935-2" ] )
+    ]
+, XmlClose "ref"
+, NewPara
+, Heading 2 [ Text "And some links" ]
+, NewPara
+, Text "Here is "
+, InternalLink PageName { getPageName = "a link" } []
+, Text ". And a "
+, InternalLink
+    PageName { getPageName = "link" }
+    [ [ Text "with" ] , [ Text "some attributes" ] ]
+, Text "."
+, NewPara
+, Text "How about an "
+, ExternalLink (Url "http://www.kernel.org/hi") (Just "")
+, Text " external link."
+, NewPara
+, Text "And a "
+, ExternalLink
+    (Url "http://www.kernel.org/hello") (Just "named external")
+, Text " link."
+, NewPara
+]

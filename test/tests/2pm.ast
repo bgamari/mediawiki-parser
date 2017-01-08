@@ -1,1 +1,3 @@
-Table " class=\"wikitable\"\n|-\n| Hello\n{{hidden|Location|\n# 20 April <br> <small>(Tokyo Dome)</small> Tokyo\n# 21 April <br> <small>(Tokyo Dome)</small> Tokyo\n|}}\n| World\n"
+[ Table
+    " class=\"wikitable\"\n|-\n| Hello\n{{hidden|Location|\n# 20 April <br> <small>(Tokyo Dome)</small> Tokyo\n# 21 April <br> <small>(Tokyo Dome)</small> Tokyo\n|}}\n| World\n"
+]

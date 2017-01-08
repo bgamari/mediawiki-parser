@@ -1,11 +1,49 @@
-XmlOpen "ref" [("name","Hennessey")]
-ExternalLink (Url "https://books.google.com/books/about/From_jazz_to_swing_black_jazz_musicians.html?id=nvskngEACAAJ") (Just "Hennessey, Thomas, ''From Jazz to Swing: Black Jazz Musicians and Their Music, 1917-1935")
-Italic [Text ". Ph.D. dissertation, Northwestern University, 1973, pp. 470-473.",XmlClose "ref",Text " Jazz is characterized by ",InternalLink (PageName {getPageName = "swung note"}) [[Text "swing"]],Text " and ",InternalLink (PageName {getPageName = "blue note"}) [],Text "s, ",InternalLink (PageName {getPageName = "Call_and_response_(music)"}) [[Text "call and response vocals"]],Text ", ",InternalLink (PageName {getPageName = "polyrhythm"}) [],Text "s and ",InternalLink (PageName {getPageName = "improvisation"}) [],Text ". Jazz has roots in ",InternalLink (PageName {getPageName = "Music_of_Africa"}) [[Text "West African cultural and musical expression"]],Text ", and in African American music traditions including ",InternalLink (PageName {getPageName = "blues"}) [],Text " and ",InternalLink (PageName {getPageName = "ragtime"}) [],Text ", as well as European military band music.",XmlOpen "ref" [],Text "Ferris, Jean (1993) "]
-Text "America's Musical Landscape''. Brown and Benchmark. ISBN 0697125165. pp. 228, 233"
-XmlClose "ref"
-Text " Although the foundation of jazz is deeply rooted within the black experience of the United States, different cultures have contributed their own experience and styles to the art form as well. Intellectuals around the world have hailed jazz as \"one of America's original art forms\"."
-XmlOpen "ref" []
-Text "Starr, Larry, and Christopher Waterman. "
-ExternalLink (Url "http://iipdigital.usembassy.gov/st/english/publication/2008/08/20080812212457eaifas0.7410852.html#axzz3QeZKNVtc") (Just "\"Popular Jazz and Swing: America's Original Art Form.\"")
-Text " IIP Digital. Oxford University Press, 26 July 2008."
-XmlClose "ref"
+[ XmlOpen "ref" [ ( "name" , "Hennessey" ) ]
+, ExternalLink
+    (Url
+       "https://books.google.com/books/about/From_jazz_to_swing_black_jazz_musicians.html?id=nvskngEACAAJ")
+    (Just
+       "Hennessey, Thomas, ''From Jazz to Swing: Black Jazz Musicians and Their Music, 1917-1935")
+, Italic
+    [ Text
+        ". Ph.D. dissertation, Northwestern University, 1973, pp. 470-473."
+    , XmlClose "ref"
+    , Text " Jazz is characterized by "
+    , InternalLink
+        PageName { getPageName = "swung note" } [ [ Text "swing" ] ]
+    , Text " and "
+    , InternalLink PageName { getPageName = "blue note" } []
+    , Text "s, "
+    , InternalLink
+        PageName { getPageName = "Call_and_response_(music)" }
+        [ [ Text "call and response vocals" ] ]
+    , Text ", "
+    , InternalLink PageName { getPageName = "polyrhythm" } []
+    , Text "s and "
+    , InternalLink PageName { getPageName = "improvisation" } []
+    , Text ". Jazz has roots in "
+    , InternalLink
+        PageName { getPageName = "Music_of_Africa" }
+        [ [ Text "West African cultural and musical expression" ] ]
+    , Text ", and in African American music traditions including "
+    , InternalLink PageName { getPageName = "blues" } []
+    , Text " and "
+    , InternalLink PageName { getPageName = "ragtime" } []
+    , Text ", as well as European military band music."
+    , XmlOpen "ref" []
+    , Text "Ferris, Jean (1993) "
+    ]
+, Text
+    "America's Musical Landscape''. Brown and Benchmark. ISBN 0697125165. pp. 228, 233"
+, XmlClose "ref"
+, Text
+    " Although the foundation of jazz is deeply rooted within the black experience of the United States, different cultures have contributed their own experience and styles to the art form as well. Intellectuals around the world have hailed jazz as \"one of America's original art forms\"."
+, XmlOpen "ref" []
+, Text "Starr, Larry, and Christopher Waterman. "
+, ExternalLink
+    (Url
+       "http://iipdigital.usembassy.gov/st/english/publication/2008/08/20080812212457eaifas0.7410852.html#axzz3QeZKNVtc")
+    (Just "\"Popular Jazz and Swing: America's Original Art Form.\"")
+, Text " IIP Digital. Oxford University Press, 26 July 2008."
+, XmlClose "ref"
+]

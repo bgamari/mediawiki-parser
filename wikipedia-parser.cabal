@@ -49,4 +49,10 @@ test-suite tests
   type:                exitcode-stdio-1.0
   hs-source-dirs:      test
   default-language:    Haskell2010
-  build-depends:      base, filepath, text, mediawiki-parser, tasty, tasty-silver
+  build-depends:       base,
+                       filepath,
+                       text,
+                       mediawiki-parser,
+                       pretty-show,
+                       tasty,
+                       tasty-silver

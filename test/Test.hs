@@ -3,6 +3,7 @@ import Test.Tasty hiding (defaultMain)
 import Test.Tasty.Silver
 import Test.Tasty.Silver.Interactive
 import System.FilePath
+import Text.Show.Pretty
 import qualified Data.Text as T
 
 main :: IO ()
@@ -15,4 +16,4 @@ fileTest path = goldenVsAction testName golden (parseIt <$> readFile path) T.pac
   where
     testName = takeBaseName path
     golden = replaceExtension path "ast"
-    parseIt = either ("fail: "++) (unlines . map show) . parse
+    parseIt = either ("fail: "++) ppShow . parse
