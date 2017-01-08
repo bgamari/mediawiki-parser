@@ -132,7 +132,7 @@ doc' = mdo
         pageName <- manyUntil linkEnd anyChar
         attrValue <- manyUntil linkEnd aDoc
         attributes <- manyUntil (text "]]") (spaces *> char '|' *> attrValue)
-        return $ pure InternalLink <*  text "[["
+        return $ pure InternalLink <*  text "[[" <* spaces
                                    <*> fmap (PageName . T.pack) pageName
                                    <*> attributes <* text "]]"
     externalLink <- do
@@ -140,7 +140,7 @@ doc' = mdo
         url <- manyUntil (char ']' <> space) anyChar
         let f proto r = ExternalLink $ Url $ proto++"://"++r
         anchor <- manyUntil (char ']') anyChar
-        return $ pure f <*  char '['
+        return $ pure f <*  char '[' <* spaces
                         <*> scheme
                         <*> url
                         <*> option Nothing (pure Just <* spaces <*> anchor)

@@ -1,0 +1,13 @@
+[ InternalLink
+    PageName { getPageName = "File:FA Community Shield.JPG" }
+    [ [ Text "thumb" ]
+    , [ Text "The "
+      , InternalLink PageName { getPageName = "FA Community Shield" } []
+      , Text " is contested by the champions of the "
+      , InternalLink PageName { getPageName = "Premier League" } []
+      , Text " and "
+      , InternalLink PageName { getPageName = "FA Cup" } []
+      ]
+    ]
+, Text " "
+]
