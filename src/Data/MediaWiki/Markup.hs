@@ -144,7 +144,7 @@ doc' = mdo
                         <*> scheme
                         <*> url
                         <*> option Nothing (pure Just <* spaces <*> anchor)
-                        <* char ']'
+                        <*  char ']'
     link <- newRule $ internalLink <> externalLink
 
     -- code line
@@ -244,8 +244,9 @@ doc' = mdo
     let aDoc = wikiText
     return aDoc
 
+-- | Eat whitespace (but not newlines!)
 spaces :: P s ()
-spaces = void $ many space
+spaces = void $ many $ char ' ' // char '\t'
 
 cleanup :: [Doc] -> [Doc]
 cleanup = go []
