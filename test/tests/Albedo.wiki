@@ -1,0 +1,8 @@
+===White-sky and black-sky albedo===
+It has been shown that for many applications involving terrestrial albedo, the albedo at a particular [[solar zenith angle]] ''θ''<sub>''i''</sub> can reasonably be approximated by the proportionate sum of two terms: the directional-hemispherical reflectance at that solar zenith angle, <math>{\bar \alpha(\theta_i)}</math>, and the bi-hemispherical reflectance, <math>\bar{ \bar \alpha}</math> the proportion concerned being defined as the proportion of diffuse illumination <math>{D}</math>.
+
+Albedo <math>{\alpha}</math> can then be given as:
+
+:<math>{\alpha}= (1-D) \bar \alpha(\theta_i) + D \bar{ \bar \alpha}.</math>
+
+[[Directional-hemispherical reflectance]] is sometimes referred to as black-sky albedo and [[bi-hemispherical reflectance]] as white-sky albedo. These terms are important because they allow the albedo to be calculated for any given illumination conditions from a knowledge of the intrinsic properties of the surface.<ref name="BlueskyAlbedo"/>
