@@ -1,0 +1,25 @@
+Verify that infoboxes containing lists parse (see #26)
+
+{{Infobox comic book title
+| hello={{list|
+* turtle
+* turtle
+* turtle
+}}
+| jello=42
+}}
+hello
+
+{{Infobox comic book title
+| hello={{list|
+* turtle
+* turtle
+* turtle}}
+| jello=42
+}}
+
+This should parse into a list containing a text and a template
+* steak {{beef}}
+
+This will parse slightly oddly due to how we fixed #26.
+* bird }} hello

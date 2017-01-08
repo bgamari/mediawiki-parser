@@ -110,7 +110,7 @@ doc' = mdo
     -- lists
     let listLike :: (Int -> [Doc] -> Doc) -> Char -> PM s (P s Doc)
         listLike constr bullet = do
-            body <- manyUntil (eol <> eof) aDoc
+            body <- manyUntil (text_ "}}" <> eol <> eof) aDoc
             let p = pure constr
                     <*  eol
                     <*> fmap length (many1 $ char bullet)
