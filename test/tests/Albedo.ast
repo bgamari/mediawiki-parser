@@ -9,91 +9,22 @@
 , XmlClose "sub"
 , Text
     " can reasonably be approximated by the proportionate sum of two terms: the directional-hemispherical reflectance at that solar zenith angle, "
-, XmlOpen "math" []
-, Text "{\\bar \\alpha(\\theta_i)}"
-, XmlClose "math"
+, Math "{\\bar \\alpha(\\theta_i)}"
 , Text ", and the bi-hemispherical reflectance, "
-, XmlOpen "math" []
-, Text "\\bar{ \\bar \\alpha}"
-, XmlClose "math"
+, Math "\\bar{ \\bar \\alpha}"
 , Text
     " the proportion concerned being defined as the proportion of diffuse illumination "
-, XmlOpen "math" []
-, Text "{D}"
-, XmlClose "math"
+, Math "{D}"
 , Text "."
 , NewPara
 , Text "Albedo "
-, XmlOpen "math" []
-, Text "{\\alpha}"
-, XmlClose "math"
+, Math "{\\alpha}"
 , Text " can then be given as:"
 , NewPara
 , UnmarkedList
     1
-    [ XmlOpen "math" []
-    , Char '{'
-    , Char '\\'
-    , Char 'a'
-    , Char 'l'
-    , Char 'p'
-    , Char 'h'
-    , Char 'a'
-    , Char '}'
-    , Char '='
-    , Char ' '
-    , Char '('
-    , Char '1'
-    , Char '-'
-    , Char 'D'
-    , Char ')'
-    , Char ' '
-    , Char '\\'
-    , Char 'b'
-    , Char 'a'
-    , Char 'r'
-    , Char ' '
-    , Char '\\'
-    , Char 'a'
-    , Char 'l'
-    , Char 'p'
-    , Char 'h'
-    , Char 'a'
-    , Char '('
-    , Char '\\'
-    , Char 't'
-    , Char 'h'
-    , Char 'e'
-    , Char 't'
-    , Char 'a'
-    , Char '_'
-    , Char 'i'
-    , Char ')'
-    , Char ' '
-    , Char '+'
-    , Char ' '
-    , Char 'D'
-    , Char ' '
-    , Char '\\'
-    , Char 'b'
-    , Char 'a'
-    , Char 'r'
-    , Char '{'
-    , Char ' '
-    , Char '\\'
-    , Char 'b'
-    , Char 'a'
-    , Char 'r'
-    , Char ' '
-    , Char '\\'
-    , Char 'a'
-    , Char 'l'
-    , Char 'p'
-    , Char 'h'
-    , Char 'a'
-    , Char '}'
-    , Char '.'
-    , XmlClose "math"
+    [ Math
+        "{\\alpha}= (1-D) \\bar \\alpha(\\theta_i) + D \\bar{ \\bar \\alpha}."
     ]
 , NewPara
 , InternalLink

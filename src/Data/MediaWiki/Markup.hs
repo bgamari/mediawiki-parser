@@ -35,6 +35,7 @@ data Doc = Text !String
          | ExternalLink !Url (Maybe String)
          | Template !T.Text [(Maybe T.Text, [Doc])]
          | MagicWord !T.Text ![(Maybe T.Text, [Doc])]
+         | Math !T.Text
          | XmlOpenClose T.Text [(String, String)]
          | XmlOpen T.Text [(String, String)]
          | XmlClose T.Text
@@ -184,6 +185,14 @@ doc' = mdo
                                <*> templateName <* many comments <* optional eol <* many comments
                                <*> templateParts <* spaces <* text "}}"
 
+    -- <math>
+    -- We sadly can't handle this as XML since math can look like a heading. See TimeValueOfMoney.wiki
+    math <- do
+        let open = char '<' *> spaces *> text "math" *> spaces *> char '>'
+            close = text "</"  *> spaces *> text "math" *> spaces *> char '>'
+        body <- fmap T.pack <$> manyUntil close anyChar
+        return $ fmap Math (open *> body <* close)
+
     -- XMLish
     xmlAttr <- do
         key <- manyUntil (char '=' <> space) anyChar
@@ -221,7 +230,7 @@ doc' = mdo
 
     -- See https://www.mediawiki.org/wiki/Parser_2011/Stage_1:_Formal_grammar
     wikiText <- newRule
-        $ comment // noWiki // table
+        $ comment // math // noWiki // table
         // magicWord // template
         // choice headings // list // hrule // formatting
         // codeLine

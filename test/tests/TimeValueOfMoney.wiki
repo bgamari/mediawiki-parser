@@ -1,0 +1,10 @@
+Example:
+:Investment ''P'' = $1000
+:Interest ''i'' = 6.90% Compounded Qtrly (4 Times in Year)
+:Tenure Years ''n'' = 5
+
+<math>
+= 1000 \times (1+0.069/4)^{({5\ yrs}\ \times\ 4\ {qtrs\ in\ a\ year} )}
+= 1000 \times (1+0.069/4)^{20}
+\approx 1407.84
+</math>
