@@ -38,6 +38,8 @@ instance Ord PageName where
 newtype Url = Url String
             deriving (Show, Eq, Ord, Generic)
 
+type TagName = T.Text
+
 data Doc = Text !String
          | Char !Char
          | Comment !String
@@ -47,9 +49,8 @@ data Doc = Text !String
          | Template !T.Text [(Maybe T.Text, [Doc])]
          | MagicWord !T.Text ![(Maybe T.Text, [Doc])]
          | Math !T.Text
-         | XmlOpenClose T.Text [(String, String)]
-         | XmlOpen T.Text [(String, String)]
-         | XmlClose T.Text
+         | XmlOpenClose TagName [(String, String)]
+         | XmlTag TagName [(String, String)] [Doc]
          | BoldItalic [Doc]
          | Bold [Doc]
          | Italic [Doc]
@@ -214,18 +215,23 @@ doc' = mdo
                           <*> value <* spaces
     xmlAttrs <- manyUntil (char_ '>' <> text_ "/>") xmlAttr
     tagName <- T.pack <$*> manyUntil (char_ '>' <> text_ "/>" <> void space) anyChar
-    xmlOpen <-
-        return $ pure XmlOpen <* char '<'
-                              <*> tagName <* spaces
-                              <*> xmlAttrs <* char '>'
-    xmlClose <-
-        return $ pure XmlClose <* text "</"
-                               <*> tagName <* spaces <* char '>'
+    xml <- do
+        let open :: P s (TagName, [(String, String)])
+            open = pure (,) <* char '<'
+                            <*> tagName <* spaces
+                            <*> xmlAttrs <* spaces <* char '>'
+            close = text "</" *> spaces *> tagName <* spaces <* char '>'
+        children <- manyUntil close aDoc
+        let pair :: P s ((TagName, [(String, String)]), [Doc], TagName)
+            pair = (,,) <$> open <*> children <*> close
+
+            toXml ((oTag, attrs), cs, _cTag) = XmlTag oTag attrs cs
+        return $ fmap toXml $ pair -- onlyIf pair (\((oTag, _), _, cTag) -> T.toCaseFold oTag == T.toCaseFold cTag)
     xmlOpenClose <-
         return $ pure XmlOpenClose <* text "<"
                                    <*> tagName <* spaces
                                    <*> xmlAttrs <* text "/>"
-    xmlish <- newRule $ xmlClose <> xmlOpen <> xmlOpenClose
+    xmlish <- newRule $ xml <> xmlOpenClose
 
     -- table
     table <- do
@@ -283,6 +289,7 @@ cleanup = go []
     go []  (Template n ds : xs)     = Template n (map (second cleanup) ds) : go [] xs
     go []  (InternalLink n ds : xs) = InternalLink n (map cleanup ds) : go [] xs
     go []  (NewPara : NewPara : xs) = go [] (NewPara : xs)
+    go []  (XmlTag tag attrs cs : xs) = XmlTag tag attrs (go [] cs) : go [] xs
     go []  (other : xs)             = other : go [] xs
     go []  []                       = []
     go acc xs                       = Text (reverse acc) : go [] xs

@@ -25,39 +25,41 @@
     , ( Just "mission_type" , [ Text "Manned lunar landing" ] )
     , ( Just "operator"
       , [ InternalLink PageName { getPageName = "NASA" } []
-        , XmlOpen "ref" [ ( "name" , "Orloff" ) ]
-        , Template
-            "cite book"
-            [ ( Just "last" , [ Text "Orloff " ] )
-            , ( Just "first" , [ Text "Richard W. " ] )
-            , ( Just "title"
-              , [ Text "Apollo by the Numbers: A Statistical Reference " ]
-              )
-            , ( Just "url"
-              , [ Text "http://history.nasa.gov/SP-4029/SP-4029.htm " ]
-              )
-            , ( Just "accessdate" , [ Text "June 12, 2013 " ] )
-            , ( Just "series" , [ Text "NASA History Series " ] )
-            , ( Just "origyear" , [ Text "First published 2000 " ] )
-            , ( Just "date" , [ Text "September 2004 " ] )
-            , ( Just "work"
-              , [ Text "NASA History Division, Office of Policy and Plans " ]
-              )
-            , ( Just "publisher"
-              , [ InternalLink PageName { getPageName = "NASA" } [] , Text " " ]
-              )
-            , ( Just "location" , [ Text "Washington, D.C. " ] )
-            , ( Just "isbn" , [ Text "0-16-050631-X " ] )
-            , ( Just "lccn" , [ Text "00061677 " ] )
-            , ( Just "id" , [ Text "NASA SP-2000-4029 " ] )
-            , ( Just "chapter" , [ Text "Table of Contents " ] )
-            , ( Just "chapterurl"
-              , [ Text
-                    "http://history.nasa.gov/SP-4029/Apollo_00g_Table_of_Contents.htm"
+        , XmlTag
+            "ref"
+            [ ( "name" , "Orloff" ) ]
+            [ Template
+                "cite book"
+                [ ( Just "last" , [ Text "Orloff " ] )
+                , ( Just "first" , [ Text "Richard W. " ] )
+                , ( Just "title"
+                  , [ Text "Apollo by the Numbers: A Statistical Reference " ]
+                  )
+                , ( Just "url"
+                  , [ Text "http://history.nasa.gov/SP-4029/SP-4029.htm " ]
+                  )
+                , ( Just "accessdate" , [ Text "June 12, 2013 " ] )
+                , ( Just "series" , [ Text "NASA History Series " ] )
+                , ( Just "origyear" , [ Text "First published 2000 " ] )
+                , ( Just "date" , [ Text "September 2004 " ] )
+                , ( Just "work"
+                  , [ Text "NASA History Division, Office of Policy and Plans " ]
+                  )
+                , ( Just "publisher"
+                  , [ InternalLink PageName { getPageName = "NASA" } [] , Text " " ]
+                  )
+                , ( Just "location" , [ Text "Washington, D.C. " ] )
+                , ( Just "isbn" , [ Text "0-16-050631-X " ] )
+                , ( Just "lccn" , [ Text "00061677 " ] )
+                , ( Just "id" , [ Text "NASA SP-2000-4029 " ] )
+                , ( Just "chapter" , [ Text "Table of Contents " ] )
+                , ( Just "chapterurl"
+                  , [ Text
+                        "http://history.nasa.gov/SP-4029/Apollo_00g_Table_of_Contents.htm"
+                    ]
+                  )
                 ]
-              )
             ]
-        , XmlClose "ref"
         ]
       )
     , ( Just "COSPAR_ID"
@@ -204,30 +206,32 @@
       )
     , ( Just "orbit_epoch"
       , [ Text "July 19, 1969, 21:44&nbsp;UTC"
-        , XmlOpen "ref" [ ( "name" , "orbit" ) ]
-        , Template
-            "cite web"
-            [ ( Just "url"
-              , [ Text
-                    "http://airandspace.si.edu/explore-and-learn/topics/apollo/as11/a11sum.htm "
+        , XmlTag
+            "ref"
+            [ ( "name" , "orbit" ) ]
+            [ Template
+                "cite web"
+                [ ( Just "url"
+                  , [ Text
+                        "http://airandspace.si.edu/explore-and-learn/topics/apollo/as11/a11sum.htm "
+                    ]
+                  )
+                , ( Just "title" , [ Text "Apollo 11 Mission Summary " ] )
+                , ( Just "publisher"
+                  , [ Text "Smithsonian National Air and Space Museum " ]
+                  )
+                , ( Just "work" , [ Text "The Apollo Program " ] )
+                , ( Just "accessdate" , [ Text "September 7, 2013 " ] )
+                , ( Just "deadurl" , [ Text "yes " ] )
+                , ( Just "archiveurl"
+                  , [ Text
+                        "https://web.archive.org/web/20130829082429/http://airandspace.si.edu/explore-and-learn/topics/apollo/as11/a11sum.htm "
+                    ]
+                  )
+                , ( Just "archivedate" , [ Text "August 29, 2013 " ] )
+                , ( Just "df" , [ Text "mdy " ] )
                 ]
-              )
-            , ( Just "title" , [ Text "Apollo 11 Mission Summary " ] )
-            , ( Just "publisher"
-              , [ Text "Smithsonian National Air and Space Museum " ]
-              )
-            , ( Just "work" , [ Text "The Apollo Program " ] )
-            , ( Just "accessdate" , [ Text "September 7, 2013 " ] )
-            , ( Just "deadurl" , [ Text "yes " ] )
-            , ( Just "archiveurl"
-              , [ Text
-                    "https://web.archive.org/web/20130829082429/http://airandspace.si.edu/explore-and-learn/topics/apollo/as11/a11sum.htm "
-                ]
-              )
-            , ( Just "archivedate" , [ Text "August 29, 2013 " ] )
-            , ( Just "df" , [ Text "mdy " ] )
             ]
-        , XmlClose "ref"
         ]
       )
     , ( Just "orbit_reference"
@@ -332,24 +336,26 @@
                     , ( Nothing , [ Text "23.47297" ] )
                     , ( Nothing , [ Text "E" ] )
                     ]
-                , XmlOpen "ref" []
-                , Template
-                    "cite web"
-                    [ ( Just "url"
-                      , [ Text
-                            "http://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html"
+                , XmlTag
+                    "ref"
+                    []
+                    [ Template
+                        "cite web"
+                        [ ( Just "url"
+                          , [ Text
+                                "http://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html"
+                            ]
+                          )
+                        , ( Just "title" , [ Text "Apollo Landing Site Coordinates" ] )
+                        , ( Just "publisher"
+                          , [ Text "US National Space Science Data Center" ]
+                          )
+                        , ( Just "first" , [ Text "Ed" ] )
+                        , ( Just "last" , [ Text "Grayzeck" ] )
+                        , ( Just "date" , [ Text "December 11, 2003" ] )
+                        , ( Just "accessdate" , [ Text "September 7, 2013" ] )
                         ]
-                      )
-                    , ( Just "title" , [ Text "Apollo Landing Site Coordinates" ] )
-                    , ( Just "publisher"
-                      , [ Text "US National Space Science Data Center" ]
-                      )
-                    , ( Just "first" , [ Text "Ed" ] )
-                    , ( Just "last" , [ Text "Grayzeck" ] )
-                    , ( Just "date" , [ Text "December 11, 2003" ] )
-                    , ( Just "accessdate" , [ Text "September 7, 2013" ] )
                     ]
-                , XmlClose "ref"
                 ]
               )
             , ( Just "sample_mass"

@@ -4,9 +4,7 @@
 , InternalLink PageName { getPageName = "solar zenith angle" } []
 , Text " "
 , Italic [ Text "\952" ]
-, XmlOpen "sub" []
-, Italic [ Text "i" ]
-, XmlClose "sub"
+, XmlTag "sub" [] [ Italic [ Text "i" ] ]
 , Text
     " can reasonably be approximated by the proportionate sum of two terms: the directional-hemispherical reflectance at that solar zenith angle, "
 , Math "{\\bar \\alpha(\\theta_i)}"
