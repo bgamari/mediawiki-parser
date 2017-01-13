@@ -2,9 +2,8 @@
 , Text
     "It has been shown that for many applications involving terrestrial albedo, the albedo at a particular "
 , InternalLink PageName { getPageName = "solar zenith angle" } []
-, Text " "
-, Italic [ Text "\952" ]
-, XmlTag "sub" [] [ Italic [ Text "i" ] ]
+, Text " ''\952''"
+, XmlTag "sub" [] [ Text "''i''" ]
 , Text
     " can reasonably be approximated by the proportionate sum of two terms: the directional-hemispherical reflectance at that solar zenith angle, "
 , Math "{\\bar \\alpha(\\theta_i)}"

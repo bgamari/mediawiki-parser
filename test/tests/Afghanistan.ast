@@ -24,8 +24,8 @@
         , Template
             "#tag:ref"
             [ ( Nothing
-              , [ Text "Other terms that have been used as demonyms are "
-                , Bold [ Text "Afghani" ]
+              , [ Text
+                    "Other terms that have been used as demonyms are '''Afghani'''"
                 , XmlTag
                     "ref"
                     []
@@ -42,9 +42,7 @@
                         (Just "Reference.com")
                     , Text " (Retrieved 13 November 2007)."
                     ]
-                , Text " and "
-                , Bold [ Text "Afghanistani" ]
-                , Text "."
+                , Text " and '''Afghanistani'''."
                 , XmlTag
                     "ref"
                     []

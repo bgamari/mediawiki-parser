@@ -1,14 +1,7 @@
 [ Heading 2 [ Text "Hello World" ]
-, Text "This is a simple example "
-, Italic [ Text "Document" ]
-, Text "."
+, Text "This is a simple example ''Document''."
 , NewPara
-, BulletList
-    1
-    [ Text "hello "
-    , Bold [ Italic [ Text "world" ] , Text " turtle" ]
-    , Text "'s"
-    ]
+, BulletList 1 [ Text "hello '''''world'' turtle''''s" ]
 , BulletList 2 [ Text "oops" ]
 , NewPara
 , CodeLine "int main() {"

@@ -249,7 +249,7 @@ doc' = mdo
     wikiText <- newRule
         $ comment // math // noWiki // table
         // magicWord // template
-        // choice headings // list // hrule // formatting
+        // choice headings // list // hrule -- // formatting
         // codeLine
         // xmlish // image // link // table
         // (eol *> matches eol *> pure NewPara)
@@ -259,7 +259,7 @@ doc' = mdo
     templateBody <- newRule
         $ comment // noWiki // table
         // magicWord // template
-        // choice headings // list // hrule // formatting
+        // choice headings // list // hrule -- // formatting
            -- not codeLine
         // xmlish // image // link // table
         // (eol *> matches eol *> pure NewPara)

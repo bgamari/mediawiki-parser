@@ -442,12 +442,12 @@
     , ( Just "crew_callsign"
       , [ Template
             "Unbulleted list"
-            [ ( Nothing , [ Text "CSM: " , Italic [ Text "Columbia" ] ] )
-            , ( Nothing , [ Text "LM: " , Italic [ Text "Eagle" ] ] )
+            [ ( Nothing , [ Text "CSM: ''Columbia''" ] )
+            , ( Nothing , [ Text "LM: ''Eagle''" ] )
             , ( Nothing
-              , [ Text "On surface: "
-                , Italic
-                    [ InternalLink PageName { getPageName = "Tranquility Base" } [] ]
+              , [ Text "On surface: ''"
+                , InternalLink PageName { getPageName = "Tranquility Base" } []
+                , Text "''"
                 ]
               )
             ]
@@ -485,8 +485,7 @@
       )
     ]
 , NewPara
-, Bold [ Text "Apollo 11" ]
-, Text " was the first "
+, Text "'''Apollo 11''' was the first "
 , InternalLink PageName { getPageName = "spaceflight" } []
 , Text " that "
 , InternalLink
@@ -501,9 +500,7 @@
 , InternalLink
     PageName { getPageName = "Apollo Lunar Module" }
     [ [ Text "lunar module" ] ]
-, Text " "
-, Italic [ Text "Eagle" ]
-, Text " on July 20, 1969, at 20:18 "
+, Text " ''Eagle'' on July 20, 1969, at 20:18 "
 , InternalLink
     PageName { getPageName = "Coordinated Universal Time" }
     [ [ Text "UTC" ] ]
@@ -523,10 +520,6 @@
 , InternalLink
     PageName { getPageName = "Apollo Command/Service Module" }
     [ [ Text "command module" ] ]
-, Text " "
-, Italic [ Text "Columbia" ]
 , Text
-    " alone in lunar orbit while they were on the Moon's surface. Armstrong and Aldrin spent just under a day on the lunar surface before rendezvousing with "
-, Italic [ Text "Columbia" ]
-, Text " in lunar orbit."
+    " ''Columbia'' alone in lunar orbit while they were on the Moon's surface. Armstrong and Aldrin spent just under a day on the lunar surface before rendezvousing with ''Columbia'' in lunar orbit."
 ]

@@ -34,9 +34,8 @@
 , XmlTag
     "ref"
     []
-    [ Text "Ferris, Jean (1993) "
-    , Italic [ Text "America's Musical Landscape" ]
-    , Text ". Brown and Benchmark. ISBN 0697125165. pp. 228, 233"
+    [ Text
+        "Ferris, Jean (1993) ''America's Musical Landscape''. Brown and Benchmark. ISBN 0697125165. pp. 228, 233"
     ]
 , Text
     " Although the foundation of jazz is deeply rooted within the black experience of the United States, different cultures have contributed their own experience and styles to the art form as well. Intellectuals around the world have hailed jazz as \"one of America's original art forms\"."
