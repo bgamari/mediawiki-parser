@@ -22,7 +22,18 @@ import Text.Parsers.Frisby hiding ((<>))
 import Text.Parsers.Frisby.Char
 
 newtype PageName = PageName { getPageName :: T.Text }
-                 deriving (Show, Eq, Ord, Generic)
+                 deriving (Show, Generic)
+
+instance Eq PageName where
+    PageName a == PageName b =
+        T.toCaseFold (T.take 1 a) == T.toCaseFold (T.take 1 b)
+        && T.drop 1 a == T.drop 1 b
+
+instance Ord PageName where
+    PageName a `compare` PageName b =
+        case T.toCaseFold (T.take 1 a) `compare` T.toCaseFold (T.take 1 b) of
+          EQ -> T.drop 1 a `compare` T.drop 1 b
+          x -> x
 
 newtype Url = Url String
             deriving (Show, Eq, Ord, Generic)
