@@ -19,6 +19,7 @@ library
   build-depends:       base >=4.9 && <4.10,
                        frisby >= 0.2 && <0.3,
                        bytestring >=0.10 && <0.11,
+                       hashable >=1.2 && <2.0,
                        text >=1.2 && <1.3,
                        unordered-containers >=0.2 && <0.3,
                        hexpat >=0.20 &&<0.21

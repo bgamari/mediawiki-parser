@@ -4,6 +4,7 @@
 {-# LANGUAGE ApplicativeDo #-}
 {-# LANGUAGE RankNTypes #-}
 {-# LANGUAGE RecursiveDo #-}
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
 
 module Data.MediaWiki.Markup
     ( Doc(..), parse
@@ -13,7 +14,10 @@ module Data.MediaWiki.Markup
 import Control.Monad (replicateM_, void)
 import Data.Maybe (catMaybes)
 import Data.Bifunctor
+import Data.Hashable
 import Data.Monoid
+import Data.String (IsString)
+import Data.Char (toLower)
 import qualified Data.Text as T
 import Control.Applicative hiding (many, optional)
 import GHC.Generics
@@ -22,8 +26,10 @@ import Text.Parsers.Frisby hiding ((<>))
 import Text.Parsers.Frisby.Char
 
 newtype PageName = PageName { getPageName :: T.Text }
-                 deriving (Show, Generic)
+                 deriving (Show, Generic, IsString)
 
+-- | Respects Wikimedia title equality rules: first character is
+-- case-insensitive, remaining title case-sensitive.
 instance Eq PageName where
     PageName a == PageName b =
         T.toCaseFold (T.take 1 a) == T.toCaseFold (T.take 1 b)
@@ -34,6 +40,12 @@ instance Ord PageName where
         case T.toCaseFold (T.take 1 a) `compare` T.toCaseFold (T.take 1 b) of
           EQ -> T.drop 1 a `compare` T.drop 1 b
           x -> x
+
+instance Hashable PageName where
+    hashWithSalt salt (PageName t)
+      | T.null t  = salt
+      | otherwise = hashWithSalt (hashWithSalt salt (T.drop 1 t))
+                                 (toLower $ T.head t)
 
 newtype Url = Url String
             deriving (Show, Eq, Ord, Generic)
