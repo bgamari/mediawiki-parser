@@ -11,25 +11,61 @@
     ]
 , Text " Jazz is characterized by "
 , InternalLink
-    PageName { getPageName = "swung note" } [ [ Text "swing" ] ]
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "swung note" }
+      , linkTargetAnchor = Nothing
+      }
+    [ [ Text "swing" ] ]
 , Text " and "
-, InternalLink PageName { getPageName = "blue note" } []
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "blue note" }
+      , linkTargetAnchor = Nothing
+      }
+    []
 , Text "s, "
 , InternalLink
-    PageName { getPageName = "Call_and_response_(music)" }
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "Call_and_response_(music)" }
+      , linkTargetAnchor = Nothing
+      }
     [ [ Text "call and response vocals" ] ]
 , Text ", "
-, InternalLink PageName { getPageName = "polyrhythm" } []
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "polyrhythm" }
+      , linkTargetAnchor = Nothing
+      }
+    []
 , Text "s and "
-, InternalLink PageName { getPageName = "improvisation" } []
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "improvisation" }
+      , linkTargetAnchor = Nothing
+      }
+    []
 , Text ". Jazz has roots in "
 , InternalLink
-    PageName { getPageName = "Music_of_Africa" }
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Music_of_Africa" }
+      , linkTargetAnchor = Nothing
+      }
     [ [ Text "West African cultural and musical expression" ] ]
 , Text ", and in African American music traditions including "
-, InternalLink PageName { getPageName = "blues" } []
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "blues" }
+      , linkTargetAnchor = Nothing
+      }
+    []
 , Text " and "
-, InternalLink PageName { getPageName = "ragtime" } []
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "ragtime" }
+      , linkTargetAnchor = Nothing
+      }
+    []
 , Text ", as well as European military band music."
 , XmlTag
     "ref"

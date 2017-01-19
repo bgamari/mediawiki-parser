@@ -68,7 +68,11 @@
     [ ( Nothing
       , [ Text "the "
         , InternalLink
-            PageName { getPageName = "autonomous communities of Spain" }
+            LinkTarget
+              { linkTargetPage =
+                  PageName { getPageName = "autonomous communities of Spain" }
+              , linkTargetAnchor = Nothing
+              }
             [ [ Text "autonomous region" ] ]
         , Text " of modern Spain"
         ]
@@ -76,7 +80,11 @@
     , ( Nothing
       , [ Text "the medieval "
         , InternalLink
-            PageName { getPageName = "Islamic state (government)" }
+            LinkTarget
+              { linkTargetPage =
+                  PageName { getPageName = "Islamic state (government)" }
+              , linkTargetAnchor = Nothing
+              }
             [ [ Text "Islamic state" ] ]
         , Text " which covered most of Iberia"
         ]
@@ -125,11 +133,26 @@
 , Heading 2 [ Text "And some links" ]
 , NewPara
 , Text "Here is "
-, InternalLink PageName { getPageName = "a link" } []
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "a link" }
+      , linkTargetAnchor = Nothing
+      }
+    []
 , Text ". And a "
 , InternalLink
-    PageName { getPageName = "link" }
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "link" }
+      , linkTargetAnchor = Nothing
+      }
     [ [ Text "with" ] , [ Text "some attributes" ] ]
+, Text ".How about a "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "target" }
+      , linkTargetAnchor = Just "anchor"
+      }
+    [ [ Text "with an anchor" ] ]
 , Text "."
 , NewPara
 , Text "How about an "

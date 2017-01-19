@@ -10,7 +10,12 @@
     [ ( Just "name" , [ Text "Apollo 11" ] )
     , ( Just "image" , [ Text "Apollo 11 first step.jpg" ] )
     , ( Just "image_caption"
-      , [ InternalLink PageName { getPageName = "Neil Armstrong" } []
+      , [ InternalLink
+            LinkTarget
+              { linkTargetPage = PageName { getPageName = "Neil Armstrong" }
+              , linkTargetAnchor = Nothing
+              }
+            []
         , Text
             " descends a ladder to become the first human to step onto the surface of the Moon"
         ]
@@ -24,7 +29,12 @@
       )
     , ( Just "mission_type" , [ Text "Manned lunar landing" ] )
     , ( Just "operator"
-      , [ InternalLink PageName { getPageName = "NASA" } []
+      , [ InternalLink
+            LinkTarget
+              { linkTargetPage = PageName { getPageName = "NASA" }
+              , linkTargetAnchor = Nothing
+              }
+            []
         , XmlTag
             "ref"
             [ ( "name" , "Orloff" ) ]
@@ -46,7 +56,14 @@
                   , [ Text "NASA History Division, Office of Policy and Plans " ]
                   )
                 , ( Just "publisher"
-                  , [ InternalLink PageName { getPageName = "NASA" } [] , Text " " ]
+                  , [ InternalLink
+                        LinkTarget
+                          { linkTargetPage = PageName { getPageName = "NASA" }
+                          , linkTargetAnchor = Nothing
+                          }
+                        []
+                    , Text " "
+                    ]
                   )
                 , ( Just "location" , [ Text "Washington, D.C. " ] )
                 , ( Just "isbn" , [ Text "0-16-050631-X " ] )
@@ -89,14 +106,21 @@
             "Unbulleted list"
             [ ( Nothing
               , [ InternalLink
-                    PageName { getPageName = "Apollo Command/Service Module" }
+                    LinkTarget
+                      { linkTargetPage =
+                          PageName { getPageName = "Apollo Command/Service Module" }
+                      , linkTargetAnchor = Nothing
+                      }
                     [ [ Text "Apollo CSM" ] ]
                 , Text "-107"
                 ]
               )
             , ( Nothing
               , [ InternalLink
-                    PageName { getPageName = "Apollo Lunar Module" }
+                    LinkTarget
+                      { linkTargetPage = PageName { getPageName = "Apollo Lunar Module" }
+                      , linkTargetAnchor = Nothing
+                      }
                     [ [ Text "Apollo LM" ] ]
                 , Text "-5"
                 ]
@@ -110,13 +134,22 @@
             [ ( Nothing
               , [ Text "CSM: "
                 , InternalLink
-                    PageName { getPageName = "Rockwell International" }
+                    LinkTarget
+                      { linkTargetPage =
+                          PageName { getPageName = "Rockwell International" }
+                      , linkTargetAnchor = Nothing
+                      }
                     [ [ Text "North American Rockwell" ] ]
                 ]
               )
             , ( Nothing
               , [ Text "LM: "
-                , InternalLink PageName { getPageName = "Grumman" } []
+                , InternalLink
+                    LinkTarget
+                      { linkTargetPage = PageName { getPageName = "Grumman" }
+                      , linkTargetAnchor = Nothing
+                      }
+                    []
                 ]
               )
             ]
@@ -151,17 +184,30 @@
         ]
       )
     , ( Just "launch_rocket"
-      , [ InternalLink PageName { getPageName = "Saturn V" } []
+      , [ InternalLink
+            LinkTarget
+              { linkTargetPage = PageName { getPageName = "Saturn V" }
+              , linkTargetAnchor = Nothing
+              }
+            []
         , Text " SA-506"
         ]
       )
     , ( Just "launch_site"
       , [ InternalLink
-            PageName { getPageName = "Kennedy Space Center" }
+            LinkTarget
+              { linkTargetPage =
+                  PageName { getPageName = "Kennedy Space Center" }
+              , linkTargetAnchor = Nothing
+              }
             [ [ Text "Kennedy" ] ]
         , Text " "
         , InternalLink
-            PageName { getPageName = "Kennedy Space Center Launch Complex 39" }
+            LinkTarget
+              { linkTargetPage =
+                  PageName { getPageName = "Kennedy Space Center Launch Complex 39" }
+              , linkTargetAnchor = Nothing
+              }
             [ [ Text "LC-39A" ] ]
         , NewPara
         ]
@@ -236,7 +282,10 @@
       )
     , ( Just "orbit_reference"
       , [ InternalLink
-            PageName { getPageName = "selenocentric orbit" }
+            LinkTarget
+              { linkTargetPage = PageName { getPageName = "selenocentric orbit" }
+              , linkTargetAnchor = Nothing
+              }
             [ [ Text "Selenocentric" ] ]
         ]
       )
@@ -282,12 +331,20 @@
             [ ( Just "type" , [ Text "orbiter" ] )
             , ( Just "object"
               , [ InternalLink
-                    PageName { getPageName = "Moon" } [ [ Text "Lunar" ] ]
+                    LinkTarget
+                      { linkTargetPage = PageName { getPageName = "Moon" }
+                      , linkTargetAnchor = Nothing
+                      }
+                    [ [ Text "Lunar" ] ]
                 ]
               )
             , ( Just "component"
               , [ InternalLink
-                    PageName { getPageName = "Apollo Command/Service Module" }
+                    LinkTarget
+                      { linkTargetPage =
+                          PageName { getPageName = "Apollo Command/Service Module" }
+                      , linkTargetAnchor = Nothing
+                      }
                     [ [ Text "Command/Service Module" ] ]
                 ]
               )
@@ -309,12 +366,19 @@
             [ ( Just "type" , [ Text "lander" ] )
             , ( Just "object"
               , [ InternalLink
-                    PageName { getPageName = "Moon" } [ [ Text "Lunar" ] ]
+                    LinkTarget
+                      { linkTargetPage = PageName { getPageName = "Moon" }
+                      , linkTargetAnchor = Nothing
+                      }
+                    [ [ Text "Lunar" ] ]
                 ]
               )
             , ( Just "component"
               , [ InternalLink
-                    PageName { getPageName = "Apollo Lunar Module" }
+                    LinkTarget
+                      { linkTargetPage = PageName { getPageName = "Apollo Lunar Module" }
+                      , linkTargetAnchor = Nothing
+                      }
                     [ [ Text "Lunar Module" ] ]
                 ]
               )
@@ -420,19 +484,29 @@
             "Unbulleted list"
             [ ( Nothing
               , [ InternalLink
-                    PageName { getPageName = "Neil Armstrong" }
+                    LinkTarget
+                      { linkTargetPage = PageName { getPageName = "Neil Armstrong" }
+                      , linkTargetAnchor = Nothing
+                      }
                     [ [ Text "Neil A. Armstrong" ] ]
                 ]
               )
             , ( Nothing
               , [ InternalLink
-                    PageName { getPageName = "Michael Collins (astronaut)" }
+                    LinkTarget
+                      { linkTargetPage =
+                          PageName { getPageName = "Michael Collins (astronaut)" }
+                      , linkTargetAnchor = Nothing
+                      }
                     [ [ Text "Michael Collins" ] ]
                 ]
               )
             , ( Nothing
               , [ InternalLink
-                    PageName { getPageName = "Buzz Aldrin" }
+                    LinkTarget
+                      { linkTargetPage = PageName { getPageName = "Buzz Aldrin" }
+                      , linkTargetAnchor = Nothing
+                      }
                     [ [ Text "Edwin E. \"Buzz\" Aldrin, Jr." ] ]
                 ]
               )
@@ -446,7 +520,12 @@
             , ( Nothing , [ Text "LM: ''Eagle''" ] )
             , ( Nothing
               , [ Text "On surface: ''"
-                , InternalLink PageName { getPageName = "Tranquility Base" } []
+                , InternalLink
+                    LinkTarget
+                      { linkTargetPage = PageName { getPageName = "Tranquility Base" }
+                      , linkTargetAnchor = Nothing
+                      }
+                    []
                 , Text "''"
                 ]
               )
@@ -457,15 +536,26 @@
     , ( Just "crew_photo_caption"
       , [ Text "Left to right: "
         , InternalLink
-            PageName { getPageName = "Neil Armstrong" }
+            LinkTarget
+              { linkTargetPage = PageName { getPageName = "Neil Armstrong" }
+              , linkTargetAnchor = Nothing
+              }
             [ [ Text "Armstrong" ] ]
         , Text ", "
         , InternalLink
-            PageName { getPageName = "Michael Collins (astronaut)" }
+            LinkTarget
+              { linkTargetPage =
+                  PageName { getPageName = "Michael Collins (astronaut)" }
+              , linkTargetAnchor = Nothing
+              }
             [ [ Text "Collins" ] ]
         , Text ", "
         , InternalLink
-            PageName { getPageName = "Buzz Aldrin" } [ [ Text "Aldrin" ] ]
+            LinkTarget
+              { linkTargetPage = PageName { getPageName = "Buzz Aldrin" }
+              , linkTargetAnchor = Nothing
+              }
+            [ [ Text "Aldrin" ] ]
         ]
       )
     , ( Just "crew_photo_alt"
@@ -475,34 +565,83 @@
         ]
       )
     , ( Just "previous_mission"
-      , [ InternalLink PageName { getPageName = "Apollo 10" } [] ]
+      , [ InternalLink
+            LinkTarget
+              { linkTargetPage = PageName { getPageName = "Apollo 10" }
+              , linkTargetAnchor = Nothing
+              }
+            []
+        ]
       )
     , ( Just "next_mission"
-      , [ InternalLink PageName { getPageName = "Apollo 12" } [] ]
+      , [ InternalLink
+            LinkTarget
+              { linkTargetPage = PageName { getPageName = "Apollo 12" }
+              , linkTargetAnchor = Nothing
+              }
+            []
+        ]
       )
     , ( Just "programme"
-      , [ InternalLink PageName { getPageName = "Apollo program" } [] ]
+      , [ InternalLink
+            LinkTarget
+              { linkTargetPage = PageName { getPageName = "Apollo program" }
+              , linkTargetAnchor = Nothing
+              }
+            []
+        ]
       )
     ]
 , NewPara
 , Text "'''Apollo 11''' was the first "
-, InternalLink PageName { getPageName = "spaceflight" } []
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "spaceflight" }
+      , linkTargetAnchor = Nothing
+      }
+    []
 , Text " that "
 , InternalLink
-    PageName { getPageName = "Moon landing" } [ [ Text "landed" ] ]
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Moon landing" }
+      , linkTargetAnchor = Nothing
+      }
+    [ [ Text "landed" ] ]
 , Text " humans on the "
-, InternalLink PageName { getPageName = "Moon" } []
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Moon" }
+      , linkTargetAnchor = Nothing
+      }
+    []
 , Text ". Mission commander "
-, InternalLink PageName { getPageName = "Neil Armstrong" } []
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Neil Armstrong" }
+      , linkTargetAnchor = Nothing
+      }
+    []
 , Text " and pilot "
-, InternalLink PageName { getPageName = "Buzz Aldrin" } []
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Buzz Aldrin" }
+      , linkTargetAnchor = Nothing
+      }
+    []
 , Text " landed the "
 , InternalLink
-    PageName { getPageName = "Apollo Lunar Module" }
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Apollo Lunar Module" }
+      , linkTargetAnchor = Nothing
+      }
     [ [ Text "lunar module" ] ]
 , Text " ''Eagle'' on July 20, 1969, at 20:18 "
 , InternalLink
-    PageName { getPageName = "Coordinated Universal Time" }
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "Coordinated Universal Time" }
+      , linkTargetAnchor = Nothing
+      }
     [ [ Text "UTC" ] ]
 , Text
     ". Armstrong became the first to step onto the lunar surface six hours later on July 21 at 02:56:15 UTC; Aldrin joined him about 20 minutes later. They spent about two and a quarter hours together outside the spacecraft, and collected "
@@ -514,11 +653,19 @@
     ]
 , Text " of lunar material for return to Earth. "
 , InternalLink
-    PageName { getPageName = "Michael Collins (astronaut)" }
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "Michael Collins (astronaut)" }
+      , linkTargetAnchor = Nothing
+      }
     [ [ Text "Michael Collins" ] ]
 , Text " piloted the "
 , InternalLink
-    PageName { getPageName = "Apollo Command/Service Module" }
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "Apollo Command/Service Module" }
+      , linkTargetAnchor = Nothing
+      }
     [ [ Text "command module" ] ]
 , Text
     " ''Columbia'' alone in lunar orbit while they were on the Moon's surface. Armstrong and Aldrin spent just under a day on the lunar surface before rendezvousing with ''Columbia'' in lunar orbit."

@@ -1,12 +1,31 @@
 [ InternalLink
-    PageName { getPageName = "File:FA Community Shield.JPG" }
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "File:FA Community Shield.JPG" }
+      , linkTargetAnchor = Nothing
+      }
     [ [ Text "thumb" ]
     , [ Text "The "
-      , InternalLink PageName { getPageName = "FA Community Shield" } []
+      , InternalLink
+          LinkTarget
+            { linkTargetPage = PageName { getPageName = "FA Community Shield" }
+            , linkTargetAnchor = Nothing
+            }
+          []
       , Text " is contested by the champions of the "
-      , InternalLink PageName { getPageName = "Premier League" } []
+      , InternalLink
+          LinkTarget
+            { linkTargetPage = PageName { getPageName = "Premier League" }
+            , linkTargetAnchor = Nothing
+            }
+          []
       , Text " and "
-      , InternalLink PageName { getPageName = "FA Cup" } []
+      , InternalLink
+          LinkTarget
+            { linkTargetPage = PageName { getPageName = "FA Cup" }
+            , linkTargetAnchor = Nothing
+            }
+          []
       ]
     ]
 , Text " "

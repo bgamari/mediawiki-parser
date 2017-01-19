@@ -1,7 +1,12 @@
 [ Heading 3 [ Text "White-sky and black-sky albedo" ]
 , Text
     "It has been shown that for many applications involving terrestrial albedo, the albedo at a particular "
-, InternalLink PageName { getPageName = "solar zenith angle" } []
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "solar zenith angle" }
+      , linkTargetAnchor = Nothing
+      }
+    []
 , Text " ''\952''"
 , XmlTag "sub" [] [ Text "''i''" ]
 , Text
@@ -25,11 +30,20 @@
     ]
 , NewPara
 , InternalLink
-    PageName { getPageName = "Directional-hemispherical reflectance" }
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "Directional-hemispherical reflectance" }
+      , linkTargetAnchor = Nothing
+      }
     []
 , Text " is sometimes referred to as black-sky albedo and "
 , InternalLink
-    PageName { getPageName = "bi-hemispherical reflectance" } []
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "bi-hemispherical reflectance" }
+      , linkTargetAnchor = Nothing
+      }
+    []
 , Text
     " as white-sky albedo. These terms are important because they allow the albedo to be calculated for any given illumination conditions from a knowledge of the intrinsic properties of the surface."
 , XmlOpenClose "ref" [ ( "name" , "BlueskyAlbedo" ) ]

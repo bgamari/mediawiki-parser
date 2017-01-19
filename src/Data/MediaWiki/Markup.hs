@@ -8,7 +8,7 @@
 
 module Data.MediaWiki.Markup
     ( Doc(..), parse
-    , PageName(..), Url(..)
+    , PageName(..), LinkTarget(..), Url(..)
     ) where
 
 import Control.Monad (replicateM_, void)
@@ -52,11 +52,17 @@ newtype Url = Url String
 
 type TagName = T.Text
 
+-- | An internal link target.
+data LinkTarget = LinkTarget { linkTargetPage   :: !PageName
+                             , linkTargetAnchor :: !(Maybe T.Text)
+                             }
+                deriving (Show, Eq, Ord, Generic)
+
 data Doc = Text !String
          | Char !Char
          | Comment !String
          | Heading !Int [Doc]
-         | InternalLink !PageName [[Doc]]
+         | InternalLink !LinkTarget [[Doc]]
          | ExternalLink !Url (Maybe String)
          | Template !T.Text [(Maybe T.Text, [Doc])]
          | MagicWord !T.Text ![(Maybe T.Text, [Doc])]
@@ -153,12 +159,15 @@ doc' = mdo
 
     -- links
     internalLink <- do
-        let linkEnd = char_ '|' <> text_ "]]"
-        pageName <- manyUntil linkEnd anyChar
+        let linkEnd = char_ '|' <> text_ "]]" <> char_ '#'
+        pageName <- PageName . T.pack <$*> manyUntil linkEnd anyChar
+        sectionName <- T.pack <$*> manyUntil linkEnd anyChar
+        let linkTarget = LinkTarget <$> pageName
+                                    <*> option Nothing (char_ '#' *> fmap Just sectionName)
         attrValue <- manyUntil linkEnd aDoc
         attributes <- manyUntil (text "]]") (spaces *> char '|' *> attrValue)
         return $ pure InternalLink <*  text "[[" <* spaces
-                                   <*> fmap (PageName . T.pack) pageName
+                                   <*> linkTarget
                                    <*> attributes <* text "]]"
     externalLink <- do
         let scheme = many1 alpha <* text "://"
@@ -299,7 +308,7 @@ cleanup = go []
     go []  (BulletList n ds : xs)   = BulletList n (cleanup ds) : go [] xs
     go []  (NumberedList n ds : xs) = NumberedList n (cleanup ds) : go [] xs
     go []  (Template n ds : xs)     = Template n (map (second cleanup) ds) : go [] xs
-    go []  (InternalLink n ds : xs) = InternalLink n (map cleanup ds) : go [] xs
+    go []  (InternalLink t ds : xs) = InternalLink t (map cleanup ds) : go [] xs
     go []  (NewPara : NewPara : xs) = go [] (NewPara : xs)
     go []  (XmlTag tag attrs cs : xs) = XmlTag tag attrs (go [] cs) : go [] xs
     go []  (other : xs)             = other : go [] xs

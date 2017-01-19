@@ -127,7 +127,7 @@ docLinks namespaces doc =
   where
     namespaceNames = HS.fromList [ T.toCaseFold $ TE.decodeUtf8 name
                                  | Namespace name <- namespaces ]
-    findLinks (InternalLink (PageName name) parts) =
+    findLinks (InternalLink (LinkTarget (PageName name) _) parts) =
       let (page, namespace)
             | Just page <- ":" `T.stripPrefix` name = (page, Nothing)
 

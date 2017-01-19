@@ -6,11 +6,21 @@
             "hlist"
             [ ( Just "style" , [ Text "white-space:nowrap; " ] )
             , ( Nothing
-              , [ InternalLink PageName { getPageName = "Pashto" } [] ]
+              , [ InternalLink
+                    LinkTarget
+                      { linkTargetPage = PageName { getPageName = "Pashto" }
+                      , linkTargetAnchor = Nothing
+                      }
+                    []
+                ]
               )
             , ( Nothing
               , [ InternalLink
-                    PageName { getPageName = "Dari language" } [ [ Text "Dari" ] ]
+                    LinkTarget
+                      { linkTargetPage = PageName { getPageName = "Dari language" }
+                      , linkTargetAnchor = Nothing
+                      }
+                    [ [ Text "Dari" ] ]
                 ]
               )
             ]
@@ -19,7 +29,11 @@
       )
     , ( Just "demonym"
       , [ InternalLink
-            PageName { getPageName = "Demography of Afghanistan" }
+            LinkTarget
+              { linkTargetPage =
+                  PageName { getPageName = "Demography of Afghanistan" }
+              , linkTargetAnchor = Nothing
+              }
             [ [ Text "Afghan" ] ]
         , Template
             "#tag:ref"
@@ -31,9 +45,13 @@
                     []
                     [ Text "Dictionary.com. "
                     , InternalLink
-                        PageName
-                          { getPageName =
-                              "The American Heritage Dictionary of the English Language"
+                        LinkTarget
+                          { linkTargetPage =
+                              PageName
+                                { getPageName =
+                                    "The American Heritage Dictionary of the English Language"
+                                }
+                          , linkTargetAnchor = Nothing
                           }
                         []
                     , Text ", Fourth Edition. Houghton Mifflin Company, 2004. "
@@ -47,9 +65,20 @@
                     "ref"
                     []
                     [ Text "Dictionary.com. "
-                    , InternalLink PageName { getPageName = "WordNet" } []
+                    , InternalLink
+                        LinkTarget
+                          { linkTargetPage = PageName { getPageName = "WordNet" }
+                          , linkTargetAnchor = Nothing
+                          }
+                        []
                     , Text " 3.0. "
-                    , InternalLink PageName { getPageName = "Princeton University" } []
+                    , InternalLink
+                        LinkTarget
+                          { linkTargetPage =
+                              PageName { getPageName = "Princeton University" }
+                          , linkTargetAnchor = Nothing
+                          }
+                        []
                     , Text ". "
                     , ExternalLink
                         (Url "http://dictionary.reference.com/browse/afghanistani")
@@ -66,13 +95,25 @@
       )
     , ( Just "government_type"
       , [ InternalLink
-            PageName { getPageName = "Unitary state" } [ [ Text "Unitary" ] ]
+            LinkTarget
+              { linkTargetPage = PageName { getPageName = "Unitary state" }
+              , linkTargetAnchor = Nothing
+              }
+            [ [ Text "Unitary" ] ]
         , Text " "
         , InternalLink
-            PageName { getPageName = "Presidential system" }
+            LinkTarget
+              { linkTargetPage = PageName { getPageName = "Presidential system" }
+              , linkTargetAnchor = Nothing
+              }
             [ [ Text "presidential" ] ]
         , Text " "
-        , InternalLink PageName { getPageName = "Islamic republic" } []
+        , InternalLink
+            LinkTarget
+              { linkTargetPage = PageName { getPageName = "Islamic republic" }
+              , linkTargetAnchor = Nothing
+              }
+            []
         ]
       )
     ]

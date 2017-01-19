@@ -65,6 +65,7 @@ Málaga and Seville."<ref>{{Cite book
 == And some links ==
 
 Here is [[a link]]. And a [[link|with|some attributes]].
+How about a [[target#anchor|with an anchor]].
 
 How about an [http://www.kernel.org/hi] external link.
 
