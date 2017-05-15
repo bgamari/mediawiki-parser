@@ -29,7 +29,7 @@ library
 executable mediawiki-links
   main-is:             Import.hs
   other-extensions:    OverloadedStrings, TemplateHaskell, RecordWildCards, GeneralizedNewtypeDeriving, QuasiQuotes, StandaloneDeriving, BangPatterns
-  build-depends:       base >=4.9 && <4.10,
+  build-depends:       base >=4.9 && <4.11,
                        frisby >= 0.2 && <0.3,
                        bytestring >=0.10 && <0.11,
                        unordered-containers >=0.2 && <0.3,
