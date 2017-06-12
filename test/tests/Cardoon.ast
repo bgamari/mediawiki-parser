@@ -1,0 +1,370 @@
+[ Heading 2 [ Text "Description" ]
+, Text "The wild cardoon is a stout "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "herbaceous plant" }
+      , linkTargetAnchor = Nothing
+      }
+    [ [ Text "herbaceous" ] ]
+, Text " "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "perennial plant" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text " growing "
+, Template
+    "convert"
+    [ ( Nothing , [ Text "0.8" ] )
+    , ( Nothing , [ Text "to" ] )
+    , ( Nothing , [ Text "1.5" ] )
+    , ( Nothing , [ Text "m" ] )
+    , ( Nothing , [ Text "in" ] )
+    , ( Just "abbr" , [ Text "on" ] )
+    ]
+, Text
+    " tall, with deeply lobed and heavily spined green to grey-green "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "tomentose" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text " (hairy or downy) leaves up to "
+, Template
+    "convert"
+    [ ( Nothing , [ Text "50" ] )
+    , ( Nothing , [ Text "cm" ] )
+    , ( Nothing , [ Text "0" ] )
+    , ( Just "abbr" , [ Text "on" ] )
+    ]
+, Text
+    " long, with yellow spines up to 3.5&nbsp;cm long. The flowers are violet-purple, produced in a large, "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "globose" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text ", massively spined "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "head (botany)" }
+      , linkTargetAnchor = Nothing
+      }
+    [ [ Text "capitulum" ] ]
+, Text " up to "
+, Template
+    "convert"
+    [ ( Nothing , [ Text "6" ] )
+    , ( Nothing , [ Text "cm" ] )
+    , ( Nothing , [ Text "0" ] )
+    , ( Just "abbr" , [ Text "on" ] )
+    ]
+, Text " in diameter."
+, XmlTag
+    "ref"
+    [ ( "name" , "Sonnante" ) ]
+    [ Text
+        "Sonnante, G., Pignone, D, & Hammer, K. (2007). The Domestication of Artichoke and Cardoon: From Roman Times to the Genomic Age. ''Ann. Bot''. 100: 1095\8211\&1100. "
+    , ExternalLink
+        (Url "http://aob.oxfordjournals.org/content/100/5/1095.full.pdf")
+        (Just "Full text")
+    , Text "."
+    ]
+, XmlTag
+    "ref"
+    []
+    [ ExternalLink
+        (Url "http://www.my-malta.com//interesting/MalteseFlora02.html")
+        (Just "Malta's Native Flora")
+    ]
+, XmlTag
+    "ref"
+    [ ( "name" , "Tela" ) ]
+    [ ExternalLink
+        (Url
+           "http://www.tela-botanica.org/eflore/BDNFF/4.02/nn/20526/export/pdf")
+        (Just "Tela Botanica: ''Cynara cardunculus'' L.")
+    , Text " "
+    , Template
+        "webarchive"
+        [ ( Just "url"
+          , [ Text
+                "https://web.archive.org/web/20120329060927/http://www.tela-botanica.org/eflore/BDNFF/4.02/nn/20526/export/pdf "
+            ]
+          )
+        , ( Just "date" , [ Text "March 29, 2012 " ] )
+        ]
+    , Text " (in French)"
+    ]
+, XmlTag
+    "ref"
+    [ ( "name" , "rhs" ) ]
+    [ Text
+        "Huxley, A., ed. (1992). ''New RHS Dictionary of Gardening''. Macmillan "
+    , Template "ISBN" [ ( Nothing , [ Text "0-333-47494-5" ] ) ]
+    , Text "."
+    ]
+, NewPara
+, Text "It is adapted to dry climates, native across an area from "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Morocco" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text " and "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Portugal" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text " east to "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Libya" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text " and "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Greece" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text " and north to "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "France" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text " and "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Croatia" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text ";"
+, XmlTag
+    "ref"
+    []
+    [ ExternalLink
+        (Url
+           "http://luirig.altervista.org/flora/taxa/index1.php?scientific-name=cynara+cardunculus")
+        (Just
+           "Altervista Flora Italiana, Carciofo selvatico, Cardoon, ''Cynara cardunculus'' L.")
+    , Text " includes p hotos and European distribution map"
+    ]
+, Text " it may also be native on "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Cyprus" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text ", the "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Canary Islands" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text " and "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Madeira" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text "."
+, XmlTag
+    "ref"
+    []
+    [ Text "Euro+Med PlantBase "
+    , ExternalLink
+        (Url
+           "http://ww2.bgbm.org/EuroPlusMed/PTaxonDetailOccurrence.asp?NameId=134075&PTRefFk=7000000")
+        (Just "''Cynara cardunculus''")
+    ]
+, Text " In "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "France" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text ", it only occurs wild in the "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Mediterranean" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text " south ("
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Gard" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text ", "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "H\233rault" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text ", "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Aude" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text ", "
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "Pyr\233n\233es-Orientales" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text ", "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Corsica" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text ")."
+, XmlOpenClose "ref" [ ( "name" , "Tela" ) ]
+, Text " It has become an "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "invasive species" }
+      , linkTargetAnchor = Nothing
+      }
+    [ [ Text "invasive weed" ] ]
+, Text " in the "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "pampas" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text " of "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Argentina" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text ","
+, XmlOpenClose "ref" [ ( "name" , "rhs" ) ]
+, Text " and is also considered a weed in "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Australia" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text " and "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "California" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text "."
+, XmlTag
+    "ref"
+    []
+    [ ExternalLink
+        (Url
+           "http://www.efloras.org/florataxon.aspx?flora_id=1&taxon_id=200023811")
+        (Just
+           "Flora of North America Cardoon, artichoke, artichoke thistle, ''Cynara scolymus'' L.")
+    ]
+, XmlTag
+    "ref"
+    []
+    [ Template
+        "cite web"
+        [ ( Just "url"
+          , [ Text
+                "http://bie.ala.org.au/species/urn:lsid:biodiversity.org.au:apni.taxon:552166"
+            ]
+          )
+        , ( Just "title"
+          , [ Text
+                "Cynara cardunculus  : Artichoke Thistle - Atlas of Living Australia"
+            ]
+          )
+        , ( Just "author" , [ Text "Atlas of Living Australia" ] )
+        , ( Just "work" , [ Text "ala.org.au" ] )
+        ]
+    ]
+, XmlTag
+    "ref"
+    []
+    [ ExternalLink
+        (Url "http://bonap.net/MapGallery/County/Cynara%20cardunculus.png")
+        (Just
+           "Biota of North America Program 2014 county distribution map")
+    ]
+, XmlTag
+    "ref"
+    []
+    [ ExternalLink
+        (Url
+           "http://www.calflora.org/cgi-bin/species_query.cgi?where-taxon=Cynara+cardunculus")
+        (Just
+           "Calflora taxon report, University of California, ''Cynara cardunculus'' L., artichoke thistle, cardoon ")
+    ]
+, NewPara
+, Text "In cultivation in the "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "United Kingdom" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text ", this plant has gained the "
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "Royal Horticultural Society" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text "'s "
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "Award of Garden Merit" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text "."
+, XmlTag
+    "ref"
+    [ ( "name" , "RHS" ) ]
+    [ Template
+        "cite web"
+        [ ( Just "title" , [ Text "Cynara cardunculus AGM" ] )
+        , ( Just "url"
+          , [ Text "http://apps.rhs.org.uk/plantselector/plant?plantid=613" ]
+          )
+        , ( Just "publisher" , [ Text "Royal Horticultural Society" ] )
+        , ( Just "accessdate" , [ Text "8 February 2013" ] )
+        ]
+    ]
+, Template
+    "verify source" [ ( Just "date" , [ Text "July 2014" ] ) ]
+]
