@@ -229,7 +229,7 @@ doc' = mdo
     -- XMLish
     xmlAttr <- do
         key <- manyUntil (char '=' <> space) anyChar
-        unquotedValue <- manyUntil (char '>' <> space) anyChar
+        unquotedValue <- manyUntil (char_ '>' <> text_ "/>" <> void space) anyChar
         quotedValue <- manyUntil (char '"') anyChar
         let value = (char '"' *> quotedValue <* char '"') <|> unquotedValue
         return $ pure (,) <*> key <* spaces <* char '=' <* spaces
@@ -249,7 +249,7 @@ doc' = mdo
             toXml ((oTag, attrs), cs, _cTag) = XmlTag oTag attrs cs
         return $ fmap toXml $ pair -- onlyIf pair (\((oTag, _), _, cTag) -> T.toCaseFold oTag == T.toCaseFold cTag)
     xmlOpenClose <-
-        return $ pure XmlOpenClose <* text "<"
+        return $ pure XmlOpenClose <* char '<'
                                    <*> tagName <* spaces
                                    <*> xmlAttrs <* text "/>"
     xmlish <- newRule $ xml <> xmlOpenClose

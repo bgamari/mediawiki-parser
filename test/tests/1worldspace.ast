@@ -314,7 +314,8 @@
       }
     []
 , Text
-    " in September 2011, although it would only be streamed through mobile phones, the Internet and direct-to-home television networks. Reportedly, old WorldSpace receivers would no longer work. The re-launch would start with 40 stations and eventually have as many as 120 stations, including sub-categories such as music for cardio-workouts.<ref name=itsback/>"
+    " in September 2011, although it would only be streamed through mobile phones, the Internet and direct-to-home television networks. Reportedly, old WorldSpace receivers would no longer work. The re-launch would start with 40 stations and eventually have as many as 120 stations, including sub-categories such as music for cardio-workouts."
+, XmlOpenClose "ref" [ ( "name" , "itsback" ) ]
 , NewPara
 , Heading 2 [ Text "Content" ]
 , Text

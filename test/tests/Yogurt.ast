@@ -20,7 +20,10 @@
         ]
     ]
 , Text
-    " and is usually related to the verb ''yo\287urmak'', \"to knead\", or \"to be curdled or coagulated; to thicken\".<ref name=collins/> It may be related to ''yo\287un'', meaning thick or dense. The sound "
+    " and is usually related to the verb ''yo\287urmak'', \"to knead\", or \"to be curdled or coagulated; to thicken\"."
+, XmlOpenClose "ref" [ ( "name" , "collins" ) ]
+, Text
+    " It may be related to ''yo\287un'', meaning thick or dense. The sound "
 , InternalLink
     LinkTarget
       { linkTargetPage = PageName { getPageName = "\287" }
@@ -28,5 +31,9 @@
       }
     []
 , Text
-    " was traditionally rendered as \"gh\" in transliterations of Turkish from around 1615-1625.<ref name=collins/> In English, the several variations of the spelling of the word include yogurt, yoghurt, and to a lesser extent yoghourt or yogourt.<ref name=collins/>"
+    " was traditionally rendered as \"gh\" in transliterations of Turkish from around 1615-1625."
+, XmlOpenClose "ref" [ ( "name" , "collins" ) ]
+, Text
+    " In English, the several variations of the spelling of the word include yogurt, yoghurt, and to a lesser extent yoghourt or yogourt."
+, XmlOpenClose "ref" [ ( "name" , "collins" ) ]
 ]
