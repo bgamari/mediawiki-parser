@@ -1,0 +1,104 @@
+{{Use mdy dates|date=March 2012}}
+{{update|date=August 2010}}
+{{Infobox company
+| name   = 1worldspace Inc.
+| logo   =
+| type   =
+| foundation     = 1990
+| location       = [[Silver Spring, Maryland|Silver Spring]], Maryland, U.S.
+| key_people     = [[Noah A. Samara]], Chairman & CEO
+| num_employees  = 40 (2009)
+| industry       = Broadcasting – Radio
+| products       = [[Satellite Radio]]
+| revenue        = {{Increase}}$13.78 Million US$ (2007)
+| net_income     = {{Decrease}}-$169.51 Million US$ (2007)
+| market cap     = $7.7 million USD<ref name=zenobank>{{cite web |url=http://www.zenobank.com/index.php?symbol=WRSP&page=quotesearch |title=Company Profile for WorldSpace Inc (WRSP) |accessdate=October 20, 2008}}</ref>
+| homepage       =
+}}
+'''1worldspace''', formerly known as 'WorldSpace', is a defunct [[satellite radio]] network that in its heyday provided service to over 170,000 subscribers in [[East Africa|eastern]] and southern Africa, the Middle East, and much of Asia with 96% coming from [[India]]. It was profitable in India, with 450,000 subscribers.<ref>{{cite web|url=http://forbesindia.com/article/special/5-things-that-disappeared-in-the-last-five-years/37838/1 |title=Forbes India Magazine - 5 Things That Disappeared in the Last Five Years |publisher=Forbesindia.com |date= |accessdate=2016-01-14}}</ref>
+
+Timbre Media along with Saregama India planned to relaunch the company.<ref name=itsback>{{cite news | title = WorldSpace radio is back | date = Jul 19, 2011 | author = NS Ramnath | publisher = [[Forbes India]] | url = http://www.moneycontrol.com/news/features/worldspace-radio-is-back_566645.html | accessdate =October 19, 2011 }}</ref>
+
+The satellites AfriStar and AsiaStar however are now being used by the [http://www.yazmi.com/ Yazmi USA, LLC] run by WorldSpace's former CEO [[Noah A. Samara]]. The company claims to have built the first satellite-to-tablet content delivery system. The system primarily aims at providing educational services to rural areas in developing countries. The first pilots of the technology are said to be taking place in India (with 30,000 licenses) and the sub-Saharan region in Africa, with the latest trials in two schools in South Africa, in Rietkol, in Mpumalanga Province, and at Heathfield, in Western Cape.<ref>{{cite web|url=http://www.newtec.eu/article/release/world-s-first-satellite-powered-tablet-to-use-newtec-technology-for-e-learning |title=World's First Satellite-Powered Tablet to Use Newtec Technology for E-Learning |publisher=newtec.eu |accessdate=2015-03-09}}</ref>
+
+== Overview ==
+The company headquarters were located in [[Silver Spring, MD]] and additional studios were located in Washington, DC, [[Bangalore]], [[Mumbai]], [[New Delhi]], and [[Nairobi]]. Before filing for bankruptcy in October 2008, 1worldspace employed two satellites and broadcast 62 channels – 38 of which were content provided by international, national and regional third parties and 24 1worldspace-branded stations produced by or for 1worldspace.<ref name="1worldspace.com">http://www.1worldspace.com/corporate/</ref> Most of the channels used to be available only through a subscription plan.
+
+1worldspace claimed to be the only company with rights to the world's globally allocated spectrum for digital satellite radio.{{Citation needed|date=August 2008}} However, it never made use of its license to broadcast to the Americas or the Caribbean. The company gained attention around 2000 because of its willingness to invest in impoverished areas and from 2006 to the present due to its financial difficulties and bankruptcy proceedings.
+
+The company filed for bankruptcy in October 2008. For a while [[Liberty Media]] sought to buy the assets,  but in June 2010, a company called [[Yazmi USA]] owned by former WorldSpace founder, chairman, and CEO Noah Samara purchased the remains for US$5.5M.<ref>{{cite web|archiveurl=http://www.webcitation.org/5qtvGXToh?url=http%3A%2F%2Fwww.fmqb.com%2Farticle.asp%3Fid%3D1856716 |url=http://www.fmqb.com/article.asp?id=1856716 |archivedate=July 1, 2010 |title=FMQB In Brief |accessdate=1 July 2010 |date=28 June 2010 |publisher=[[FMQB]] |deadurl=no |df=mdy }}</ref>
+
+European operations were liquidated in the spring of 2009.
+
+On December 25, 2009, the company issued notices to all of its subscribers in India that WorldSpace service in India would officially be terminated from December 31, 2009, with no refunds given to its subscribers, on account of bankruptcy.<ref>{{cite web|url=http://www.worldspace.com/index_wsmsg.html |title=www.worldspace.com |publisher=worldspace.com |date=January 27, 2012 |accessdate=March 1, 2012}}</ref>
+
+The company was known as "WorldSpace" until July 2008.
+
+On July 18, 2011, [[Forbes]] India reported that Timbre Media was re-launching WorldSpace Radio in association with [[Sa Re Ga Ma]] in September 2011, although it would only be streamed through mobile phones, the Internet and direct-to-home television networks. Reportedly, old WorldSpace receivers would no longer work. The re-launch would start with 40 stations and eventually have as many as 120 stations, including sub-categories such as music for cardio-workouts.<ref name=itsback/>
+
+==Content==
+1worldspace assembled a combination of news, sports, music, brand name content and educational programming which it delivered to its market in Africa, Asia, and the Middle East. The 62 channels (38 of which were third-party content and 24 of which were produced by or for 1worldspace) represented popular international music formats including contemporary hits, country, classic rock and jazz<ref name="1worldspace.com"/> with content specific to the local geographic region.  Sports coverage included content from [[Fox Sports Radio]] and [[talkSPORT]] in addition to regional coverage. 1worldspace also broadcast news from well-renowned sources such as [[BBC World Service|BBC]], [[CNBC]], [[CNN]], [[NPR]], [[Radio France Internationale|RFI]], and [[WRN Broadcast|WRN]].<ref>http://www.1worldspace.com/channel_guide/news/</ref>  Additional content included channels that highlighted poetry and literature, comedy, talk shows, and inspirational and religious programming.<ref>http://www.1worldspace.com/channel_guide/talk_and_entertainment/</ref><ref>http://www.1worldspace.com/channel_guide/inspirational/</ref>
+
+1worldspace's program directors and announcers operated from studios in Washington, DC, Bangalore, and Nairobi, where 18 original music and lifestyle channels were created for distribution. Four of these stations were previously available in the United States on the [[XM Satellite Radio]] network.  This arrangement ended in 2008.
+
+==System==
+The 1worldspace system had three major components: the space segment, the ground segment, and the user segment. The space segment referred to the company-owned satellites that broadcast the signals over a large percentage  of the eastern hemisphere.  The ground segment referred to the operating and broadcasting centers.  The user segment referred to the user-owned devices in which the signal was received.  In addition, the company planned to implement terrestrial repeater networks in order to facilitate access to new markets in Europe and the Middle-East.
+
+The 1worldspace system was built with companies including [[Alcatel Space]] (now [[Thales Alenia Space]]), [[EADS Astrium]] and [[Arianespace]] (France), [[SED Systems|SED]] (Canada), GSI (USA), [[Fraunhofer Institute]] (Germany), [[ST Microelectronics]] (Italy), Micronas (Germany) and others.<ref name="sec.gov">{{cite web|url=http://www.sec.gov/Archives/edgar/data/1315054/000119312508071173/d10k.htm |title=Form 10-K |publisher=Sec.gov |accessdate=March 1, 2012}}</ref>
+
+===Space segment===
+
+1worldspace operated two satellites: [[AfriStar]] and [[AsiaStar]]. This made it available in Asia, Africa, Middle East, and parts of Europe.
+
+===[[Ground segment]]===
+The regional [[Mission control center|operations centers]] for the satellites were located in [[Silver Spring, Maryland]] for AfriStar and [[Melbourne, Australia]] for AsiaStar.{{Citation needed|date=August 2008}}  These centers managed the performance and status of the satellites by controlling them and monitoring there. The system architecture is identical for each region.
+
+Telemetry, command and ranging (TCR) [[ground station]]s consisted of an [[X-Band]] uplink command and control system and an [[L-Band]] telemetry monitoring system. A backup mode was also provided using an S Band link from Bangalore, India. Each satellite had two TCR stations with sufficient geographic distance between them so that if natural disasters or any unforeseen events were to make one inoperable, a back-up station would be available. The TCR stations for AfriStar were located in [[Bangalore, India]] and [[Port Louis, Mauritius]], and the ones for AsiaStar in Melbourne, Australia and Port Louis, Mauritius.
+
+In addition to the TCR stations, a communications system monitoring station (CSM) was associated with each satellite to monitor continuously the quality of the downlink services. The CSM facilities were located in [[Libreville, Gabon]] for AfriStar and Melbourne, Australia for AsiaStar.<ref name="sec.gov"/>
+
+===User segment===
+Users purchased receivers compatible with the [[L-Band]] frequency in order to access the system. The radio receiver processed, decoded and descrambled the signals to allow users to receive programming content. The company’s broadcast frequency and satellites required a special receiver design incorporating either a small patch antenna measuring approximately 6 to 8&nbsp;cm (2.4 to 3.2&nbsp;inches) which folded neatly into the receiver unit or a similarly sized omni-directional antenna mounted on the car rooftop.  Each receiver was individually addressable via a unique identifier that could be used to unlock specially coded audio or multimedia signals. This capability provided the flexibility to deliver free, subscription and/or premium services to consumers.
+
+The currently available receivers were manually coded for subscription authorization. A password, valid for varying periods of time depending upon the length of the subscription purchased and paid for, is provided to a subscriber and entered into the receiver. Passwords were re-validated on a quarterly basis. Upon subscription renewal, a new passcode was provided and similarly entered into the receiver. As new receiver products were introduced, there were plans to provide over-the-air activation of subscriptions.<ref name="sec.gov"/>
+
+The radio sets, or receivers, which could pick up 1worldspace signals were manufactured by South Korea's AMI, India's [[BPL Group|BPL]] and China’s Tongshi, among other corporations.<ref>{{cite web|url=http://www.worldspace.com/howitworks/receivers/receiverfaq/index.html |title=www.worldspace.com |publisher=worldspace.com |date=January 27, 2012 |accessdate=March 1, 2012}}</ref> Discontinued models were manufactured by [[JVC]], [[Sanyo]], [[Hitachi]], and [[Panasonic]]. The radios consisted of a satellite receiver plus an [[Antenna (radio)|antenna]] that has to be placed in clear view of the relevant satellite, and properly oriented to the user's geographic [[azimuth]] and elevation.  A new receiver manufactured by Delphi using [[open standard]] [[ETSI Satellite Digital Radio]] technology would have been used in Europe if the company had entered the car satellite radio receiver marketplace.<ref>{{cite web|url=http://investor.worldspace.com/phoenix.zhtml?c=189783&p=irol-newsArticle&ID=1119610&highlight= |title=investor.worldspace.com |publisher=investor.worldspace.com |date=January 27, 2012 |accessdate=March 1, 2012}}</ref>
+
+===Debt===
+1worldspace finally became insolvent in 2009/10 after a prolonged series of financial crises. In the first quarter of 2008 the company lost a net total of 2676 subscribers and reported that it would scale back its marketing activities around the world.<ref>{{cite web |url=http://rapidtvnews.com/index.php/200805181172/worldspace-concerned-at-lack-of-cash.html |title=WorldSpace ‘concerned’ at lack of cash |work=Rapid TV News |date=June 28, 2009 |archiveurl=https://web.archive.org/web/20090628192443/http://rapidtvnews.com/index.php/200805181172/worldspace-concerned-at-lack-of-cash.html |archivedate=2009-06-28 |accessdate=2012-03-19}}</ref> WorldSpace recorded a $36.0 million net loss in the second quarter of 2008, as compared to a net loss of $51.2 million in the second quarter of 2007.<ref>{{cite web|url=http://www.marketwatch.com/news/story/1worldspace-reports-second-quarter-2008/story.aspx?guid%3D%7BE9C8D9DE-19A5-4496-8673-19C4E38F34AD%7D%26dist%3Dhppr |title=Archived copy |accessdate=August 22, 2008 }}{{dead link|date=June 2016|bot=medic}}{{cbignore|bot=medic}}  </ref> Throughout 2008 and 2009 company was in deep debt and was reported to owe its creditors over $50 million, due to be paid by various repeatedly postponed deadlines.<ref>[http://rapidtvnews.com/index.php/200807281780/what-assets-does-worldspace-now-own.html What assets does Worldspace now own? &#124; News &#124; Rapid TV News] {{webarchive |url=https://web.archive.org/web/20080924141737/http://rapidtvnews.com/index.php/200807281780/what-assets-does-worldspace-now-own.html |date=September 24, 2008 }}</ref>
+
+===Bankruptcy===
+The company filed for [[Chapter 11]] bankruptcy protection on Friday, October 17, 2008.<ref>{{cite web|url=http://www.bloomberg.com/apps/news?pid=newsarchive&sid=ae8qD.ZAhts8 |title=WorldSpace, Inc. Voluntarily Files for Bankruptcy Protection |work=Bloomberg |date=October 17, 2008 |accessdate=2012-03-19 |deadurl=yes |archiveurl=https://web.archive.org/web/20120315192036/http://www.bloomberg.com/apps/news?pid=newsarchive |archivedate=March 15, 2012 }}</ref> The reorganization includes a 90-day $13 million ''[[debtor-in-possession financing]]'' approach, with the hopes of obtaining added funds to repay senior secured notes and [[convertible bond|convertible notes]]. The company's wholly owned India affiliate was not covered by the bankruptcy filing.<ref>[[Aviation Week & Space Technology]] Vol. 169 No. Oct 16, 27. 2008, "WorldSpace Bankruptcy", p. 19.</ref>
+
+===High-profile resignations===
+In August 2008, two of the top executives of 1worldspace announced their resignations. Greg Armstrong, co-COO, left effective on August 1 and Alexander Brown, co-COO, has given notice of his intention to leave.<ref>{{cite web|url=http://rapidtvnews.com/index.php/200808101867/two-worldspace-top-execs-bail-out.html |title=Two Worldspace top execs bail out |work=RapidTVNews |author=Chris Forrester |date=August 10, 2008 |accessdate=2012-03-19 |deadurl=yes |archiveurl=https://web.archive.org/web/20120723001608/http://www.rapidtvnews.com/index.php/200808101867/two-worldspace-top-execs-bail-out.html |archivedate=July 23, 2012 }}</ref>
+
+==Promotional information==
+WorldSpace audio advertisements in 2006 highlighted the company's ability to provide communication and data-transmission services to remote areas of the world, particularly in a disaster-relief context. The promotions also mentioned WorldSpace's facilitation of long-distance educational projects in Africa.{{Citation needed|date=August 2008}} The ads, broadcast on Washington D.C. radio stations, appeared aimed at government procurement officials and possibly NGOs.
+
+WorldSpace named noted Indian composer [[A.R. Rahman]] as its brand ambassador in India where 90% of its customers are located, and unveiled an integrated marketing communication campaign across print and visual media featuring an exclusive signature tune composed by Mr. Rahman.{{Citation needed|date=August 2008}}
+
+In a last-ditch but ultimately completely unsuccessful effort to avoid commercial insolvency in July 2008, WorldSpace changed its brand and corporate identity to 1worldspace.<ref>{{cite web |url=http://web2.sys-con.com/node/617050 |title=WORLDSPACE, with the Creative Support of PIR Marketing, Unveils "1worldspace" as New Corporate Identity and Brand and Launches Re-Designed Company Website |work=Web 2.0 Journal |author=Adrian Bridgwater |date=July 22, 2008 |accessdate=2012-03-19}}</ref>
+
+==Philanthropy==
+'''WorldSpace Foundation''' was a [[501(c)(3)]] tax-exempt organization created in 1997 with the aim of improving literacy in Africa, and providing content through satellite to smaller community radio stations in the continent.<ref>{{cite web|url=http://www.mediarights.org/organization/worldspace_foundation |title=WorldSpace Foundation : MediaRights Organizations Database |publisher=Mediarights.org |accessdate=March 1, 2012 |deadurl=yes |archiveurl=https://web.archive.org/web/20120214102525/http://www.mediarights.org/organization/worldspace_foundation |archivedate=February 14, 2012 }}</ref> WorldSpace Foundation has changed its name to '''First Voice International'''.
+
+First Voice International was a non-profit organization that tried to ensure that people living in poverty and remote places get the information they need to improve their lives, have the means to communicate their needs and wants, are able to share what they know with others – in their own voice. The organization attempted to reach the most people for the least cost by combining satellite and other technologies. By bypassing the isolating effects of illiteracy and remoteness, the organization routinely delivers information to people in areas lacking electricity, telephone or Internet service.<ref>{{cite web|url=http://www.firstvoiceint.org/ |title=First Voice Africa |publisher=Firstvoiceint.org |accessdate=March 1, 2012}}</ref>
+
+==Historic plans for service development==
+Since uninterrupted line of sight reception may be difficult in the urban areas, a need was identified to install terrestrial repeating transmitters to rebroadcast the satellite signals in the largest metropolitan areas of intended mobile [[Digital Audio Radio Service|DARS]] markets. The company had been licensed to build networks of terrestrial repeaters in Italy, Switzerland and Germany.  With this addition, the system could have provided more reliable broadcast services to receivers in automobiles.<ref name="sec.gov"/> 1worldspace had planned to start providing mobile radio and data services in Italy using a combination of satellite and terrestrial broadcasts in late 2009.<ref>{{cite web |url=http://www.worldspace-europe.com/en/overview.php |title=WorldSpace Europe |archiveurl=https://web.archive.org/web/20090606121848/http://www.worldspace-europe.com/en/overview.php |archivedate=June 6, 2009 |deadurl=yes }}</ref> It had signed an agreement with [[Fiat]], an Italian automobile manufacturer, to make radios capable of receiving the signals available to car owners.<ref>[http://www.fiatgroupautomobilespress.com/index.php?method=news&action=zoom&id=2007071820361698504c8759ec19c8fe9e69c70f481586&id_subsection=]  {{webarchive |url=https://web.archive.org/web/20110710235758/http://www.fiatgroupautomobilespress.com/index.php?method=news&action=zoom&id=2007071820361698504c8759ec19c8fe9e69c70f481586&id_subsection= |date=July 10, 2011 }}</ref> Fiat plans to make such radios available as a bookable option made prior to purchasing a car.<ref>{{cite news| url=http://www.forbes.com/markets/feeds/afx/2007/07/19/afx3929656.html | work=Forbes | title=Fiat, Worldspace in satellite radio deal |archiveurl=https://web.archive.org/web/20090628132700/http://www.forbes.com/feeds/afx/2007/07/19/afx3929656.html |archivedate=June 28, 2009 |deadurl=yes}}</ref> If the service had been launched and had been a commercial success in Italy, it was then planned to make similar services available in Germany and Switzerland. 1worldspace would have used [[ETSI Satellite Digital Radio]] (SDR) [[open standard]] in the new European coverage beam.<ref>http://www.1worldspace.com/press/01_04_2006.html{{dead link|date=November 2016 |bot=InternetArchiveBot |fix-attempted=yes }}</ref> The receivers for the new markets would have been manufactured by [[Delphi (auto parts)|Delphi]] and would have delivered a gap-free coverage to vehicles similar to that of [[Sirius XM Radio]] vehicular mobile service.
+
+== References ==
+{{reflist|colwidth=30em}}
+
+== External links ==
+* [http://www.marketwatch.com/tools/quotes/financials.asp?symb=WRSP&sid=2076202&report=1&freq=1 Annual Financials for Worldspace Inc]
+* {{cite web | title = Tight Times Continue at 1worldspace | date = August 15, 2008 | publisher = Radio World | url = http://www.rwonline.com/pages/s.0100/t.15094.html | accessdate =October 19, 2011 }}
+
+{{Audio broadcasting|state=uncollapsed}}
+{{Satcomm}}
+
+[[Category:Satellite radio]]
+[[Category:Digital radio]]
+[[Category:Telecommunications companies based in Maryland]]
+
