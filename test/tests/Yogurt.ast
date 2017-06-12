@@ -1,0 +1,32 @@
+[ Text "The word is derived from "
+, Template "lang-tr" [ ( Nothing , [ Text "yo\287urt" ] ) ]
+, Text ","
+, XmlTag
+    "ref"
+    [ ( "name" , "collins" ) ]
+    [ Template
+        "cite web"
+        [ ( Just "url"
+          , [ Text "http://www.dictionary.com/browse/yoghurt" ]
+          )
+        , ( Just "title" , [ Text "Yogurt" ] )
+        , ( Just "publisher"
+          , [ Text
+                "Collins English Dictionary - Complete & Unabridged 10th Edition. HarperCollins Publishers"
+            ]
+          )
+        , ( Just "accessdate" , [ Text "21 March 2017" ] )
+        , ( Just "date" , [ Text "2012" ] )
+        ]
+    ]
+, Text
+    " and is usually related to the verb ''yo\287urmak'', \"to knead\", or \"to be curdled or coagulated; to thicken\".<ref name=collins/> It may be related to ''yo\287un'', meaning thick or dense. The sound "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "\287" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text
+    " was traditionally rendered as \"gh\" in transliterations of Turkish from around 1615-1625.<ref name=collins/> In English, the several variations of the spelling of the word include yogurt, yoghurt, and to a lesser extent yoghourt or yogourt.<ref name=collins/>"
+]
