@@ -16,7 +16,7 @@ cabal-version:       >=1.10
 library
   exposed-modules:     Data.MediaWiki.XmlDump
                        Data.MediaWiki.Markup
-  build-depends:       base >=4.9 && <4.10,
+  build-depends:       base >=4.9 && <4.11,
                        frisby >= 0.2 && <0.3,
                        bytestring >=0.10 && <0.11,
                        hashable >=1.2 && <2.0,
@@ -29,10 +29,10 @@ library
 executable mediawiki-links
   main-is:             Import.hs
   other-extensions:    OverloadedStrings, TemplateHaskell, RecordWildCards, GeneralizedNewtypeDeriving, QuasiQuotes, StandaloneDeriving, BangPatterns
-  build-depends:       base >=4.9 && <4.11,
-                       frisby >= 0.2 && <0.3,
-                       bytestring >=0.10 && <0.11,
-                       unordered-containers >=0.2 && <0.3,
+  build-depends:       base,
+                       frisby,
+                       bytestring,
+                       unordered-containers,
                        deepseq >=1.4 && <1.5,
                        split >=0.2 && <0.3,
                        parallel >=3.2 && <3.3,
