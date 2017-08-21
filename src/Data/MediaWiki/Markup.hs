@@ -12,7 +12,6 @@ module Data.MediaWiki.Markup
     ) where
 
 import Control.Monad (replicateM_, void)
-import Data.Maybe (catMaybes)
 import Data.Bifunctor
 import Data.Hashable
 import Data.Monoid
