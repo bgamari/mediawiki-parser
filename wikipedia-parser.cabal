@@ -26,25 +26,6 @@ library
   hs-source-dirs:      src
   default-language:    Haskell2010
 
-executable mediawiki-links
-  main-is:             Import.hs
-  other-extensions:    OverloadedStrings, TemplateHaskell, RecordWildCards, GeneralizedNewtypeDeriving, QuasiQuotes, StandaloneDeriving, BangPatterns
-  build-depends:       base,
-                       frisby,
-                       bytestring,
-                       unordered-containers,
-                       deepseq >=1.4 && <1.5,
-                       split >=0.2 && <0.3,
-                       parallel >=3.2 && <3.3,
-                       text >=1.2 && <1.3,
-                       hexpat >=0.20 &&<0.21,
-                       async >=2.1 && <2.2,
-                       pipes >=4.2 && <4.4,
-                       pipes-concurrency >=2.0 && <2.1,
-                       postgresql-simple >=0.5 && <0.6,
-                       mediawiki-parser
-  default-language:    Haskell2010
-
 test-suite tests
   main-is:             Test.hs
   type:                exitcode-stdio-1.0
