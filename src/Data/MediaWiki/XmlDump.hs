@@ -8,6 +8,7 @@ module Data.MediaWiki.XmlDump
     , WikiDoc(..)
     , Format(..)
     , PageId(..)
+    , SiteInfo(..)
     , Namespace(..)
     , NamespaceId(..)
     ) where
@@ -34,6 +35,12 @@ data Format = XWiki
             | OtherFormat ByteString
             deriving (Show, Generic)
 
+data SiteInfo = SiteInfo { siteNamespaces :: [(NamespaceId, Namespace)]
+                         , siteName       :: T.Text
+                         , siteDbName     :: T.Text
+                         , siteGenerator  :: T.Text
+                         }
+
 data WikiDoc = WikiDoc { docTitle     :: ByteString
                        , docNamespace :: NamespaceId
                        , docPageId    :: PageId
@@ -51,16 +58,20 @@ entities = HM.fromList
     , ("quot", "\"")
     ]
 
-parseWikiDocs :: BSL.ByteString -> ([(NamespaceId, Namespace)], [WikiDoc])
+parseWikiDocs :: BSL.ByteString -> (SiteInfo, [WikiDoc])
 parseWikiDocs = parseWikiDocs' . parse parseOpts
   where
     parseOpts = defaultParseOptions { entityDecoder = Just (`HM.lookup` entities) }
 
-parseWikiDocs' :: [SAXEvent ByteString ByteString] -> ([(NamespaceId, Namespace)], [WikiDoc])
+parseWikiDocs' :: [SAXEvent ByteString ByteString] -> (SiteInfo, [WikiDoc])
 parseWikiDocs' xs0 =
-    let (prelude, docsElems) = span (not . isEndTag "namespaces") xs0
-        namespaces = parseNamespaces prelude
-    in (namespaces, parsePages docsElems)
+    let (prelude, docsElems) = span (not . isEndTag "siteinfo") xs0
+        siteInfo = SiteInfo { siteNamespaces = parseNamespaces prelude
+                            , siteName = textElement prelude "sitename"
+                            , siteDbName = textElement prelude "dbname"
+                            , siteGenerator = textElement prelude "generator"
+                            }
+    in (siteInfo, parsePages docsElems)
   where
     parseNamespaces :: [SAXEvent ByteString ByteString] -> [(NamespaceId, Namespace)]
     parseNamespaces [] = []
@@ -120,6 +131,13 @@ parseWikiDocs' xs0 =
       where
         parseFormat "text/x-wiki" = XWiki
         parseFormat other         = OtherFormat other
+
+textElement :: [SAXEvent ByteString ByteString] -> ByteString -> T.Text
+textElement xs tag =
+    T.decodeUtf8
+    $ getContent
+    $ takeWhile (not . isEndTag tag)
+    $ dropWhile (not . isStartTag tag) xs
 
 getContent :: [SAXEvent ByteString ByteString] -> ByteString
 getContent =
