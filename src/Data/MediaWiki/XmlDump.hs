@@ -18,8 +18,10 @@ import           Data.ByteString.Char8 (ByteString)
 import qualified Data.ByteString.Char8 as BS
 import qualified Data.ByteString.Lazy as BSL
 import qualified Data.HashMap.Strict as HM
+import qualified Data.Text as T
+import qualified Data.Text.Encoding as T
 
-newtype Namespace = Namespace ByteString
+newtype Namespace = Namespace T.Text
                   deriving (Eq, Ord, Show, Generic)
 
 newtype NamespaceId = NamespaceId Int
@@ -67,7 +69,7 @@ parseWikiDocs' xs0 =
       in case ns of
            (StartElement _ attrs) : _
              | Just key <- NamespaceId . read . BS.unpack <$> lookup "key" attrs ->
-               let name = Namespace $ getContent ns
+               let name = Namespace $ T.decodeUtf8 $ getContent ns
                in (key, name) : parseNamespaces rest
            _ -> parseNamespaces rest
 
