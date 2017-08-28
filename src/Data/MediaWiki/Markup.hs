@@ -198,31 +198,36 @@ doc' = mdo
                     <> char_ '|'
                     <> (eol *> spaces *> text_ "}}")
                     <> (eol *> spaces *> char_ '|')
-    templateParts <- do
+    templateParts <- mdo
         value <- manyUntil templateEnd templateBody
         part <- do
             key <- T.strip . T.pack <$*> manyUntil (text "=" <> text "|" <> text "}}") anyChar
-            return $ pure (,) <*  spaces <* char '|' <* spaces
-                              <*> option Nothing (Just <$> key <* char '=' <* spaces)
+            return $ pure (,) <*> option Nothing (Just <$> key <* char '=' <* spaces)
                               <*> value <* optional eol
           :: PM s (P s (Maybe T.Text, [Doc]))
-        manyUntil (spaces *> text "}}") part
+        parts <- newRule $
+                    ((:) <$> part <* spaces <* char '|' <* spaces <*> parts)
+                <|> ((:[]) <$> part)
+        return parts
 
     -- magic words
     magicWord <- do
         let theWord = T.pack <$> many alphaNum
         body <- T.pack <$*> manyUntil (text_ "}}") anyChar
-        return $ pure MagicWord <*  text_ "{{" <* optional (char_ '#')
+        return $ pure MagicWord <*  text_ "{{" <* optional eol <* spaces
+                                <*  optional (char_ '#')
                                 <*> theWord <* char_ ':'
                                 <*> templateParts <* spaces <* text "}}"
 
     -- templates
     template <- do
-        templateName <- T.strip . T.pack <$*> manyUntil (templateEnd <> eol) anyChar
+        -- exclude colon as this is what magicWord uses
+        templateName <- T.strip . T.pack <$*> manyUntil templateEnd (noneOf ":")
         -- drop comments after template name
         let comments = void (comment *> eol *> comment) <|> (comment *> spaces)
         return $ pure Template <*  text "{{"
                                <*> templateName <* many comments <* optional eol <* many comments
+                               <*  spaces <* char '|' <* spaces
                                <*> templateParts <* spaces <* text "}}"
 
     -- <math>
@@ -315,6 +320,7 @@ cleanup = go []
     go []  (BulletList n ds : xs)   = BulletList n (cleanup ds) : go [] xs
     go []  (NumberedList n ds : xs) = NumberedList n (cleanup ds) : go [] xs
     go []  (Template n ds : xs)     = Template n (map (second cleanup) ds) : go [] xs
+    go []  (MagicWord t ds : xs)    = MagicWord t (map (fmap cleanup) ds) : go [] xs
     go []  (InternalLink t ds : xs) = InternalLink t (map cleanup ds) : go [] xs
     go []  (NewPara : NewPara : xs) = go [] (NewPara : xs)
     go []  (XmlTag tag attrs cs : xs) = XmlTag tag attrs (go [] cs) : go [] xs

@@ -1,0 +1,6 @@
+[ Template "#ifeq: hello" [ ( Nothing , [ Text "world" ] ) ]
+, NewPara
+, Text "{{"
+, NumberedList 1 [ Text "ifeq: yo" ]
+, Text "}}"
+]

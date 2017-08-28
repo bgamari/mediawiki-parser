@@ -1,0 +1,5 @@
+{{#ifeq: hello|world}}
+
+{{
+#ifeq: yo
+}}
