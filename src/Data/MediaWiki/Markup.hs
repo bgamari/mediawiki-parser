@@ -74,7 +74,8 @@ data Doc = Text !String
          | Heading !Int [Doc]
          | InternalLink !LinkTarget [[Doc]]
          | ExternalLink !Url (Maybe String)
-         | Template BraceCount [Doc] [(Maybe T.Text, [Doc])]
+         | Template [Doc] [(Maybe T.Text, [Doc])]
+         | TemplateArg [Doc] [(Maybe T.Text, [Doc])]
          | MagicWord !T.Text ![(Maybe T.Text, [Doc])]
          | Math !T.Text
          | XmlOpenClose TagName [(String, String)]
@@ -207,19 +208,19 @@ doc' = mdo
                                 <*  spaces <*  text_ "}}"
 
     -- templates
-    let template' bc = do
+    let template' f bc = do
           -- drop comments after template name
           let comments = void (comment *> eol *> comment) <|> (comment *> spaces)
           parts <- templateParts bc templateBody
           body <- manyUntil (templateEnd bc) templateBody
-          return $ pure (Template bc)
+          return $ pure f
               <*  openBraces bc
               <*> body <* many comments <* optional eol <* many comments
               <*  spaces
               <*> option [] (char_ '|' *> spaces *> parts <* spaces)
               <*  closeBraces bc
-    template2 <- template' DoubleBrace
-    template3 <- template' TripleBrace
+    template2 <- template' Template DoubleBrace
+    template3 <- template' TemplateArg TripleBrace
     -- Assume that last three open braces are grouped if possible; see
     -- https://meta.wikimedia.org/wiki/Help:Expansion#XML_parse_tree
     let tryTemplate2 = peek (text_ "{{{{{") *> template2
@@ -342,7 +343,8 @@ cleanup = go []
     go []  (NumberedList n ds : xs) = NumberedList n (cleanup ds) : go [] xs
     go []  (UnmarkedList n ds : xs) = UnmarkedList n (cleanup ds) : go [] xs
     go []  (DefinitionList n ds : xs) = DefinitionList n (cleanup ds) : go [] xs
-    go []  (Template bc n ds : xs)  = Template bc (cleanup n) (map (second cleanup) ds) : go [] xs
+    go []  (Template n ds : xs)     = Template (cleanup n) (map (second cleanup) ds) : go [] xs
+    go []  (TemplateArg n ds : xs)  = TemplateArg (cleanup n) (map (second cleanup) ds) : go [] xs
     go []  (MagicWord t ds : xs)    = MagicWord t (map (fmap cleanup) ds) : go [] xs
     go []  (InternalLink t ds : xs) = InternalLink t (map cleanup ds) : go [] xs
     go []  (NewPara : NewPara : xs) = go [] (NewPara : xs)
