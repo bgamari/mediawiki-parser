@@ -1,8 +1,14 @@
 [ Template
-    "Use mdy dates" [ ( Just "date" , [ Text "March 2012" ] ) ]
-, Template "update" [ ( Just "date" , [ Text "August 2010" ] ) ]
+    DoubleBrace
+    [ Text "Use mdy dates" ]
+    [ ( Just "date" , [ Text "March 2012" ] ) ]
 , Template
-    "Infobox company"
+    DoubleBrace
+    [ Text "update" ]
+    [ ( Just "date" , [ Text "August 2010" ] ) ]
+, Template
+    DoubleBrace
+    [ Text "Infobox company" ]
     [ ( Just "name" , [ Text "1worldspace Inc." ] )
     , ( Just "logo" , [] )
     , ( Just "type" , [] )
@@ -40,10 +46,14 @@
         ]
       )
     , ( Just "revenue"
-      , [ Template "Increase" [] , Text "$13.78 Million US$ (2007)" ]
+      , [ Template DoubleBrace [ Text "Increase" ] []
+        , Text "$13.78 Million US$ (2007)"
+        ]
       )
     , ( Just "net_income"
-      , [ Template "Decrease" [] , Text "-$169.51 Million US$ (2007)" ]
+      , [ Template DoubleBrace [ Text "Decrease" ] []
+        , Text "-$169.51 Million US$ (2007)"
+        ]
       )
     , ( Just "market cap"
       , [ Text "$7.7 million USD"
@@ -51,7 +61,8 @@
             "ref"
             [ ( "name" , "zenobank" ) ]
             [ Template
-                "cite web"
+                DoubleBrace
+                [ Text "cite web " ]
                 [ ( Just "url"
                   , [ Text
                         "http://www.zenobank.com/index.php?symbol=WRSP&page=quotesearch "
@@ -98,7 +109,8 @@
     "ref"
     []
     [ Template
-        "cite web"
+        DoubleBrace
+        [ Text "cite web" ]
         [ ( Just "url"
           , [ Text
                 "http://forbesindia.com/article/special/5-things-that-disappeared-in-the-last-five-years/37838/1 "
@@ -121,7 +133,8 @@
     "ref"
     [ ( "name" , "itsback" ) ]
     [ Template
-        "cite news"
+        DoubleBrace
+        [ Text "cite news " ]
         [ ( Just "title" , [ Text "WorldSpace radio is back " ] )
         , ( Just "date" , [ Text "Jul 19, 2011 " ] )
         , ( Just "author" , [ Text "NS Ramnath " ] )
@@ -161,7 +174,8 @@
     "ref"
     []
     [ Template
-        "cite web"
+        DoubleBrace
+        [ Text "cite web" ]
         [ ( Just "url"
           , [ Text
                 "http://www.newtec.eu/article/release/world-s-first-satellite-powered-tablet-to-use-newtec-technology-for-e-learning "
@@ -225,7 +239,9 @@
 , Text
     "1worldspace claimed to be the only company with rights to the world's globally allocated spectrum for digital satellite radio."
 , Template
-    "Citation needed" [ ( Just "date" , [ Text "August 2008" ] ) ]
+    DoubleBrace
+    [ Text "Citation needed" ]
+    [ ( Just "date" , [ Text "August 2008" ] ) ]
 , Text
     " However, it never made use of its license to broadcast to the Americas or the Caribbean. The company gained attention around 2000 because of its willingness to invest in impoverished areas and from 2006 to the present due to its financial difficulties and bankruptcy proceedings."
 , NewPara
@@ -251,7 +267,8 @@
     "ref"
     []
     [ Template
-        "cite web"
+        DoubleBrace
+        [ Text "cite web" ]
         [ ( Just "archiveurl"
           , [ Text
                 "http://www.webcitation.org/5qtvGXToh?url=http%3A%2F%2Fwww.fmqb.com%2Farticle.asp%3Fid%3D1856716 "
@@ -287,7 +304,8 @@
     "ref"
     []
     [ Template
-        "cite web"
+        DoubleBrace
+        [ Text "cite web" ]
         [ ( Just "url"
           , [ Text "http://www.worldspace.com/index_wsmsg.html " ]
           )
@@ -467,7 +485,8 @@
     "ref"
     [ ( "name" , "sec.gov" ) ]
     [ Template
-        "cite web"
+        DoubleBrace
+        [ Text "cite web" ]
         [ ( Just "url"
           , [ Text
                 "http://www.sec.gov/Archives/edgar/data/1315054/000119312508071173/d10k.htm "
@@ -533,7 +552,9 @@
     []
 , Text " for AsiaStar."
 , Template
-    "Citation needed" [ ( Just "date" , [ Text "August 2008" ] ) ]
+    DoubleBrace
+    [ Text "Citation needed" ]
+    [ ( Just "date" , [ Text "August 2008" ] ) ]
 , Text
     "  These centers managed the performance and status of the satellites by controlling them and monitoring there. The system architecture is identical for each region."
 , NewPara
@@ -616,7 +637,8 @@
     "ref"
     []
     [ Template
-        "cite web"
+        DoubleBrace
+        [ Text "cite web" ]
         [ ( Just "url"
           , [ Text
                 "http://www.worldspace.com/howitworks/receivers/receiverfaq/index.html "
@@ -693,7 +715,8 @@
     "ref"
     []
     [ Template
-        "cite web"
+        DoubleBrace
+        [ Text "cite web" ]
         [ ( Just "url"
           , [ Text
                 "http://investor.worldspace.com/phoenix.zhtml?c=189783&p=irol-newsArticle&ID=1119610&highlight= "
@@ -713,7 +736,8 @@
     "ref"
     []
     [ Template
-        "cite web"
+        DoubleBrace
+        [ Text "cite web " ]
         [ ( Just "url"
           , [ Text
                 "http://rapidtvnews.com/index.php/200805181172/worldspace-concerned-at-lack-of-cash.html "
@@ -739,7 +763,8 @@
     "ref"
     []
     [ Template
-        "cite web"
+        DoubleBrace
+        [ Text "cite web" ]
         [ ( Just "url"
           , [ Text
                 "http://www.marketwatch.com/news/story/1worldspace-reports-second-quarter-2008/story.aspx?guid%3D%7BE9C8D9DE-19A5-4496-8673-19C4E38F34AD%7D%26dist%3Dhppr "
@@ -749,11 +774,15 @@
         , ( Just "accessdate" , [ Text "August 22, 2008 " ] )
         ]
     , Template
-        "dead link"
+        DoubleBrace
+        [ Text "dead link" ]
         [ ( Just "date" , [ Text "June 2016" ] )
         , ( Just "bot" , [ Text "medic" ] )
         ]
-    , Template "cbignore" [ ( Just "bot" , [ Text "medic" ] ) ]
+    , Template
+        DoubleBrace
+        [ Text "cbignore" ]
+        [ ( Just "bot" , [ Text "medic" ] ) ]
     , Text "  "
     ]
 , Text
@@ -768,7 +797,8 @@
            "What assets does Worldspace now own? &#124; News &#124; Rapid TV News")
     , Text " "
     , Template
-        "webarchive"
+        DoubleBrace
+        [ Text "webarchive " ]
         [ ( Just "url"
           , [ Text
                 "https://web.archive.org/web/20080924141737/http://rapidtvnews.com/index.php/200807281780/what-assets-does-worldspace-now-own.html "
@@ -791,7 +821,8 @@
     "ref"
     []
     [ Template
-        "cite web"
+        DoubleBrace
+        [ Text "cite web" ]
         [ ( Just "url"
           , [ Text
                 "http://www.bloomberg.com/apps/news?pid=newsarchive&sid=ae8qD.ZAhts8 "
@@ -855,7 +886,8 @@
     "ref"
     []
     [ Template
-        "cite web"
+        DoubleBrace
+        [ Text "cite web" ]
         [ ( Just "url"
           , [ Text
                 "http://rapidtvnews.com/index.php/200808101867/two-worldspace-top-execs-bail-out.html "
@@ -880,7 +912,9 @@
 , Text
     "WorldSpace audio advertisements in 2006 highlighted the company's ability to provide communication and data-transmission services to remote areas of the world, particularly in a disaster-relief context. The promotions also mentioned WorldSpace's facilitation of long-distance educational projects in Africa."
 , Template
-    "Citation needed" [ ( Just "date" , [ Text "August 2008" ] ) ]
+    DoubleBrace
+    [ Text "Citation needed" ]
+    [ ( Just "date" , [ Text "August 2008" ] ) ]
 , Text
     " The ads, broadcast on Washington D.C. radio stations, appeared aimed at government procurement officials and possibly NGOs."
 , NewPara
@@ -894,7 +928,9 @@
 , Text
     " as its brand ambassador in India where 90% of its customers are located, and unveiled an integrated marketing communication campaign across print and visual media featuring an exclusive signature tune composed by Mr. Rahman."
 , Template
-    "Citation needed" [ ( Just "date" , [ Text "August 2008" ] ) ]
+    DoubleBrace
+    [ Text "Citation needed" ]
+    [ ( Just "date" , [ Text "August 2008" ] ) ]
 , NewPara
 , Text
     "In a last-ditch but ultimately completely unsuccessful effort to avoid commercial insolvency in July 2008, WorldSpace changed its brand and corporate identity to 1worldspace."
@@ -902,7 +938,8 @@
     "ref"
     []
     [ Template
-        "cite web"
+        DoubleBrace
+        [ Text "cite web " ]
         [ ( Just "url" , [ Text "http://web2.sys-con.com/node/617050 " ] )
         , ( Just "title"
           , [ Text
@@ -933,7 +970,8 @@
     "ref"
     []
     [ Template
-        "cite web"
+        DoubleBrace
+        [ Text "cite web" ]
         [ ( Just "url"
           , [ Text
                 "http://www.mediarights.org/organization/worldspace_foundation "
@@ -967,7 +1005,8 @@
     "ref"
     []
     [ Template
-        "cite web"
+        DoubleBrace
+        [ Text "cite web" ]
         [ ( Just "url" , [ Text "http://www.firstvoiceint.org/ " ] )
         , ( Just "title" , [ Text "First Voice Africa " ] )
         , ( Just "publisher" , [ Text "Firstvoiceint.org " ] )
@@ -994,7 +1033,8 @@
     "ref"
     []
     [ Template
-        "cite web"
+        DoubleBrace
+        [ Text "cite web " ]
         [ ( Just "url"
           , [ Text "http://www.worldspace-europe.com/en/overview.php " ]
           )
@@ -1026,7 +1066,8 @@
         (Just "")
     , Text "  "
     , Template
-        "webarchive"
+        DoubleBrace
+        [ Text "webarchive " ]
         [ ( Just "url"
           , [ Text
                 "https://web.archive.org/web/20110710235758/http://www.fiatgroupautomobilespress.com/index.php?method=news&action=zoom&id=2007071820361698504c8759ec19c8fe9e69c70f481586&id_subsection= "
@@ -1041,7 +1082,8 @@
     "ref"
     []
     [ Template
-        "cite news"
+        DoubleBrace
+        [ Text "cite news" ]
         [ ( Just "url"
           , [ Text
                 "http://www.forbes.com/markets/feeds/afx/2007/07/19/afx3929656.html "
@@ -1082,7 +1124,8 @@
     []
     [ Text "http://www.1worldspace.com/press/01_04_2006.html"
     , Template
-        "dead link"
+        DoubleBrace
+        [ Text "dead link" ]
         [ ( Just "date" , [ Text "November 2016 " ] )
         , ( Just "bot" , [ Text "InternetArchiveBot " ] )
         , ( Just "fix-attempted" , [ Text "yes " ] )
@@ -1107,7 +1150,10 @@
 , Text " vehicular mobile service."
 , NewPara
 , Heading 2 [ Text "References" ]
-, Template "reflist" [ ( Just "colwidth" , [ Text "30em" ] ) ]
+, Template
+    DoubleBrace
+    [ Text "reflist" ]
+    [ ( Just "colwidth" , [ Text "30em" ] ) ]
 , NewPara
 , Heading 2 [ Text "External links" ]
 , BulletList
@@ -1120,7 +1166,8 @@
 , BulletList
     1
     [ Template
-        "cite web"
+        DoubleBrace
+        [ Text "cite web " ]
         [ ( Just "title"
           , [ Text "Tight Times Continue at 1worldspace " ]
           )
@@ -1134,8 +1181,10 @@
     ]
 , NewPara
 , Template
-    "Audio broadcasting" [ ( Just "state" , [ Text "uncollapsed" ] ) ]
-, Template "Satcomm" []
+    DoubleBrace
+    [ Text "Audio broadcasting" ]
+    [ ( Just "state" , [ Text "uncollapsed" ] ) ]
+, Template DoubleBrace [ Text "Satcomm" ] []
 , NewPara
 , InternalLink
     LinkTarget

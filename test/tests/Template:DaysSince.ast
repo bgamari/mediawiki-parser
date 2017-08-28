@@ -1,0 +1,260 @@
+[ XmlTag
+    "noinclude"
+    []
+    [ Comment
+        "\n-========================================================================\n-  Days_since: Show years/days or months/days since date: year|month|day\n-========================================================================\n"
+    ]
+, MagicWord
+    "ifeq"
+    [ ( Nothing
+      , [ Text " "
+        , Template
+            TripleBrace
+            [ Text "2" ]
+            [ ( Nothing
+              , [ Text "xnone" , XmlTag "noinclude" [] [ Text "more" ] ]
+              )
+            ]
+        ]
+      )
+    , ( Nothing , [ Text "xnone" ] )
+    , ( Nothing
+      , [ Text "   <br>"
+        , Template
+            DoubleBrace
+            [ Text "color" ]
+            [ ( Nothing , [ Text "darkorange" ] )
+            , ( Nothing
+              , [ Text "'''{Days since}: Expected 3 numbers: year"
+                , Template DoubleBrace [ Text "!" ] []
+                , Text "month"
+                , Template DoubleBrace [ Text "!" ] []
+                , Text "day, but found: "
+                , Template TripleBrace [ Text "1" ] []
+                , Text "'''<br>"
+                ]
+              )
+            ]
+        ]
+      )
+    ]
+, MagicWord
+    "ifexpr"
+    [ ( Nothing
+      , [ Text " "
+        , Template
+            DoubleBrace
+            [ Text "age in days" ]
+            [ ( Nothing
+              , [ Template
+                    TripleBrace [ Text "1" ] [ ( Nothing , [ Text "2011" ] ) ]
+                ]
+              )
+            , ( Nothing
+              , [ Template
+                    TripleBrace [ Text "2" ] [ ( Nothing , [ Text "3" ] ) ]
+                ]
+              )
+            , ( Nothing
+              , [ Template
+                    TripleBrace [ Text "3" ] [ ( Nothing , [ Text "4" ] ) ]
+                ]
+              )
+            ]
+        , Text " > 365"
+        ]
+      )
+    , ( Nothing
+      , [ MagicWord
+            "expr"
+            [ ( Nothing
+              , [ Text " floor( "
+                , Template
+                    DoubleBrace
+                    [ Text "age in days" ]
+                    [ ( Nothing
+                      , [ Template
+                            TripleBrace [ Text "1" ] [ ( Nothing , [ Text "2011" ] ) ]
+                        ]
+                      )
+                    , ( Nothing
+                      , [ Template
+                            TripleBrace [ Text "2" ] [ ( Nothing , [ Text "3" ] ) ]
+                        ]
+                      )
+                    , ( Nothing
+                      , [ Template
+                            TripleBrace [ Text "3" ] [ ( Nothing , [ Text "4" ] ) ]
+                        ]
+                      )
+                    ]
+                , Text " / 365) "
+                ]
+              )
+            ]
+        , Text "&nbsp;years, "
+        , MagicWord
+            "expr"
+            [ ( Nothing
+              , [ Text " "
+                , Template
+                    DoubleBrace
+                    [ Text "age in days" ]
+                    [ ( Nothing
+                      , [ Template
+                            TripleBrace [ Text "1" ] [ ( Nothing , [ Text "2011" ] ) ]
+                        ]
+                      )
+                    , ( Nothing
+                      , [ Template
+                            TripleBrace [ Text "2" ] [ ( Nothing , [ Text "3" ] ) ]
+                        ]
+                      )
+                    , ( Nothing
+                      , [ Template
+                            TripleBrace [ Text "3" ] [ ( Nothing , [ Text "4" ] ) ]
+                        ]
+                      )
+                    ]
+                , Text " mod 365"
+                ]
+              )
+            ]
+        , Text "&nbsp;days"
+        ]
+      )
+    , ( Nothing
+      , [ MagicWord
+            "ifexpr"
+            [ ( Nothing
+              , [ Text " "
+                , Template
+                    DoubleBrace
+                    [ Text "age in days" ]
+                    [ ( Nothing , [ Template TripleBrace [ Text "1" ] [] ] )
+                    , ( Nothing , [ Template TripleBrace [ Text "2" ] [] ] )
+                    , ( Nothing , [ Template TripleBrace [ Text "3" ] [] ] )
+                    ]
+                , Text " > 30"
+                ]
+              )
+            , ( Nothing
+              , [ MagicWord
+                    "expr"
+                    [ ( Nothing
+                      , [ Text " floor"
+                        , MagicWord
+                            "expr"
+                            [ ( Nothing
+                              , [ Text " "
+                                , Template
+                                    DoubleBrace
+                                    [ Text "age in days" ]
+                                    [ ( Nothing , [ Template TripleBrace [ Text "1" ] [] ] )
+                                    , ( Nothing , [ Template TripleBrace [ Text "2" ] [] ] )
+                                    , ( Nothing , [ Template TripleBrace [ Text "3" ] [] ] )
+                                    ]
+                                , Text " / 30"
+                                ]
+                              )
+                            ]
+                        ]
+                      )
+                    ]
+                , MagicWord
+                    "ifeq"
+                    [ ( Nothing
+                      , [ Text " "
+                        , Template TripleBrace [ Text "short" ] [ ( Nothing , [] ) ]
+                        , Text " "
+                        ]
+                      )
+                    , ( Nothing , [ Text "yes " ] )
+                    , ( Nothing , [ Text "m " ] )
+                    , ( Nothing , [ Text "&nbsp;months ago " ] )
+                    ]
+                ]
+              )
+            , ( Nothing
+              , [ Template
+                    DoubleBrace
+                    [ Text "age in days" ]
+                    [ ( Nothing , [ Template TripleBrace [ Text "1" ] [] ] )
+                    , ( Nothing , [ Template TripleBrace [ Text "2" ] [] ] )
+                    , ( Nothing , [ Template TripleBrace [ Text "3" ] [] ] )
+                    ]
+                , MagicWord
+                    "ifeq"
+                    [ ( Nothing
+                      , [ Text " "
+                        , Template TripleBrace [ Text "short" ] [ ( Nothing , [] ) ]
+                        , Text " "
+                        ]
+                      )
+                    , ( Nothing , [ Text "yes " ] )
+                    , ( Nothing , [ Text "d " ] )
+                    , ( Nothing , [ Text "&nbsp;days ago " ] )
+                    ]
+                ]
+              )
+            ]
+        ]
+      )
+    ]
+, XmlTag
+    "noinclude"
+    []
+    [ NewPara
+    , Template
+        DoubleBrace
+        [ Text "documentation" ]
+        [ ( Just "content"
+          , [ NewPara
+            , Text "'''"
+            , Template
+                DoubleBrace [ Text "tl" ] [ ( Nothing , [ Text "Days since" ] ) ]
+            , Text
+                "''' shows the years/days (or months/days) since a specific date, entered in the 3-number format: year"
+            , Template DoubleBrace [ Text "!" ] []
+            , Text "month"
+            , Template DoubleBrace [ Text "!" ] []
+            , Text "day."
+            , NewPara
+            , Heading 2 [ Text "See also" ]
+            , BulletList
+                1
+                [ InternalLink
+                    LinkTarget
+                      { linkTargetPage =
+                          PageName { getPageName = "Template:Birth_date_and_age" }
+                      , linkTargetAnchor = Nothing
+                      }
+                    []
+                , Text " \8211 show birthdate and age in years"
+                ]
+            , BulletList
+                1
+                [ InternalLink
+                    LinkTarget
+                      { linkTargetPage =
+                          PageName { getPageName = "Template:Years_and_days" }
+                      , linkTargetAnchor = Nothing
+                      }
+                    []
+                , Text " \8211 show years and days for a count in days"
+                ]
+            ]
+          )
+        ]
+    , InternalLink
+        LinkTarget
+          { linkTargetPage =
+              PageName
+                { getPageName =
+                    "Category:Date-computing templates based on current time"
+                }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    ]
+]

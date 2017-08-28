@@ -1,0 +1,165 @@
+[ XmlTag
+    "includeonly"
+    []
+    [ Template
+        DoubleBrace
+        [ Template TripleBrace [] [ ( Nothing , [ Text "safesubst:" ] ) ]
+        , Text "#switch:"
+        , Template
+            DoubleBrace
+            [ Template TripleBrace [] [ ( Nothing , [ Text "safesubst:" ] ) ]
+            , Text "#time:n"
+            ]
+            []
+        ]
+        [ ( Nothing , [ Text "1" ] )
+        , ( Nothing , [ Text "2" ] )
+        , ( Nothing , [ Text "3" ] )
+        , ( Nothing , [ Text "10" ] )
+        , ( Nothing , [ Text "11" ] )
+        , ( Just "12" , [ Text "1" ] )
+        , ( Nothing , [ Text "5" ] )
+        , ( Nothing , [ Text "6" ] )
+        , ( Nothing , [ Text "7" ] )
+        , ( Just "8" , [ Text "0" ] )
+        , ( Just "4"
+          , [ Template
+                DoubleBrace
+                [ Template TripleBrace [] [ ( Nothing , [ Text "safesubst:" ] ) ]
+                , Text "#ifexpr: ("
+                , Template
+                    DoubleBrace
+                    [ Template TripleBrace [] [ ( Nothing , [ Text "safesubst:" ] ) ]
+                    , Text "#time:j"
+                    ]
+                    [ ( Nothing , [ Text "+12 hours" ] ) ]
+                , Text " < "
+                , Template
+                    DoubleBrace
+                    [ Template TripleBrace [] [ ( Nothing , [ Text "safesubst:" ] ) ]
+                    , Text "Weekday in month"
+                    ]
+                    [ ( Nothing , [ Text "first" ] )
+                    , ( Nothing , [ Text "sunday" ] )
+                    , ( Nothing , [ Text "april" ] )
+                    , ( Nothing
+                      , [ Template
+                            DoubleBrace
+                            [ Template TripleBrace [] [ ( Nothing , [ Text "safesubst:" ] ) ]
+                            , Text "#time:Y"
+                            ]
+                            []
+                        ]
+                      )
+                    ]
+                , Text ") or ("
+                , Template
+                    DoubleBrace
+                    [ Template TripleBrace [] [ ( Nothing , [ Text "safesubst:" ] ) ]
+                    , Text "#time:j"
+                    ]
+                    [ ( Nothing , [ Text "+12 hours" ] ) ]
+                , Text " = "
+                , Template
+                    DoubleBrace
+                    [ Template TripleBrace [] [ ( Nothing , [ Text "safesubst:" ] ) ]
+                    , Text "Weekday in month"
+                    ]
+                    [ ( Nothing , [ Text "first" ] )
+                    , ( Nothing , [ Text "sunday" ] )
+                    , ( Nothing , [ Text "april" ] )
+                    , ( Nothing
+                      , [ Template
+                            DoubleBrace
+                            [ Template TripleBrace [] [ ( Nothing , [ Text "safesubst:" ] ) ]
+                            , Text "#time:Y"
+                            ]
+                            []
+                        ]
+                      )
+                    ]
+                , Text " and "
+                , Template
+                    DoubleBrace
+                    [ Template TripleBrace [] [ ( Nothing , [ Text "safesubst:" ] ) ]
+                    , Text "#time:G"
+                    ]
+                    [ ( Nothing , [ Text "+12 hours" ] ) ]
+                , Text " < 2)"
+                ]
+                [ ( Nothing , [ Text "1" ] ) , ( Nothing , [ Text "0" ] ) ]
+            ]
+          )
+        , ( Just "9"
+          , [ Template
+                DoubleBrace
+                [ Template TripleBrace [] [ ( Nothing , [ Text "safesubst:" ] ) ]
+                , Text "#ifexpr: ("
+                , Template
+                    DoubleBrace
+                    [ Template TripleBrace [] [ ( Nothing , [ Text "safesubst:" ] ) ]
+                    , Text "#time:j"
+                    ]
+                    [ ( Nothing , [ Text "+12 hours" ] ) ]
+                , Text " < "
+                , Template
+                    DoubleBrace
+                    [ Template TripleBrace [] [ ( Nothing , [ Text "safesubst:" ] ) ]
+                    , Text "Weekday in month"
+                    ]
+                    [ ( Nothing , [ Text "last" ] )
+                    , ( Nothing , [ Text "sunday" ] )
+                    , ( Nothing , [ Text "september" ] )
+                    , ( Nothing
+                      , [ Template
+                            DoubleBrace
+                            [ Template TripleBrace [] [ ( Nothing , [ Text "safesubst:" ] ) ]
+                            , Text "#time:Y"
+                            ]
+                            []
+                        ]
+                      )
+                    ]
+                , Text ") or ("
+                , Template
+                    DoubleBrace
+                    [ Template TripleBrace [] [ ( Nothing , [ Text "safesubst:" ] ) ]
+                    , Text "#time:j"
+                    ]
+                    [ ( Nothing , [ Text "+12 hours" ] ) ]
+                , Text " = "
+                , Template
+                    DoubleBrace
+                    [ Template TripleBrace [] [ ( Nothing , [ Text "safesubst:" ] ) ]
+                    , Text "Weekday in month"
+                    ]
+                    [ ( Nothing , [ Text "last" ] )
+                    , ( Nothing , [ Text "sunday" ] )
+                    , ( Nothing , [ Text "september" ] )
+                    , ( Nothing
+                      , [ Template
+                            DoubleBrace
+                            [ Template TripleBrace [] [ ( Nothing , [ Text "safesubst:" ] ) ]
+                            , Text "#time:Y"
+                            ]
+                            []
+                        ]
+                      )
+                    ]
+                , Text " and "
+                , Template
+                    DoubleBrace
+                    [ Template TripleBrace [] [ ( Nothing , [ Text "safesubst:" ] ) ]
+                    , Text "#time:G"
+                    ]
+                    [ ( Nothing , [ Text "+12 hours" ] ) ]
+                , Text " < 2)"
+                ]
+                [ ( Nothing , [ Text "0" ] ) , ( Nothing , [ Text "1" ] ) ]
+            ]
+          )
+        ]
+    ]
+, XmlTag
+    "noinclude" [] [ Template DoubleBrace [ Text "Documentation" ] [] ]
+]

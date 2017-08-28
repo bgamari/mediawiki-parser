@@ -65,13 +65,16 @@ data LinkTarget = LinkTarget { linkTargetPage   :: !PageName
                              }
                 deriving (Show, Eq, Ord, Generic)
 
+data BraceCount = DoubleBrace | TripleBrace
+                deriving (Show, Eq, Ord, Generic)
+
 data Doc = Text !String
          | Char !Char
          | Comment !String
          | Heading !Int [Doc]
          | InternalLink !LinkTarget [[Doc]]
          | ExternalLink !Url (Maybe String)
-         | Template !T.Text [(Maybe T.Text, [Doc])]
+         | Template BraceCount [Doc] [(Maybe T.Text, [Doc])]
          | MagicWord !T.Text ![(Maybe T.Text, [Doc])]
          | Math !T.Text
          | XmlOpenClose TagName [(String, String)]
@@ -193,42 +196,34 @@ doc' = mdo
         line <- manyUntil eol anyChar
         return $ eol *> char ' ' *> fmap CodeLine line
 
-    -- Common to templates and magic words
-    let templateEnd = text_ "}}"
-                    <> char_ '|'
-                    <> (eol *> spaces *> text_ "}}")
-                    <> (eol *> spaces *> char_ '|')
-    templateParts <- mdo
-        value <- manyUntil templateEnd templateBody
-        part <- do
-            key <- T.strip . T.pack <$*> manyUntil (text "=" <> text "|" <> text "}}") anyChar
-            return $ pure (,) <*> option Nothing (Just <$> key <* char '=' <* spaces)
-                              <*> value <* optional eol
-          :: PM s (P s (Maybe T.Text, [Doc]))
-        parts <- newRule $
-                    ((:) <$> part <* spaces <* char '|' <* spaces <*> parts)
-                <|> ((:[]) <$> part)
-        return parts
-
     -- magic words
     magicWord <- do
+        parts <- templateParts DoubleBrace templateBody
         let theWord = T.pack <$> many alphaNum
-        body <- T.pack <$*> manyUntil (text_ "}}") anyChar
         return $ pure MagicWord <*  text_ "{{" <* optional eol <* spaces
                                 <*  optional (char_ '#')
                                 <*> theWord <* char_ ':'
-                                <*> templateParts <* spaces <* text "}}"
+                                <*> parts
+                                <*  spaces <*  text_ "}}"
 
     -- templates
-    template <- do
-        -- exclude colon as this is what magicWord uses
-        templateName <- T.strip . T.pack <$*> manyUntil templateEnd (noneOf ":")
-        -- drop comments after template name
-        let comments = void (comment *> eol *> comment) <|> (comment *> spaces)
-        return $ pure Template <*  text "{{"
-                               <*> templateName <* many comments <* optional eol <* many comments
-                               <*  spaces <* char '|' <* spaces
-                               <*> templateParts <* spaces <* text "}}"
+    let template' bc = do
+          -- drop comments after template name
+          let comments = void (comment *> eol *> comment) <|> (comment *> spaces)
+          parts <- templateParts bc templateBody
+          body <- manyUntil (templateEnd bc) templateBody
+          return $ pure (Template bc)
+              <*  openBraces bc
+              <*> body <* many comments <* optional eol <* many comments
+              <*  spaces
+              <*> option [] (char_ '|' *> spaces *> parts <* spaces)
+              <*  closeBraces bc
+    template2 <- template' DoubleBrace
+    template3 <- template' TripleBrace
+    -- Assume that last three open braces are grouped if possible; see
+    -- https://meta.wikimedia.org/wiki/Help:Expansion#XML_parse_tree
+    let tryTemplate2 = peek (text_ "{{{{{") *> template2
+        template = tryTemplate2 <|> template3 <|> template2
 
     -- <math>
     -- We sadly can't handle this as XML since math can look like a heading. See TimeValueOfMoney.wiki
@@ -307,6 +302,32 @@ doc' = mdo
 spaces :: P s ()
 spaces = void $ many $ char ' ' // char '\t'
 
+openBraces, closeBraces :: BraceCount -> P s ()
+openBraces DoubleBrace  = text_ "{{"
+openBraces TripleBrace  = text_ "{{{"
+closeBraces DoubleBrace = text_ "}}"
+closeBraces TripleBrace = text_ "}}}"
+
+templateEnd :: BraceCount -> P s ()
+templateEnd bc =
+       closeBraces bc
+    <> char_ '|'
+    <> (eol *> spaces *> closeBraces bc)
+    <> (eol *> spaces *> char_ '|')
+
+templateParts :: forall s. BraceCount -> P s Doc -> PM s (P s [(Maybe T.Text, [Doc])])
+templateParts bc templateBody = mdo
+    value <- manyUntil (templateEnd bc) templateBody
+    part <- do
+        key <- T.strip . T.pack <$*> manyUntil (text_ "=" <> text_ "|" <> closeBraces bc) anyChar
+        return $ pure (,) <*> option Nothing (Just <$> key <* char '=' <* spaces)
+                          <*> value <* optional eol
+      :: PM s (P s (Maybe T.Text, [Doc]))
+    parts <- newRule $
+                ((:) <$> part <* spaces <* char '|' <* spaces <*> parts)
+            <|> ((:[]) <$> part)
+    return parts
+
 cleanup :: [Doc] -> [Doc]
 cleanup = go []
   where
@@ -319,7 +340,7 @@ cleanup = go []
     go []  (Italic : xs)            = Italic : go [] xs
     go []  (BulletList n ds : xs)   = BulletList n (cleanup ds) : go [] xs
     go []  (NumberedList n ds : xs) = NumberedList n (cleanup ds) : go [] xs
-    go []  (Template n ds : xs)     = Template n (map (second cleanup) ds) : go [] xs
+    go []  (Template bc n ds : xs)  = Template bc (cleanup n) (map (second cleanup) ds) : go [] xs
     go []  (MagicWord t ds : xs)    = MagicWord t (map (fmap cleanup) ds) : go [] xs
     go []  (InternalLink t ds : xs) = InternalLink t (map cleanup ds) : go [] xs
     go []  (NewPara : NewPara : xs) = go [] (NewPara : xs)

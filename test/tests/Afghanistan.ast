@@ -1,9 +1,11 @@
 [ Template
-    "Infobox country"
+    DoubleBrace
+    [ Text "Infobox country" ]
     [ ( Just "largest_city" , [ Text "Kabul" ] )
     , ( Just "languages"
       , [ Template
-            "hlist"
+            DoubleBrace
+            [ Text "hlist" ]
             [ ( Just "style" , [ Text "white-space:nowrap; " ] )
             , ( Nothing
               , [ InternalLink
@@ -35,9 +37,10 @@
               , linkTargetAnchor = Nothing
               }
             [ [ Text "Afghan" ] ]
-        , Template
-            "#tag:ref"
-            [ ( Nothing
+        , MagicWord
+            "tag"
+            [ ( Nothing , [ Text "ref" ] )
+            , ( Nothing
               , [ Text
                     "Other terms that have been used as demonyms are '''Afghani'''"
                 , XmlTag
@@ -84,7 +87,7 @@
                         (Url "http://dictionary.reference.com/browse/afghanistani")
                         (Just "Reference.com")
                     , Text " (Retrieved 13 November 2007). "
-                    , Template "webarchive" []
+                    , Template DoubleBrace [ Text "webarchive" ] []
                     ]
                 ]
               )

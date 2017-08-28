@@ -31,18 +31,26 @@
 , NewPara
 , Heading 1 [ Text "A template" ]
 , NewPara
-, Template "Main article" [ ( Nothing , [ Text "hel" ] ) ]
+, Template
+    DoubleBrace
+    [ Text "Main article" ]
+    [ ( Nothing , [ Text "hel" ] ) ]
 , NewPara
 , XmlTag
     "ref"
     [ ( "name" , "stein" ) ]
-    [ Template "cite book" [ ( Just "last" , [ Text "Stein" ] ) ] ]
+    [ Template
+        DoubleBrace
+        [ Text "cite book" ]
+        [ ( Just "last" , [ Text "Stein" ] ) ]
+    ]
 , NewPara
 , XmlTag
     "ref"
     [ ( "name" , "laidentidadandaluza" ) ]
     [ Template
-        "cite book"
+        DoubleBrace
+        [ Text "cite book" ]
         [ ( Just "last" , [ Text "Dom\237nguez Ortiz" ] )
         , ( Just "first" , [ Text "Antonio" ] )
         , ( Just "title" , [ Text "La identidad andaluza" ] )
@@ -59,7 +67,8 @@
     "ref"
     []
     [ Template
-        "cite book"
+        DoubleBrace
+        [ Text "cite book" ]
         [ ( Just "last" , [ Text "Delgado Cabeza" ] )
         , ( Just "first" , [ Text "Manuel" ] )
         , ( Just "title"
@@ -77,7 +86,8 @@
     ]
 , NewPara
 , Template
-    "about"
+    DoubleBrace
+    [ Text "about" ]
     [ ( Nothing
       , [ Text "the "
         , InternalLink
@@ -106,13 +116,18 @@
     , ( Nothing , [ Text "other uses" ] )
     ]
 , Template
-    "Use dmy dates" [ ( Just "date" , [ Text "October 2012" ] ) ]
+    DoubleBrace
+    [ Text "Use dmy dates" ]
+    [ ( Just "date" , [ Text "October 2012" ] ) ]
 , NewPara
 , Template
-    "Infobox settlement"
+    DoubleBrace
+    [ Text "Infobox settlement" ]
     [ ( Just "website"
       , [ Template
-            "URL" [ ( Nothing , [ Text "http://www.juntadeandalucia.es" ] ) ]
+            DoubleBrace
+            [ Text "URL" ]
+            [ ( Nothing , [ Text "http://www.juntadeandalucia.es" ] ) ]
         ]
       )
     , ( Just "footnotes" , [] )
@@ -123,7 +138,8 @@
     "ref"
     []
     [ Template
-        "Cite book"
+        DoubleBrace
+        [ Text "Cite book" ]
         [ ( Just "first" , [ Text "George C." ] )
         , ( Just "last" , [ Text "Kohn" ] )
         , ( Just "title"

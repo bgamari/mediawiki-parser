@@ -1,12 +1,17 @@
 [ Template
-    "About" [ ( Nothing , [ Text "the 1969 manned lunar mission" ] ) ]
-, Template "pp-semi-indef" []
-, Template "pp-move-indef" []
+    DoubleBrace
+    [ Text "About" ]
+    [ ( Nothing , [ Text "the 1969 manned lunar mission" ] ) ]
+, Template DoubleBrace [ Text "pp-semi-indef" ] []
+, Template DoubleBrace [ Text "pp-move-indef" ] []
 , Template
-    "Use mdy dates" [ ( Just "date" , [ Text "June 2013" ] ) ]
-, Template "Good article" []
+    DoubleBrace
+    [ Text "Use mdy dates" ]
+    [ ( Just "date" , [ Text "June 2013" ] ) ]
+, Template DoubleBrace [ Text "Good article" ] []
 , Template
-    "Infobox spaceflight"
+    DoubleBrace
+    [ Text "Infobox spaceflight" ]
     [ ( Just "name" , [ Text "Apollo 11" ] )
     , ( Just "image" , [ Text "Apollo 11 first step.jpg" ] )
     , ( Just "image_caption"
@@ -39,7 +44,8 @@
             "ref"
             [ ( "name" , "Orloff" ) ]
             [ Template
-                "cite book"
+                DoubleBrace
+                [ Text "cite book " ]
                 [ ( Just "last" , [ Text "Orloff " ] )
                 , ( Just "first" , [ Text "Richard W. " ] )
                 , ( Just "title"
@@ -81,7 +87,8 @@
       )
     , ( Just "COSPAR_ID"
       , [ Template
-            "Unbulleted list"
+            DoubleBrace
+            [ Text "Unbulleted list" ]
             [ ( Nothing , [ Text "CSM: 1969-059A" ] )
             , ( Nothing , [ Text "LM: 1969-059C" ] )
             ]
@@ -89,7 +96,8 @@
       )
     , ( Just "SATCAT"
       , [ Template
-            "Unbulleted list"
+            DoubleBrace
+            [ Text "Unbulleted list" ]
             [ ( Nothing , [ Text "CSM: 4039" ] )
             , ( Nothing , [ Text "LM: 4041" ] )
             ]
@@ -103,7 +111,8 @@
       )
     , ( Just "spacecraft"
       , [ Template
-            "Unbulleted list"
+            DoubleBrace
+            [ Text "Unbulleted list" ]
             [ ( Nothing
               , [ InternalLink
                     LinkTarget
@@ -130,7 +139,8 @@
       )
     , ( Just "manufacturer"
       , [ Template
-            "Unbulleted list"
+            DoubleBrace
+            [ Text "Unbulleted list" ]
             [ ( Nothing
               , [ Text "CSM: "
                 , InternalLink
@@ -157,7 +167,8 @@
       )
     , ( Just "launch_mass"
       , [ Template
-            "convert"
+            DoubleBrace
+            [ Text "convert" ]
             [ ( Nothing , [ Text "100756" ] )
             , ( Nothing , [ Text "lb" ] )
             , ( Nothing , [ Text "kg" ] )
@@ -166,7 +177,8 @@
       )
     , ( Just "landing_mass"
       , [ Template
-            "convert"
+            DoubleBrace
+            [ Text "convert" ]
             [ ( Nothing , [ Text "10873" ] )
             , ( Nothing , [ Text "lb" ] )
             , ( Nothing , [ Text "kg" ] )
@@ -176,7 +188,8 @@
       )
     , ( Just "launch_date"
       , [ Template
-            "start-date"
+            DoubleBrace
+            [ Text "start-date" ]
             [ ( Nothing , [ Text "July 16, 1969, 13:32:00" ] )
             , ( Just "timezone" , [ Text "yes" ] )
             ]
@@ -214,7 +227,8 @@
       )
     , ( Just "landing_date"
       , [ Template
-            "end-date"
+            DoubleBrace
+            [ Text "end-date" ]
             [ ( Nothing , [ Text "July 24, 1969, 16:50:35" ] )
             , ( Just "timezone" , [ Text "yes" ] )
             ]
@@ -227,7 +241,8 @@
       , [ Text "North Pacific Ocean"
         , XmlOpenClose "br" []
         , Template
-            "Coord"
+            DoubleBrace
+            [ Text "Coord" ]
             [ ( Nothing , [ Text "13" ] )
             , ( Nothing , [ Text "19" ] )
             , ( Nothing , [ Text "N" ] )
@@ -242,7 +257,8 @@
       )
     , ( Just "recovery_by"
       , [ Template
-            "USS"
+            DoubleBrace
+            [ Text "USS" ]
             [ ( Nothing , [ Text "Hornet" ] )
             , ( Nothing , [ Text "CV-12" ] )
             , ( Nothing , [ Text "6" ] )
@@ -256,7 +272,8 @@
             "ref"
             [ ( "name" , "orbit" ) ]
             [ Template
-                "cite web"
+                DoubleBrace
+                [ Text "cite web" ]
                 [ ( Just "url"
                   , [ Text
                         "http://airandspace.si.edu/explore-and-learn/topics/apollo/as11/a11sum.htm "
@@ -291,7 +308,8 @@
       )
     , ( Just "orbit_periapsis"
       , [ Template
-            "convert"
+            DoubleBrace
+            [ Text "convert" ]
             [ ( Nothing , [ Text "54.5" ] )
             , ( Nothing , [ Text "nmi" ] )
             , ( Nothing , [ Text "km" ] )
@@ -303,7 +321,8 @@
       )
     , ( Just "orbit_apoapsis"
       , [ Template
-            "convert"
+            DoubleBrace
+            [ Text "convert" ]
             [ ( Nothing , [ Text "66.1" ] )
             , ( Nothing , [ Text "nmi" ] )
             , ( Nothing , [ Text "km" ] )
@@ -327,7 +346,8 @@
     , ( Just "interplanetary"
       , [ Text " "
         , Template
-            "Infobox spaceflight/IP"
+            DoubleBrace
+            [ Text "Infobox spaceflight/IP" ]
             [ ( Just "type" , [ Text "orbiter" ] )
             , ( Just "object"
               , [ InternalLink
@@ -362,7 +382,8 @@
             ]
         , Text " "
         , Template
-            "Infobox spaceflight/IP"
+            DoubleBrace
+            [ Text "Infobox spaceflight/IP" ]
             [ ( Just "type" , [ Text "lander" ] )
             , ( Just "object"
               , [ InternalLink
@@ -394,7 +415,8 @@
               , [ Text "Mare Tranquillitatis"
                 , XmlOpenClose "br" []
                 , Template
-                    "Lunar coords and quad cat"
+                    DoubleBrace
+                    [ Text "Lunar coords and quad cat" ]
                     [ ( Nothing , [ Text "0.67408" ] )
                     , ( Nothing , [ Text "N" ] )
                     , ( Nothing , [ Text "23.47297" ] )
@@ -404,7 +426,8 @@
                     "ref"
                     []
                     [ Template
-                        "cite web"
+                        DoubleBrace
+                        [ Text "cite web" ]
                         [ ( Just "url"
                           , [ Text
                                 "http://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html"
@@ -424,7 +447,8 @@
               )
             , ( Just "sample_mass"
               , [ Template
-                    "convert"
+                    DoubleBrace
+                    [ Text "convert" ]
                     [ ( Nothing , [ Text "47.51" ] )
                     , ( Nothing , [ Text "lb" ] )
                     , ( Nothing , [ Text "kg" ] )
@@ -443,7 +467,8 @@
     , ( Just "docking"
       , [ Text " "
         , Template
-            "Infobox spaceflight/Dock"
+            DoubleBrace
+            [ Text "Infobox spaceflight/Dock" ]
             [ ( Just "docking_target" , [ Text "LM" ] )
             , ( Just "docking_type" , [ Text "dock" ] )
             , ( Just "docking_date"
@@ -460,7 +485,8 @@
             ]
         , Text " "
         , Template
-            "Infobox spaceflight/Dock"
+            DoubleBrace
+            [ Text "Infobox spaceflight/Dock" ]
             [ ( Just "docking_target" , [ Text "LM ascent stage" ] )
             , ( Just "docking_type" , [ Text "dock" ] )
             , ( Just "docking_date"
@@ -481,7 +507,8 @@
     , ( Just "crew_size" , [ Text "3" ] )
     , ( Just "crew_members"
       , [ Template
-            "Unbulleted list"
+            DoubleBrace
+            [ Text "Unbulleted list" ]
             [ ( Nothing
               , [ InternalLink
                     LinkTarget
@@ -515,7 +542,8 @@
       )
     , ( Just "crew_callsign"
       , [ Template
-            "Unbulleted list"
+            DoubleBrace
+            [ Text "Unbulleted list" ]
             [ ( Nothing , [ Text "CSM: ''Columbia''" ] )
             , ( Nothing , [ Text "LM: ''Eagle''" ] )
             , ( Nothing
@@ -653,7 +681,8 @@
 , Text
     ". Armstrong became the first to step onto the lunar surface six hours later on July 21 at 02:56:15 UTC; Aldrin joined him about 20 minutes later. They spent about two and a quarter hours together outside the spacecraft, and collected "
 , Template
-    "convert"
+    DoubleBrace
+    [ Text "convert" ]
     [ ( Nothing , [ Text "47.5" ] )
     , ( Nothing , [ Text "lb" ] )
     , ( Nothing , [ Text "kg" ] )

@@ -1,6 +1,8 @@
-[ Template "#ifeq: hello" [ ( Nothing , [ Text "world" ] ) ]
+[ MagicWord
+    "ifeq"
+    [ ( Nothing , [ Text " hello" ] )
+    , ( Nothing , [ Text "world" ] )
+    ]
 , NewPara
-, Text "{{"
-, NumberedList 1 [ Text "ifeq: yo" ]
-, Text "}}"
+, MagicWord "ifeq" [ ( Nothing , [ Text " yo" ] ) ]
 ]

@@ -1,0 +1,26 @@
+<noinclude><!--
+-========================================================================
+-  Days_since: Show years/days or months/days since date: year|month|day
+-========================================================================
+--></noinclude>{{
+#ifeq: {{{2|xnone<noinclude>more</noinclude>}}}|xnone|
+   <br>{{color|darkorange|'''{Days since}: Expected 3 numbers: year{{!}}month{{!}}day, but found: {{{1}}}'''<br>}}
+}}{{
+#ifexpr: {{age in days|{{{1|2011}}}|{{{2|3}}}|{{{3|4}}}}} > 365
+	| {{#expr: floor( {{age in days|{{{1|2011}}}|{{{2|3}}}|{{{3|4}}}}} / 365) }}&nbsp;years, {{#expr: {{age in days|{{{1|2011}}}|{{{2|3}}}|{{{3|4}}}}} mod 365}}&nbsp;days
+	| {{#ifexpr: {{age in days|{{{1}}}|{{{2}}}|{{{3}}}}} > 30
+		| {{#expr: floor{{#expr: {{age in days|{{{1}}}|{{{2}}}|{{{3}}}}} / 30}}}}{{#ifeq: {{{short|}}} | yes | m | &nbsp;months ago }}
+		| {{age in days|{{{1}}}|{{{2}}}|{{{3}}}}}{{#ifeq: {{{short|}}} | yes | d | &nbsp;days ago }}
+	}}
+}}<noinclude>
+
+{{documentation|content=
+
+'''{{tl|Days since}}''' shows the years/days (or months/days) since a specific date, entered in the 3-number format: year{{!}}month{{!}}day.
+
+== See also ==
+* [[Template:Birth_date_and_age]] – show birthdate and age in years
+* [[Template:Years_and_days]] – show years and days for a count in days
+}}
+[[Category:Date-computing templates based on current time]]
+</noinclude>
