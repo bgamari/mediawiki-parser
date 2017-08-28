@@ -67,8 +67,10 @@
       )
     , ( Just "homepage" , [] )
     ]
-, Text
-    "'''1worldspace''', formerly known as 'WorldSpace', is a defunct "
+, Bold
+, Text "1worldspace"
+, Bold
+, Text ", formerly known as 'WorldSpace', is a defunct "
 , InternalLink
     LinkTarget
       { linkTargetPage = PageName { getPageName = "satellite radio" }
@@ -812,7 +814,8 @@
         , ( Just "archivedate" , [ Text "March 15, 2012 " ] )
         ]
     ]
-, Text " The reorganization includes a 90-day $13 million ''"
+, Text " The reorganization includes a 90-day $13 million "
+, Italic
 , InternalLink
     LinkTarget
       { linkTargetPage =
@@ -820,8 +823,9 @@
       , linkTargetAnchor = Nothing
       }
     []
+, Italic
 , Text
-    "'' approach, with the hopes of obtaining added funds to repay senior secured notes and "
+    " approach, with the hopes of obtaining added funds to repay senior secured notes and "
 , InternalLink
     LinkTarget
       { linkTargetPage = PageName { getPageName = "convertible bond" }
@@ -913,7 +917,10 @@
     ]
 , NewPara
 , Heading 2 [ Text "Philanthropy" ]
-, Text "'''WorldSpace Foundation''' was a "
+, Bold
+, Text "WorldSpace Foundation"
+, Bold
+, Text " was a "
 , InternalLink
     LinkTarget
       { linkTargetPage = PageName { getPageName = "501(c)(3)" }
@@ -948,8 +955,11 @@
         , ( Just "archivedate" , [ Text "February 14, 2012 " ] )
         ]
     ]
-, Text
-    " WorldSpace Foundation has changed its name to '''First Voice International'''."
+, Text " WorldSpace Foundation has changed its name to "
+, Bold
+, Text "First Voice International"
+, Bold
+, Text "."
 , NewPara
 , Text
     "First Voice International was a non-profit organization that tried to ensure that people living in poverty and remote places get the information they need to improve their lives, have the means to communicate their needs and wants, are able to share what they know with others \8211 in their own voice. The organization attempted to reach the most people for the least cost by combining satellite and other technologies. By bypassing the isolating effects of illiteracy and remoteness, the organization routinely delivers information to people in areas lacking electricity, telephone or Internet service."

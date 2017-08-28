@@ -12,11 +12,9 @@
     , Char 'n'
     , Char 't'
     , Char ' '
-    , Char '\''
-    , Char '\''
+    , Italic
     , Char 'P'
-    , Char '\''
-    , Char '\''
+    , Italic
     , Char ' '
     , Char '='
     , Char ' '
@@ -37,11 +35,9 @@
     , Char 's'
     , Char 't'
     , Char ' '
-    , Char '\''
-    , Char '\''
+    , Italic
     , Char 'i'
-    , Char '\''
-    , Char '\''
+    , Italic
     , Char ' '
     , Char '='
     , Char ' '
@@ -101,11 +97,9 @@
     , Char 'r'
     , Char 's'
     , Char ' '
-    , Char '\''
-    , Char '\''
+    , Italic
     , Char 'n'
-    , Char '\''
-    , Char '\''
+    , Italic
     , Char ' '
     , Char '='
     , Char ' '

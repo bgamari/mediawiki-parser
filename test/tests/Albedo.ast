@@ -7,8 +7,11 @@
       , linkTargetAnchor = Nothing
       }
     []
-, Text " ''\952''"
-, XmlTag "sub" [] [ Text "''i''" ]
+, Text " "
+, Italic
+, Text "\952"
+, Italic
+, XmlTag "sub" [] [ Italic , Text "i" , Italic ]
 , Text
     " can reasonably be approximated by the proportionate sum of two terms: the directional-hemispherical reflectance at that solar zenith angle, "
 , Math "{\\bar \\alpha(\\theta_i)}"

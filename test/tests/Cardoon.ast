@@ -67,7 +67,11 @@
     "ref"
     [ ( "name" , "Sonnante" ) ]
     [ Text
-        "Sonnante, G., Pignone, D, & Hammer, K. (2007). The Domestication of Artichoke and Cardoon: From Roman Times to the Genomic Age. ''Ann. Bot''. 100: 1095\8211\&1100. "
+        "Sonnante, G., Pignone, D, & Hammer, K. (2007). The Domestication of Artichoke and Cardoon: From Roman Times to the Genomic Age. "
+    , Italic
+    , Text "Ann. Bot"
+    , Italic
+    , Text ". 100: 1095\8211\&1100. "
     , ExternalLink
         (Url "http://aob.oxfordjournals.org/content/100/5/1095.full.pdf")
         (Just "Full text")
@@ -102,8 +106,11 @@
 , XmlTag
     "ref"
     [ ( "name" , "rhs" ) ]
-    [ Text
-        "Huxley, A., ed. (1992). ''New RHS Dictionary of Gardening''. Macmillan "
+    [ Text "Huxley, A., ed. (1992). "
+    , Italic
+    , Text "New RHS Dictionary of Gardening"
+    , Italic
+    , Text ". Macmillan "
     , Template "ISBN" [ ( Nothing , [ Text "0-333-47494-5" ] ) ]
     , Text "."
     ]

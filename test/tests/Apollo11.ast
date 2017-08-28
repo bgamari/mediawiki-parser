@@ -593,7 +593,10 @@
       )
     ]
 , NewPara
-, Text "'''Apollo 11''' was the first "
+, Bold
+, Text "Apollo 11"
+, Bold
+, Text " was the first "
 , InternalLink
     LinkTarget
       { linkTargetPage = PageName { getPageName = "spaceflight" }
@@ -635,7 +638,11 @@
       , linkTargetAnchor = Nothing
       }
     [ [ Text "lunar module" ] ]
-, Text " ''Eagle'' on July 20, 1969, at 20:18 "
+, Text " "
+, Italic
+, Text "Eagle"
+, Italic
+, Text " on July 20, 1969, at 20:18 "
 , InternalLink
     LinkTarget
       { linkTargetPage =
@@ -667,6 +674,14 @@
       , linkTargetAnchor = Nothing
       }
     [ [ Text "command module" ] ]
+, Text " "
+, Italic
+, Text "Columbia"
+, Italic
 , Text
-    " ''Columbia'' alone in lunar orbit while they were on the Moon's surface. Armstrong and Aldrin spent just under a day on the lunar surface before rendezvousing with ''Columbia'' in lunar orbit."
+    " alone in lunar orbit while they were on the Moon's surface. Armstrong and Aldrin spent just under a day on the lunar surface before rendezvousing with "
+, Italic
+, Text "Columbia"
+, Italic
+, Text " in lunar orbit."
 ]

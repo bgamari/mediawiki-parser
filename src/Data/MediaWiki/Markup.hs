@@ -6,6 +6,14 @@
 {-# LANGUAGE RecursiveDo #-}
 {-# LANGUAGE GeneralizedNewtypeDeriving #-}
 
+-- |
+-- A reasonably robust MediaWiki markup parser.
+--
+-- Note that bold and italics are parsed as start/end tokens since parsing
+-- this format in one go in the presence of syntax errors (e.g. unpaired
+-- symbols, which tend to be quite common in practice) is nearly impossible
+-- in one pass.
+--
 module Data.MediaWiki.Markup
     ( Doc(..), parse
     , PageName(..), LinkTarget(..), Url(..)
@@ -68,9 +76,9 @@ data Doc = Text !String
          | Math !T.Text
          | XmlOpenClose TagName [(String, String)]
          | XmlTag TagName [(String, String)] [Doc]
-         | BoldItalic [Doc]
-         | Bold [Doc]
-         | Italic [Doc]
+         | BoldItalic
+         | Bold
+         | Italic
          | NumberedList !Int [Doc]
          | BulletList !Int [Doc]
          | UnmarkedList !Int [Doc]
@@ -128,9 +136,9 @@ doc' = mdo
     headings <- mapM heading [6,5..1]
 
     -- formatting
-    boldItalic <- BoldItalic <$*> manyBetween (text "'''''") aDoc
-    bold <- Bold <$*> manyBetween (text "'''") aDoc
-    italic <- Italic <$*> manyBetween (text "''") aDoc
+    let boldItalic = BoldItalic <$ text "'''''"
+        bold       = Bold <$ text "'''"
+        italic     = Italic <$ text "''"
     formatting <- newRule $ boldItalic // bold // italic
 
     -- other
@@ -269,7 +277,7 @@ doc' = mdo
     wikiText <- newRule
         $ comment // math // noWiki // table
         // magicWord // template
-        // choice headings // list // hrule -- // formatting
+        // choice headings // list // hrule // formatting
         // codeLine
         // xmlish // image // link // table
         // (eol *> matches eol *> pure NewPara)
@@ -301,9 +309,9 @@ cleanup = go []
     go acc (Char '\n' : xs)         = go acc xs
     go acc (Char c : xs)            = go (c : acc) xs
     go []  (Heading n ds : xs)      = Heading n (cleanup ds) : go [] xs
-    go []  (BoldItalic ds : xs)     = BoldItalic (cleanup ds) : go [] xs
-    go []  (Bold ds : xs)           = Bold (cleanup ds) : go [] xs
-    go []  (Italic ds : xs)         = Italic (cleanup ds) : go [] xs
+    go []  (BoldItalic : xs)        = BoldItalic : go [] xs
+    go []  (Bold : xs)              = Bold : go [] xs
+    go []  (Italic : xs)            = Italic : go [] xs
     go []  (BulletList n ds : xs)   = BulletList n (cleanup ds) : go [] xs
     go []  (NumberedList n ds : xs) = NumberedList n (cleanup ds) : go [] xs
     go []  (Template n ds : xs)     = Template n (map (second cleanup) ds) : go [] xs
