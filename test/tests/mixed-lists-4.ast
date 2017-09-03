@@ -11,9 +11,8 @@
         []
     , Bold
     , Text
-        ":  The smallest non-empty set of candidates in a particular election such that every candidate in the set can beat all candidates outside the set.  It is easily shown that there is only"
+        ":  The smallest non-empty set of candidates in a particular election such that every candidate in the set can beat all candidates outside the set.  It is easily shown that there is only one possible Smith set for each election."
     ]
-, CodeLine "one possible Smith set for each election."
 , List
     [ Bulleted ]
     [ Bold

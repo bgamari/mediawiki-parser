@@ -1,7 +1,6 @@
 ==Two-method systems==
 
-* '''[[Smith set]]''':  The smallest non-empty set of candidates in a particular election such that every candidate in the set can beat all candidates outside the set.  It is easily shown that there is only
- one possible Smith set for each election.
+* '''[[Smith set]]''':  The smallest non-empty set of candidates in a particular election such that every candidate in the set can beat all candidates outside the set.  It is easily shown that there is only one possible Smith set for each election.
 * '''[[Schwartz set]]''': This is the innermost unbeaten set, and is usually the same as the Smith set. It is defined as the union of all possible sets of candidates such that for every set:
 *#Every candidate inside the set is pairwise unbeatable by any other candidate outside the set (i.e., ties are allowed).
 *#No proper (smaller) subset of the set fulfills the first property.
