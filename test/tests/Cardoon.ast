@@ -15,7 +15,6 @@
     []
 , Text " growing "
 , Template
-    DoubleBrace
     [ Text "convert" ]
     [ ( Nothing , [ Text "0.8" ] )
     , ( Nothing , [ Text "to" ] )
@@ -34,7 +33,6 @@
     []
 , Text " (hairy or downy) leaves up to "
 , Template
-    DoubleBrace
     [ Text "convert" ]
     [ ( Nothing , [ Text "50" ] )
     , ( Nothing , [ Text "cm" ] )
@@ -58,7 +56,6 @@
     [ [ Text "capitulum" ] ]
 , Text " up to "
 , Template
-    DoubleBrace
     [ Text "convert" ]
     [ ( Nothing , [ Text "6" ] )
     , ( Nothing , [ Text "cm" ] )
@@ -96,7 +93,6 @@
         (Just "Tela Botanica: ''Cynara cardunculus'' L.")
     , Text " "
     , Template
-        DoubleBrace
         [ Text "webarchive " ]
         [ ( Just "url"
           , [ Text
@@ -116,9 +112,7 @@
     , Italic
     , Text ". Macmillan "
     , Template
-        DoubleBrace
-        [ Text "ISBN" ]
-        [ ( Nothing , [ Text "0-333-47494-5" ] ) ]
+        [ Text "ISBN" ] [ ( Nothing , [ Text "0-333-47494-5" ] ) ]
     , Text "."
     ]
 , NewPara
@@ -309,7 +303,6 @@
     "ref"
     []
     [ Template
-        DoubleBrace
         [ Text "cite web" ]
         [ ( Just "url"
           , [ Text
@@ -371,7 +364,6 @@
     "ref"
     [ ( "name" , "RHS" ) ]
     [ Template
-        DoubleBrace
         [ Text "cite web" ]
         [ ( Just "title" , [ Text "Cynara cardunculus AGM" ] )
         , ( Just "url"
@@ -382,7 +374,5 @@
         ]
     ]
 , Template
-    DoubleBrace
-    [ Text "verify source" ]
-    [ ( Just "date" , [ Text "July 2014" ] ) ]
+    [ Text "verify source" ] [ ( Just "date" , [ Text "July 2014" ] ) ]
 ]

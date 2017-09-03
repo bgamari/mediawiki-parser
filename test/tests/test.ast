@@ -31,25 +31,19 @@
 , NewPara
 , Heading 1 [ Text "A template" ]
 , NewPara
-, Template
-    DoubleBrace
-    [ Text "Main article" ]
-    [ ( Nothing , [ Text "hel" ] ) ]
+, Template [ Text "Main article" ] [ ( Nothing , [ Text "hel" ] ) ]
 , NewPara
 , XmlTag
     "ref"
     [ ( "name" , "stein" ) ]
     [ Template
-        DoubleBrace
-        [ Text "cite book" ]
-        [ ( Just "last" , [ Text "Stein" ] ) ]
+        [ Text "cite book" ] [ ( Just "last" , [ Text "Stein" ] ) ]
     ]
 , NewPara
 , XmlTag
     "ref"
     [ ( "name" , "laidentidadandaluza" ) ]
     [ Template
-        DoubleBrace
         [ Text "cite book" ]
         [ ( Just "last" , [ Text "Dom\237nguez Ortiz" ] )
         , ( Just "first" , [ Text "Antonio" ] )
@@ -67,7 +61,6 @@
     "ref"
     []
     [ Template
-        DoubleBrace
         [ Text "cite book" ]
         [ ( Just "last" , [ Text "Delgado Cabeza" ] )
         , ( Just "first" , [ Text "Manuel" ] )
@@ -86,7 +79,6 @@
     ]
 , NewPara
 , Template
-    DoubleBrace
     [ Text "about" ]
     [ ( Nothing
       , [ Text "the "
@@ -116,16 +108,13 @@
     , ( Nothing , [ Text "other uses" ] )
     ]
 , Template
-    DoubleBrace
     [ Text "Use dmy dates" ]
     [ ( Just "date" , [ Text "October 2012" ] ) ]
 , NewPara
 , Template
-    DoubleBrace
     [ Text "Infobox settlement" ]
     [ ( Just "website"
       , [ Template
-            DoubleBrace
             [ Text "URL" ]
             [ ( Nothing , [ Text "http://www.juntadeandalucia.es" ] ) ]
         ]
@@ -138,7 +127,6 @@
     "ref"
     []
     [ Template
-        DoubleBrace
         [ Text "Cite book" ]
         [ ( Just "first" , [ Text "George C." ] )
         , ( Just "last" , [ Text "Kohn" ] )

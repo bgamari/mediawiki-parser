@@ -2,12 +2,10 @@
     "includeonly"
     []
     [ Template
-        DoubleBrace
-        [ Template TripleBrace [] [ ( Nothing , [ Text "safesubst:" ] ) ]
+        [ TemplateArg [] [ ( Nothing , [ Text "safesubst:" ] ) ]
         , Text "#switch:"
         , Template
-            DoubleBrace
-            [ Template TripleBrace [] [ ( Nothing , [ Text "safesubst:" ] ) ]
+            [ TemplateArg [] [ ( Nothing , [ Text "safesubst:" ] ) ]
             , Text "#time:n"
             ]
             []
@@ -24,19 +22,16 @@
         , ( Just "8" , [ Text "0" ] )
         , ( Just "4"
           , [ Template
-                DoubleBrace
-                [ Template TripleBrace [] [ ( Nothing , [ Text "safesubst:" ] ) ]
+                [ TemplateArg [] [ ( Nothing , [ Text "safesubst:" ] ) ]
                 , Text "#ifexpr: ("
                 , Template
-                    DoubleBrace
-                    [ Template TripleBrace [] [ ( Nothing , [ Text "safesubst:" ] ) ]
+                    [ TemplateArg [] [ ( Nothing , [ Text "safesubst:" ] ) ]
                     , Text "#time:j"
                     ]
                     [ ( Nothing , [ Text "+12 hours" ] ) ]
                 , Text " < "
                 , Template
-                    DoubleBrace
-                    [ Template TripleBrace [] [ ( Nothing , [ Text "safesubst:" ] ) ]
+                    [ TemplateArg [] [ ( Nothing , [ Text "safesubst:" ] ) ]
                     , Text "Weekday in month"
                     ]
                     [ ( Nothing , [ Text "first" ] )
@@ -44,8 +39,7 @@
                     , ( Nothing , [ Text "april" ] )
                     , ( Nothing
                       , [ Template
-                            DoubleBrace
-                            [ Template TripleBrace [] [ ( Nothing , [ Text "safesubst:" ] ) ]
+                            [ TemplateArg [] [ ( Nothing , [ Text "safesubst:" ] ) ]
                             , Text "#time:Y"
                             ]
                             []
@@ -54,15 +48,13 @@
                     ]
                 , Text ") or ("
                 , Template
-                    DoubleBrace
-                    [ Template TripleBrace [] [ ( Nothing , [ Text "safesubst:" ] ) ]
+                    [ TemplateArg [] [ ( Nothing , [ Text "safesubst:" ] ) ]
                     , Text "#time:j"
                     ]
                     [ ( Nothing , [ Text "+12 hours" ] ) ]
                 , Text " = "
                 , Template
-                    DoubleBrace
-                    [ Template TripleBrace [] [ ( Nothing , [ Text "safesubst:" ] ) ]
+                    [ TemplateArg [] [ ( Nothing , [ Text "safesubst:" ] ) ]
                     , Text "Weekday in month"
                     ]
                     [ ( Nothing , [ Text "first" ] )
@@ -70,8 +62,7 @@
                     , ( Nothing , [ Text "april" ] )
                     , ( Nothing
                       , [ Template
-                            DoubleBrace
-                            [ Template TripleBrace [] [ ( Nothing , [ Text "safesubst:" ] ) ]
+                            [ TemplateArg [] [ ( Nothing , [ Text "safesubst:" ] ) ]
                             , Text "#time:Y"
                             ]
                             []
@@ -80,8 +71,7 @@
                     ]
                 , Text " and "
                 , Template
-                    DoubleBrace
-                    [ Template TripleBrace [] [ ( Nothing , [ Text "safesubst:" ] ) ]
+                    [ TemplateArg [] [ ( Nothing , [ Text "safesubst:" ] ) ]
                     , Text "#time:G"
                     ]
                     [ ( Nothing , [ Text "+12 hours" ] ) ]
@@ -92,19 +82,16 @@
           )
         , ( Just "9"
           , [ Template
-                DoubleBrace
-                [ Template TripleBrace [] [ ( Nothing , [ Text "safesubst:" ] ) ]
+                [ TemplateArg [] [ ( Nothing , [ Text "safesubst:" ] ) ]
                 , Text "#ifexpr: ("
                 , Template
-                    DoubleBrace
-                    [ Template TripleBrace [] [ ( Nothing , [ Text "safesubst:" ] ) ]
+                    [ TemplateArg [] [ ( Nothing , [ Text "safesubst:" ] ) ]
                     , Text "#time:j"
                     ]
                     [ ( Nothing , [ Text "+12 hours" ] ) ]
                 , Text " < "
                 , Template
-                    DoubleBrace
-                    [ Template TripleBrace [] [ ( Nothing , [ Text "safesubst:" ] ) ]
+                    [ TemplateArg [] [ ( Nothing , [ Text "safesubst:" ] ) ]
                     , Text "Weekday in month"
                     ]
                     [ ( Nothing , [ Text "last" ] )
@@ -112,8 +99,7 @@
                     , ( Nothing , [ Text "september" ] )
                     , ( Nothing
                       , [ Template
-                            DoubleBrace
-                            [ Template TripleBrace [] [ ( Nothing , [ Text "safesubst:" ] ) ]
+                            [ TemplateArg [] [ ( Nothing , [ Text "safesubst:" ] ) ]
                             , Text "#time:Y"
                             ]
                             []
@@ -122,15 +108,13 @@
                     ]
                 , Text ") or ("
                 , Template
-                    DoubleBrace
-                    [ Template TripleBrace [] [ ( Nothing , [ Text "safesubst:" ] ) ]
+                    [ TemplateArg [] [ ( Nothing , [ Text "safesubst:" ] ) ]
                     , Text "#time:j"
                     ]
                     [ ( Nothing , [ Text "+12 hours" ] ) ]
                 , Text " = "
                 , Template
-                    DoubleBrace
-                    [ Template TripleBrace [] [ ( Nothing , [ Text "safesubst:" ] ) ]
+                    [ TemplateArg [] [ ( Nothing , [ Text "safesubst:" ] ) ]
                     , Text "Weekday in month"
                     ]
                     [ ( Nothing , [ Text "last" ] )
@@ -138,8 +122,7 @@
                     , ( Nothing , [ Text "september" ] )
                     , ( Nothing
                       , [ Template
-                            DoubleBrace
-                            [ Template TripleBrace [] [ ( Nothing , [ Text "safesubst:" ] ) ]
+                            [ TemplateArg [] [ ( Nothing , [ Text "safesubst:" ] ) ]
                             , Text "#time:Y"
                             ]
                             []
@@ -148,8 +131,7 @@
                     ]
                 , Text " and "
                 , Template
-                    DoubleBrace
-                    [ Template TripleBrace [] [ ( Nothing , [ Text "safesubst:" ] ) ]
+                    [ TemplateArg [] [ ( Nothing , [ Text "safesubst:" ] ) ]
                     , Text "#time:G"
                     ]
                     [ ( Nothing , [ Text "+12 hours" ] ) ]
@@ -160,6 +142,5 @@
           )
         ]
     ]
-, XmlTag
-    "noinclude" [] [ Template DoubleBrace [ Text "Documentation" ] [] ]
+, XmlTag "noinclude" [] [ Template [ Text "Documentation" ] [] ]
 ]

@@ -1,13 +1,9 @@
 [ Template
-    DoubleBrace
     [ Text "Use mdy dates" ]
     [ ( Just "date" , [ Text "March 2012" ] ) ]
 , Template
-    DoubleBrace
-    [ Text "update" ]
-    [ ( Just "date" , [ Text "August 2010" ] ) ]
+    [ Text "update" ] [ ( Just "date" , [ Text "August 2010" ] ) ]
 , Template
-    DoubleBrace
     [ Text "Infobox company" ]
     [ ( Just "name" , [ Text "1worldspace Inc." ] )
     , ( Just "logo" , [] )
@@ -46,12 +42,12 @@
         ]
       )
     , ( Just "revenue"
-      , [ Template DoubleBrace [ Text "Increase" ] []
+      , [ Template [ Text "Increase" ] []
         , Text "$13.78 Million US$ (2007)"
         ]
       )
     , ( Just "net_income"
-      , [ Template DoubleBrace [ Text "Decrease" ] []
+      , [ Template [ Text "Decrease" ] []
         , Text "-$169.51 Million US$ (2007)"
         ]
       )
@@ -61,7 +57,6 @@
             "ref"
             [ ( "name" , "zenobank" ) ]
             [ Template
-                DoubleBrace
                 [ Text "cite web " ]
                 [ ( Just "url"
                   , [ Text
@@ -109,7 +104,6 @@
     "ref"
     []
     [ Template
-        DoubleBrace
         [ Text "cite web" ]
         [ ( Just "url"
           , [ Text
@@ -133,7 +127,6 @@
     "ref"
     [ ( "name" , "itsback" ) ]
     [ Template
-        DoubleBrace
         [ Text "cite news " ]
         [ ( Just "title" , [ Text "WorldSpace radio is back " ] )
         , ( Just "date" , [ Text "Jul 19, 2011 " ] )
@@ -174,7 +167,6 @@
     "ref"
     []
     [ Template
-        DoubleBrace
         [ Text "cite web" ]
         [ ( Just "url"
           , [ Text
@@ -239,7 +231,6 @@
 , Text
     "1worldspace claimed to be the only company with rights to the world's globally allocated spectrum for digital satellite radio."
 , Template
-    DoubleBrace
     [ Text "Citation needed" ]
     [ ( Just "date" , [ Text "August 2008" ] ) ]
 , Text
@@ -267,7 +258,6 @@
     "ref"
     []
     [ Template
-        DoubleBrace
         [ Text "cite web" ]
         [ ( Just "archiveurl"
           , [ Text
@@ -304,7 +294,6 @@
     "ref"
     []
     [ Template
-        DoubleBrace
         [ Text "cite web" ]
         [ ( Just "url"
           , [ Text "http://www.worldspace.com/index_wsmsg.html " ]
@@ -485,7 +474,6 @@
     "ref"
     [ ( "name" , "sec.gov" ) ]
     [ Template
-        DoubleBrace
         [ Text "cite web" ]
         [ ( Just "url"
           , [ Text
@@ -552,7 +540,6 @@
     []
 , Text " for AsiaStar."
 , Template
-    DoubleBrace
     [ Text "Citation needed" ]
     [ ( Just "date" , [ Text "August 2008" ] ) ]
 , Text
@@ -637,7 +624,6 @@
     "ref"
     []
     [ Template
-        DoubleBrace
         [ Text "cite web" ]
         [ ( Just "url"
           , [ Text
@@ -715,7 +701,6 @@
     "ref"
     []
     [ Template
-        DoubleBrace
         [ Text "cite web" ]
         [ ( Just "url"
           , [ Text
@@ -736,7 +721,6 @@
     "ref"
     []
     [ Template
-        DoubleBrace
         [ Text "cite web " ]
         [ ( Just "url"
           , [ Text
@@ -763,7 +747,6 @@
     "ref"
     []
     [ Template
-        DoubleBrace
         [ Text "cite web" ]
         [ ( Just "url"
           , [ Text
@@ -774,15 +757,12 @@
         , ( Just "accessdate" , [ Text "August 22, 2008 " ] )
         ]
     , Template
-        DoubleBrace
         [ Text "dead link" ]
         [ ( Just "date" , [ Text "June 2016" ] )
         , ( Just "bot" , [ Text "medic" ] )
         ]
     , Template
-        DoubleBrace
-        [ Text "cbignore" ]
-        [ ( Just "bot" , [ Text "medic" ] ) ]
+        [ Text "cbignore" ] [ ( Just "bot" , [ Text "medic" ] ) ]
     , Text "  "
     ]
 , Text
@@ -797,7 +777,6 @@
            "What assets does Worldspace now own? &#124; News &#124; Rapid TV News")
     , Text " "
     , Template
-        DoubleBrace
         [ Text "webarchive " ]
         [ ( Just "url"
           , [ Text
@@ -821,7 +800,6 @@
     "ref"
     []
     [ Template
-        DoubleBrace
         [ Text "cite web" ]
         [ ( Just "url"
           , [ Text
@@ -886,7 +864,6 @@
     "ref"
     []
     [ Template
-        DoubleBrace
         [ Text "cite web" ]
         [ ( Just "url"
           , [ Text
@@ -912,7 +889,6 @@
 , Text
     "WorldSpace audio advertisements in 2006 highlighted the company's ability to provide communication and data-transmission services to remote areas of the world, particularly in a disaster-relief context. The promotions also mentioned WorldSpace's facilitation of long-distance educational projects in Africa."
 , Template
-    DoubleBrace
     [ Text "Citation needed" ]
     [ ( Just "date" , [ Text "August 2008" ] ) ]
 , Text
@@ -928,7 +904,6 @@
 , Text
     " as its brand ambassador in India where 90% of its customers are located, and unveiled an integrated marketing communication campaign across print and visual media featuring an exclusive signature tune composed by Mr. Rahman."
 , Template
-    DoubleBrace
     [ Text "Citation needed" ]
     [ ( Just "date" , [ Text "August 2008" ] ) ]
 , NewPara
@@ -938,7 +913,6 @@
     "ref"
     []
     [ Template
-        DoubleBrace
         [ Text "cite web " ]
         [ ( Just "url" , [ Text "http://web2.sys-con.com/node/617050 " ] )
         , ( Just "title"
@@ -970,7 +944,6 @@
     "ref"
     []
     [ Template
-        DoubleBrace
         [ Text "cite web" ]
         [ ( Just "url"
           , [ Text
@@ -1005,7 +978,6 @@
     "ref"
     []
     [ Template
-        DoubleBrace
         [ Text "cite web" ]
         [ ( Just "url" , [ Text "http://www.firstvoiceint.org/ " ] )
         , ( Just "title" , [ Text "First Voice Africa " ] )
@@ -1033,7 +1005,6 @@
     "ref"
     []
     [ Template
-        DoubleBrace
         [ Text "cite web " ]
         [ ( Just "url"
           , [ Text "http://www.worldspace-europe.com/en/overview.php " ]
@@ -1066,7 +1037,6 @@
         (Just "")
     , Text "  "
     , Template
-        DoubleBrace
         [ Text "webarchive " ]
         [ ( Just "url"
           , [ Text
@@ -1082,7 +1052,6 @@
     "ref"
     []
     [ Template
-        DoubleBrace
         [ Text "cite news" ]
         [ ( Just "url"
           , [ Text
@@ -1124,7 +1093,6 @@
     []
     [ Text "http://www.1worldspace.com/press/01_04_2006.html"
     , Template
-        DoubleBrace
         [ Text "dead link" ]
         [ ( Just "date" , [ Text "November 2016 " ] )
         , ( Just "bot" , [ Text "InternetArchiveBot " ] )
@@ -1151,9 +1119,7 @@
 , NewPara
 , Heading 2 [ Text "References" ]
 , Template
-    DoubleBrace
-    [ Text "reflist" ]
-    [ ( Just "colwidth" , [ Text "30em" ] ) ]
+    [ Text "reflist" ] [ ( Just "colwidth" , [ Text "30em" ] ) ]
 , NewPara
 , Heading 2 [ Text "External links" ]
 , BulletList
@@ -1166,7 +1132,6 @@
 , BulletList
     1
     [ Template
-        DoubleBrace
         [ Text "cite web " ]
         [ ( Just "title"
           , [ Text "Tight Times Continue at 1worldspace " ]
@@ -1181,10 +1146,9 @@
     ]
 , NewPara
 , Template
-    DoubleBrace
     [ Text "Audio broadcasting" ]
     [ ( Just "state" , [ Text "uncollapsed" ] ) ]
-, Template DoubleBrace [ Text "Satcomm" ] []
+, Template [ Text "Satcomm" ] []
 , NewPara
 , InternalLink
     LinkTarget

@@ -1,11 +1,9 @@
 [ Text "Verify that infoboxes containing lists parse (see #26)"
 , NewPara
 , Template
-    DoubleBrace
     [ Text "Infobox comic book title" ]
     [ ( Just "hello"
       , [ Template
-            DoubleBrace
             [ Text "list" ]
             [ ( Nothing
               , [ BulletList 1 [ Text "turtle" ]
@@ -21,11 +19,9 @@
 , Text "hello"
 , NewPara
 , Template
-    DoubleBrace
     [ Text "Infobox comic book title" ]
     [ ( Just "hello"
       , [ Template
-            DoubleBrace
             [ Text "list" ]
             [ ( Nothing
               , [ BulletList 1 [ Text "turtle" ]
@@ -41,8 +37,7 @@
 , NewPara
 , Text
     "This should parse into a list containing a text and a template"
-, BulletList
-    1 [ Text "steak " , Template DoubleBrace [ Text "beef" ] [] ]
+, BulletList 1 [ Text "steak " , Template [ Text "beef" ] [] ]
 , NewPara
 , Text "This will parse slightly oddly due to how we fixed #26."
 , BulletList 1 [ Text "bird " ]

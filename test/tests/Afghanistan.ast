@@ -1,10 +1,8 @@
 [ Template
-    DoubleBrace
     [ Text "Infobox country" ]
     [ ( Just "largest_city" , [ Text "Kabul" ] )
     , ( Just "languages"
       , [ Template
-            DoubleBrace
             [ Text "hlist" ]
             [ ( Just "style" , [ Text "white-space:nowrap; " ] )
             , ( Nothing
@@ -87,7 +85,7 @@
                         (Url "http://dictionary.reference.com/browse/afghanistani")
                         (Just "Reference.com")
                     , Text " (Retrieved 13 November 2007). "
-                    , Template DoubleBrace [ Text "webarchive" ] []
+                    , Template [ Text "webarchive" ] []
                     ]
                 ]
               )

@@ -1,110 +1,23 @@
 [ Text "Example:"
 , UnmarkedList
     1
-    [ Char 'I'
-    , Char 'n'
-    , Char 'v'
-    , Char 'e'
-    , Char 's'
-    , Char 't'
-    , Char 'm'
-    , Char 'e'
-    , Char 'n'
-    , Char 't'
-    , Char ' '
+    [ Text "Investment "
     , Italic
-    , Char 'P'
+    , Text "P"
     , Italic
-    , Char ' '
-    , Char '='
-    , Char ' '
-    , Char '$'
-    , Char '1'
-    , Char '0'
-    , Char '0'
-    , Char '0'
+    , Text " = $1000"
     ]
 , UnmarkedList
     1
-    [ Char 'I'
-    , Char 'n'
-    , Char 't'
-    , Char 'e'
-    , Char 'r'
-    , Char 'e'
-    , Char 's'
-    , Char 't'
-    , Char ' '
+    [ Text "Interest "
     , Italic
-    , Char 'i'
+    , Text "i"
     , Italic
-    , Char ' '
-    , Char '='
-    , Char ' '
-    , Char '6'
-    , Char '.'
-    , Char '9'
-    , Char '0'
-    , Char '%'
-    , Char ' '
-    , Char 'C'
-    , Char 'o'
-    , Char 'm'
-    , Char 'p'
-    , Char 'o'
-    , Char 'u'
-    , Char 'n'
-    , Char 'd'
-    , Char 'e'
-    , Char 'd'
-    , Char ' '
-    , Char 'Q'
-    , Char 't'
-    , Char 'r'
-    , Char 'l'
-    , Char 'y'
-    , Char ' '
-    , Char '('
-    , Char '4'
-    , Char ' '
-    , Char 'T'
-    , Char 'i'
-    , Char 'm'
-    , Char 'e'
-    , Char 's'
-    , Char ' '
-    , Char 'i'
-    , Char 'n'
-    , Char ' '
-    , Char 'Y'
-    , Char 'e'
-    , Char 'a'
-    , Char 'r'
-    , Char ')'
+    , Text " = 6.90% Compounded Qtrly (4 Times in Year)"
     ]
 , UnmarkedList
     1
-    [ Char 'T'
-    , Char 'e'
-    , Char 'n'
-    , Char 'u'
-    , Char 'r'
-    , Char 'e'
-    , Char ' '
-    , Char 'Y'
-    , Char 'e'
-    , Char 'a'
-    , Char 'r'
-    , Char 's'
-    , Char ' '
-    , Italic
-    , Char 'n'
-    , Italic
-    , Char ' '
-    , Char '='
-    , Char ' '
-    , Char '5'
-    ]
+    [ Text "Tenure Years " , Italic , Text "n" , Italic , Text " = 5" ]
 , NewPara
 , Math
     "\n= 1000 \\times (1+0.069/4)^{({5\\ yrs}\\ \\times\\ 4\\ {qtrs\\ in\\ a\\ year} )}\n= 1000 \\times (1+0.069/4)^{20}\n\\approx 1407.84\n"
