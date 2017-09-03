@@ -17,6 +17,7 @@
 module Data.MediaWiki.Markup
     ( Doc(..), parse
     , PageName(..), LinkTarget(..), Url(..)
+    , ListType(..)
     ) where
 
 import Control.Monad (replicateM_, void)
