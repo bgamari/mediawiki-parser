@@ -5,8 +5,8 @@
 , Italic
 , Text "."
 , NewPara
-, BulletList
-    1
+, List
+    [ Bulleted ]
     [ Text "hello "
     , BoldItalic
     , Text "world"
@@ -15,7 +15,7 @@
     , Bold
     , Text "'s"
     ]
-, BulletList 2 [ Text "oops" ]
+, List [ Bulleted , Bulleted ] [ Text "oops" ]
 , NewPara
 , CodeLine "int main() {"
 , CodeLine "  printf();"

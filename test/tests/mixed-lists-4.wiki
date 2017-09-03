@@ -1,0 +1,12 @@
+==Two-method systems==
+
+* '''[[Smith set]]''':  The smallest non-empty set of candidates in a particular election such that every candidate in the set can beat all candidates outside the set.  It is easily shown that there is only
+ one possible Smith set for each election.
+* '''[[Schwartz set]]''': This is the innermost unbeaten set, and is usually the same as the Smith set. It is defined as the union of all possible sets of candidates such that for every set:
+*#Every candidate inside the set is pairwise unbeatable by any other candidate outside the set (i.e., ties are allowed).
+*#No proper (smaller) subset of the set fulfills the first property.
+* '''[[Landau set]]''' (or '''uncovered set''' or '''Fishburn set'''): the set of candidates, such that each member, for every other candidate (including those inside the set), either beats this candidate o
+r beats a third candidate that itself beats the candidate that is unbeaten by the member.
+
+One possible method is to apply [[instant-runoff voting]] to the candidates of the Smith set. This method has been described as 'Smith/IRV'.
+

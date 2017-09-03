@@ -1,0 +1,75 @@
+[ Heading 2 [ Text "Two-method systems" ]
+, NewPara
+, List
+    [ Bulleted ]
+    [ Bold
+    , InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Smith set" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Bold
+    , Text
+        ":  The smallest non-empty set of candidates in a particular election such that every candidate in the set can beat all candidates outside the set.  It is easily shown that there is only"
+    ]
+, CodeLine "one possible Smith set for each election."
+, List
+    [ Bulleted ]
+    [ Bold
+    , InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Schwartz set" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Bold
+    , Text
+        ": This is the innermost unbeaten set, and is usually the same as the Smith set. It is defined as the union of all possible sets of candidates such that for every set:"
+    ]
+, List
+    [ Bulleted , Numbered ]
+    [ Text
+        "Every candidate inside the set is pairwise unbeatable by any other candidate outside the set (i.e., ties are allowed)."
+    ]
+, List
+    [ Bulleted , Numbered ]
+    [ Text
+        "No proper (smaller) subset of the set fulfills the first property."
+    ]
+, List
+    [ Bulleted ]
+    [ Bold
+    , InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Landau set" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Bold
+    , Text " (or "
+    , Bold
+    , Text "uncovered set"
+    , Bold
+    , Text " or "
+    , Bold
+    , Text "Fishburn set"
+    , Bold
+    , Text
+        "): the set of candidates, such that each member, for every other candidate (including those inside the set), either beats this candidate o"
+    ]
+, Text
+    "r beats a third candidate that itself beats the candidate that is unbeaten by the member."
+, NewPara
+, Text "One possible method is to apply "
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "instant-runoff voting" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text
+    " to the candidates of the Smith set. This method has been described as 'Smith/IRV'."
+, NewPara
+]

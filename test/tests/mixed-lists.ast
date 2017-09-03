@@ -1,0 +1,175 @@
+[ Heading 4 [ Text "Singular nouns" ]
+, List
+    [ Bulleted ]
+    [ Text
+        "For the possessive of most singular nouns, including proper names and words ending with a double-s, add "
+    , Italic
+    , Text "&lt;nowiki /&gt;'s"
+    , Italic
+    , Text " ("
+    , Template
+        [ Text "xt" ]
+        [ ( Nothing , [ Text "my daughter's achievement" ] ) ]
+    , Text ", "
+    , Template
+        [ Text "xt" ] [ ( Nothing , [ Text "my niece's wedding" ] ) ]
+    , Text ", "
+    , Template [ Text "xt" ] [ ( Nothing , [ Text "Cortez's men" ] ) ]
+    , Text ", "
+    , Template
+        [ Text "xt" ] [ ( Nothing , [ Text "the boss's office" ] ) ]
+    , Text ", "
+    , Template [ Text "xt" ] [ ( Nothing , [ Text "Glass's books" ] ) ]
+    , Text ", "
+    , Template
+        [ Text "xt" ]
+        [ ( Nothing , [ Text "Illinois's largest employer" ] ) ]
+    , Text ", "
+    , Template
+        [ Text "xt" ] [ ( Nothing , [ Text "Descartes's philosophy" ] ) ]
+    , Text ", "
+    , Template
+        [ Text "xt" ] [ ( Nothing , [ Text "Verreaux's eagle" ] ) ]
+    , Text
+        "). Exception: abstract nouns ending with an /s/ sound, when followed by "
+    , Italic
+    , Text "sake"
+    , Italic
+    , Text " ("
+    , Template
+        [ Text "xt" ] [ ( Nothing , [ Text "for goodness' sake" ] ) ]
+    , Text ", "
+    , Template
+        [ Text "xt" ] [ ( Nothing , [ Text "for his conscience' sake" ] ) ]
+    , Text ")."
+    ]
+, List
+    [ Bulleted ]
+    [ Text "For the possessive of singular nouns ending with just one "
+    , Italic
+    , Text "s"
+    , Italic
+    , Text
+        " (sounded as /s/ or /z/), there are two practices advised by different grammar and style guides:"
+    ]
+, List
+    [ Bulleted , Numbered ]
+    [ Text "Add "
+    , Italic
+    , Text "&lt;nowiki /&gt;'s"
+    , Italic
+    , Text ": "
+    , Template [ Text "xt" ] [ ( Nothing , [ Text "James's house" ] ) ]
+    , Text ", "
+    , Template
+        [ Text "xt" ] [ ( Nothing , [ Text "Sam Hodges's son" ] ) ]
+    , Text ", "
+    , Template
+        [ Text "xt" ] [ ( Nothing , [ Text "Jan Hus's life" ] ) ]
+    , Text ", "
+    , Template
+        [ Text "xt" ] [ ( Nothing , [ Text "Vilnius's location" ] ) ]
+    , Text ", "
+    , Template
+        [ Text "xt" ] [ ( Nothing , [ Text "Brahms's music" ] ) ]
+    , Text ", "
+    , Template
+        [ Text "xt" ] [ ( Nothing , [ Text "Dickens's novels" ] ) ]
+    , Text ", "
+    , Template
+        [ Text "xt" ] [ ( Nothing , [ Text "Morris's works" ] ) ]
+    , Text ", "
+    , Template
+        [ Text "xt" ] [ ( Nothing , [ Text "the bus's old route" ] ) ]
+    , Text "."
+    ]
+, List
+    [ Bulleted , Numbered ]
+    [ Text "Add either "
+    , Italic
+    , Text "&lt;nowiki /&gt;'s"
+    , Italic
+    , Text
+        " or just an apostrophe, according to how the possessive is pronounced:"
+    ]
+, List
+    [ Bulleted , Numbered , Bulleted ]
+    [ Text
+        "Add only an apostrophe if the possessive is pronounced the same way as the non-possessive name: "
+    , Template
+        [ Text "xt" ] [ ( Nothing , [ Text "Sam Hodges' son" ] ) ]
+    , Text ", "
+    , Template
+        [ Text "xt" ] [ ( Nothing , [ Text "Moses' leadership" ] ) ]
+    , Text ";"
+    ]
+, List
+    [ Bulleted , Numbered , Bulleted ]
+    [ Text "Add "
+    , Italic
+    , Text "&lt;nowiki /&gt;'s"
+    , Italic
+    , Text " if the possessive has an additional "
+    , Template
+        [ Text "IPAc-en" ]
+        [ ( Nothing , [ Text "&lt;s&gt;\618&lt;/s&gt;" ] )
+        , ( Nothing , [ Text "z" ] )
+        ]
+    , Text " at the end: "
+    , Template
+        [ Text "xt" ] [ ( Nothing , [ Text "Jan Hus's life" ] ) ]
+    , Text ", "
+    , Template
+        [ Text "xt" ] [ ( Nothing , [ Text "Morris's works" ] ) ]
+    , Text "."
+    ]
+, List
+    [ Bulleted , Numbered , Bulleted ]
+    [ Text "Some possessives have two possible pronunciations: "
+    , Template [ Text "xt" ] [ ( Nothing , [ Text "James's house" ] ) ]
+    , Text " or "
+    , Template [ Text "xt" ] [ ( Nothing , [ Text "James' house" ] ) ]
+    , Text ", "
+    , Template
+        [ Text "xt" ] [ ( Nothing , [ Text "Brahms's music" ] ) ]
+    , Text " or "
+    , Template [ Text "xt" ] [ ( Nothing , [ Text "Brahms' music" ] ) ]
+    , Text ", "
+    , Template
+        [ Text "xt" ] [ ( Nothing , [ Text "Vilnius's location" ] ) ]
+    , Text " or "
+    , Template
+        [ Text "xt" ] [ ( Nothing , [ Text "Vilnius' location" ] ) ]
+    , Text ", "
+    , Template
+        [ Text "xt" ] [ ( Nothing , [ Text "Dickens's novels" ] ) ]
+    , Text " or "
+    , Template
+        [ Text "xt" ] [ ( Nothing , [ Text "Dickens' novels" ] ) ]
+    , Text "."
+    ]
+, List
+    [ Unmarked ]
+    [ Text "Apply just "
+    , Template [ Text "em" ] [ ( Nothing , [ Text "one" ] ) ]
+    , Text
+        " of these two practices consistently within an article. If the second practice is used and there is disagreement over the pronunciation of a possessive, the choice should be discussed and then that possessive adopted consistently in an article. (Possessives of certain classical and biblical names have traditional pronunciations that may be deemed to take precedence: "
+    , Template [ Text "xt" ] [ ( Nothing , [ Text "Jesus' answer" ] ) ]
+    , Text " and "
+    , Template
+        [ Text "xt" ] [ ( Nothing , [ Text "Xerxes' expeditions" ] ) ]
+    , Text ", but "
+    , Template [ Text "xt" ] [ ( Nothing , [ Text "Zeus's anger" ] ) ]
+    , Text
+        "; and in some cases\8212particularly possessives of inanimate objects\8212rewording may be an option: "
+    , Template
+        [ Text "xt" ] [ ( Nothing , [ Text "the location of Vilnius" ] ) ]
+    , Text ", "
+    , Template
+        [ Text "xt" ] [ ( Nothing , [ Text "the old bus route" ] ) ]
+    , Text ", "
+    , Template
+        [ Text "xt" ] [ ( Nothing , [ Text "the moons of Mars" ] ) ]
+    , Text ".)"
+    ]
+]

@@ -26,8 +26,8 @@
 , Math "{\\alpha}"
 , Text " can then be given as:"
 , NewPara
-, UnmarkedList
-    1
+, List
+    [ Unmarked ]
     [ Math
         "{\\alpha}= (1-D) \\bar \\alpha(\\theta_i) + D \\bar{ \\bar \\alpha}."
     ]

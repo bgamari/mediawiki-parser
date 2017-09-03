@@ -1,0 +1,27 @@
+[ Text "*Rising Force: Live '85 (1985)"
+, List
+    [ Bulleted ] [ Text "Trial by Fire: Live in Leningrad '89 (1989)" ]
+, List [ Bulleted ] [ Text "Instructional Video (1991)" ]
+, List [ Bulleted ] [ Text "Collection (1992)" ]
+, List [ Bulleted ] [ Text "Leo Fender Benefit Live (1993)" ]
+, List [ Bulleted ] [ Text "Live at Budokan (1994)" ]
+, List [ Bulleted ] [ Text "Play Loud! [3 Videos] (1995)" ]
+, List [ Bulleted , Numbered ] [ Text "The Basics" ]
+, List [ Bulleted , Numbered ] [ Text "Arpeggios" ]
+, List [ Bulleted , Numbered ] [ Text "Classical Stylings " ]
+, List [ Bulleted ] [ Text "Live!! (1998)" ]
+, List
+    [ Bulleted ] [ Text "Play Loud! &quot;Full Shred&quot; (2000)" ]
+, List [ Bulleted ] [ Text "Yngwie Malmsteen Video Clips (2000)" ]
+, List
+    [ Bulleted ]
+    [ Text "Concerto Suite for Electric Guitar &amp; Orchestra (2005)"
+    ]
+, List [ Bulleted ] [ Text "Far Beyond The Sun (2007)" ]
+, List [ Bulleted ] [ Text "Live In The Budokon (2009)" ]
+, List [ Bulleted ] [ Text "Live Animal (2009)" ]
+, List [ Bulleted ] [ Text "Live In Korea (2009)" ]
+, List [ Bulleted ] [ Text "Raw Live (2010)" ]
+, List [ Bulleted ] [ Text "Spellbound Live In Orlando (2014)" ]
+, NewPara
+]

@@ -1,0 +1,249 @@
+[ Heading 3 [ Text "Literature" ]
+, Text "&lt;!-- chronologically --&gt;"
+, List
+    [ Bulleted ]
+    [ InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Edgar Allan Poe" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Text "'s "
+    , Italic
+    , InternalLink
+        LinkTarget
+          { linkTargetPage =
+              PageName
+                { getPageName = "The Narrative of Arthur Gordon Pym of Nantucket" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Italic
+    , Text
+        " (1838), Chapter 15, has a detailed history and description of the island."
+    ]
+, List
+    [ Bulleted ]
+    [ Text "In "
+    , InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Jules Verne" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Text "'s novel "
+    , Italic
+    , Text "In Search of the Castaways,"
+    , Italic
+    , Text
+        " one of the chapters is set on Tristan da Cunha, and a brief history of the island is mentioned. The island is also referred to in Verne's novel "
+    , Italic
+    , Text "The Sphinx of the Ice Fields"
+    , Italic
+    , Text
+        " (1897), which he wrote as an unauthorised sequel to Poe's "
+    , Italic
+    , Text "The Narrative of Arthur Gordon Pym of Nantucket."
+    , Italic
+    , Text " The 1899 English translation by "
+    , InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Frances Cashel Hoey" }
+          , linkTargetAnchor = Nothing
+          }
+        [ [ Text "Mrs. Cashel Hoey" ] ]
+    , Text " of "
+    , Italic
+    , Text "Ice Fields"
+    , Italic
+    , Text " was published under the title "
+    , Italic
+    , Text "An Antarctic Mystery"
+    , Italic
+    , Text "."
+    ]
+, List
+    [ Bulleted ]
+    [ Text "South African poet "
+    , InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Roy Campbell (poet)" }
+          , linkTargetAnchor = Nothing
+          }
+        [ [ Text "Roy Campbell" ] ]
+    , Text " wrote &quot;Tristan de Cunha&quot; (1927) "
+    , ExternalLink
+        (Url "http://markandrewholmes.com/tristan.html")
+        (Just "Tristan de Cunha")
+    , Text ", an elegiac poem about the island."
+    ]
+, List
+    [ Bulleted ]
+    [ Text
+        "Tristan da Cunha is the site of a top-secret nuclear disarmament conference in "
+    , InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Fletcher Knebel" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Text "'s 1968 political thriller "
+    , Italic
+    , InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Vanished (novel)" }
+          , linkTargetAnchor = Nothing
+          }
+        [ [ Text "Vanished" ] ]
+    , Text "."
+    , Italic
+    , Text " The book was adapted as a 1971 two-part "
+    , InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "NBC" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Text " made-for-TV movie starring "
+    , InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Richard Widmark" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Text "."
+    ]
+, List
+    [ Bulleted ]
+    [ InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Herv\233 Bazin" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Text "'s novel "
+    , Italic
+    , Text "Les Bienheureux de la D\233solation"
+    , Italic
+    , Text
+        " (1970) describes the 1961 forced exile of the population to England after the volcano erupted, and their subsequent return."
+    ]
+, List
+    [ Bulleted ]
+    [ Text "In "
+    , InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Primo Levi" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Text "'s memoir "
+    , Italic
+    , InternalLink
+        LinkTarget
+          { linkTargetPage =
+              PageName { getPageName = "The Periodic Table (book)" }
+          , linkTargetAnchor = Nothing
+          }
+        [ [ Text "The Periodic Table" ] ]
+    , Italic
+    , Text
+        " (1975), one of the fictional short stories, &quot;Mercurio&quot;, is set on Tristan da Cunha, named &quot;Desolation Island&quot;."
+    ]
+, List
+    [ Bulleted ]
+    [ Text "In Patrick O'Brian's "
+    , Italic
+    , Text "The Thirteen-Gun Salute"
+    , Italic
+    , Text " (1991), the ship "
+    , Italic
+    , Text "Dianne"
+    , Italic
+    , Text " is nearly wrecked on Inaccessible Island."
+    ]
+, List
+    [ Bulleted ]
+    [ InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Robert A. Heinlein" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Text "'s book "
+    , Italic
+    , InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Tramp Royale" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Italic
+    , Text
+        " (1992), about a world trip in 1953\8211\&54, devoted a chapter to his near visit to Tristan da Cunha. He talked to islanders but could not go ashore owing to the weather. "
+    ]
+, List
+    [ Bulleted ]
+    [ InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Zinnie Harris" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Text "'s play, "
+    , Italic
+    , Text "Further Than the Furthest Thing"
+    , Italic
+    , Text
+        " (2000), is inspired by events on the island, notably the 1961 volcanic eruption and evacuation of the islanders."
+    ]
+, List
+    [ Bulleted ]
+    [ InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Raoul Schrott" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Text "'s novel, "
+    , Italic
+    , Text "Tristan da Cunha oder die H\228lfte der Erde"
+    , Italic
+    , Text
+        " (2003), is almost entirely set on Tristan da Cunha and Gough islands, and chronicles the history of the archipelago."
+    ]
+, List
+    [ Bulleted ]
+    [ InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Alice Munro" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Text "'s short story "
+    , InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Deep-Holes" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Text " in her 2009 short story collection "
+    , InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Too Much Happiness" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Text
+        ". The female protagonist, a mother, confides to her young son about her fascination with remote islands like Trista da Cunha and the "
+    , InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Faeroe Islands" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Text
+        ". Later, when her son goes missing, she fantasises that he has found his way to one of these islands and is living there."
+    ]
+, NewPara
+]

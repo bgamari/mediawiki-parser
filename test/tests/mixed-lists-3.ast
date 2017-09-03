@@ -1,0 +1,106 @@
+[ Heading 2 [ Text "External links" ]
+, Template
+    [ Text "wikisource" ]
+    [ ( Nothing , [ Text "Author:John of Damascus" ] )
+    , ( Nothing , [ Text "John of Damascus" ] )
+    ]
+, Template [ Text "wikiquote" ] []
+, Template [ Text "commons category" ] []
+, List
+    [ Bulleted ]
+    [ ExternalLink
+        (Url
+           "http://www.christianitytoday.com/history/special/131christians/johndamascus.html")
+        (Just "131 Christians Everyone Should Know- John of Damascus")
+    ]
+, List
+    [ Bulleted ]
+    [ ExternalLink
+        (Url "http://www.newadvent.org/cathen/08459b.htm")
+        (Just "''Catholic Encyclopedia'': St. John Damascene")
+    ]
+, List
+    [ Bulleted ]
+    [ ExternalLink
+        (Url "http://concise.britannica.com/ebc/article?eu=393924")
+        (Just "Britannica Concise Encyclopedia")
+    ]
+, List
+    [ Bulleted ]
+    [ ExternalLink
+        (Url "http://www.catholic.org/saints/saint.php?saint_id=66")
+        (Just "Catholic Online Saints")
+    ]
+, List
+    [ Bulleted ]
+    [ ExternalLink
+        (Url
+           "http://www.ccel.org/s/schaff/encyc/encyc06/htm/iii.lvii.lxii.htm")
+        (Just "Details of his work")
+    ]
+, Template
+    [ Text "Gutenberg" ]
+    [ ( Just "no" , [ Text "49917" ] )
+    , ( Just "name"
+      , [ Text
+            "St John Damascene on Holy Images (\960\961\8056\962 \964\959\8058\962 \948\953\945\946\940\955\955\959\957\964\945\962 \964\8118\962 \7937\947\943\945\962 \949\7984\954\972\957\945\962). Followed by Three Sermons on the Assumption (\954\959\943\956\951\963\953\962)"
+        ]
+      )
+    ]
+, Text "; also available through the "
+, ExternalLink
+    (Url "https://archive.")
+    (Just "\norg/details/stjohndamasceneo00alliuoft Internet Archive")
+, Text "."
+, List
+    [ Bulleted ]
+    [ Template
+        [ Text "Gutenberg author " ]
+        [ ( Just "id" , [ Text "John+of+Damascus,+Saint " ] )
+        , ( Just "name" , [ Text "John of Damascus" ] )
+        ]
+    ]
+, List
+    [ Bulleted ]
+    [ Template
+        [ Text "Internet Archive author " ]
+        [ ( Just "sname" , [ Text "John of Damascus" ] ) ]
+    ]
+, List
+    [ Bulleted ]
+    [ Template
+        [ Text "Librivox author " ] [ ( Just "id" , [ Text "6022" ] ) ]
+    ]
+, List
+    [ Bulleted ]
+    [ ExternalLink
+        (Url "http://www.orthodoxinfo.com/general/stjohn_islam.aspx")
+        (Just "&quot;St. John of Damascus' Critique of Islam&quot;")
+    , Text " at the Orthodox Christian Information Center"
+    ]
+, List
+    [ Bulleted ]
+    [ ExternalLink
+        (Url
+           "http://www.documentacatholicaomnia.eu/20_30_0675-0749-_Iohannes_Damascenus,_Sanctus.html")
+        (Just
+           "Greek ''Opera Omnia'' by Migne, ''Patrologia Graeca'' with Analytical Indexes")
+    ]
+, List
+    [ Bulleted ]
+    [ ExternalLink
+        (Url
+           "http://ocafs.oca.org/FeastSaintsViewer.asp?SID=4&amp;ID=1&amp;FSID=103473")
+        (Just "St John of Damascus")
+    , Text " Orthodox Icon and Synaxarion (December 4)"
+    ]
+, List
+    [ Bulleted ]
+    [ ExternalLink
+        (Url "http://www.wdl.org/en/item/4169")
+        (Just "''Five Doctrinal Works''")
+    , Text
+        " is a 17th-century manuscript including three works by John of Damascus"
+    ]
+, NewPara
+]

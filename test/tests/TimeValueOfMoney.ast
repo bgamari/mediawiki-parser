@@ -1,22 +1,22 @@
 [ Text "Example:"
-, UnmarkedList
-    1
+, List
+    [ Unmarked ]
     [ Text "Investment "
     , Italic
     , Text "P"
     , Italic
     , Text " = $1000"
     ]
-, UnmarkedList
-    1
+, List
+    [ Unmarked ]
     [ Text "Interest "
     , Italic
     , Text "i"
     , Italic
     , Text " = 6.90% Compounded Qtrly (4 Times in Year)"
     ]
-, UnmarkedList
-    1
+, List
+    [ Unmarked ]
     [ Text "Tenure Years " , Italic , Text "n" , Italic , Text " = 5" ]
 , NewPara
 , Math

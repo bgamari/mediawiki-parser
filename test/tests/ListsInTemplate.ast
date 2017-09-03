@@ -6,9 +6,9 @@
       , [ Template
             [ Text "list" ]
             [ ( Nothing
-              , [ BulletList 1 [ Text "turtle" ]
-                , BulletList 1 [ Text "turtle" ]
-                , BulletList 1 [ Text "turtle" ]
+              , [ List [ Bulleted ] [ Text "turtle" ]
+                , List [ Bulleted ] [ Text "turtle" ]
+                , List [ Bulleted ] [ Text "turtle" ]
                 ]
               )
             ]
@@ -24,9 +24,9 @@
       , [ Template
             [ Text "list" ]
             [ ( Nothing
-              , [ BulletList 1 [ Text "turtle" ]
-                , BulletList 1 [ Text "turtle" ]
-                , BulletList 1 [ Text "turtle" ]
+              , [ List [ Bulleted ] [ Text "turtle" ]
+                , List [ Bulleted ] [ Text "turtle" ]
+                , List [ Bulleted ] [ Text "turtle" ]
                 ]
               )
             ]
@@ -37,9 +37,9 @@
 , NewPara
 , Text
     "This should parse into a list containing a text and a template"
-, BulletList 1 [ Text "steak " , Template [ Text "beef" ] [] ]
+, List [ Bulleted ] [ Text "steak " , Template [ Text "beef" ] [] ]
 , NewPara
 , Text "This will parse slightly oddly due to how we fixed #26."
-, BulletList 1 [ Text "bird " ]
+, List [ Bulleted ] [ Text "bird " ]
 , Text "}} hello"
 ]

@@ -193,8 +193,8 @@
             , Text "day."
             , NewPara
             , Heading 2 [ Text "See also" ]
-            , BulletList
-                1
+            , List
+                [ Bulleted ]
                 [ InternalLink
                     LinkTarget
                       { linkTargetPage =
@@ -204,8 +204,8 @@
                     []
                 , Text " \8211 show birthdate and age in years"
                 ]
-            , BulletList
-                1
+            , List
+                [ Bulleted ]
                 [ InternalLink
                     LinkTarget
                       { linkTargetPage =

@@ -1122,15 +1122,15 @@
     [ Text "reflist" ] [ ( Just "colwidth" , [ Text "30em" ] ) ]
 , NewPara
 , Heading 2 [ Text "External links" ]
-, BulletList
-    1
+, List
+    [ Bulleted ]
     [ ExternalLink
         (Url
            "http://www.marketwatch.com/tools/quotes/financials.asp?symb=WRSP&sid=2076202&report=1&freq=1")
         (Just "Annual Financials for Worldspace Inc")
     ]
-, BulletList
-    1
+, List
+    [ Bulleted ]
     [ Template
         [ Text "cite web " ]
         [ ( Just "title"

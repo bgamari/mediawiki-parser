@@ -68,6 +68,9 @@ data LinkTarget = LinkTarget { linkTargetPage   :: !PageName
 data BraceCount = DoubleBrace | TripleBrace
                 deriving (Show, Eq, Ord, Generic)
 
+data ListType = Numbered | Bulleted | Unmarked | Definition
+              deriving (Show, Eq, Ord, Enum, Bounded, Generic)
+
 data Doc = Text !String
          | Char !Char
          | Comment !String
@@ -83,10 +86,7 @@ data Doc = Text !String
          | BoldItalic
          | Bold
          | Italic
-         | NumberedList !Int [Doc]
-         | BulletList !Int [Doc]
-         | UnmarkedList !Int [Doc]
-         | DefinitionList !Int [Doc]
+         | List [ListType] [Doc]
          | CodeLine !String
          | NoWiki !String
          | Table !String
@@ -150,20 +150,20 @@ doc' = mdo
     noWiki <-  NoWiki  <$*> manyBetween' (text "<nowiki>") anyChar (text "</nowiki>")
 
     -- lists
-    let listLike :: (Int -> [Doc] -> Doc) -> Char -> PM s (P s Doc)
-        listLike constr bullet = do
+    let aList :: PM s (P s Doc)
+        aList = do
             body <- manyUntil (text_ "}}" <> eol <> eof) aDoc
-            let p = pure constr
+            let listChar =  Numbered <$ char '#'
+                        <|> Bulleted <$ char '*'
+                        <|> Unmarked <$ char ':'
+                        <|> Definition <$ char ';'
+                p = pure List
                     <*  eol
-                    <*> fmap length (many1 $ char bullet)
+                    <*> many1 listChar
                     <*  spaces
                     <*> body
             return p
-    numberedList <- listLike NumberedList '#'
-    bulletList   <- listLike BulletList '*'
-    unmarkedList <- listLike UnmarkedList ':'
-    definitionList <- listLike DefinitionList ';'
-    list <- newRule $ numberedList <> bulletList <> unmarkedList <> definitionList
+    list <- aList
 
     -- horizontal rule
     hrule <- newRule $ eol *> text "----" *> pure HRule
@@ -339,10 +339,7 @@ cleanup = go []
     go []  (BoldItalic : xs)        = BoldItalic : go [] xs
     go []  (Bold : xs)              = Bold : go [] xs
     go []  (Italic : xs)            = Italic : go [] xs
-    go []  (BulletList n ds : xs)   = BulletList n (cleanup ds) : go [] xs
-    go []  (NumberedList n ds : xs) = NumberedList n (cleanup ds) : go [] xs
-    go []  (UnmarkedList n ds : xs) = UnmarkedList n (cleanup ds) : go [] xs
-    go []  (DefinitionList n ds : xs) = DefinitionList n (cleanup ds) : go [] xs
+    go []  (List tys ds : xs)       = List tys (cleanup ds) : go [] xs
     go []  (Template n ds : xs)     = Template (cleanup n) (map (second cleanup) ds) : go [] xs
     go []  (TemplateArg n ds : xs)  = TemplateArg (cleanup n) (map (second cleanup) ds) : go [] xs
     go []  (MagicWord t ds : xs)    = MagicWord t (map (fmap cleanup) ds) : go [] xs
