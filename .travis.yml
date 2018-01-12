@@ -1,0 +1,42 @@
+# We specify language: c, so it doesn't default to e.g. ruby
+language: c
+sudo: false
+
+# Trigger automatically on commits in master branch
+branches:
+  only:
+  - master
+ 
+# Can be specified in Travis CI
+env:
+  - GHC_VERSION=8.2.2
+  
+# Don't store repos in cache as they are updated everytime a new build is running
+before_cache:
+  - rm -fv $HOME/.cabal/packages/hackage.haskell.org/build-reports.log
+  - rm -fv $HOME/.cabal/packages/hackage.haskell.org/00-index*
+  - rm -fv $HOME/.cabal/packages/hackage.haskell.org/01-index*
+  - rm -fv $HOME/.cabal/packages/hackage.haskell.org/*.json
+
+cache:
+  directories:
+    - $HOME/.stack
+    - $HOME/.cabal
+    - $HOME/.ghc
+    
+# Download latest haskell platform as prebuilt binary
+# See: https://www.haskell.org/platform/#linux-generic
+before_install:
+  - cd /tmp
+  - wget https://haskell.org/platform/download/$GHC_VERSION/haskell-platform-$GHC_VERSION-unknown-posix--core-x86_64.tar.gz
+  - tar xf haskell-platform-$GHC_VERSION-unknown-posix--core-x86_64.tar.gz
+  - sudo ./install-haskell-platform.sh
+  
+install:
+  - cd $TRAVIS_BUILD_DIR
+  - cabal update
+  - cabal install --only-dependencies --enable-tests --enable-benchmarks --force-reinstalls
+  
+# Build the project and run tests afterwards
+script:
+  - cabal build && cabal test
