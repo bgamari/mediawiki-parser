@@ -16,7 +16,7 @@ cabal-version:       >=1.10
 library
   exposed-modules:     Data.MediaWiki.XmlDump
                        Data.MediaWiki.Markup
-  build-depends:       base >=4.9 && <4.11,
+  build-depends:       base >=4.9 && <4.13,
                        frisby >= 0.2 && <0.3,
                        bytestring >=0.10 && <0.11,
                        hashable >=1.2 && <2.0,
