@@ -1,0 +1,42 @@
+[ Text "According to Chris Blatchford, "
+, NewPara
+, XmlTag
+    "blockquote"
+    []
+    [ Text
+        "By 1961, administrators at DVI, alarmed by the escalating violence, had transferred a number of the charter Eme members to "
+    , InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "San Quentin" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Text
+        ", hoping to discourage their violent behavior by intermingling them with hardened adult convicts. It didn't work. For example, the story goes that Cheyenne Cadena arrived on the lower yard and was met by a six-foot-five, 300-pound black inmate who planted a kiss on his face and announced this scrawny teenager would now be his 'bitch.' Chy returned a short time later, walked up to the unsuspecting predator, and stabbed him to death with a jailhouse knife, or "
+    , InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "shank (weapon)" }
+          , linkTargetAnchor = Nothing
+          }
+        [ [ Text "shiv" ] ]
+    , Text
+        ". There were more than a thousand inmates on the yard. No witnesses stepped forward, and only one dead man entertained the idea that Cadena was anybody's bitch."
+    , XmlTag
+        "ref"
+        []
+        [ Text "Chris Blatchford, "
+        , Italic
+        , Text
+            "The Black Hand; The Bloody Rise and Redemption of \"Boxer\" Enriquez, A Mexican Mob Killer"
+        , Italic
+        , Text ", "
+        , InternalLink
+            LinkTarget
+              { linkTargetPage = PageName { getPageName = "HarperCollins" }
+              , linkTargetAnchor = Nothing
+              }
+            []
+        , Text ", 2008. Page 6."
+        ]
+    ]
+]
