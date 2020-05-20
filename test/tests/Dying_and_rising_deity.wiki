@@ -1,0 +1,18 @@
+{{short description|Religious motif in which a deity dies and is resurrected}}
+{{infobox
+| above       = Life-Death-Rebirth
+| abovestyle  = background-color: #EFDECD
+| subheader   =
+| image1      = [[File:FredericLeighton-TheReturnofPerspephone(1891).jpg|160px]]
+| caption1    = ''The Return of Persephone'' by [[Frederic Leighton]] (1891).
+| headerstyle = background-color: #EFDECD
+| label2      = Description
+| data2       = A dying-and-rising god is born, suffers a death-like experience, and is subsequently reborn.
+| label3      = Proponents
+| data3       = [[James Frazer]], [[Carl Jung]], [[Tryggve Mettinger]]
+| label6      = Subject
+| data6       = Mythology <br>Religion
+| below       =
+}}
+
+A '''dying-and-rising''', '''death-rebirth''',  or '''resurrection deity''' is a religious [[motif (folkloristics)|motif]] in which a god or goddess dies and is [[Resurrection|resurrected]].<ref name=LeemingG>Leeming, "Dying god" (2004)</ref><ref>Burkert 1979, 99</ref><ref>Stookey 2004, 99</ref><ref name="Miles 2009, 193">Miles 2009, 193</ref> 

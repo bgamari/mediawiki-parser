@@ -1,0 +1,112 @@
+[ Template
+    [ Text "short description" ]
+    [ ( Nothing
+      , [ Text "Religious motif in which a deity dies and is resurrected"
+        ]
+      )
+    ]
+, Template
+    [ Text "infobox" ]
+    [ ( Just "above" , [ Text "Life-Death-Rebirth" ] )
+    , ( Just "abovestyle" , [ Text "background-color: #EFDECD" ] )
+    , ( Just "subheader" , [] )
+    , ( Just "image1"
+      , [ InternalLink
+            LinkTarget
+              { linkTargetPage =
+                  PageName
+                    { getPageName =
+                        "File:FredericLeighton-TheReturnofPerspephone(1891).jpg"
+                    }
+              , linkTargetAnchor = Nothing
+              }
+            [ [ Text "160px" ] ]
+        ]
+      )
+    , ( Just "caption1"
+      , [ Text "''The Return of Persephone'' by "
+        , InternalLink
+            LinkTarget
+              { linkTargetPage = PageName { getPageName = "Frederic Leighton" }
+              , linkTargetAnchor = Nothing
+              }
+            []
+        , Text " (1891)."
+        ]
+      )
+    , ( Just "headerstyle" , [ Text "background-color: #EFDECD" ] )
+    , ( Just "label2" , [ Text "Description" ] )
+    , ( Just "data2"
+      , [ Text
+            "A dying-and-rising god is born, suffers a death-like experience, and is subsequently reborn."
+        ]
+      )
+    , ( Just "label3" , [ Text "Proponents" ] )
+    , ( Just "data3"
+      , [ InternalLink
+            LinkTarget
+              { linkTargetPage = PageName { getPageName = "James Frazer" }
+              , linkTargetAnchor = Nothing
+              }
+            []
+        , Text ", "
+        , InternalLink
+            LinkTarget
+              { linkTargetPage = PageName { getPageName = "Carl Jung" }
+              , linkTargetAnchor = Nothing
+              }
+            []
+        , Text ", "
+        , InternalLink
+            LinkTarget
+              { linkTargetPage = PageName { getPageName = "Tryggve Mettinger" }
+              , linkTargetAnchor = Nothing
+              }
+            []
+        ]
+      )
+    , ( Just "label6" , [ Text "Subject" ] )
+    , ( Just "data6"
+      , [ Text "Mythology " , XmlOpenClose "br" [] , Text "Religion" ]
+      )
+    , ( Just "below" , [] )
+    ]
+, NewPara
+, Text "A "
+, Bold
+, Text "dying-and-rising"
+, Bold
+, Text ", "
+, Bold
+, Text "death-rebirth"
+, Bold
+, Text ",  or "
+, Bold
+, Text "resurrection deity"
+, Bold
+, Text " is a religious "
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "motif (folkloristics)" }
+      , linkTargetAnchor = Nothing
+      }
+    [ [ Text "motif" ] ]
+, Text " in which a god or goddess dies and is "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Resurrection" }
+      , linkTargetAnchor = Nothing
+      }
+    [ [ Text "resurrected" ] ]
+, Text "."
+, XmlTag
+    "ref"
+    [ ( "name" , "LeemingG" ) ]
+    [ Text "Leeming, \"Dying god\" (2004)" ]
+, XmlTag "ref" [] [ Text "Burkert 1979, 99" ]
+, XmlTag "ref" [] [ Text "Stookey 2004, 99" ]
+, XmlTag
+    "ref" [ ( "name" , "Miles 2009, 193" ) ] [ Text "Miles 2009, 193" ]
+, Text " "
+]
