@@ -1,0 +1,188 @@
+[ Template
+    [ Text "See also" ]
+    [ ( Nothing , [ Text "List of festivals in Canada" ] ) ]
+, Template
+    [ Text "Infobox" ]
+    [ ( Just "name" , [ Text "Festivals of Ontario" ] )
+    , ( Just "bodystyle" , [ Text "Canada Day Mela(Malton) " ] )
+    , ( Just "titlestyle" , [ Text "Canada Day Celebrate " ] )
+    , ( Just "abovestyle" , [ Text "background:#E9967A;" ] )
+    , ( Just "subheaderstyle" , [] )
+    , ( Just "title" , [] )
+    , ( Just "above"
+      , [ XmlTag
+            "span"
+            [ ( "style" , "color:black;" ) ]
+            [ Text "Festivals of Ontario" ]
+        , NewPara
+        ]
+      )
+    , ( Just "image"
+      , [ InternalLink
+            LinkTarget
+              { linkTargetPage =
+                  PageName
+                    { getPageName = "Image:Fireworks DetroitWindsorIntlFreedomFest.jpg"
+                    }
+              , linkTargetAnchor = Nothing
+              }
+            [ [ Text "280px" ] ]
+        ]
+      )
+    , ( Just "imagestyle" , [] )
+    , ( Just "caption" , [] )
+    , ( Just "captionstyle" , [ NewPara ] )
+    , ( Just "headerstyle" , [ Text "background:#EDC9AF;" ] )
+    , ( Just "labelstyle" , [ Text "background:#EDC9AF;" ] )
+    , ( Just "datastyle" , [] )
+    , ( Just "header1" , [ Text "External sublists" , NewPara ] )
+    , ( Just "label2" , [] )
+    , ( Just "data2" , [ NewPara ] )
+    , ( Just "label3" , [ Text "By city" ] )
+    , ( Just "data3"
+      , [ Template
+            [ Text "hlist" ]
+            [ ( Nothing
+              , [ InternalLink
+                    LinkTarget
+                      { linkTargetPage =
+                          PageName { getPageName = "List of festivals in Ottawa" }
+                      , linkTargetAnchor = Nothing
+                      }
+                    [ [ Text "Festivals of Ottawa" ] ]
+                ]
+              )
+            , ( Nothing
+              , [ InternalLink
+                    LinkTarget
+                      { linkTargetPage =
+                          PageName { getPageName = "List of festivals in Toronto" }
+                      , linkTargetAnchor = Nothing
+                      }
+                    [ [ Text "festivals of Toronto" ] ]
+                , Text " "
+                ]
+              )
+            ]
+        , NewPara
+        ]
+      )
+    , ( Just "header11" , [ Text "Related topics" , NewPara ] )
+    , ( Just "label12" , [] )
+    , ( Just "data12"
+      , [ Template
+            [ Text "hlist" ]
+            [ ( Nothing
+              , [ InternalLink
+                    LinkTarget
+                      { linkTargetPage =
+                          PageName { getPageName = "List of festivals in Canada" }
+                      , linkTargetAnchor = Nothing
+                      }
+                    [ [ Text "Festivals of Canada" ] ]
+                , Text " "
+                ]
+              )
+            , ( Nothing
+              , [ InternalLink
+                    LinkTarget
+                      { linkTargetPage =
+                          PageName
+                            { getPageName = "lists of festivals by province or region" }
+                      , linkTargetAnchor = Nothing
+                      }
+                    []
+                , Text " ("
+                , InternalLink
+                    LinkTarget
+                      { linkTargetPage =
+                          PageName { getPageName = "List of festivals in Alberta" }
+                      , linkTargetAnchor = Nothing
+                      }
+                    [ [ Text "Alberta" ] ]
+                , Text " "
+                ]
+              )
+            , ( Nothing
+              , [ InternalLink
+                    LinkTarget
+                      { linkTargetPage =
+                          PageName { getPageName = "List of festivals in British Columbia" }
+                      , linkTargetAnchor = Nothing
+                      }
+                    [ [ Text "British Columbia" ] ]
+                ]
+              )
+            , ( Nothing
+              , [ InternalLink
+                    LinkTarget
+                      { linkTargetPage =
+                          PageName { getPageName = "List of festivals in Saskatchewan" }
+                      , linkTargetAnchor = Nothing
+                      }
+                    [ [ Text "Saskatchewan" ] ]
+                ]
+              )
+            , ( Nothing
+              , [ InternalLink
+                    LinkTarget
+                      { linkTargetPage =
+                          PageName { getPageName = "List of festivals in Manitoba" }
+                      , linkTargetAnchor = Nothing
+                      }
+                    [ [ Text "Manitoba" ] ]
+                ]
+              )
+            , ( Nothing
+              , [ InternalLink
+                    LinkTarget
+                      { linkTargetPage =
+                          PageName { getPageName = "List of festivals in Quebec" }
+                      , linkTargetAnchor = Nothing
+                      }
+                    [ [ Text "Quebec" ] ]
+                , Text ")"
+                ]
+              )
+            , ( Nothing
+              , [ InternalLink
+                    LinkTarget
+                      { linkTargetPage = PageName { getPageName = "culture of Ontario" }
+                      , linkTargetAnchor = Nothing
+                      }
+                    []
+                ]
+              )
+            , ( Nothing
+              , [ InternalLink
+                    LinkTarget
+                      { linkTargetPage = PageName { getPageName = "tourism in Ontario" }
+                      , linkTargetAnchor = Nothing
+                      }
+                    []
+                ]
+              )
+            ]
+        , Text " "
+        ]
+      )
+    ]
+, NewPara
+, Text "This is a list of current festivals held within the "
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "Provinces and territories of Canada" }
+      , linkTargetAnchor = Nothing
+      }
+    [ [ Text "Canadian province" ] ]
+, Text " of "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Ontario" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text ", Canada."
+, NewPara
+]

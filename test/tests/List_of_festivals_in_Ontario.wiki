@@ -1,0 +1,48 @@
+{{See also|List of festivals in Canada}}
+{{Infobox
+|name         = Festivals of Ontario
+|bodystyle    = Canada Day Mela(Malton) 
+|titlestyle   = Canada Day Celebrate 
+ |abovestyle = background:#E9967A;
+ |subheaderstyle =
+ |title        =  
+ |above        =<span style="color:black;">Festivals of Ontario</span>
+
+|image        = [[Image:Fireworks DetroitWindsorIntlFreedomFest.jpg|280px]]
+|imagestyle   =
+|caption      = 
+|captionstyle =
+
+|headerstyle  = background:#EDC9AF;
+|labelstyle   = background:#EDC9AF;
+|datastyle    =
+|header1 = External sublists
+
+|label2  =  
+|data2   =
+
+|label3  = By city
+|data3   =  {{hlist
+|[[List of festivals in Ottawa|Festivals of Ottawa]]
+|[[List of festivals in Toronto|festivals of Toronto]] 
+}}
+
+|header11 = Related topics
+
+|label12  =  
+|data12   = 
+{{hlist
+|[[List of festivals in Canada|Festivals of Canada]] 
+|[[lists of festivals by province or region]] ([[List of festivals in Alberta|Alberta]] 
+|[[List of festivals in British Columbia|British Columbia]]
+|[[List of festivals in Saskatchewan|Saskatchewan]]
+|[[List of festivals in Manitoba|Manitoba]]
+|[[List of festivals in Quebec|Quebec]])
+|[[culture of Ontario]]
+|[[tourism in Ontario]]
+}}
+ 
+}}
+
+This is a list of current festivals held within the [[Provinces and territories of Canada|Canadian province]] of [[Ontario]], Canada.
+
