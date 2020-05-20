@@ -1,0 +1,204 @@
+{{Infobox book
+| name          = Gandhi the Man
+| title_orig    =
+| translator    =
+| image         = Gandhi-the-Man-2011-dpi50.jpg
+| image_size    = 200px
+| caption =
+| author        = [[Eknath Easwaran]]
+| illustrator   =
+| cover_artist  =
+| country       =
+| language      = English (original); [[Simplified Chinese|Chinese]],<ref
+  name=gtmchinese/> Czech,<ref
+  name=gtmczech/> Dutch,<ref
+  name=gtmdutch83/><ref
+  name=gtmdutch97/> German,<ref
+  name=gtmgerman83/><ref
+  name=gtmgerman97/> [[Bahasa Indonesian|Indonesian]],<ref
+  name=gtmindonesian13/> Japanese,<ref
+  name=gtmjapanese13/> Korean,<ref
+  name=gtmkorean/> [[Kurdish languages|Kurdish]],<ref
+  name=gtmkurdish10/> [[Persian language|Persian]]<ref
+  name=gtmpersian/>
+| series        =
+| subject       =
+| genre         = Politicians - India - Biography
+| publisher     = [[Nilgiri Press]]; others
+| pub_date      = 1973; 1978; 1991; 2011; others
+| english_pub_date =
+| media_type    =
+| pages         = 200 (2011); 179 (1997); 186 (1978); 157 (1973).
+| isbn          = 978-1-58638-055-7
+| oclc          =
+}}
+'''''Gandhi the Man''''' is a biography of [[Mohandas Karamchand Gandhi]] written by [[Eknath Easwaran]]. The book was originally published in the United States in 1973. Several subsequent expanded editions have been published. Foreign (non-English) editions have also been published in several languages.<ref
+  name=gtmchinese/><ref
+  name=gtmczech/><ref
+  name=gtmdutch83/><ref
+  name=gtmdutch97/><ref
+  name=gtmgerman83/><ref
+  name=gtmgerman97/><ref
+  name=gtmindonesian13/><ref
+  name=gtmjapanese13/><ref
+  name=gtmkorean/><ref
+  name=gtmkurdish10/><ref
+  name=gtmpersian/><ref
+  name=pwgtmchina/><ref name=npforeign>Foreign editions of Nilgiri Press Books, {{cite web
+ |url=http://www.easwaran.org/page/150 
+ |title=Archived copy 
+ |accessdate=2010-05-30 
+ |url-status=dead 
+ |archiveurl=https://web.archive.org/web/20100613041054/http://easwaran.org/page/150 
+ |archivedate=2010-06-13 
+}}, accessed 3 April 2010.</ref> The book has been reviewed in newspapers,<ref
+  name=mckibben89/><ref name=holt97/> professional journals,<ref
+  name=cody81/><ref
+  name=emeigh88/> and websites. The subtitle of the 4th edition is ''How one man changed himself to change the world''.
+
+==Topics covered==
+All US editions of ''Gandhi the Man'' contain four major parts entitled 1) The Transformation, 2) The Way of Love, 3) Mother and Child, and 4) Gandhi the Man. All US editions also contain numerous photographs. More recent editions contain a foreword by [[Michael Nagler]] and an Appendix by Timothy Flinders entitled "How Satyagraha Works." The 4th edition (2011) contains several pages of maps and chronology (timelines), and additional background notes.<ref>See [https://books.google.com/books?id=_73lbc6t8cYC&pg=PA173 4th edition, pp. 173-185]. {{ISBN|978-1-58638-055-7}} (back cover text states these are new)</ref>
+
+==Reviews and influence==
+Reviews have appeared in the ''[[New York Post]]'',<ref
+  name=mckibben89>[[Bill McKibben]] (1989, May 21). ''[[New York Post]]'', pp. 4-5. Review of ''Gandhi the Man'', ''A Man to Match His Mountains'', ''Meditation'', ''The Mantram Handbook'', and ''Conquest of Mind''.</ref> the ''[[San Francisco Chronicle]]'',<ref name=holt97>{{cite news
+ |author=Patricia Holt
+ |title=Images of Gandhi's progress toward greatness
+ |newspaper=[[San Francisco Chronicle]]
+ |publisher=
+ |date= 24 December 1997
+ |pages= C6
+ |url= http://articles.sfgate.com/1997-12-24/entertainment/17763675_1_mahatma-gandhi-eknath-easwaran-international-acclaim
+ |accessdate=1 May 2010}}</ref> ''[[The History Teacher]]'',<ref
+  name=cody81>{{cite journal
+ |author=Donald K. Cody
+ |year=1981
+ |title=<nowiki>[Untitled review of Easwaran's Gandhi the Man]</nowiki>
+ |journal=The History Teacher
+ |publisher=
+ |volume=14
+ |issue= 2
+ |pages= 269
+ |jstor= 493276}}</ref> and elsewhere.
+
+In the ''New York Post'', [[Bill McKibben]] wrote that ''Gandhi the Man'' "seems at first glance like pure hagiography, most notable for the wonderful photographs it contains. But it isn't a picture book - in fact,
+<blockquote>
+in very few words, it comes closer to giving some sense of how Gandhi saw his life than any other account I have read. From the outside, his life looked like a political drama... But from the inside, Easwaran argues quite persuasively, it looked quite different. Gandhi mastered his own life - took charge of his mind and his body. As a result he knew no fear, only great and undifferentiated love for the rest of creation. And so he was able to powerfully affect that creation."<ref name=mckibben89/>{{rp|4}}
+</blockquote>
+
+{{Eknath Easwaran}}
+In ''The History Teacher'' Donald Cody wrote that "the book's uniqueness lies in the effective interspersing of some six dozen pictures throughout the relatively short text [...which] itself is biographical only in a very general way; the author's major goal is to reveal the spiritual dimensions of Gandhi's life.... Teachers and college students, in particular, will find the two or three hours spent with this book a rare inspirational experience. Even high school students who appreciate works with a spiritual focus will be affected by its profound message."<ref name=cody81/>{{rp|269}}
+Cody also wrote that "while the author describes [the] political struggle in considerable detail, he is more interested in showing that Gandhi did not see achieving India's freedom as his primary goal. In fact, had he not believed that British rule was particularly injurious to the Indian lower classes, he might not have involved himself in the independence movement at all."<ref name=cody81/>{{rp|269}}
+
+In the ''[[Bulletin of Science, Technology & Society]]'', Tonya Emeigh suggested that ''Gandhi the Man'' could be used for teaching humane attitudes towards farm animals.<ref
+  name=emeigh88>{{cite journal
+ |author=Tonya Huber Emeigh
+ |year=1988
+ |title=Humane education: Science, technology, and society in the English classroom
+ |journal=[[Bulletin of Science, Technology & Society]]
+ |publisher=
+ |volume=8
+ |issue=
+ |pages=47–63
+ |doi=10.1177/027046768800800111}}</ref><ref name=wafdexplain>Emeigh suggests using the book with lessons about "World Farm Animals Day", designated as falling on October 2, Gandhi's birthday (see website [http://www.wfad.org/ World Farm Animals Day])</ref>
+
+The publisher quoted influential religion scholar [[Huston Smith]] as stating that "This book belongs in every public library in the English-speaking world."<ref name=hsmith11>[https://books.google.com/books?id=_73lbc6t8cYC&pg=PA217 Back cover of 2011 edition] of ''Gandhi the Man'', {{ISBN|978-1-58638-055-7}}</ref>
+
+==Curriculum==
+''Gandhi the Man'' serves as the basis of a 7-week curriculum and course offered through a US-based church denomination.<ref 
+  name=coursebasis>[http://www.unityofthevalley.org/Gandhi.htm ''The Wisdom of Gandhi''], {{Webarchive|url=https://web.archive.org/web/20110225140011/http://www.unityofthevalley.org/Gandhi.htm |date=2011-02-25 }} "A seven-week study series that highlights Mahatma Gandhi's spiritual practice to make nonviolence a force in everyday life" written in 1999 by ministers of [[Unity Church|Unity of the Valley]] of Eugene Oregon. The series "became the most popular seven-week program ever offered at Unity of the Valley." (accessed 26 Jan 2013)</ref>
+
+==Editions==
+The original edition was published by in 1973 by Glide Publications (San Francisco). Several later US editions were published [[Nilgiri Press]]. Other editions have been published in [[Simplified Chinese|Chinese]] ([[People's Republic of China|PRC]]),<ref
+  name=gtmchinese>Eknath Easwaran (1998). ''[https://books.google.com/books?as_isbn=9787801281258 圣雄·甘地: 非暴力之父 (The Father of Nonviolence: Mahatma Gandhi)]'' {{ISBN|7-80128-125-X}}, {{ISBN|978-7-80128-125-8}}, (306 pages)</ref><ref name=pwgtmchina>Lynn Garrett (1998, Jan. 12). Gandhi in China. ''Publishers Weekly'', v245 n2, p30. "Nilgiri Press... was surprised to receive an e-mail in September from the [[Sichuan]] Copyright Agency in the [[People's Republic of China]], expressing interest in publishing a Chinese edition of its ''Gandhi the Man'' (especially since relations between China and India have not always been the best).... the book will be released in China on January 30" (p. 30).</ref> Czech,<ref
+  name=gtmczech>Eknath Easwaran (1999). ''[https://books.google.com/books?id=U1IlAAAACAAJ&dq=easwaran+8072072706&hl=en&ei=ZGq7S7OGN4z-tQPWspnyBA&sa=X&oi=book_result&ct=result&resnum=1&ved=0CDgQ6AEwAA Gándhí člověk: příběh jeho transformace (Gandhi the Man: The Story of his Transformation)]'' (Bohumila Kučerová, trans.). Czech Republic: Volvox Globator. {{ISBN|80-7207-270-6}}, {{ISBN|978-80-7207-270-5}} (140 pages)</ref> Dutch,<ref
+  name=gtmdutch83>Eknath Easwaran (1983). ''[https://books.google.com/books?id=4ArxAAAACAAJ&dq=9789064410475&lr=lang_nl&num=50&as_brr=0&as_pt=BOOKS&cd=1 Gandhi]'' (Hilde Lichtendahl, trans.). Netherlands: Sirius en Siderius. {{ISBN|906441047X}}, {{ISBN|978-90-6441-047-5}}</ref><ref
+  name=gtmdutch97>Eknath Easwaran (1997). ''[http://www.ankh-hermes.nl/shop/product.html?Gandhi&productid=3760 Gandhi Een biografie]{{Dead link|date=December 2019 |bot=InternetArchiveBot |fix-attempted=yes }}'' Netherlands: Ankh-Hermes. {{ISBN|90-202-8124-0}} {{ISBN|9789020281248}} (paper)</ref> German,<ref
+  name=gtmgerman83>Eknath Easwaran (1983). ''[https://books.google.com/books?id=g_vZAAAACAAJ&dq=9783924092139&hl=en&ei=pK27S-DtC430sgP1zYmKBQ&sa=X&oi=book_result&ct=result&resnum=1&ved=0CDMQ6AEwAA Der Mensch Gandhi]''. Germany:Grumann. {{ISBN|3-924092-13-3}}, {{ISBN|978-3-924092-13-9}} (184 pages).</ref><ref
+  name=gtmgerman97>Eknath Easwaran (1997). ''[https://books.google.com/books?id=gvvZAAAACAAJ&dq=Der+Mensch+Gandhi.+Sein+Leben+ist+eine+Botschaft&client=firefox-a Der Mensch Gandhi. Sein Leben ist eine Botschaft (Gandhi the Man: His Life is a Message)]''. Freiburg, Germany:Herder. {{ISBN|978-3-451-04564-6}}</ref> [[Bahasa Indonesian|Indonesian]],<ref
+  name=gtmindonesian13>[[Eknath Easwaran]] (2013). ''[http://www.bukabuku.com/browse/bookdetail/2010000193976/gandhi-the-man.html Gandhi the Man - Seorang pria yang mengubah dirinya demi mengubah dunia]''. Indonesia: Bentang Pustaka (Mizan Group). {{ISBN|6027888903}}, {{ISBN|978-602-7888-90-6}} (288 pages).</ref> Japanese,<ref
+  name=gtmjapanese13>[[Eknath Easwaran]] (2013). ''[https://www.amazon.co.jp/gp/aw/d/4862492134 人間ガンディー 世界を変えた自己変革 / (Gandhi the Man: How One Man Changed Himself to Change the World)]'' (ｽﾀｲﾅｰ 紀美子= Kimiko Steiner, trans.). [[Osaka]], [[Japan]]: 大阪東方出版 / Eastern Osaka Publishing. {{ISBN|978-4862492135}}, {{ISBN|4862492134}}, {{OCLC|840102432}}, {{ASIN|4862492134}} (214 pages)</ref> Korean,<ref
+  name=gtmkorean>[[Eknath Easwaran]] (2005). ''[https://books.google.com/books?id=rcHzQwAACAAJ&dq=inauthor:easwaran&lr=lang_ko&as_drrb_is=q&as_minm_is=0&as_miny_is=&as_maxm_is=0&as_maxy_is=&num=50&as_brr=0 비폭력이 가장 위대한 사랑이다 (Nonviolence is the Greatest Love)]'' (박유진, trans.). Korea: 꿈꾸는돌. {{ISBN|89-91159-07-9}}, {{ISBN|978-89-91159-07-5}}</ref> [[Kurdish languages|Kurdish]],<ref
+  name=gtmkurdish10>Eknath Easwaran (2010). ''Rebāzī-i ʻashq : chīrokī wacharkhānī roḥī-y Māhātmā Gāndī'' (Hāwār Aḥmad Halanjayi [Halabjayi], trans. from Persian). [[Erbil|Hawler <nowiki>[Erbil]</nowiki>]], [[Iraqi Kurdistan|Iraq]]: Chāpkhāna-y Minārih. {{OCLC|801735679}} (175 pages)</ref>  and [[Persian language|Persian]].<ref
+  name=gtmpersian>[[Eknath Easwaran]] (2001). ''[http://www.google.com/search?q=9789643114114&oe=utf-8&rls=org.mozilla:en-US:official&client=firefox-a&um=1&ie=UTF-8&tbo=u&tbs=bks:1&sa=N&hl=en&tab=wp Rāh-i ʻishq: dāsitān taḥūl rūḥī mahātmā Gāndī (The Way of Love: The Story of Mahatma Gandhi's spiritual transformation)]'' (Shahram Tabrizi, trans.). Iran: <nowiki>ققنوس،</nowiki> (Phoenix). {{ISBN|964-311-411-2}}, {{ISBN|978-964-311-411-4}}, {{OCLC|178500148}} (190 pages).</ref>
+
+English-language editions have been published in Canada, India, and the US. The US editions are:
+:*{{cite book
+ |title=Gandhi the Man: How one man changed himself to change the world
+ |last=Easwaran |first=Eknath
+ |authorlink=Eknath Easwaran 
+ |year=2011
+ |edition=4th
+ |publisher=[[Nilgiri Press]]
+ |location=Tomales, CA 
+ |isbn=978-1-58638-055-7
+ |url=https://books.google.com/books?id=_73lbc6t8cYC&printsec=frontcover&dq=isbn:9781586380557&hl=en&ei=Yge7Tbv0F4bWtQPlytHUBQ&sa=X&oi=book_result&ct=result&resnum=1&ved=0CCoQ6AEwAA#v=onepage&q&f=false}} {{ISBN|1-58638-055-9}} (200 pages) ebook: {{ISBN|978-1-58638-067-0}}
+:*{{cite book
+ |title=Gandhi the Man
+ |last=Easwaran
+ |first=Eknath
+ |authorlink=Eknath Easwaran
+ |year=1997
+ |edition=3rd
+ |publisher=[[Nilgiri Press]]
+ |location=Tomales, CA
+ |ISBN=0-915132-96-6
+ |url=https://books.google.com/books?as_isbn=0915132966}}(179 pages, hardcover); {{ISBN|978-0-915132-96-6}} (179 pages, paperback)
+:*{{cite book
+ |title=Gandhi the Man
+ |last=Easwaran
+ |first=Eknath
+ |authorlink=Eknath Easwaran
+ |year=1983
+ |edition=2nd
+ |publisher=[[Random House]]
+ |location=New York
+ |ISBN=0-394-71497-0
+ |url= }}(192 pages); {{ISBN|978-0-394-71497-4}} (192 pages)
+:*{{cite book
+ |title=Gandhi the Man
+ |last=Easwaran
+ |first=Eknath
+ |authorlink=Eknath Easwaran
+ |year=1978
+ |edition=2nd
+ |publisher=[[Nilgiri Press]]
+ |location=Tomales, CA
+ |ISBN=0-915132-13-3
+ |url= }}(hardcover); {{ISBN|0-915132-14-1}} (paperback)
+:*Easwaran, Eknath (1973), ''Gandhi the Man'' (1st ed.). San Francisco, CA: Glide Publications. Compiled from the perspective of Eknath Easwaran by Jo Anne Black, Nick Harvey, and Laurel Robertson. {{ISBN|0-912078-17-0}}, LC 77176240 (157 pages, paper)
+
+Canadian edition:
+:*{{cite book
+ |title=Gandhi the Man
+ |last=Easwaran
+ |first=Eknath (1983)
+ |authorlink=Eknath Easwaran
+ |year=1983
+ |edition=2nd
+ |publisher=[[Turnstone Press]]
+ |location=Winnipeg, Canada
+ |ISBN=0-85500-194-1
+ |url= }}(192 pages); {{ISBN|978-0-85500-194-0}} (192 pages)
+
+Indian edition:
+:*Eknath Easwaran (1997).<ref name=india97>Eknath Easwaran (1997). ''[http://www.jaicobooks.com/j/j_searchtry.asp?selcat=title&keyword=Gandhi%20The%20Man Gandhi the Man]''. Mumbai, India:[[Jaico]]. {{ISBN|81-7224-517-3}}, {{ISBN|978-81-7224-517-7}}</ref> ''Gandhi the Man''. Mumbai, India: [[Jaico]]. {{ISBN|81-7224-517-3}}, {{ISBN|978-81-7224-517-7}} (192 pages).
+
+==See also==
+*''[[Nonviolent Soldier of Islam]]'' (by same author, a biography of Gandhi's Muslim associate, [[Abdul Ghaffar Khan]])
+*''[[The Story of My Experiments with Truth]]'' (Gandhi's autobiography)
+*[[List of artistic depictions of Mohandas Karamchand Gandhi]]
+
+==References==
+{{Reflist|2}}
+
+{{Mohandas K. Gandhi}}
+{{Indian independence movement}}
+
+[[Category:1973 non-fiction books]]
+[[Category:Books about India]]
+[[Category:Indian biographies]]
+[[Category:Books about Mahatma Gandhi]]
+[[Category:Works by Eknath Easwaran]]
+[[Category:20th-century Indian books]]
+

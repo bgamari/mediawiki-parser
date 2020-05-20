@@ -237,7 +237,7 @@ doc' = mdo
 
     -- XMLish
     xmlAttr <- do
-        key <- manyUntil (char '>' <> char '=' <> space) anyChar
+        key <- newRule $ many1 $ alpha <|> char '-' <|> char '_'
         unquotedValue <- manyUntil (char_ '>' <> text_ "/>" <> void space) anyChar
         quotedValue <- manyUntil (char '"') anyChar
         let value = (char '"' *> quotedValue <* char '"') <|> unquotedValue

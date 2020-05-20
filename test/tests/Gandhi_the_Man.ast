@@ -1,0 +1,654 @@
+[ Template
+    [ Text "Infobox book" ]
+    [ ( Just "name" , [ Text "Gandhi the Man" ] )
+    , ( Just "title_orig" , [] )
+    , ( Just "translator" , [] )
+    , ( Just "image" , [ Text "Gandhi-the-Man-2011-dpi50.jpg" ] )
+    , ( Just "image_size" , [ Text "200px" ] )
+    , ( Just "caption" , [] )
+    , ( Just "author"
+      , [ InternalLink
+            LinkTarget
+              { linkTargetPage = PageName { getPageName = "Eknath Easwaran" }
+              , linkTargetAnchor = Nothing
+              }
+            []
+        ]
+      )
+    , ( Just "illustrator" , [] )
+    , ( Just "cover_artist" , [] )
+    , ( Just "country" , [] )
+    , ( Just "language"
+      , [ Text "English (original); "
+        , InternalLink
+            LinkTarget
+              { linkTargetPage = PageName { getPageName = "Simplified Chinese" }
+              , linkTargetAnchor = Nothing
+              }
+            [ [ Text "Chinese" ] ]
+        , Text
+            ",<ref  name=gtmchinese/> Czech,<ref  name=gtmczech/> Dutch,<ref  name=gtmdutch83/><ref  name=gtmdutch97/> German,<ref  name=gtmgerman83/><ref  name=gtmgerman97/> "
+        , InternalLink
+            LinkTarget
+              { linkTargetPage = PageName { getPageName = "Bahasa Indonesian" }
+              , linkTargetAnchor = Nothing
+              }
+            [ [ Text "Indonesian" ] ]
+        , Text
+            ",<ref  name=gtmindonesian13/> Japanese,<ref  name=gtmjapanese13/> Korean,<ref  name=gtmkorean/> "
+        , InternalLink
+            LinkTarget
+              { linkTargetPage = PageName { getPageName = "Kurdish languages" }
+              , linkTargetAnchor = Nothing
+              }
+            [ [ Text "Kurdish" ] ]
+        , Text ",<ref  name=gtmkurdish10/> "
+        , InternalLink
+            LinkTarget
+              { linkTargetPage = PageName { getPageName = "Persian language" }
+              , linkTargetAnchor = Nothing
+              }
+            [ [ Text "Persian" ] ]
+        , Text "<ref  name=gtmpersian/>"
+        ]
+      )
+    , ( Just "series" , [] )
+    , ( Just "subject" , [] )
+    , ( Just "genre" , [ Text "Politicians - India - Biography" ] )
+    , ( Just "publisher"
+      , [ InternalLink
+            LinkTarget
+              { linkTargetPage = PageName { getPageName = "Nilgiri Press" }
+              , linkTargetAnchor = Nothing
+              }
+            []
+        , Text "; others"
+        ]
+      )
+    , ( Just "pub_date" , [ Text "1973; 1978; 1991; 2011; others" ] )
+    , ( Just "english_pub_date" , [] )
+    , ( Just "media_type" , [] )
+    , ( Just "pages"
+      , [ Text "200 (2011); 179 (1997); 186 (1978); 157 (1973)." ]
+      )
+    , ( Just "isbn" , [ Text "978-1-58638-055-7" ] )
+    , ( Just "oclc" , [] )
+    ]
+, BoldItalic
+, Text "Gandhi the Man"
+, BoldItalic
+, Text " is a biography of "
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "Mohandas Karamchand Gandhi" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text " written by "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Eknath Easwaran" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text
+    ". The book was originally published in the United States in 1973. Several subsequent expanded editions have been published. Foreign (non-English) editions have also been published in several languages.<ref"
+, CodeLine " name=gtmchinese/><ref"
+, CodeLine " name=gtmczech/><ref"
+, CodeLine " name=gtmdutch83/><ref"
+, CodeLine " name=gtmdutch97/><ref"
+, CodeLine " name=gtmgerman83/><ref"
+, CodeLine " name=gtmgerman97/><ref"
+, CodeLine " name=gtmindonesian13/><ref"
+, CodeLine " name=gtmjapanese13/><ref"
+, CodeLine " name=gtmkorean/><ref"
+, CodeLine " name=gtmkurdish10/><ref"
+, CodeLine " name=gtmpersian/><ref"
+, CodeLine
+    " name=pwgtmchina/><ref name=npforeign>Foreign editions of Nilgiri Press Books, {{cite web"
+, CodeLine "|url=http://www.easwaran.org/page/150 "
+, CodeLine "|title=Archived copy "
+, CodeLine "|accessdate=2010-05-30 "
+, CodeLine "|url-status=dead "
+, CodeLine
+    "|archiveurl=https://web.archive.org/web/20100613041054/http://easwaran.org/page/150 "
+, CodeLine "|archivedate=2010-06-13 "
+, Text
+    "}}, accessed 3 April 2010.</ref> The book has been reviewed in newspapers,<ref"
+, CodeLine
+    " name=mckibben89/><ref name=holt97/> professional journals,<ref"
+, CodeLine " name=cody81/><ref"
+, CodeLine
+    " name=emeigh88/> and websites. The subtitle of the 4th edition is ''How one man changed himself to change the world''."
+, NewPara
+, Heading 2 [ Text "Topics covered" ]
+, Text "All US editions of "
+, Italic
+, Text "Gandhi the Man"
+, Italic
+, Text
+    " contain four major parts entitled 1) The Transformation, 2) The Way of Love, 3) Mother and Child, and 4) Gandhi the Man. All US editions also contain numerous photographs. More recent editions contain a foreword by "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Michael Nagler" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text
+    " and an Appendix by Timothy Flinders entitled \"How Satyagraha Works.\" The 4th edition (2011) contains several pages of maps and chronology (timelines), and additional background notes."
+, XmlTag
+    "ref"
+    []
+    [ Text "See "
+    , ExternalLink
+        (Url "https://books.google.com/books?id=_73lbc6t8cYC&pg=PA173")
+        (Just "4th edition, pp. 173-185")
+    , Text ". "
+    , Template
+        [ Text "ISBN" ] [ ( Nothing , [ Text "978-1-58638-055-7" ] ) ]
+    , Text " (back cover text states these are new)"
+    ]
+, NewPara
+, Heading 2 [ Text "Reviews and influence" ]
+, Text "Reviews have appeared in the "
+, Italic
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "New York Post" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Italic
+, Text ",<ref"
+, CodeLine
+    " name=mckibben89>[[Bill McKibben]] (1989, May 21). ''[[New York Post]]'', pp. 4-5. Review of ''Gandhi the Man'', ''A Man to Match His Mountains'', ''Meditation'', ''The Mantram Handbook'', and ''Conquest of Mind''.</ref> the ''[[San Francisco Chronicle]]'',<ref name=holt97>{{cite news"
+, CodeLine "|author=Patricia Holt"
+, CodeLine "|title=Images of Gandhi's progress toward greatness"
+, CodeLine "|newspaper=[[San Francisco Chronicle]]"
+, CodeLine "|publisher="
+, CodeLine "|date= 24 December 1997"
+, CodeLine "|pages= C6"
+, CodeLine
+    "|url= http://articles.sfgate.com/1997-12-24/entertainment/17763675_1_mahatma-gandhi-eknath-easwaran-international-acclaim"
+, CodeLine
+    "|accessdate=1 May 2010}}</ref> ''[[The History Teacher]]'',<ref"
+, CodeLine " name=cody81>{{cite journal"
+, CodeLine "|author=Donald K. Cody"
+, CodeLine "|year=1981"
+, CodeLine
+    "|title=<nowiki>[Untitled review of Easwaran's Gandhi the Man]</nowiki>"
+, CodeLine "|journal=The History Teacher"
+, CodeLine "|publisher="
+, CodeLine "|volume=14"
+, CodeLine "|issue= 2"
+, CodeLine "|pages= 269"
+, CodeLine "|jstor= 493276}}</ref> and elsewhere."
+, NewPara
+, Text "In the "
+, Italic
+, Text "New York Post"
+, Italic
+, Text ", "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Bill McKibben" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text " wrote that "
+, Italic
+, Text "Gandhi the Man"
+, Italic
+, Text
+    " \"seems at first glance like pure hagiography, most notable for the wonderful photographs it contains. But it isn't a picture book - in fact,"
+, XmlTag
+    "blockquote"
+    []
+    [ Text
+        "in very few words, it comes closer to giving some sense of how Gandhi saw his life than any other account I have read. From the outside, his life looked like a political drama... But from the inside, Easwaran argues quite persuasively, it looked quite different. Gandhi mastered his own life - took charge of his mind and his body. As a result he knew no fear, only great and undifferentiated love for the rest of creation. And so he was able to powerfully affect that creation.\""
+    , XmlOpenClose "ref" [ ( "name" , "mckibben89" ) ]
+    , Template [ Text "rp" ] [ ( Nothing , [ Text "4" ] ) ]
+    ]
+, NewPara
+, Template [ Text "Eknath Easwaran" ] []
+, Text "In "
+, Italic
+, Text "The History Teacher"
+, Italic
+, Text
+    " Donald Cody wrote that \"the book's uniqueness lies in the effective interspersing of some six dozen pictures throughout the relatively short text [...which] itself is biographical only in a very general way; the author's major goal is to reveal the spiritual dimensions of Gandhi's life.... Teachers and college students, in particular, will find the two or three hours spent with this book a rare inspirational experience. Even high school students who appreciate works with a spiritual focus will be affected by its profound message.\""
+, XmlOpenClose "ref" [ ( "name" , "cody81" ) ]
+, Template [ Text "rp" ] [ ( Nothing , [ Text "269" ] ) ]
+, Text
+    "Cody also wrote that \"while the author describes [the] political struggle in considerable detail, he is more interested in showing that Gandhi did not see achieving India's freedom as his primary goal. In fact, had he not believed that British rule was particularly injurious to the Indian lower classes, he might not have involved himself in the independence movement at all.\""
+, XmlOpenClose "ref" [ ( "name" , "cody81" ) ]
+, Template [ Text "rp" ] [ ( Nothing , [ Text "269" ] ) ]
+, NewPara
+, Text "In the "
+, Italic
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName
+            { getPageName = "Bulletin of Science, Technology & Society" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Italic
+, Text ", Tonya Emeigh suggested that "
+, Italic
+, Text "Gandhi the Man"
+, Italic
+, Text
+    " could be used for teaching humane attitudes towards farm animals.<ref"
+, CodeLine " name=emeigh88>{{cite journal"
+, CodeLine "|author=Tonya Huber Emeigh"
+, CodeLine "|year=1988"
+, CodeLine
+    "|title=Humane education: Science, technology, and society in the English classroom"
+, CodeLine "|journal=[[Bulletin of Science, Technology & Society]]"
+, CodeLine "|publisher="
+, CodeLine "|volume=8"
+, CodeLine "|issue="
+, CodeLine "|pages=47\8211\&63"
+, CodeLine
+    "|doi=10.1177/027046768800800111}}</ref><ref name=wafdexplain>Emeigh suggests using the book with lessons about \"World Farm Animals Day\", designated as falling on October 2, Gandhi's birthday (see website [http://www.wfad.org/ World Farm Animals Day])</ref>"
+, NewPara
+, Text "The publisher quoted influential religion scholar "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Huston Smith" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text
+    " as stating that \"This book belongs in every public library in the English-speaking world.\""
+, XmlTag
+    "ref"
+    [ ( "name" , "hsmith11" ) ]
+    [ ExternalLink
+        (Url "https://books.google.com/books?id=_73lbc6t8cYC&pg=PA217")
+        (Just "Back cover of 2011 edition")
+    , Text " of "
+    , Italic
+    , Text "Gandhi the Man"
+    , Italic
+    , Text ", "
+    , Template
+        [ Text "ISBN" ] [ ( Nothing , [ Text "978-1-58638-055-7" ] ) ]
+    ]
+, NewPara
+, Heading 2 [ Text "Curriculum" ]
+, Italic
+, Text "Gandhi the Man"
+, Italic
+, Text
+    " serves as the basis of a 7-week curriculum and course offered through a US-based church denomination.<ref "
+, CodeLine
+    " name=coursebasis>[http://www.unityofthevalley.org/Gandhi.htm ''The Wisdom of Gandhi''], {{Webarchive|url=https://web.archive.org/web/20110225140011/http://www.unityofthevalley.org/Gandhi.htm |date=2011-02-25 }} \"A seven-week study series that highlights Mahatma Gandhi's spiritual practice to make nonviolence a force in everyday life\" written in 1999 by ministers of [[Unity Church|Unity of the Valley]] of Eugene Oregon. The series \"became the most popular seven-week program ever offered at Unity of the Valley.\" (accessed 26 Jan 2013)</ref>"
+, NewPara
+, Heading 2 [ Text "Editions" ]
+, Text
+    "The original edition was published by in 1973 by Glide Publications (San Francisco). Several later US editions were published "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Nilgiri Press" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text ". Other editions have been published in "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Simplified Chinese" }
+      , linkTargetAnchor = Nothing
+      }
+    [ [ Text "Chinese" ] ]
+, Text " ("
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "People's Republic of China" }
+      , linkTargetAnchor = Nothing
+      }
+    [ [ Text "PRC" ] ]
+, Text "),<ref"
+, CodeLine
+    " name=gtmchinese>Eknath Easwaran (1998). ''[https://books.google.com/books?as_isbn=9787801281258 \22307\38596\183\29976\22320: \38750\26292\21147\20043\29238 (The Father of Nonviolence: Mahatma Gandhi)]'' {{ISBN|7-80128-125-X}}, {{ISBN|978-7-80128-125-8}}, (306 pages)</ref><ref name=pwgtmchina>Lynn Garrett (1998, Jan. 12). Gandhi in China. ''Publishers Weekly'', v245 n2, p30. \"Nilgiri Press... was surprised to receive an e-mail in September from the [[Sichuan]] Copyright Agency in the [[People's Republic of China]], expressing interest in publishing a Chinese edition of its ''Gandhi the Man'' (especially since relations between China and India have not always been the best).... the book will be released in China on January 30\" (p. 30).</ref> Czech,<ref"
+, CodeLine
+    " name=gtmczech>Eknath Easwaran (1999). ''[https://books.google.com/books?id=U1IlAAAACAAJ&dq=easwaran+8072072706&hl=en&ei=ZGq7S7OGN4z-tQPWspnyBA&sa=X&oi=book_result&ct=result&resnum=1&ved=0CDgQ6AEwAA G\225ndh\237 \269lov\283k: p\345\237b\283h jeho transformace (Gandhi the Man: The Story of his Transformation)]'' (Bohumila Ku\269erov\225, trans.). Czech Republic: Volvox Globator. {{ISBN|80-7207-270-6}}, {{ISBN|978-80-7207-270-5}} (140 pages)</ref> Dutch,<ref"
+, CodeLine
+    " name=gtmdutch83>Eknath Easwaran (1983). ''[https://books.google.com/books?id=4ArxAAAACAAJ&dq=9789064410475&lr=lang_nl&num=50&as_brr=0&as_pt=BOOKS&cd=1 Gandhi]'' (Hilde Lichtendahl, trans.). Netherlands: Sirius en Siderius. {{ISBN|906441047X}}, {{ISBN|978-90-6441-047-5}}</ref><ref"
+, CodeLine
+    " name=gtmdutch97>Eknath Easwaran (1997). ''[http://www.ankh-hermes.nl/shop/product.html?Gandhi&productid=3760 Gandhi Een biografie]{{Dead link|date=December 2019 |bot=InternetArchiveBot |fix-attempted=yes }}'' Netherlands: Ankh-Hermes. {{ISBN|90-202-8124-0}} {{ISBN|9789020281248}} (paper)</ref> German,<ref"
+, CodeLine
+    " name=gtmgerman83>Eknath Easwaran (1983). ''[https://books.google.com/books?id=g_vZAAAACAAJ&dq=9783924092139&hl=en&ei=pK27S-DtC430sgP1zYmKBQ&sa=X&oi=book_result&ct=result&resnum=1&ved=0CDMQ6AEwAA Der Mensch Gandhi]''. Germany:Grumann. {{ISBN|3-924092-13-3}}, {{ISBN|978-3-924092-13-9}} (184 pages).</ref><ref"
+, CodeLine
+    " name=gtmgerman97>Eknath Easwaran (1997). ''[https://books.google.com/books?id=gvvZAAAACAAJ&dq=Der+Mensch+Gandhi.+Sein+Leben+ist+eine+Botschaft&client=firefox-a Der Mensch Gandhi. Sein Leben ist eine Botschaft (Gandhi the Man: His Life is a Message)]''. Freiburg, Germany:Herder. {{ISBN|978-3-451-04564-6}}</ref> [[Bahasa Indonesian|Indonesian]],<ref"
+, CodeLine
+    " name=gtmindonesian13>[[Eknath Easwaran]] (2013). ''[http://www.bukabuku.com/browse/bookdetail/2010000193976/gandhi-the-man.html Gandhi the Man - Seorang pria yang mengubah dirinya demi mengubah dunia]''. Indonesia: Bentang Pustaka (Mizan Group). {{ISBN|6027888903}}, {{ISBN|978-602-7888-90-6}} (288 pages).</ref> Japanese,<ref"
+, CodeLine
+    " name=gtmjapanese13>[[Eknath Easwaran]] (2013). ''[https://www.amazon.co.jp/gp/aw/d/4862492134 \20154\38291\12460\12531\12487\12451\12540 \19990\30028\12434\22793\12360\12383\33258\24049\22793\38761 / (Gandhi the Man: How One Man Changed Himself to Change the World)]'' (\65405\65408\65394\65413\65392 \32000\32654\23376= Kimiko Steiner, trans.). [[Osaka]], [[Japan]]: \22823\38442\26481\26041\20986\29256 / Eastern Osaka Publishing. {{ISBN|978-4862492135}}, {{ISBN|4862492134}}, {{OCLC|840102432}}, {{ASIN|4862492134}} (214 pages)</ref> Korean,<ref"
+, CodeLine
+    " name=gtmkorean>[[Eknath Easwaran]] (2005). ''[https://books.google.com/books?id=rcHzQwAACAAJ&dq=inauthor:easwaran&lr=lang_ko&as_drrb_is=q&as_minm_is=0&as_miny_is=&as_maxm_is=0&as_maxy_is=&num=50&as_brr=0 \48708\54253\47141\51060 \44032\51109 \50948\45824\54620 \49324\46993\51060\45796 (Nonviolence is the Greatest Love)]'' (\48149\50976\51652, trans.). Korea: \45000\44984\45716\46028. {{ISBN|89-91159-07-9}}, {{ISBN|978-89-91159-07-5}}</ref> [[Kurdish languages|Kurdish]],<ref"
+, CodeLine
+    " name=gtmkurdish10>Eknath Easwaran (2010). ''Reb\257z\299-i \699ashq : ch\299rok\299 wacharkh\257n\299 ro\7717\299-y M\257h\257tm\257 G\257nd\299'' (H\257w\257r A\7717mad Halanjayi [Halabjayi], trans. from Persian). [[Erbil|Hawler <nowiki>[Erbil]</nowiki>]], [[Iraqi Kurdistan|Iraq]]: Ch\257pkh\257na-y Min\257rih. {{OCLC|801735679}} (175 pages)</ref>  and [[Persian language|Persian]].<ref"
+, CodeLine
+    " name=gtmpersian>[[Eknath Easwaran]] (2001). ''[http://www.google.com/search?q=9789643114114&oe=utf-8&rls=org.mozilla:en-US:official&client=firefox-a&um=1&ie=UTF-8&tbo=u&tbs=bks:1&sa=N&hl=en&tab=wp R\257h-i \699ishq: d\257sit\257n ta\7717\363l r\363\7717\299 mah\257tm\257 G\257nd\299 (The Way of Love: The Story of Mahatma Gandhi's spiritual transformation)]'' (Shahram Tabrizi, trans.). Iran: <nowiki>\1602\1602\1606\1608\1587\1548</nowiki> (Phoenix). {{ISBN|964-311-411-2}}, {{ISBN|978-964-311-411-4}}, {{OCLC|178500148}} (190 pages).</ref>"
+, NewPara
+, Text
+    "English-language editions have been published in Canada, India, and the US. The US editions are:"
+, List
+    [ Unmarked , Bulleted ]
+    [ Template
+        [ Text "cite book" ]
+        [ ( Just "title"
+          , [ Text
+                "Gandhi the Man: How one man changed himself to change the world"
+            ]
+          )
+        , ( Just "last" , [ Text "Easwaran " ] )
+        , ( Just "first" , [ Text "Eknath" ] )
+        , ( Just "authorlink" , [ Text "Eknath Easwaran " ] )
+        , ( Just "year" , [ Text "2011" ] )
+        , ( Just "edition" , [ Text "4th" ] )
+        , ( Just "publisher"
+          , [ InternalLink
+                LinkTarget
+                  { linkTargetPage = PageName { getPageName = "Nilgiri Press" }
+                  , linkTargetAnchor = Nothing
+                  }
+                []
+            ]
+          )
+        , ( Just "location" , [ Text "Tomales, CA " ] )
+        , ( Just "isbn" , [ Text "978-1-58638-055-7" ] )
+        , ( Just "url"
+          , [ Text
+                "https://books.google.com/books?id=_73lbc6t8cYC&printsec=frontcover&dq=isbn:9781586380557&hl=en&ei=Yge7Tbv0F4bWtQPlytHUBQ&sa=X&oi=book_result&ct=result&resnum=1&ved=0CCoQ6AEwAA#v=onepage&q&f=false"
+            ]
+          )
+        ]
+    , Text " "
+    , Template
+        [ Text "ISBN" ] [ ( Nothing , [ Text "1-58638-055-9" ] ) ]
+    , Text " (200 pages) ebook: "
+    , Template
+        [ Text "ISBN" ] [ ( Nothing , [ Text "978-1-58638-067-0" ] ) ]
+    ]
+, List
+    [ Unmarked , Bulleted ]
+    [ Template
+        [ Text "cite book" ]
+        [ ( Just "title" , [ Text "Gandhi the Man" ] )
+        , ( Just "last" , [ Text "Easwaran" ] )
+        , ( Just "first" , [ Text "Eknath" ] )
+        , ( Just "authorlink" , [ Text "Eknath Easwaran" ] )
+        , ( Just "year" , [ Text "1997" ] )
+        , ( Just "edition" , [ Text "3rd" ] )
+        , ( Just "publisher"
+          , [ InternalLink
+                LinkTarget
+                  { linkTargetPage = PageName { getPageName = "Nilgiri Press" }
+                  , linkTargetAnchor = Nothing
+                  }
+                []
+            ]
+          )
+        , ( Just "location" , [ Text "Tomales, CA" ] )
+        , ( Just "ISBN" , [ Text "0-915132-96-6" ] )
+        , ( Just "url"
+          , [ Text "https://books.google.com/books?as_isbn=0915132966" ]
+          )
+        ]
+    , Text "(179 pages, hardcover); "
+    , Template
+        [ Text "ISBN" ] [ ( Nothing , [ Text "978-0-915132-96-6" ] ) ]
+    , Text " (179 pages, paperback)"
+    ]
+, List
+    [ Unmarked , Bulleted ]
+    [ Template
+        [ Text "cite book" ]
+        [ ( Just "title" , [ Text "Gandhi the Man" ] )
+        , ( Just "last" , [ Text "Easwaran" ] )
+        , ( Just "first" , [ Text "Eknath" ] )
+        , ( Just "authorlink" , [ Text "Eknath Easwaran" ] )
+        , ( Just "year" , [ Text "1983" ] )
+        , ( Just "edition" , [ Text "2nd" ] )
+        , ( Just "publisher"
+          , [ InternalLink
+                LinkTarget
+                  { linkTargetPage = PageName { getPageName = "Random House" }
+                  , linkTargetAnchor = Nothing
+                  }
+                []
+            ]
+          )
+        , ( Just "location" , [ Text "New York" ] )
+        , ( Just "ISBN" , [ Text "0-394-71497-0" ] )
+        , ( Just "url" , [] )
+        ]
+    , Text "(192 pages); "
+    , Template
+        [ Text "ISBN" ] [ ( Nothing , [ Text "978-0-394-71497-4" ] ) ]
+    , Text " (192 pages)"
+    ]
+, List
+    [ Unmarked , Bulleted ]
+    [ Template
+        [ Text "cite book" ]
+        [ ( Just "title" , [ Text "Gandhi the Man" ] )
+        , ( Just "last" , [ Text "Easwaran" ] )
+        , ( Just "first" , [ Text "Eknath" ] )
+        , ( Just "authorlink" , [ Text "Eknath Easwaran" ] )
+        , ( Just "year" , [ Text "1978" ] )
+        , ( Just "edition" , [ Text "2nd" ] )
+        , ( Just "publisher"
+          , [ InternalLink
+                LinkTarget
+                  { linkTargetPage = PageName { getPageName = "Nilgiri Press" }
+                  , linkTargetAnchor = Nothing
+                  }
+                []
+            ]
+          )
+        , ( Just "location" , [ Text "Tomales, CA" ] )
+        , ( Just "ISBN" , [ Text "0-915132-13-3" ] )
+        , ( Just "url" , [] )
+        ]
+    , Text "(hardcover); "
+    , Template
+        [ Text "ISBN" ] [ ( Nothing , [ Text "0-915132-14-1" ] ) ]
+    , Text " (paperback)"
+    ]
+, List
+    [ Unmarked , Bulleted ]
+    [ Text "Easwaran, Eknath (1973), "
+    , Italic
+    , Text "Gandhi the Man"
+    , Italic
+    , Text
+        " (1st ed.). San Francisco, CA: Glide Publications. Compiled from the perspective of Eknath Easwaran by Jo Anne Black, Nick Harvey, and Laurel Robertson. "
+    , Template
+        [ Text "ISBN" ] [ ( Nothing , [ Text "0-912078-17-0" ] ) ]
+    , Text ", LC 77176240 (157 pages, paper)"
+    ]
+, NewPara
+, Text "Canadian edition:"
+, List
+    [ Unmarked , Bulleted ]
+    [ Template
+        [ Text "cite book" ]
+        [ ( Just "title" , [ Text "Gandhi the Man" ] )
+        , ( Just "last" , [ Text "Easwaran" ] )
+        , ( Just "first" , [ Text "Eknath (1983)" ] )
+        , ( Just "authorlink" , [ Text "Eknath Easwaran" ] )
+        , ( Just "year" , [ Text "1983" ] )
+        , ( Just "edition" , [ Text "2nd" ] )
+        , ( Just "publisher"
+          , [ InternalLink
+                LinkTarget
+                  { linkTargetPage = PageName { getPageName = "Turnstone Press" }
+                  , linkTargetAnchor = Nothing
+                  }
+                []
+            ]
+          )
+        , ( Just "location" , [ Text "Winnipeg, Canada" ] )
+        , ( Just "ISBN" , [ Text "0-85500-194-1" ] )
+        , ( Just "url" , [] )
+        ]
+    , Text "(192 pages); "
+    , Template
+        [ Text "ISBN" ] [ ( Nothing , [ Text "978-0-85500-194-0" ] ) ]
+    , Text " (192 pages)"
+    ]
+, NewPara
+, Text "Indian edition:"
+, List
+    [ Unmarked , Bulleted ]
+    [ Text "Eknath Easwaran (1997)."
+    , XmlTag
+        "ref"
+        [ ( "name" , "india97" ) ]
+        [ Text "Eknath Easwaran (1997). "
+        , Italic
+        , ExternalLink
+            (Url
+               "http://www.jaicobooks.com/j/j_searchtry.asp?selcat=title&keyword=Gandhi%20The%20Man")
+            (Just "Gandhi the Man")
+        , Italic
+        , Text ". Mumbai, India:"
+        , InternalLink
+            LinkTarget
+              { linkTargetPage = PageName { getPageName = "Jaico" }
+              , linkTargetAnchor = Nothing
+              }
+            []
+        , Text ". "
+        , Template
+            [ Text "ISBN" ] [ ( Nothing , [ Text "81-7224-517-3" ] ) ]
+        , Text ", "
+        , Template
+            [ Text "ISBN" ] [ ( Nothing , [ Text "978-81-7224-517-7" ] ) ]
+        ]
+    , Text " "
+    , Italic
+    , Text "Gandhi the Man"
+    , Italic
+    , Text ". Mumbai, India: "
+    , InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Jaico" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Text ". "
+    , Template
+        [ Text "ISBN" ] [ ( Nothing , [ Text "81-7224-517-3" ] ) ]
+    , Text ", "
+    , Template
+        [ Text "ISBN" ] [ ( Nothing , [ Text "978-81-7224-517-7" ] ) ]
+    , Text " (192 pages)."
+    ]
+, NewPara
+, Heading 2 [ Text "See also" ]
+, List
+    [ Bulleted ]
+    [ Italic
+    , InternalLink
+        LinkTarget
+          { linkTargetPage =
+              PageName { getPageName = "Nonviolent Soldier of Islam" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Italic
+    , Text
+        " (by same author, a biography of Gandhi's Muslim associate, "
+    , InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Abdul Ghaffar Khan" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Text ")"
+    ]
+, List
+    [ Bulleted ]
+    [ Italic
+    , InternalLink
+        LinkTarget
+          { linkTargetPage =
+              PageName { getPageName = "The Story of My Experiments with Truth" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Italic
+    , Text " (Gandhi's autobiography)"
+    ]
+, List
+    [ Bulleted ]
+    [ InternalLink
+        LinkTarget
+          { linkTargetPage =
+              PageName
+                { getPageName =
+                    "List of artistic depictions of Mohandas Karamchand Gandhi"
+                }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    ]
+, NewPara
+, Heading 2 [ Text "References" ]
+, Template [ Text "Reflist" ] [ ( Nothing , [ Text "2" ] ) ]
+, NewPara
+, Template [ Text "Mohandas K. Gandhi" ] []
+, Template [ Text "Indian independence movement" ] []
+, NewPara
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "Category:1973 non-fiction books" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "Category:Books about India" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "Category:Indian biographies" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "Category:Books about Mahatma Gandhi" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "Category:Works by Eknath Easwaran" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "Category:20th-century Indian books" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, NewPara
+]
