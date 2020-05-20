@@ -1,0 +1,18 @@
+[ Heading 2 [ Text "Description" ]
+, Text
+    "The painting shows children resting safely in their beds, oblivious to the perils of this world, as their parents look on. Their mother tucks them in while their father holds a newspaper describing the horrors of the ongoing conflict. However, his attention is fully on his children and not on the alarming headlines. According to another view, the children are already asleep, and their parents are checking on them in their shared narrow bed before they themselves turn in for the night. The father appears as the \"classic Rockwell onlooker\" who serves as a viewer within the painting. Since he is holding his glasses, we assume that he has finished reading the "
+, Italic
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Bennington Banner" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Italic
+, Text
+    " in his hand. The newspaper's headline reads \"Bombings Ki&nbsp;... Horror Hit\", referencing the Blitz."
+, XmlTag "ref" [ ( "name" , "S210" ) ] [ Text "Solomon, p. 210." ]
+, Text
+    " In the background is a lit hallway and a stairway leading to the first floor."
+, XmlOpenClose "ref" [ ( "name" , "S210" ) ]
+]
