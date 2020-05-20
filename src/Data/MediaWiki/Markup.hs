@@ -237,19 +237,22 @@ doc' = mdo
 
     -- XMLish
     xmlAttr <- do
-        key <- manyUntil (char '=' <> space) anyChar
+        key <- manyUntil (char '>' <> char '=' <> space) anyChar
         unquotedValue <- manyUntil (char_ '>' <> text_ "/>" <> void space) anyChar
         quotedValue <- manyUntil (char '"') anyChar
         let value = (char '"' *> quotedValue <* char '"') <|> unquotedValue
-        return $ pure (,) <*> key <* spaces <* char '=' <* spaces
-                          <*> value <* spaces
+        let equalsValue = spaces *> char '=' *> spaces *> value
+            optionalEqualsValue = equalsValue <|> pure []
+        return $ pure (,) <*> key <*> optionalEqualsValue <* spaces
     xmlAttrs <- manyUntil (char_ '>' <> text_ "/>") xmlAttr
-    tagName <- T.pack <$*> manyUntil (char_ '>' <> text_ "/>" <> void space) alpha
+    -- Based on the XML 1.1 grammar
+    tagNameChar <- newRule $ many $ alpha <|> char '-' <> oneOf ['0'..'9']
+    tagName <- newRule $ (\x xs -> T.pack (x:xs)) <$> alpha <*> tagNameChar
     xml <- do
         let open :: P s (TagName, [(String, String)])
             open = pure (,) <* char '<'
                             <*> tagName <* spaces
-                            <*> xmlAttrs <* spaces <* char '>'
+                            <*> xmlAttrs <* char '>'
             close = text "</" *> spaces *> tagName <* spaces <* char '>'
         children <- manyUntil close aDoc
         let pair :: P s ((TagName, [(String, String)]), [Doc], TagName)

@@ -1,0 +1,123 @@
+[ Template
+    [ Text "short description" ]
+    [ ( Nothing
+      , [ Text
+            "Partial pressure of carbon dioxide, often used in reference to blood"
+        ]
+      )
+    ]
+, MagicWord
+    "DISPLAYTITLE"
+    [ ( Nothing , [ Text "pCO" , XmlTag "sub" [] [ Text "2" ] ] ) ]
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "File:Carbon-dioxide-3D-vdW.svg" }
+      , linkTargetAnchor = Nothing
+      }
+    [ [ Text "thumb" ]
+    , [ InternalLink
+          LinkTarget
+            { linkTargetPage = PageName { getPageName = "Carbon dioxide" }
+            , linkTargetAnchor = Nothing
+            }
+          []
+      , Text " molecule."
+      ]
+    ]
+, Text "The "
+, Bold
+, Text "pCO"
+, XmlTag "sub" [] [ Text "2" ]
+, Bold
+, Text ", "
+, Bold
+, Text "PCO"
+, XmlTag "sub" [] [ Text "2" ]
+, Bold
+, Text ", "
+, XmlTag "math" [ ( "chem" , "" ) ] [ Text "p_\\ce{CO2}" ]
+, Text "or "
+, XmlTag "math" [ ( "chem" , "" ) ] [ Text "P_\\ce{CO2}" ]
+, Text " is the "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "partial pressure" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text " of "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "carbon dioxide" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text " (CO"
+, XmlTag "sub" [] [ Text "2" ]
+, Text "), often used in reference to "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "blood" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text
+    " but also used in oceanography to describe the partial pressure of CO"
+, XmlTag "sub" [] [ Text "2" ]
+, Text
+    " in the ocean and in life support systems engineering and underwater diving to describe the partial pressure in a breathing gas. Usually, the "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "arterial blood" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text " is the relevant context; the symbol for "
+, XmlTag "math" [ ( "chem" , "" ) ] [ Text "P_\\ce{CO2}" ]
+, Text " in arterial blood is "
+, XmlTag "math" [ ( "chem" , "" ) ] [ Text "P_{a_\\ce{CO2}}" ]
+, Text ". Measurement of "
+, XmlTag "math" [ ( "chem" , "" ) ] [ Text "P_{a_\\ce{CO2}}" ]
+, Text " in the "
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "systemic circulation" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text " indicates the effectiveness of "
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "ventilation (physiology)" }
+      , linkTargetAnchor = Nothing
+      }
+    [ [ Text "ventilation" ] ]
+, Text " at the lungs' "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "pulmonary alveolus" }
+      , linkTargetAnchor = Nothing
+      }
+    [ [ Text "alveoli" ] ]
+, Text ", given the "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "diffusing capacity" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text
+    " of the gas. It is a good indicator of respiratory function and the closely related factor of "
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "acid\8211base homeostasis" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text
+    ", reflecting the amount of acid in the blood (without lactic acid)."
+]
