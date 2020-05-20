@@ -1,0 +1,87 @@
+[ Heading 2 [ Text "Personal life" ]
+, NewPara
+, Text
+    "William Houston Stewart was born on 7 September 1822 at Kirkmichael House, Ayrshire.  He was the son of Admiral of the Fleet Sir "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Houston Stewart" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text " (1791\8211\&1875),"
+, XmlTag
+    "ref"
+    [ ( "name" , "Onlinebio" ) ]
+    [ ExternalLink
+        (Url "http://www.pdavis.nl/ShowBiog.php?id=976")
+        (Just "Online biography William Houston Stewart.")
+    ]
+, Text
+    " and Martha (d. 1870), youngest daughter of Sir William Miller, Bart (1785\8211\&1846)."
+, XmlTag
+    "ref"
+    []
+    [ ExternalLink
+        (Url "http://www.pdavis.nl/ShowBiog.php?id=96")
+        (Just "Online biography Houston Stewart.")
+    , XmlOpenClose "br" []
+    , Template
+        [ Text "cite web " ]
+        [ ( Just "last" , [ Text "Lundy " ] )
+        , ( Just "first" , [ Text "Darryl " ] )
+        , ( Just "url"
+          , [ Text "http://www.thepeerage.com/p7070.htm#i70695 " ]
+          )
+        , ( Just "title"
+          , [ Text
+                "ThePeerage.Com:- Admiral Sir William Houston Stewart and Martha Miller "
+            ]
+          )
+        , ( Just "publisher" , [ Text "The Peerage" ] )
+        ]
+    , Template
+        [ Text "Unreliable source?" ]
+        [ ( Just "failed" , [ Text "y " ] )
+        , ( Just "date" , [ Text "August 2012" ] )
+        ]
+    , Comment
+        "Lundy is not a reliable source so cite Lundy's reliable source See [[WP:SAYWHEREYOUREADIT]]"
+    ]
+, Text
+    "  William Houston Stewart is sometimes referred to as William Houston Shaw-Stewart; his paternal grandfather was "
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "Sir Michael Shaw-Stewart, 5th Baronet" }
+      , linkTargetAnchor = Nothing
+      }
+    [ [ Text "Sir Michael Shaw-Stewart, Bt" ] ]
+, Text " (1766\8211\&1825)."
+, XmlTag
+    "ref"
+    []
+    [ ExternalLink
+        (Url "http://www.t4hepeerage.com/p7070.htm#i70695")
+        (Just "ThePeerage.Com:- Admiral Sir Houston Stewart")
+    , XmlOpenClose "br" []
+    , Template
+        [ Text "cite web " ]
+        [ ( Just "last" , [ Text "Lundy " ] )
+        , ( Just "first" , [ Text "Darryl " ] )
+        , ( Just "url" , [ Text "http://www.thepeerage.com/p25233.htm " ] )
+        , ( Just "title"
+          , [ Text
+                "Catherine Elizabeth Coote and Sir William Houston Shaw-Stewart "
+            ]
+          )
+        , ( Just "publisher" , [ Text "The Peerage" ] )
+        ]
+    , Template
+        [ Text "Unreliable source?" ]
+        [ ( Just "failed" , [ Text "y " ] )
+        , ( Just "date" , [ Text "August 2012" ] )
+        ]
+    , Comment
+        "Lundy is not a reliable source so cite Lundy's reliable source See [[WP:SAYWHEREYOUREADIT]]"
+    ]
+]

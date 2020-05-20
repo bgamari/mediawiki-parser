@@ -18,7 +18,8 @@
       )
     , ( Nothing , [ Text "xnone" ] )
     , ( Nothing
-      , [ Text "   <br>"
+      , [ Text "   "
+        , XmlOpenClose "br" []
         , Template
             [ Text "color" ]
             [ ( Nothing , [ Text "darkorange" ] )
@@ -29,7 +30,8 @@
                 , Template [ Text "!" ] []
                 , Text "day, but found: "
                 , TemplateArg [ Text "1" ] []
-                , Text "'''<br>"
+                , Text "'''"
+                , XmlOpenClose "br" []
                 ]
               )
             ]

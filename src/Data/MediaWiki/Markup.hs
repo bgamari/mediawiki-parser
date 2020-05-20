@@ -261,7 +261,8 @@ doc' = mdo
         return $ pure XmlOpenClose <* char '<'
                                    <*> tagName <* spaces
                                    <*> xmlAttrs <* text "/>"
-    xmlish <- newRule $ xml <> xmlOpenClose
+    brTag <- newRule $ pure (XmlOpenClose "br" []) <* text "<br>"
+    xmlish <- newRule $ brTag <> xml <> xmlOpenClose
 
     -- table
     table <- do
