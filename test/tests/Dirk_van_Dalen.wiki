@@ -1,0 +1,46 @@
+[[File:Dirk van Dalen.jpg|thumb|215px|Dirk van Dalen]]
+'''Dirk van Dalen''' (born 20 December 1932, [[Amsterdam]]) is a [[Dutch people|Dutch]] [[mathematician]] and [[historian]] of science.
+
+Van Dalen studied mathematics and physics and astronomy at the [[University of Amsterdam]]. Inspired by the work of [[LEJ Brouwer]] and [[Arend Heyting]], he received his Ph.D. in 1963 from the University of Amsterdam for the thesis ''Extension problems in intuitionistic plane Projective geometry.'' From 1964 to 1966 Van Dalen taught logic and mathematics at [[Massachusetts Institute of Technology|MIT]], and later [[University of Oxford|Oxford]]. From 1967 he was professor at the [[University of Utrecht]]. In 2003 Dirk van Dalen was awarded the Academy Medal 2003 of the Royal Dutch Academy of Sciences for bringing the works of Brouwer to international attention.<ref>[https://web.archive.org/web/20101226081522/http://www.knaw.nl/cfdata/nieuws/nieuws_detail.cfm?nieuws__id=145 Persbericht KNAW 2003]</ref>
+
+== Works ==
+* 1958: (with [[Yehoshua Bar-Hillel]] and [[Azriel Levy]]) ''Foundations of Set Theory'', North Holland Publishing
+* 1963: Extension problems in intuitionistic plane projective geometry
+* 1978: (with H.C. Doets and H. De Swart) ''Sets: Naive, Axiomatic and Applied'', [[Pergamon Press]] {{ISBN|0-08-021166-6}}
+* 1980: ''Logic and Structure'', Springer Universitext {{ISBN|3-540-20879-8}}
+* 1981: (editor) ''Brouwer's Cambridge Lectures on Intuitionism'' [[Cambridge University Press]] {{ISBN|0521234417}}
+* 1988: {{cite book|isbn=0-444-70358-6|title=Constructivism in Mathematics, Vol. 2|last1=Troelstra|first1=Anne|authorlink1=Anne Sjerp Troelstra|last2=van Dalen|first2=Dirk|series=Studies in Logic and the Foundations of Mathematics|url-access=registration|url=https://archive.org/details/constructivismin0002troe}}
+* 2000: (with [[Heinz-Dieter Ebbinghaus]]) "Zermelo and the Skolem Paradox", [[Bulletin of Symbolic Logic]] 6(2)
+* 2001: "Intuitionistic Logic", in: ''The Blackwell Guide to Philosophical Logic'', Lou Goble (editor), Blackwell
+* 2013: ''L.E.J. Brouwer - Topologist, Intuitionalist, Philosopher: How mathematics is rooted in life'', Springer-Verlag {{ISBN|9781447146155}}
+
+== References ==
+{{Reflist}}
+
+* The article was originally created as a translation (Google) of the corresponding article in [[Dutch Wikipedia]].
+
+== Further reading ==
+* ''Dirk van Dalen Festschrift'', [[Henk Barendregt]] en anderen (redactie),   University of Utrecht, Department of Philosophy, 1993
+* ''Special issue: a tribute to Dirk van Dalen'', [[Yuri Gurevich]] (redactie), uitgeverij North-Holland, Amsterdam, 1995.
+
+==External links==
+* [http://poortman.kb.nl/long2.php?TABEL=T_NAAM&ID=4893 Koninklijke bibliotheek] over Dirk van Dalen
+* [https://web.archive.org/web/20100328192916/http://www.phil.uu.nl/~dvdalen/ Homepage] aan de Universiteit van Utrecht
+* {{MathGenealogy|id=45022}}
+
+{{Authority control}}
+
+{{DEFAULTSORT:Dalen, Dirk van}}
+[[Category:1932 births]]
+[[Category:Living people]]
+[[Category:Dutch mathematicians]]
+[[Category:Dutch historians]]
+[[Category:Dutch logicians]]
+[[Category:Historians of mathematics]]
+[[Category:Historians of science]]
+[[Category:Intuitionism]]
+[[Category:Massachusetts Institute of Technology faculty]]
+[[Category:Scientists from Amsterdam]]
+[[Category:University of Amsterdam alumni]]
+[[Category:Utrecht University faculty]]
+

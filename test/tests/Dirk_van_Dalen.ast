@@ -1,0 +1,403 @@
+[ InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "File:Dirk van Dalen.jpg" }
+      , linkTargetAnchor = Nothing
+      }
+    [ [ Text "thumb" ] , [ Text "215px" ] , [ Text "Dirk van Dalen" ] ]
+, Bold
+, Text "Dirk van Dalen"
+, Bold
+, Text " (born 20 December 1932, "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Amsterdam" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text ") is a "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Dutch people" }
+      , linkTargetAnchor = Nothing
+      }
+    [ [ Text "Dutch" ] ]
+, Text " "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "mathematician" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text " and "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "historian" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text " of science."
+, NewPara
+, Text
+    "Van Dalen studied mathematics and physics and astronomy at the "
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "University of Amsterdam" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text ". Inspired by the work of "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "LEJ Brouwer" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text " and "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Arend Heyting" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text
+    ", he received his Ph.D. in 1963 from the University of Amsterdam for the thesis "
+, Italic
+, Text
+    "Extension problems in intuitionistic plane Projective geometry."
+, Italic
+, Text
+    " From 1964 to 1966 Van Dalen taught logic and mathematics at "
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "Massachusetts Institute of Technology" }
+      , linkTargetAnchor = Nothing
+      }
+    [ [ Text "MIT" ] ]
+, Text ", and later "
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "University of Oxford" }
+      , linkTargetAnchor = Nothing
+      }
+    [ [ Text "Oxford" ] ]
+, Text ". From 1967 he was professor at the "
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "University of Utrecht" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text
+    ". In 2003 Dirk van Dalen was awarded the Academy Medal 2003 of the Royal Dutch Academy of Sciences for bringing the works of Brouwer to international attention."
+, XmlTag
+    "ref"
+    []
+    [ ExternalLink
+        (Url
+           "https://web.archive.org/web/20101226081522/http://www.knaw.nl/cfdata/nieuws/nieuws_detail.cfm?nieuws__id=145")
+        (Just "Persbericht KNAW 2003")
+    ]
+, NewPara
+, Heading 2 [ Text "Works" ]
+, List
+    [ Bulleted ]
+    [ Text "1958: (with "
+    , InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Yehoshua Bar-Hillel" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Text " and "
+    , InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Azriel Levy" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Text ") "
+    , Italic
+    , Text "Foundations of Set Theory"
+    , Italic
+    , Text ", North Holland Publishing"
+    ]
+, List
+    [ Bulleted ]
+    [ Text
+        "1963: Extension problems in intuitionistic plane projective geometry"
+    ]
+, List
+    [ Bulleted ]
+    [ Text "1978: (with H.C. Doets and H. De Swart) "
+    , Italic
+    , Text "Sets: Naive, Axiomatic and Applied"
+    , Italic
+    , Text ", "
+    , InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Pergamon Press" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Text " "
+    , Template
+        [ Text "ISBN" ] [ ( Nothing , [ Text "0-08-021166-6" ] ) ]
+    ]
+, List
+    [ Bulleted ]
+    [ Text "1980: "
+    , Italic
+    , Text "Logic and Structure"
+    , Italic
+    , Text ", Springer Universitext "
+    , Template
+        [ Text "ISBN" ] [ ( Nothing , [ Text "3-540-20879-8" ] ) ]
+    ]
+, List
+    [ Bulleted ]
+    [ Text "1981: (editor) "
+    , Italic
+    , Text "Brouwer's Cambridge Lectures on Intuitionism"
+    , Italic
+    , Text " "
+    , InternalLink
+        LinkTarget
+          { linkTargetPage =
+              PageName { getPageName = "Cambridge University Press" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Text " "
+    , Template [ Text "ISBN" ] [ ( Nothing , [ Text "0521234417" ] ) ]
+    ]
+, List
+    [ Bulleted ]
+    [ Text "1988: "
+    , Template
+        [ Text "cite book" ]
+        [ ( Just "isbn" , [ Text "0-444-70358-6" ] )
+        , ( Just "title"
+          , [ Text "Constructivism in Mathematics, Vol. 2" ]
+          )
+        , ( Just "last1" , [ Text "Troelstra" ] )
+        , ( Just "first1" , [ Text "Anne" ] )
+        , ( Just "authorlink1" , [ Text "Anne Sjerp Troelstra" ] )
+        , ( Just "last2" , [ Text "van Dalen" ] )
+        , ( Just "first2" , [ Text "Dirk" ] )
+        , ( Just "series"
+          , [ Text "Studies in Logic and the Foundations of Mathematics" ]
+          )
+        , ( Just "url-access" , [ Text "registration" ] )
+        , ( Just "url"
+          , [ Text "https://archive.org/details/constructivismin0002troe" ]
+          )
+        ]
+    ]
+, List
+    [ Bulleted ]
+    [ Text "2000: (with "
+    , InternalLink
+        LinkTarget
+          { linkTargetPage =
+              PageName { getPageName = "Heinz-Dieter Ebbinghaus" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Text ") \"Zermelo and the Skolem Paradox\", "
+    , InternalLink
+        LinkTarget
+          { linkTargetPage =
+              PageName { getPageName = "Bulletin of Symbolic Logic" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Text " 6(2)"
+    ]
+, List
+    [ Bulleted ]
+    [ Text "2001: \"Intuitionistic Logic\", in: "
+    , Italic
+    , Text "The Blackwell Guide to Philosophical Logic"
+    , Italic
+    , Text ", Lou Goble (editor), Blackwell"
+    ]
+, List
+    [ Bulleted ]
+    [ Text "2013: "
+    , Italic
+    , Text
+        "L.E.J. Brouwer - Topologist, Intuitionalist, Philosopher: How mathematics is rooted in life"
+    , Italic
+    , Text ", Springer-Verlag "
+    , Template
+        [ Text "ISBN" ] [ ( Nothing , [ Text "9781447146155" ] ) ]
+    ]
+, NewPara
+, Heading 2 [ Text "References" ]
+, Template [ Text "Reflist" ] []
+, NewPara
+, List
+    [ Bulleted ]
+    [ Text
+        "The article was originally created as a translation (Google) of the corresponding article in "
+    , InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Dutch Wikipedia" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Text "."
+    ]
+, NewPara
+, Heading 2 [ Text "Further reading" ]
+, List
+    [ Bulleted ]
+    [ Italic
+    , Text "Dirk van Dalen Festschrift"
+    , Italic
+    , Text ", "
+    , InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Henk Barendregt" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Text
+        " en anderen (redactie),   University of Utrecht, Department of Philosophy, 1993"
+    ]
+, List
+    [ Bulleted ]
+    [ Italic
+    , Text "Special issue: a tribute to Dirk van Dalen"
+    , Italic
+    , Text ", "
+    , InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Yuri Gurevich" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Text " (redactie), uitgeverij North-Holland, Amsterdam, 1995."
+    ]
+, NewPara
+, Heading 2 [ Text "External links" ]
+, List
+    [ Bulleted ]
+    [ ExternalLink
+        (Url "http://poortman.kb.nl/long2.php?TABEL=T_NAAM&ID=4893")
+        (Just "Koninklijke bibliotheek")
+    , Text " over Dirk van Dalen"
+    ]
+, List
+    [ Bulleted ]
+    [ ExternalLink
+        (Url
+           "https://web.archive.org/web/20100328192916/http://www.phil.uu.nl/~dvdalen/")
+        (Just "Homepage")
+    , Text " aan de Universiteit van Utrecht"
+    ]
+, List
+    [ Bulleted ]
+    [ Template
+        [ Text "MathGenealogy" ] [ ( Just "id" , [ Text "45022" ] ) ]
+    ]
+, NewPara
+, Template [ Text "Authority control" ] []
+, NewPara
+, MagicWord
+    "DEFAULTSORT" [ ( Nothing , [ Text "Dalen, Dirk van" ] ) ]
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "Category:1932 births" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "Category:Living people" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "Category:Dutch mathematicians" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "Category:Dutch historians" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "Category:Dutch logicians" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "Category:Historians of mathematics" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "Category:Historians of science" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "Category:Intuitionism" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName
+            { getPageName =
+                "Category:Massachusetts Institute of Technology faculty"
+            }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "Category:Scientists from Amsterdam" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName
+            { getPageName = "Category:University of Amsterdam alumni" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "Category:Utrecht University faculty" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, NewPara
+]
