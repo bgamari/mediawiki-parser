@@ -1,0 +1,299 @@
+[ Template
+    [ Text "short description" ]
+    [ ( Nothing , [ Text "2007 single by Basshunter" ] ) ]
+, Template
+    [ Text "Use dmy dates" ]
+    [ ( Just "date" , [ Text "October 2013" ] ) ]
+, Template
+    [ Text "Infobox song" ]
+    [ ( Just "name" , [ Text "Now You're Gone" ] )
+    , ( Just "cover"
+      , [ Text "Basshunter \8211 Now You're Gone.jpg" ]
+      )
+    , ( Just "alt" , [] )
+    , ( Just "type" , [ Text "single" ] )
+    , ( Just "artist"
+      , [ InternalLink
+            LinkTarget
+              { linkTargetPage = PageName { getPageName = "Basshunter" }
+              , linkTargetAnchor = Nothing
+              }
+            []
+        , Text " and "
+        , InternalLink
+            LinkTarget
+              { linkTargetPage =
+                  PageName { getPageName = "DJ Mental Theo's Bazzheadz" }
+              , linkTargetAnchor = Nothing
+              }
+            []
+        ]
+      )
+    , ( Just "album"
+      , [ InternalLink
+            LinkTarget
+              { linkTargetPage =
+                  PageName { getPageName = "Now You're Gone \8211 The Album" }
+              , linkTargetAnchor = Nothing
+              }
+            []
+        ]
+      )
+    , ( Just "released" , [ Text "31 December 2007" ] )
+    , ( Just "format"
+      , [ Template
+            [ Text "hlist" ]
+            [ ( Nothing
+              , [ InternalLink
+                    LinkTarget
+                      { linkTargetPage = PageName { getPageName = "12-inch single" }
+                      , linkTargetAnchor = Nothing
+                      }
+                    [ [ Text "12\"" ] ]
+                ]
+              )
+            , ( Nothing
+              , [ InternalLink
+                    LinkTarget
+                      { linkTargetPage = PageName { getPageName = "CD single" }
+                      , linkTargetAnchor = Nothing
+                      }
+                    [ [ Text "CD" ] ]
+                ]
+              )
+            , ( Nothing
+              , [ InternalLink
+                    LinkTarget
+                      { linkTargetPage = PageName { getPageName = "maxi single" }
+                      , linkTargetAnchor = Nothing
+                      }
+                    [ [ Text "maxi CD" ] ]
+                ]
+              )
+            , ( Nothing
+              , [ InternalLink
+                    LinkTarget
+                      { linkTargetPage = PageName { getPageName = "music download" }
+                      , linkTargetAnchor = Nothing
+                      }
+                    [ [ Text "digital download" ] ]
+                ]
+              )
+            ]
+        ]
+      )
+    , ( Just "recorded" , [ Text "2007" ] )
+    , ( Just "studio" , [] )
+    , ( Just "venue" , [] )
+    , ( Just "genre"
+      , [ InternalLink
+            LinkTarget
+              { linkTargetPage = PageName { getPageName = "Eurodance" }
+              , linkTargetAnchor = Nothing
+              }
+            []
+        ]
+      )
+    , ( Just "length"
+      , [ Template
+            [ Text "ubl" ]
+            [ ( Nothing
+              , [ Text "2:34 "
+                , Template
+                    [ Text "small" ] [ ( Nothing , [ Text "(Radio Edit)" ] ) ]
+                ]
+              )
+            , ( Nothing
+              , [ Text "2:39 "
+                , Template
+                    [ Text "small" ] [ ( Nothing , [ Text "(Video Edit)" ] ) ]
+                ]
+              )
+            , ( Nothing
+              , [ Text "5:43 "
+                , Template
+                    [ Text "small" ]
+                    [ ( Nothing , [ Text "(DJ Alex Extended Mix)" ] ) ]
+                ]
+              )
+            ]
+        ]
+      )
+    , ( Just "label"
+      , [ InternalLink
+            LinkTarget
+              { linkTargetPage =
+                  PageName { getPageName = "Dance Nation (record label)" }
+              , linkTargetAnchor = Nothing
+              }
+            [ [ Text "Hard2Beat" ] ]
+        ]
+      )
+    , ( Just "writer"
+      , [ List [ Bulleted ] [ Text "Basshunter" ]
+        , List
+            [ Bulleted ]
+            [ InternalLink
+                LinkTarget
+                  { linkTargetPage =
+                      PageName { getPageName = "Charly Lownoise and Mental Theo" }
+                  , linkTargetAnchor = Nothing
+                  }
+                [ [ Text "DJ Mental Theo's Bazzheadz" ] ]
+            ]
+        ]
+      )
+    , ( Just "producer"
+      , [ List [ Bulleted ] [ Text "Basshunter" ]
+        , List
+            [ Bulleted ]
+            [ InternalLink
+                LinkTarget
+                  { linkTargetPage =
+                      PageName { getPageName = "Robert Uhlmann (composer)" }
+                  , linkTargetAnchor = Nothing
+                  }
+                [ [ Text "Robert Uhlmann" ] ]
+            , Template
+                [ Text "efn" ]
+                [ ( Nothing
+                  , [ InternalLink
+                        LinkTarget
+                          { linkTargetPage =
+                              PageName { getPageName = "Robert Uhlmann (composer)" }
+                          , linkTargetAnchor = Nothing
+                          }
+                        [ [ Text "Robert Uhlmann" ] ]
+                    , Text " not credited on the special version of ''"
+                    , InternalLink
+                        LinkTarget
+                          { linkTargetPage =
+                              PageName { getPageName = "LOL (Basshunter album)" }
+                          , linkTargetAnchor = Nothing
+                          }
+                        [ [ Text "LOL <(^^,)>" ] ]
+                    , Text "'' album."
+                    , XmlTag
+                        "ref"
+                        [ ( "name" , "LOL Special Version notes" ) ]
+                        [ Template
+                            [ Text "cite AV media notes" ]
+                            [ ( Just "title"
+                              , [ InternalLink
+                                    LinkTarget
+                                      { linkTargetPage =
+                                          PageName { getPageName = "LOL (Basshunter album)" }
+                                      , linkTargetAnchor = Nothing
+                                      }
+                                    [ [ Text "LOL <(^^,)> (Special Version)" ] ]
+                                ]
+                              )
+                            , ( Just "others"
+                              , [ InternalLink
+                                    LinkTarget
+                                      { linkTargetPage = PageName { getPageName = "Basshunter" }
+                                      , linkTargetAnchor = Nothing
+                                      }
+                                    []
+                                ]
+                              )
+                            , ( Just "year" , [ Text "2008" ] )
+                            , ( Just "publisher"
+                              , [ InternalLink
+                                    LinkTarget
+                                      { linkTargetPage =
+                                          PageName { getPageName = "Warner Music Sweden" }
+                                      , linkTargetAnchor = Nothing
+                                      }
+                                    []
+                                ]
+                              )
+                            , ( Just "type" , [ Text "Booklet" ] )
+                            , ( Just "id" , [ Text "5051442-8001-2-8" ] )
+                            ]
+                        ]
+                    ]
+                  )
+                ]
+            ]
+        ]
+      )
+    , ( Just "prev_title" , [] )
+    , ( Just "prev_year" , [] )
+    , ( Just "next_title" , [] )
+    , ( Just "next_year" , [] )
+    , ( Just "misc"
+      , [ Template
+            [ Text "Extra chronology" ]
+            [ ( Just "artist"
+              , [ InternalLink
+                    LinkTarget
+                      { linkTargetPage = PageName { getPageName = "Basshunter" }
+                      , linkTargetAnchor = Nothing
+                      }
+                    []
+                ]
+              )
+            , ( Just "type" , [ Text "singles" ] )
+            , ( Just "prev_title"
+              , [ InternalLink
+                    LinkTarget
+                      { linkTargetPage =
+                          PageName
+                            { getPageName =
+                                "List of artists who have recorded \"Jingle Bells\""
+                            }
+                      , linkTargetAnchor = Just "B"
+                      }
+                    [ [ Text "Jingle Bells" ] ]
+                ]
+              )
+            , ( Just "prev_year" , [ Text "2006" ] )
+            , ( Just "title" , [ Text "Now You're Gone" ] )
+            , ( Just "year" , [ Text "2008" ] )
+            , ( Just "next_title"
+              , [ InternalLink
+                    LinkTarget
+                      { linkTargetPage =
+                          PageName
+                            { getPageName = "Please Don't Go (KC and the Sunshine Band song)" }
+                      , linkTargetAnchor = Just "Basshunter version"
+                      }
+                    [ [ Text "Please Don't Go" ] ]
+                ]
+              )
+            , ( Just "next_year" , [ Text "2008" ] )
+            ]
+        ]
+      )
+    ]
+, NewPara
+, Text "\""
+, Bold
+, Text "Now You're Gone"
+, Bold
+, Text "\" is a song performed by Swedish dance musician "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Basshunter" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text
+    " in cooperation with DJ Mental Theo's Bazzheadz. The single uses the same music as \""
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Boten Anna" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text
+    "\", Basshunter's major European hit in 2006, but its lyrics, performed in "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "English language" }
+      , linkTargetAnchor = Nothing
+      }
+    [ [ Text "English" ] ]
+, Text " by Sebastian Westwood, are completely different."
+]

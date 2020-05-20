@@ -244,7 +244,7 @@ doc' = mdo
         return $ pure (,) <*> key <* spaces <* char '=' <* spaces
                           <*> value <* spaces
     xmlAttrs <- manyUntil (char_ '>' <> text_ "/>") xmlAttr
-    tagName <- T.pack <$*> manyUntil (char_ '>' <> text_ "/>" <> void space) anyChar
+    tagName <- T.pack <$*> manyUntil (char_ '>' <> text_ "/>" <> void space) alpha
     xml <- do
         let open :: P s (TagName, [(String, String)])
             open = pure (,) <* char '<'
