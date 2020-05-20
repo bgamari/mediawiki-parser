@@ -1,0 +1,118 @@
+[ Template [ Text "Infobox_gene" ] []
+, Bold
+, Text "Golgin subfamily A member 1"
+, Bold
+, Text " is a "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "protein" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text " that in humans is encoded by the "
+, Italic
+, Text "GOLGA1"
+, Italic
+, Text " "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "gene" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text "."
+, XmlTag
+    "ref"
+    [ ( "name" , "pmid9324025" ) ]
+    [ Template
+        [ Text "cite journal " ]
+        [ ( Just "vauthors"
+          , [ Text
+                "Griffith KJ, Chan EK, Lung CC, Hamel JC, Guo X, Miyachi K, Fritzler MJ "
+            ]
+          )
+        , ( Just "title"
+          , [ Text
+                "Molecular cloning of a novel 97-kd Golgi complex autoantigen associated with Sjogren's syndrome "
+            ]
+          )
+        , ( Just "journal" , [ Text "Arthritis Rheum " ] )
+        , ( Just "volume" , [ Text "40 " ] )
+        , ( Just "issue" , [ Text "9 " ] )
+        , ( Just "pages" , [ Text "1693\8211\&702 " ] )
+        , ( Just "date" , [ Text "Oct 1997 " ] )
+        , ( Just "pmid" , [ Text "9324025 " ] )
+        , ( Just "pmc" , [] )
+        , ( Just "doi"
+          , [ Text
+                "10.1002/1529-0131(199709)40:9<1693::AID-ART20>3.0.CO;2-6 "
+            ]
+          )
+        ]
+    ]
+, XmlTag
+    "ref"
+    [ ( "name" , "entrez" ) ]
+    [ Template
+        [ Text "cite web " ]
+        [ ( Just "title"
+          , [ Text
+                "Entrez Gene: GOLGA1 golgi autoantigen, golgin subfamily a, 1"
+            ]
+          )
+        , ( Just "url"
+          , [ Text
+                "https://www.ncbi.nlm.nih.gov/sites/entrez?Db=gene&Cmd=ShowDetailView&TermToSearch=2800"
+            ]
+          )
+        , ( Just "accessdate" , [] )
+        ]
+    ]
+, NewPara
+, Text
+    "The Golgi apparatus, which participates in glycosylation and transport of proteins and lipids in the secretory pathway, consists of a series of stacked cisternae (flattened membrane sacs). Interactions between the Golgi and microtubules are thought to be important for the reorganization of the Golgi after it fragments during mitosis. The golgins are a family of proteins, of which the protein encoded by this gene is a member, that are localized to the Golgi. This encoded protein is associated with Sjogren's syndrome."
+, XmlOpenClose "ref" [ ( "name" , "entrez" ) ]
+, NewPara
+, Heading 2 [ Text "Interactions" ]
+, Text "GOLGA1 has been shown to "
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "Protein-protein interaction" }
+      , linkTargetAnchor = Nothing
+      }
+    [ [ Text "interact" ] ]
+, Text " with "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "ARL1" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Text "."
+, XmlTag
+    "ref"
+    [ ( "name" , "pmid12972563" ) ]
+    [ Template
+        [ Text "cite journal " ]
+        [ ( Just "last" , [ Text "Lu " ] )
+        , ( Just "first" , [ Text "Lei " ] )
+        , ( Just "author2" , [ Text "Hong Wanjin " ] )
+        , ( Just "date" , [ Text "Sep 2003 " ] )
+        , ( Just "title"
+          , [ Text
+                "Interaction of Arl1-GTP with GRIP Domains Recruits Autoantigens Golgin-97 and Golgin-245/p230 onto the Golgi "
+            ]
+          )
+        , ( Just "journal" , [ Text "Mol. Biol. Cell " ] )
+        , ( Just "volume" , [ Text "14 " ] )
+        , ( Just "issue" , [ Text "9 " ] )
+        , ( Just "pages" , [ Text "3767\8211\&81 " ] )
+        , ( Just "location" , [ Text "United States" ] )
+        , ( Just "issn" , [ Text "1059-1524" ] )
+        , ( Just "pmid" , [ Text "12972563 " ] )
+        , ( Just "doi" , [ Text "10.1091/mbc.E03-01-0864 " ] )
+        , ( Just "pmc" , [ Text "196566 " ] )
+        ]
+    ]
+]
