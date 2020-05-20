@@ -1,0 +1,5 @@
+[ XmlTag
+    "ref"
+    [ ( "name" , "gtmchinese" ) ]
+    [ Text "Eknath Easwaran (1998)." ]
+]

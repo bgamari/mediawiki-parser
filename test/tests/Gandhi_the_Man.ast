@@ -160,30 +160,117 @@
       }
     []
 , Italic
-, Text ",<ref"
-, CodeLine
-    " name=mckibben89>[[Bill McKibben]] (1989, May 21). ''[[New York Post]]'', pp. 4-5. Review of ''Gandhi the Man'', ''A Man to Match His Mountains'', ''Meditation'', ''The Mantram Handbook'', and ''Conquest of Mind''.</ref> the ''[[San Francisco Chronicle]]'',<ref name=holt97>{{cite news"
-, CodeLine "|author=Patricia Holt"
-, CodeLine "|title=Images of Gandhi's progress toward greatness"
-, CodeLine "|newspaper=[[San Francisco Chronicle]]"
-, CodeLine "|publisher="
-, CodeLine "|date= 24 December 1997"
-, CodeLine "|pages= C6"
-, CodeLine
-    "|url= http://articles.sfgate.com/1997-12-24/entertainment/17763675_1_mahatma-gandhi-eknath-easwaran-international-acclaim"
-, CodeLine
-    "|accessdate=1 May 2010}}</ref> ''[[The History Teacher]]'',<ref"
-, CodeLine " name=cody81>{{cite journal"
-, CodeLine "|author=Donald K. Cody"
-, CodeLine "|year=1981"
-, CodeLine
-    "|title=<nowiki>[Untitled review of Easwaran's Gandhi the Man]</nowiki>"
-, CodeLine "|journal=The History Teacher"
-, CodeLine "|publisher="
-, CodeLine "|volume=14"
-, CodeLine "|issue= 2"
-, CodeLine "|pages= 269"
-, CodeLine "|jstor= 493276}}</ref> and elsewhere."
+, Text ","
+, XmlTag
+    "ref"
+    [ ( "name" , "mckibben89" ) ]
+    [ InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Bill McKibben" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Text " (1989, May 21). "
+    , Italic
+    , InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "New York Post" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Italic
+    , Text ", pp. 4-5. Review of "
+    , Italic
+    , Text "Gandhi the Man"
+    , Italic
+    , Text ", "
+    , Italic
+    , Text "A Man to Match His Mountains"
+    , Italic
+    , Text ", "
+    , Italic
+    , Text "Meditation"
+    , Italic
+    , Text ", "
+    , Italic
+    , Text "The Mantram Handbook"
+    , Italic
+    , Text ", and "
+    , Italic
+    , Text "Conquest of Mind"
+    , Italic
+    , Text "."
+    ]
+, Text " the "
+, Italic
+, InternalLink
+    LinkTarget
+      { linkTargetPage =
+          PageName { getPageName = "San Francisco Chronicle" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Italic
+, Text ","
+, XmlTag
+    "ref"
+    [ ( "name" , "holt97" ) ]
+    [ Template
+        [ Text "cite news" ]
+        [ ( Just "author" , [ Text "Patricia Holt" ] )
+        , ( Just "title"
+          , [ Text "Images of Gandhi's progress toward greatness" ]
+          )
+        , ( Just "newspaper"
+          , [ InternalLink
+                LinkTarget
+                  { linkTargetPage =
+                      PageName { getPageName = "San Francisco Chronicle" }
+                  , linkTargetAnchor = Nothing
+                  }
+                []
+            ]
+          )
+        , ( Just "publisher" , [] )
+        , ( Just "date" , [ Text "24 December 1997" ] )
+        , ( Just "pages" , [ Text "C6" ] )
+        , ( Just "url"
+          , [ Text
+                "http://articles.sfgate.com/1997-12-24/entertainment/17763675_1_mahatma-gandhi-eknath-easwaran-international-acclaim"
+            ]
+          )
+        , ( Just "accessdate" , [ Text "1 May 2010" ] )
+        ]
+    ]
+, Text " "
+, Italic
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "The History Teacher" }
+      , linkTargetAnchor = Nothing
+      }
+    []
+, Italic
+, Text ","
+, XmlTag
+    "ref"
+    [ ( "name" , "cody81" ) ]
+    [ Template
+        [ Text "cite journal" ]
+        [ ( Just "author" , [ Text "Donald K. Cody" ] )
+        , ( Just "year" , [ Text "1981" ] )
+        , ( Just "title"
+          , [ NoWiki "[Untitled review of Easwaran's Gandhi the Man]" ]
+          )
+        , ( Just "journal" , [ Text "The History Teacher" ] )
+        , ( Just "publisher" , [] )
+        , ( Just "volume" , [ Text "14" ] )
+        , ( Just "issue" , [ Text "2" ] )
+        , ( Just "pages" , [ Text "269" ] )
+        , ( Just "jstor" , [ Text "493276" ] )
+        ]
+    ]
+, Text " and elsewhere."
 , NewPara
 , Text "In the "
 , Italic
@@ -241,19 +328,46 @@
 , Text "Gandhi the Man"
 , Italic
 , Text
-    " could be used for teaching humane attitudes towards farm animals.<ref"
-, CodeLine " name=emeigh88>{{cite journal"
-, CodeLine "|author=Tonya Huber Emeigh"
-, CodeLine "|year=1988"
-, CodeLine
-    "|title=Humane education: Science, technology, and society in the English classroom"
-, CodeLine "|journal=[[Bulletin of Science, Technology & Society]]"
-, CodeLine "|publisher="
-, CodeLine "|volume=8"
-, CodeLine "|issue="
-, CodeLine "|pages=47\8211\&63"
-, CodeLine
-    "|doi=10.1177/027046768800800111}}</ref><ref name=wafdexplain>Emeigh suggests using the book with lessons about \"World Farm Animals Day\", designated as falling on October 2, Gandhi's birthday (see website [http://www.wfad.org/ World Farm Animals Day])</ref>"
+    " could be used for teaching humane attitudes towards farm animals."
+, XmlTag
+    "ref"
+    [ ( "name" , "emeigh88" ) ]
+    [ Template
+        [ Text "cite journal" ]
+        [ ( Just "author" , [ Text "Tonya Huber Emeigh" ] )
+        , ( Just "year" , [ Text "1988" ] )
+        , ( Just "title"
+          , [ Text
+                "Humane education: Science, technology, and society in the English classroom"
+            ]
+          )
+        , ( Just "journal"
+          , [ InternalLink
+                LinkTarget
+                  { linkTargetPage =
+                      PageName
+                        { getPageName = "Bulletin of Science, Technology & Society" }
+                  , linkTargetAnchor = Nothing
+                  }
+                []
+            ]
+          )
+        , ( Just "publisher" , [] )
+        , ( Just "volume" , [ Text "8" ] )
+        , ( Just "issue" , [] )
+        , ( Just "pages" , [ Text "47\8211\&63" ] )
+        , ( Just "doi" , [ Text "10.1177/027046768800800111" ] )
+        ]
+    ]
+, XmlTag
+    "ref"
+    [ ( "name" , "wafdexplain" ) ]
+    [ Text
+        "Emeigh suggests using the book with lessons about \"World Farm Animals Day\", designated as falling on October 2, Gandhi's birthday (see website "
+    , ExternalLink
+        (Url "http://www.wfad.org/") (Just "World Farm Animals Day")
+    , Text ")"
+    ]
 , NewPara
 , Text "The publisher quoted influential religion scholar "
 , InternalLink
@@ -284,9 +398,34 @@
 , Text "Gandhi the Man"
 , Italic
 , Text
-    " serves as the basis of a 7-week curriculum and course offered through a US-based church denomination.<ref "
-, CodeLine
-    " name=coursebasis>[http://www.unityofthevalley.org/Gandhi.htm ''The Wisdom of Gandhi''], {{Webarchive|url=https://web.archive.org/web/20110225140011/http://www.unityofthevalley.org/Gandhi.htm |date=2011-02-25 }} \"A seven-week study series that highlights Mahatma Gandhi's spiritual practice to make nonviolence a force in everyday life\" written in 1999 by ministers of [[Unity Church|Unity of the Valley]] of Eugene Oregon. The series \"became the most popular seven-week program ever offered at Unity of the Valley.\" (accessed 26 Jan 2013)</ref>"
+    " serves as the basis of a 7-week curriculum and course offered through a US-based church denomination."
+, XmlTag
+    "ref"
+    [ ( "name" , "coursebasis" ) ]
+    [ ExternalLink
+        (Url "http://www.unityofthevalley.org/Gandhi.htm")
+        (Just "''The Wisdom of Gandhi''")
+    , Text ", "
+    , Template
+        [ Text "Webarchive" ]
+        [ ( Just "url"
+          , [ Text
+                "https://web.archive.org/web/20110225140011/http://www.unityofthevalley.org/Gandhi.htm "
+            ]
+          )
+        , ( Just "date" , [ Text "2011-02-25 " ] )
+        ]
+    , Text
+        " \"A seven-week study series that highlights Mahatma Gandhi's spiritual practice to make nonviolence a force in everyday life\" written in 1999 by ministers of "
+    , InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Unity Church" }
+          , linkTargetAnchor = Nothing
+          }
+        [ [ Text "Unity of the Valley" ] ]
+    , Text
+        " of Eugene Oregon. The series \"became the most popular seven-week program ever offered at Unity of the Valley.\" (accessed 26 Jan 2013)"
+    ]
 , NewPara
 , Heading 2 [ Text "Editions" ]
 , Text
@@ -312,29 +451,327 @@
       , linkTargetAnchor = Nothing
       }
     [ [ Text "PRC" ] ]
-, Text "),<ref"
-, CodeLine
-    " name=gtmchinese>Eknath Easwaran (1998). ''[https://books.google.com/books?as_isbn=9787801281258 \22307\38596\183\29976\22320: \38750\26292\21147\20043\29238 (The Father of Nonviolence: Mahatma Gandhi)]'' {{ISBN|7-80128-125-X}}, {{ISBN|978-7-80128-125-8}}, (306 pages)</ref><ref name=pwgtmchina>Lynn Garrett (1998, Jan. 12). Gandhi in China. ''Publishers Weekly'', v245 n2, p30. \"Nilgiri Press... was surprised to receive an e-mail in September from the [[Sichuan]] Copyright Agency in the [[People's Republic of China]], expressing interest in publishing a Chinese edition of its ''Gandhi the Man'' (especially since relations between China and India have not always been the best).... the book will be released in China on January 30\" (p. 30).</ref> Czech,<ref"
-, CodeLine
-    " name=gtmczech>Eknath Easwaran (1999). ''[https://books.google.com/books?id=U1IlAAAACAAJ&dq=easwaran+8072072706&hl=en&ei=ZGq7S7OGN4z-tQPWspnyBA&sa=X&oi=book_result&ct=result&resnum=1&ved=0CDgQ6AEwAA G\225ndh\237 \269lov\283k: p\345\237b\283h jeho transformace (Gandhi the Man: The Story of his Transformation)]'' (Bohumila Ku\269erov\225, trans.). Czech Republic: Volvox Globator. {{ISBN|80-7207-270-6}}, {{ISBN|978-80-7207-270-5}} (140 pages)</ref> Dutch,<ref"
-, CodeLine
-    " name=gtmdutch83>Eknath Easwaran (1983). ''[https://books.google.com/books?id=4ArxAAAACAAJ&dq=9789064410475&lr=lang_nl&num=50&as_brr=0&as_pt=BOOKS&cd=1 Gandhi]'' (Hilde Lichtendahl, trans.). Netherlands: Sirius en Siderius. {{ISBN|906441047X}}, {{ISBN|978-90-6441-047-5}}</ref><ref"
-, CodeLine
-    " name=gtmdutch97>Eknath Easwaran (1997). ''[http://www.ankh-hermes.nl/shop/product.html?Gandhi&productid=3760 Gandhi Een biografie]{{Dead link|date=December 2019 |bot=InternetArchiveBot |fix-attempted=yes }}'' Netherlands: Ankh-Hermes. {{ISBN|90-202-8124-0}} {{ISBN|9789020281248}} (paper)</ref> German,<ref"
-, CodeLine
-    " name=gtmgerman83>Eknath Easwaran (1983). ''[https://books.google.com/books?id=g_vZAAAACAAJ&dq=9783924092139&hl=en&ei=pK27S-DtC430sgP1zYmKBQ&sa=X&oi=book_result&ct=result&resnum=1&ved=0CDMQ6AEwAA Der Mensch Gandhi]''. Germany:Grumann. {{ISBN|3-924092-13-3}}, {{ISBN|978-3-924092-13-9}} (184 pages).</ref><ref"
-, CodeLine
-    " name=gtmgerman97>Eknath Easwaran (1997). ''[https://books.google.com/books?id=gvvZAAAACAAJ&dq=Der+Mensch+Gandhi.+Sein+Leben+ist+eine+Botschaft&client=firefox-a Der Mensch Gandhi. Sein Leben ist eine Botschaft (Gandhi the Man: His Life is a Message)]''. Freiburg, Germany:Herder. {{ISBN|978-3-451-04564-6}}</ref> [[Bahasa Indonesian|Indonesian]],<ref"
-, CodeLine
-    " name=gtmindonesian13>[[Eknath Easwaran]] (2013). ''[http://www.bukabuku.com/browse/bookdetail/2010000193976/gandhi-the-man.html Gandhi the Man - Seorang pria yang mengubah dirinya demi mengubah dunia]''. Indonesia: Bentang Pustaka (Mizan Group). {{ISBN|6027888903}}, {{ISBN|978-602-7888-90-6}} (288 pages).</ref> Japanese,<ref"
-, CodeLine
-    " name=gtmjapanese13>[[Eknath Easwaran]] (2013). ''[https://www.amazon.co.jp/gp/aw/d/4862492134 \20154\38291\12460\12531\12487\12451\12540 \19990\30028\12434\22793\12360\12383\33258\24049\22793\38761 / (Gandhi the Man: How One Man Changed Himself to Change the World)]'' (\65405\65408\65394\65413\65392 \32000\32654\23376= Kimiko Steiner, trans.). [[Osaka]], [[Japan]]: \22823\38442\26481\26041\20986\29256 / Eastern Osaka Publishing. {{ISBN|978-4862492135}}, {{ISBN|4862492134}}, {{OCLC|840102432}}, {{ASIN|4862492134}} (214 pages)</ref> Korean,<ref"
-, CodeLine
-    " name=gtmkorean>[[Eknath Easwaran]] (2005). ''[https://books.google.com/books?id=rcHzQwAACAAJ&dq=inauthor:easwaran&lr=lang_ko&as_drrb_is=q&as_minm_is=0&as_miny_is=&as_maxm_is=0&as_maxy_is=&num=50&as_brr=0 \48708\54253\47141\51060 \44032\51109 \50948\45824\54620 \49324\46993\51060\45796 (Nonviolence is the Greatest Love)]'' (\48149\50976\51652, trans.). Korea: \45000\44984\45716\46028. {{ISBN|89-91159-07-9}}, {{ISBN|978-89-91159-07-5}}</ref> [[Kurdish languages|Kurdish]],<ref"
-, CodeLine
-    " name=gtmkurdish10>Eknath Easwaran (2010). ''Reb\257z\299-i \699ashq : ch\299rok\299 wacharkh\257n\299 ro\7717\299-y M\257h\257tm\257 G\257nd\299'' (H\257w\257r A\7717mad Halanjayi [Halabjayi], trans. from Persian). [[Erbil|Hawler <nowiki>[Erbil]</nowiki>]], [[Iraqi Kurdistan|Iraq]]: Ch\257pkh\257na-y Min\257rih. {{OCLC|801735679}} (175 pages)</ref>  and [[Persian language|Persian]].<ref"
-, CodeLine
-    " name=gtmpersian>[[Eknath Easwaran]] (2001). ''[http://www.google.com/search?q=9789643114114&oe=utf-8&rls=org.mozilla:en-US:official&client=firefox-a&um=1&ie=UTF-8&tbo=u&tbs=bks:1&sa=N&hl=en&tab=wp R\257h-i \699ishq: d\257sit\257n ta\7717\363l r\363\7717\299 mah\257tm\257 G\257nd\299 (The Way of Love: The Story of Mahatma Gandhi's spiritual transformation)]'' (Shahram Tabrizi, trans.). Iran: <nowiki>\1602\1602\1606\1608\1587\1548</nowiki> (Phoenix). {{ISBN|964-311-411-2}}, {{ISBN|978-964-311-411-4}}, {{OCLC|178500148}} (190 pages).</ref>"
+, Text "),"
+, XmlTag
+    "ref"
+    [ ( "name" , "gtmchinese" ) ]
+    [ Text "Eknath Easwaran (1998). "
+    , Italic
+    , ExternalLink
+        (Url "https://books.google.com/books?as_isbn=9787801281258")
+        (Just
+           "\22307\38596\183\29976\22320: \38750\26292\21147\20043\29238 (The Father of Nonviolence: Mahatma Gandhi)")
+    , Italic
+    , Text " "
+    , Template
+        [ Text "ISBN" ] [ ( Nothing , [ Text "7-80128-125-X" ] ) ]
+    , Text ", "
+    , Template
+        [ Text "ISBN" ] [ ( Nothing , [ Text "978-7-80128-125-8" ] ) ]
+    , Text ", (306 pages)"
+    ]
+, XmlTag
+    "ref"
+    [ ( "name" , "pwgtmchina" ) ]
+    [ Text "Lynn Garrett (1998, Jan. 12). Gandhi in China. "
+    , Italic
+    , Text "Publishers Weekly"
+    , Italic
+    , Text
+        ", v245 n2, p30. \"Nilgiri Press... was surprised to receive an e-mail in September from the "
+    , InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Sichuan" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Text " Copyright Agency in the "
+    , InternalLink
+        LinkTarget
+          { linkTargetPage =
+              PageName { getPageName = "People's Republic of China" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Text
+        ", expressing interest in publishing a Chinese edition of its "
+    , Italic
+    , Text "Gandhi the Man"
+    , Italic
+    , Text
+        " (especially since relations between China and India have not always been the best).... the book will be released in China on January 30\" (p. 30)."
+    ]
+, Text " Czech,"
+, XmlTag
+    "ref"
+    [ ( "name" , "gtmczech" ) ]
+    [ Text "Eknath Easwaran (1999). "
+    , Italic
+    , ExternalLink
+        (Url
+           "https://books.google.com/books?id=U1IlAAAACAAJ&dq=easwaran+8072072706&hl=en&ei=ZGq7S7OGN4z-tQPWspnyBA&sa=X&oi=book_result&ct=result&resnum=1&ved=0CDgQ6AEwAA")
+        (Just
+           "G\225ndh\237 \269lov\283k: p\345\237b\283h jeho transformace (Gandhi the Man: The Story of his Transformation)")
+    , Italic
+    , Text
+        " (Bohumila Ku\269erov\225, trans.). Czech Republic: Volvox Globator. "
+    , Template
+        [ Text "ISBN" ] [ ( Nothing , [ Text "80-7207-270-6" ] ) ]
+    , Text ", "
+    , Template
+        [ Text "ISBN" ] [ ( Nothing , [ Text "978-80-7207-270-5" ] ) ]
+    , Text " (140 pages)"
+    ]
+, Text " Dutch,"
+, XmlTag
+    "ref"
+    [ ( "name" , "gtmdutch83" ) ]
+    [ Text "Eknath Easwaran (1983). "
+    , Italic
+    , ExternalLink
+        (Url
+           "https://books.google.com/books?id=4ArxAAAACAAJ&dq=9789064410475&lr=lang_nl&num=50&as_brr=0&as_pt=BOOKS&cd=1")
+        (Just "Gandhi")
+    , Italic
+    , Text
+        " (Hilde Lichtendahl, trans.). Netherlands: Sirius en Siderius. "
+    , Template [ Text "ISBN" ] [ ( Nothing , [ Text "906441047X" ] ) ]
+    , Text ", "
+    , Template
+        [ Text "ISBN" ] [ ( Nothing , [ Text "978-90-6441-047-5" ] ) ]
+    ]
+, XmlTag
+    "ref"
+    [ ( "name" , "gtmdutch97" ) ]
+    [ Text "Eknath Easwaran (1997). "
+    , Italic
+    , ExternalLink
+        (Url
+           "http://www.ankh-hermes.nl/shop/product.html?Gandhi&productid=3760")
+        (Just "Gandhi Een biografie")
+    , Template
+        [ Text "Dead link" ]
+        [ ( Just "date" , [ Text "December 2019 " ] )
+        , ( Just "bot" , [ Text "InternetArchiveBot " ] )
+        , ( Just "fix-attempted" , [ Text "yes " ] )
+        ]
+    , Italic
+    , Text " Netherlands: Ankh-Hermes. "
+    , Template
+        [ Text "ISBN" ] [ ( Nothing , [ Text "90-202-8124-0" ] ) ]
+    , Text " "
+    , Template
+        [ Text "ISBN" ] [ ( Nothing , [ Text "9789020281248" ] ) ]
+    , Text " (paper)"
+    ]
+, Text " German,"
+, XmlTag
+    "ref"
+    [ ( "name" , "gtmgerman83" ) ]
+    [ Text "Eknath Easwaran (1983). "
+    , Italic
+    , ExternalLink
+        (Url
+           "https://books.google.com/books?id=g_vZAAAACAAJ&dq=9783924092139&hl=en&ei=pK27S-DtC430sgP1zYmKBQ&sa=X&oi=book_result&ct=result&resnum=1&ved=0CDMQ6AEwAA")
+        (Just "Der Mensch Gandhi")
+    , Italic
+    , Text ". Germany:Grumann. "
+    , Template
+        [ Text "ISBN" ] [ ( Nothing , [ Text "3-924092-13-3" ] ) ]
+    , Text ", "
+    , Template
+        [ Text "ISBN" ] [ ( Nothing , [ Text "978-3-924092-13-9" ] ) ]
+    , Text " (184 pages)."
+    ]
+, XmlTag
+    "ref"
+    [ ( "name" , "gtmgerman97" ) ]
+    [ Text "Eknath Easwaran (1997). "
+    , Italic
+    , ExternalLink
+        (Url
+           "https://books.google.com/books?id=gvvZAAAACAAJ&dq=Der+Mensch+Gandhi.+Sein+Leben+ist+eine+Botschaft&client=firefox-a")
+        (Just
+           "Der Mensch Gandhi. Sein Leben ist eine Botschaft (Gandhi the Man: His Life is a Message)")
+    , Italic
+    , Text ". Freiburg, Germany:Herder. "
+    , Template
+        [ Text "ISBN" ] [ ( Nothing , [ Text "978-3-451-04564-6" ] ) ]
+    ]
+, Text " "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Bahasa Indonesian" }
+      , linkTargetAnchor = Nothing
+      }
+    [ [ Text "Indonesian" ] ]
+, Text ","
+, XmlTag
+    "ref"
+    [ ( "name" , "gtmindonesian13" ) ]
+    [ InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Eknath Easwaran" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Text " (2013). "
+    , Italic
+    , ExternalLink
+        (Url
+           "http://www.bukabuku.com/browse/bookdetail/2010000193976/gandhi-the-man.html")
+        (Just
+           "Gandhi the Man - Seorang pria yang mengubah dirinya demi mengubah dunia")
+    , Italic
+    , Text ". Indonesia: Bentang Pustaka (Mizan Group). "
+    , Template [ Text "ISBN" ] [ ( Nothing , [ Text "6027888903" ] ) ]
+    , Text ", "
+    , Template
+        [ Text "ISBN" ] [ ( Nothing , [ Text "978-602-7888-90-6" ] ) ]
+    , Text " (288 pages)."
+    ]
+, Text " Japanese,"
+, XmlTag
+    "ref"
+    [ ( "name" , "gtmjapanese13" ) ]
+    [ InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Eknath Easwaran" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Text " (2013). "
+    , Italic
+    , ExternalLink
+        (Url "https://www.amazon.co.jp/gp/aw/d/4862492134")
+        (Just
+           "\20154\38291\12460\12531\12487\12451\12540 \19990\30028\12434\22793\12360\12383\33258\24049\22793\38761 / (Gandhi the Man: How One Man Changed Himself to Change the World)")
+    , Italic
+    , Text
+        " (\65405\65408\65394\65413\65392 \32000\32654\23376= Kimiko Steiner, trans.). "
+    , InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Osaka" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Text ", "
+    , InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Japan" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Text
+        ": \22823\38442\26481\26041\20986\29256 / Eastern Osaka Publishing. "
+    , Template
+        [ Text "ISBN" ] [ ( Nothing , [ Text "978-4862492135" ] ) ]
+    , Text ", "
+    , Template [ Text "ISBN" ] [ ( Nothing , [ Text "4862492134" ] ) ]
+    , Text ", "
+    , Template [ Text "OCLC" ] [ ( Nothing , [ Text "840102432" ] ) ]
+    , Text ", "
+    , Template [ Text "ASIN" ] [ ( Nothing , [ Text "4862492134" ] ) ]
+    , Text " (214 pages)"
+    ]
+, Text " Korean,"
+, XmlTag
+    "ref"
+    [ ( "name" , "gtmkorean" ) ]
+    [ InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Eknath Easwaran" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Text " (2005). "
+    , Italic
+    , ExternalLink
+        (Url
+           "https://books.google.com/books?id=rcHzQwAACAAJ&dq=inauthor:easwaran&lr=lang_ko&as_drrb_is=q&as_minm_is=0&as_miny_is=&as_maxm_is=0&as_maxy_is=&num=50&as_brr=0")
+        (Just
+           "\48708\54253\47141\51060 \44032\51109 \50948\45824\54620 \49324\46993\51060\45796 (Nonviolence is the Greatest Love)")
+    , Italic
+    , Text
+        " (\48149\50976\51652, trans.). Korea: \45000\44984\45716\46028. "
+    , Template
+        [ Text "ISBN" ] [ ( Nothing , [ Text "89-91159-07-9" ] ) ]
+    , Text ", "
+    , Template
+        [ Text "ISBN" ] [ ( Nothing , [ Text "978-89-91159-07-5" ] ) ]
+    ]
+, Text " "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Kurdish languages" }
+      , linkTargetAnchor = Nothing
+      }
+    [ [ Text "Kurdish" ] ]
+, Text ","
+, XmlTag
+    "ref"
+    [ ( "name" , "gtmkurdish10" ) ]
+    [ Text "Eknath Easwaran (2010). "
+    , Italic
+    , Text
+        "Reb\257z\299-i \699ashq : ch\299rok\299 wacharkh\257n\299 ro\7717\299-y M\257h\257tm\257 G\257nd\299"
+    , Italic
+    , Text
+        " (H\257w\257r A\7717mad Halanjayi [Halabjayi], trans. from Persian). "
+    , InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Erbil" }
+          , linkTargetAnchor = Nothing
+          }
+        [ [ Text "Hawler " , NoWiki "[Erbil]" ] ]
+    , Text ", "
+    , InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Iraqi Kurdistan" }
+          , linkTargetAnchor = Nothing
+          }
+        [ [ Text "Iraq" ] ]
+    , Text ": Ch\257pkh\257na-y Min\257rih. "
+    , Template [ Text "OCLC" ] [ ( Nothing , [ Text "801735679" ] ) ]
+    , Text " (175 pages)"
+    ]
+, Text "  and "
+, InternalLink
+    LinkTarget
+      { linkTargetPage = PageName { getPageName = "Persian language" }
+      , linkTargetAnchor = Nothing
+      }
+    [ [ Text "Persian" ] ]
+, Text "."
+, XmlTag
+    "ref"
+    [ ( "name" , "gtmpersian" ) ]
+    [ InternalLink
+        LinkTarget
+          { linkTargetPage = PageName { getPageName = "Eknath Easwaran" }
+          , linkTargetAnchor = Nothing
+          }
+        []
+    , Text " (2001). "
+    , Italic
+    , ExternalLink
+        (Url
+           "http://www.google.com/search?q=9789643114114&oe=utf-8&rls=org.mozilla:en-US:official&client=firefox-a&um=1&ie=UTF-8&tbo=u&tbs=bks:1&sa=N&hl=en&tab=wp")
+        (Just
+           "R\257h-i \699ishq: d\257sit\257n ta\7717\363l r\363\7717\299 mah\257tm\257 G\257nd\299 (The Way of Love: The Story of Mahatma Gandhi's spiritual transformation)")
+    , Italic
+    , Text " (Shahram Tabrizi, trans.). Iran: "
+    , NoWiki "\1602\1602\1606\1608\1587\1548"
+    , Text " (Phoenix). "
+    , Template
+        [ Text "ISBN" ] [ ( Nothing , [ Text "964-311-411-2" ] ) ]
+    , Text ", "
+    , Template
+        [ Text "ISBN" ] [ ( Nothing , [ Text "978-964-311-411-4" ] ) ]
+    , Text ", "
+    , Template [ Text "OCLC" ] [ ( Nothing , [ Text "178500148" ] ) ]
+    , Text " (190 pages)."
+    ]
 , NewPara
 , Text
     "English-language editions have been published in Canada, India, and the US. The US editions are:"

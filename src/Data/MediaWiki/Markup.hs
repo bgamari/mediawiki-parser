@@ -251,7 +251,7 @@ doc' = mdo
     xml <- do
         let open :: P s (TagName, [(String, String)])
             open = pure (,) <* char '<'
-                            <*> tagName <* spaces
+                            <*> tagName <* spacesWithNL
                             <*> xmlAttrs <* char '>'
             close = text "</" *> spaces *> tagName <* spaces <* char '>'
         children <- manyUntil close aDoc
@@ -307,6 +307,10 @@ doc' = mdo
 -- | Eat whitespace (but not newlines!)
 spaces :: P s ()
 spaces = void $ many $ char ' ' // char '\t'
+
+-- | Eat whitespace and possibly a newline with lead whitespace.
+spacesWithNL :: P s ()
+spacesWithNL = void $ spaces *> optional (eol *> spaces)
 
 openBraces, closeBraces :: BraceCount -> P s ()
 openBraces DoubleBrace  = text_ "{{"
