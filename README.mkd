@@ -1,8 +1,13 @@
 # mediawiki-parser
 
-This is a parser and some utilities for the MediaWiki markup language.
+Parser for the MediaWiki markup language for GHC Haskell.
 
-At the moment the primary interface is the `mediawiki-links` utility which
+This package only provides the library --- the development of executables that convert MediaWiki to another format is left to the dependee.
+
+
+# Link Graph Utility
+
+The only executable offered in this package is the `mediawiki-links` utility which
 accepts a MediaWiki XML dump file on `stdin` and writes a set of link graph
 edges to `stdout`. The output format is a tab-separated text file with the
 following columns,
